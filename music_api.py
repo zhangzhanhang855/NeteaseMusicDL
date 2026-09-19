@@ -1,7 +1,7 @@
-"""网易云音乐API模块
+"""网易云音乐API模块 (针对海外部署优化版)
 
 提供网易云音乐相关API接口的封装，包括：
-- 音乐URL获取
+- 音乐URL获取 (内置内地IP伪装与客户端指纹绕过)
 - 歌曲详情获取
 - 歌词获取
 - 搜索功能
@@ -13,7 +13,7 @@ import json
 import os
 import urllib.parse
 import time
-from random import randrange
+from random import randrange, choice
 from typing import Dict, List, Optional, Tuple, Any
 from hashlib import md5
 from enum import Enum
@@ -32,15 +32,26 @@ class QualityLevel(Enum):
     SKY = "sky"                # 沉浸环绕声
     JYEFFECT = "jyeffect"      # 高清环绕声
     JYMASTER = "jymaster"      # 超清母带
-    DOLBY = "dolby"      # 杜比全景声
+    DOLBY = "dolby"            # 杜比全景声
 
 
 # 常量定义
 class APIConstants:
     """API相关常量"""
     AES_KEY = b"e82ckenh8dichen8"
-    USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Safari/537.36 Chrome/91.0.4472.164 NeteaseMusicDesktop/2.10.2.200154'
+    
+    # 模拟最新版网易云 Windows 官方 PC 客户端
+    USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36 NeteaseMusicDesktop/2.10.2.200154'
     REFERER = 'https://music.163.com/'
+    
+    # 中国大陆主要省市（北京、上海、广州）合法公共 IP 池，用于绕开海外机房版权过滤
+    DOMESTIC_IPS = [
+        "114.247.50.110",
+        "220.181.38.150",
+        "116.228.111.18",
+        "183.60.83.19",
+        "202.108.22.5"
+    ]
     
     # API URLs
     SONG_URL_V1 = "https://interface3.music.163.com/eapi/song/enhance/player/url/v1"
@@ -52,18 +63,19 @@ class APIConstants:
     QR_UNIKEY_API = 'https://interface3.music.163.com/eapi/login/qrcode/unikey'
     QR_LOGIN_API = 'https://interface3.music.163.com/eapi/login/qrcode/client/login'
     
-    # 默认配置
+    # 默认设备指纹与客户端标头参数
     DEFAULT_CONFIG = {
         "os": "pc",
-        "appver": "",
-        "osver": "",
+        "appver": "2.10.2.200154",
+        "osver": "Microsoft-Windows-10-Professional-build-19045-64bit",
         "deviceId": "pyncm!"
     }
     
     DEFAULT_COOKIES = {
         "os": "pc",
-        "appver": "",
-        "osver": "",
+        "appver": "2.10.2.200154",
+        "osver": "Microsoft-Windows-10-Professional-build-19045-64bit",
+        "channel": "netease",
         "deviceId": "pyncm!"
     }
 
@@ -88,7 +100,7 @@ class CryptoUtils:
     
     @staticmethod
     def encrypt_params(url: str, payload: Dict[str, Any]) -> str:
-        """加密请求参数"""
+        """加密请求参数 (EAPI AES-128-ECB 模式)"""
         url_path = urllib.parse.urlparse(url).path.replace("/eapi/", "/api/")
         digest = CryptoUtils.hash_hex_digest(f"nobody{url_path}use{json.dumps(payload)}md5forencrypt")
         params = f"{url_path}-36cd479b6b5-{json.dumps(payload)}-36cd479b6b5-{digest}"
@@ -104,22 +116,37 @@ class CryptoUtils:
 
 
 class HTTPClient:
-    """HTTP客户端类"""
+    """HTTP客户端类 (内置针对海外节点的客户端伪装)"""
+    
+    @staticmethod
+    def get_custom_headers() -> Dict[str, str]:
+        """构造带国内网络特征的反代与客户端请求头"""
+        domestic_ip = choice(APIConstants.DOMESTIC_IPS)
+        return {
+            'User-Agent': APIConstants.USER_AGENT,
+            'Referer': APIConstants.REFERER,
+            'X-Real-IP': domestic_ip,
+            'X-Forwarded-For': domestic_ip,
+            'Client-IP': domestic_ip,
+            'os': 'pc',
+            'appver': '2.10.2.200154'
+        }
     
     @staticmethod
     def post_request(url: str, params: str, cookies: Dict[str, str]) -> str:
         """发送POST请求并返回文本响应"""
-        headers = {
-            'User-Agent': APIConstants.USER_AGENT,
-            'Referer': APIConstants.REFERER,
-        }
-        
+        headers = HTTPClient.get_custom_headers()
         request_cookies = APIConstants.DEFAULT_COOKIES.copy()
         request_cookies.update(cookies)
         
         try:
-            response = requests.post(url, headers=headers, cookies=request_cookies, 
-                                   data={"params": params}, timeout=30)
+            response = requests.post(
+                url, 
+                headers=headers, 
+                cookies=request_cookies, 
+                data={"params": params}, 
+                timeout=30
+            )
             response.raise_for_status()
             return response.text
         except requests.RequestException as e:
@@ -128,17 +155,18 @@ class HTTPClient:
     @staticmethod
     def post_request_full(url: str, params: str, cookies: Dict[str, str]) -> requests.Response:
         """发送POST请求并返回完整响应对象"""
-        headers = {
-            'User-Agent': APIConstants.USER_AGENT,
-            'Referer': APIConstants.REFERER,
-        }
-        
+        headers = HTTPClient.get_custom_headers()
         request_cookies = APIConstants.DEFAULT_COOKIES.copy()
         request_cookies.update(cookies)
         
         try:
-            response = requests.post(url, headers=headers, cookies=request_cookies, 
-                                   data={"params": params}, timeout=30)
+            response = requests.post(
+                url, 
+                headers=headers, 
+                cookies=request_cookies, 
+                data={"params": params}, 
+                timeout=30
+            )
             response.raise_for_status()
             return response
         except requests.RequestException as e:
@@ -162,14 +190,11 @@ class NeteaseAPI:
         
         Args:
             song_id: 歌曲ID
-            quality: 音质等级 (standard, exhigh, lossless, hires, sky, jyeffect, jymaster)
+            quality: 音质等级 (standard, exhigh, lossless, hires, sky, jyeffect, jymaster, dolby)
             cookies: 用户cookies
             
         Returns:
             包含歌曲URL信息的字典
-            
-        Raises:
-            APIException: API调用失败时抛出
         """
         try:
             config = APIConstants.DEFAULT_CONFIG.copy()
@@ -197,20 +222,11 @@ class NeteaseAPI:
             raise APIException(f"解析响应数据失败: {e}")
     
     def get_song_detail(self, song_id: int) -> Dict[str, Any]:
-        """获取歌曲详细信息
-        
-        Args:
-            song_id: 歌曲ID
-            
-        Returns:
-            包含歌曲详细信息的字典
-            
-        Raises:
-            APIException: API调用失败时抛出
-        """
+        """获取歌曲详细信息"""
         try:
+            headers = HTTPClient.get_custom_headers()
             data = {'c': json.dumps([{"id": song_id, "v": 0}])}
-            response = requests.post(APIConstants.SONG_DETAIL_V3, data=data, timeout=30)
+            response = requests.post(APIConstants.SONG_DETAIL_V3, headers=headers, data=data, timeout=30)
             response.raise_for_status()
             
             result = response.json()
@@ -224,18 +240,7 @@ class NeteaseAPI:
             raise APIException(f"解析歌曲详情响应失败: {e}")
     
     def get_lyric(self, song_id: int, cookies: Dict[str, str]) -> Dict[str, Any]:
-        """获取歌词信息
-        
-        Args:
-            song_id: 歌曲ID
-            cookies: 用户cookies
-            
-        Returns:
-            包含歌词信息的字典
-            
-        Raises:
-            APIException: API调用失败时抛出
-        """
+        """获取歌词信息"""
         try:
             data = {
                 'id': song_id, 
@@ -248,14 +253,17 @@ class NeteaseAPI:
                 'ytv': '0', 
                 'yrv': '0'
             }
+            headers = HTTPClient.get_custom_headers()
+            request_cookies = APIConstants.DEFAULT_COOKIES.copy()
+            request_cookies.update(cookies)
             
-            headers = {
-                'User-Agent': APIConstants.USER_AGENT,
-                'Referer': APIConstants.REFERER
-            }
-            
-            response = requests.post(APIConstants.LYRIC_API, data=data, 
-                                   headers=headers, cookies=cookies, timeout=30)
+            response = requests.post(
+                APIConstants.LYRIC_API, 
+                data=data, 
+                headers=headers, 
+                cookies=request_cookies, 
+                timeout=30
+            )
             response.raise_for_status()
             
             result = response.json()
@@ -269,28 +277,20 @@ class NeteaseAPI:
             raise APIException(f"解析歌词响应失败: {e}")
     
     def search_music(self, keywords: str, cookies: Dict[str, str], limit: int = 10) -> List[Dict[str, Any]]:
-        """搜索音乐
-        
-        Args:
-            keywords: 搜索关键词
-            cookies: 用户cookies
-            limit: 返回数量限制
-            
-        Returns:
-            歌曲信息列表
-            
-        Raises:
-            APIException: API调用失败时抛出
-        """
+        """搜索音乐"""
         try:
             data = {'s': keywords, 'type': 1, 'limit': limit}
-            headers = {
-                'User-Agent': APIConstants.USER_AGENT,
-                'Referer': APIConstants.REFERER
-            }
+            headers = HTTPClient.get_custom_headers()
+            request_cookies = APIConstants.DEFAULT_COOKIES.copy()
+            request_cookies.update(cookies)
             
-            response = requests.post(APIConstants.SEARCH_API, data=data, 
-                                   headers=headers, cookies=cookies, timeout=30)
+            response = requests.post(
+                APIConstants.SEARCH_API, 
+                data=data, 
+                headers=headers, 
+                cookies=request_cookies, 
+                timeout=30
+            )
             response.raise_for_status()
             
             result = response.json()
@@ -315,27 +315,20 @@ class NeteaseAPI:
             raise APIException(f"解析搜索响应失败: {e}")
     
     def get_playlist_detail(self, playlist_id: int, cookies: Dict[str, str]) -> Dict[str, Any]:
-        """获取歌单详情
-        
-        Args:
-            playlist_id: 歌单ID
-            cookies: 用户cookies
-            
-        Returns:
-            歌单详情信息
-            
-        Raises:
-            APIException: API调用失败时抛出
-        """
+        """获取歌单详情"""
         try:
             data = {'id': playlist_id}
-            headers = {
-                'User-Agent': APIConstants.USER_AGENT,
-                'Referer': APIConstants.REFERER
-            }
+            headers = HTTPClient.get_custom_headers()
+            request_cookies = APIConstants.DEFAULT_COOKIES.copy()
+            request_cookies.update(cookies)
             
-            response = requests.post(APIConstants.PLAYLIST_DETAIL_API, data=data, 
-                                   headers=headers, cookies=cookies, timeout=30)
+            response = requests.post(
+                APIConstants.PLAYLIST_DETAIL_API, 
+                data=data, 
+                headers=headers, 
+                cookies=request_cookies, 
+                timeout=30
+            )
             response.raise_for_status()
             
             result = response.json()
@@ -353,14 +346,18 @@ class NeteaseAPI:
                 'tracks': []
             }
             
-            # 获取所有trackIds并分批获取详细信息
             track_ids = [str(t['id']) for t in playlist.get('trackIds', [])]
             for i in range(0, len(track_ids), 100):
                 batch_ids = track_ids[i:i+100]
                 song_data = {'c': json.dumps([{'id': int(sid), 'v': 0} for sid in batch_ids])}
                 
-                song_resp = requests.post(APIConstants.SONG_DETAIL_V3, data=song_data, 
-                                        headers=headers, cookies=cookies, timeout=30)
+                song_resp = requests.post(
+                    APIConstants.SONG_DETAIL_V3, 
+                    data=song_data, 
+                    headers=headers, 
+                    cookies=request_cookies, 
+                    timeout=30
+                )
                 song_resp.raise_for_status()
                 
                 song_result = song_resp.json()
@@ -380,26 +377,14 @@ class NeteaseAPI:
             raise APIException(f"解析歌单详情响应失败: {e}")
     
     def get_album_detail(self, album_id: int, cookies: Dict[str, str]) -> Dict[str, Any]:
-        """获取专辑详情
-        
-        Args:
-            album_id: 专辑ID
-            cookies: 用户cookies
-            
-        Returns:
-            专辑详情信息
-            
-        Raises:
-            APIException: API调用失败时抛出
-        """
+        """获取专辑详情"""
         try:
             url = f'{APIConstants.ALBUM_DETAIL_API}{album_id}'
-            headers = {
-                'User-Agent': APIConstants.USER_AGENT,
-                'Referer': APIConstants.REFERER
-            }
+            headers = HTTPClient.get_custom_headers()
+            request_cookies = APIConstants.DEFAULT_COOKIES.copy()
+            request_cookies.update(cookies)
             
-            response = requests.get(url, headers=headers, cookies=cookies, timeout=30)
+            response = requests.get(url, headers=headers, cookies=request_cookies, timeout=30)
             response.raise_for_status()
             
             result = response.json()
@@ -433,14 +418,7 @@ class NeteaseAPI:
             raise APIException(f"解析专辑详情响应失败: {e}")
     
     def netease_encrypt_id(self, id_str: str) -> str:
-        """网易云加密图片ID算法
-        
-        Args:
-            id_str: 图片ID字符串
-            
-        Returns:
-            加密后的字符串
-        """
+        """网易云加密图片ID算法"""
         import base64
         import hashlib
         
@@ -458,15 +436,7 @@ class NeteaseAPI:
         return result
     
     def get_pic_url(self, pic_id: Optional[int], size: int = 300) -> str:
-        """获取网易云加密歌曲/专辑封面直链
-        
-        Args:
-            pic_id: 封面ID
-            size: 图片尺寸
-            
-        Returns:
-            图片URL
-        """
+        """获取网易云加密歌曲/专辑封面直链"""
         if pic_id is None:
             return ''
         
@@ -482,14 +452,7 @@ class QRLoginManager:
         self.crypto_utils = CryptoUtils()
     
     def generate_qr_key(self) -> Optional[str]:
-        """生成二维码的key
-        
-        Returns:
-            成功返回unikey，失败返回None
-            
-        Raises:
-            APIException: API调用失败时抛出
-        """
+        """生成二维码的key"""
         try:
             config = APIConstants.DEFAULT_CONFIG.copy()
             config["requestId"] = str(randrange(20000000, 30000000))
@@ -511,11 +474,7 @@ class QRLoginManager:
             raise APIException(f"解析二维码key响应失败: {e}")
     
     def create_qr_login(self) -> Optional[str]:
-        """创建登录二维码并在控制台显示
-        
-        Returns:
-            成功返回unikey，失败返回None
-        """
+        """创建登录二维码并在控制台显示"""
         try:
             import qrcode
             
@@ -524,12 +483,9 @@ class QRLoginManager:
                 print("生成二维码key失败")
                 return None
             
-            # 创建二维码
             qr = qrcode.QRCode()
             qr.add_data(f'https://music.163.com/login?codekey={unikey}')
             qr.make(fit=True)
-            
-            # 在控制台显示二维码
             qr.print_ascii(tty=True)
             print("\n请使用网易云音乐APP扫描上方二维码登录")
             return unikey
@@ -541,17 +497,7 @@ class QRLoginManager:
             return None
     
     def check_qr_login(self, unikey: str) -> Tuple[int, Dict[str, str]]:
-        """检查二维码登录状态
-        
-        Args:
-            unikey: 二维码key
-            
-        Returns:
-            (登录状态码, cookie字典)
-            
-        Raises:
-            APIException: API调用失败时抛出
-        """
+        """检查二维码登录状态"""
         try:
             config = APIConstants.DEFAULT_CONFIG.copy()
             config["requestId"] = str(randrange(20000000, 30000000))
@@ -569,7 +515,6 @@ class QRLoginManager:
             cookie_dict = {}
             
             if result.get('code') == 803:
-                # 登录成功，提取cookie
                 all_cookies = response.headers.get('Set-Cookie', '').split(', ')
                 for cookie_str in all_cookies:
                     if 'MUSIC_U=' in cookie_str:
@@ -580,11 +525,7 @@ class QRLoginManager:
             raise APIException(f"解析登录状态响应失败: {e}")
     
     def qr_login(self) -> Optional[str]:
-        """完整的二维码登录流程
-        
-        Returns:
-            成功返回cookie字符串，失败返回None
-        """
+        """完整的二维码登录流程"""
         try:
             unikey = self.create_qr_login()
             if not unikey:
@@ -595,7 +536,7 @@ class QRLoginManager:
                 
                 if code == 803:
                     print("\n登录成功！")
-                    return f"MUSIC_U={cookies['MUSIC_U']};os=pc;appver=8.9.70;"
+                    return f"MUSIC_U={cookies['MUSIC_U']};os=pc;appver=2.10.2.200154;"
                 elif code == 801:
                     print("\r等待扫码...", end='')
                 elif code == 802:
@@ -615,49 +556,41 @@ class QRLoginManager:
 
 # 向后兼容的函数接口
 def url_v1(song_id: int, level: str, cookies: Dict[str, str]) -> Dict[str, Any]:
-    """获取歌曲URL（向后兼容）"""
     api = NeteaseAPI()
     return api.get_song_url(song_id, level, cookies)
 
 
 def name_v1(song_id: int) -> Dict[str, Any]:
-    """获取歌曲详情（向后兼容）"""
     api = NeteaseAPI()
     return api.get_song_detail(song_id)
 
 
 def lyric_v1(song_id: int, cookies: Dict[str, str]) -> Dict[str, Any]:
-    """获取歌词（向后兼容）"""
     api = NeteaseAPI()
     return api.get_lyric(song_id, cookies)
 
 
 def search_music(keywords: str, cookies: Dict[str, str], limit: int = 10) -> List[Dict[str, Any]]:
-    """搜索音乐（向后兼容）"""
     api = NeteaseAPI()
     return api.search_music(keywords, cookies, limit)
 
 
 def playlist_detail(playlist_id: int, cookies: Dict[str, str]) -> Dict[str, Any]:
-    """获取歌单详情（向后兼容）"""
     api = NeteaseAPI()
     return api.get_playlist_detail(playlist_id, cookies)
 
 
 def album_detail(album_id: int, cookies: Dict[str, str]) -> Dict[str, Any]:
-    """获取专辑详情（向后兼容）"""
     api = NeteaseAPI()
     return api.get_album_detail(album_id, cookies)
 
 
 def get_pic_url(pic_id: Optional[int], size: int = 300) -> str:
-    """获取图片URL（向后兼容）"""
     api = NeteaseAPI()
     return api.get_pic_url(pic_id, size)
 
 
 def qr_login() -> Optional[str]:
-    """二维码登录（向后兼容）"""
     manager = QRLoginManager()
     return manager.qr_login()
 
@@ -668,11 +601,7 @@ DEFAULT_COOKIE_FILE = "cookie.txt"
 
 
 def load_cookies(path: str = DEFAULT_COOKIE_FILE) -> Dict[str, str]:
-    """从 cookie.txt 直接读取并解析为 dict
-
-    支持标准 ``NMTID=xxx; _ntes_nnid=xxx; ...`` 格式。
-    文件不存在或解析失败返回空 dict（不抛异常，调用方决定如何处理）。
-    """
+    """从 cookie.txt 直接读取并解析为 dict"""
     if not os.path.isfile(path):
         return {}
     try:
@@ -684,22 +613,22 @@ def load_cookies(path: str = DEFAULT_COOKIE_FILE) -> Dict[str, str]:
 
 
 def parse_cookie_string(cookie_string: str) -> Dict[str, str]:
-    """把 ``k1=v1; k2=v2`` 格式字符串解析为 dict
-
-    支持 ``;`` 或 ``\\n`` 作为分隔符。
-    """
+    """把 k1=v1; k2=v2 格式字符串解析为 dict，并补全底层 PC 端参数"""
     cookies: Dict[str, str] = {}
     if not cookie_string:
         return cookies
     cookie_string = cookie_string.strip()
     if not cookie_string:
         return cookies
+    
+    # 按照分号或换行拆分
     for sep in (";", "\n"):
         if sep in cookie_string:
             pairs = cookie_string.split(sep)
             break
     else:
         pairs = [cookie_string]
+        
     for pair in pairs:
         pair = pair.strip()
         if not pair or "=" not in pair:
@@ -709,17 +638,14 @@ def parse_cookie_string(cookie_string: str) -> Dict[str, str]:
         value = value.strip()
         if key and value:
             cookies[key] = value
+            
+    # 强制注入 PC 客户端高码率运行标识，防止被云端拦截置 0
+    cookies.setdefault("os", "pc")
+    cookies.setdefault("appver", "2.10.2.200154")
+    cookies.setdefault("osver", "Microsoft-Windows-10-Professional-build-19045-64bit")
+    
     return cookies
 
 
 if __name__ == "__main__":
-    # 测试代码
-    print("网易云音乐API模块")
-    print("支持的功能:")
-    print("- 歌曲URL获取")
-    print("- 歌曲详情获取")
-    print("- 歌词获取")
-    print("- 音乐搜索")
-    print("- 歌单详情")
-    print("- 专辑详情")
-    print("- 二维码登录")
+    print("网易云音乐API模块 (海外节点与地域限制优化版)")
