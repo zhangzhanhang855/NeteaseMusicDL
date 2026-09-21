@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>JRmusic Admin · 激活码与会员权限中控台</title>
+  <style>
+    :root {
+      --bg-base: #06080b;
+      --bg-surface: #0d1117;
+      --bg-card: rgba(18, 24, 38, 0.75);
+      --bg-card-hover: rgba(26, 35, 54, 0.85);
+      --bg-input: #0b0f17;
+      
+      --accent-blue: #2563eb;
+      --accent-blue-glow: rgba(37, 99, 235, 0.35);
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --text-main: #f8fafc;
+      --text-muted: #64748b;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-elevated: rgba(255, 255, 255, 0.14);
+      
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Segoe UI", Roboto, sans-serif;
+      --font-mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* 顶部导航与凭证栏 */
+    .admin-header {
+      background: var(--bg-card);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px var(--accent-blue-glow);
+    }
+    .brand-logo svg { width: 20px; height: 20px; fill: #fff; }
+    .brand-text h1 { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.5px; }
+    .brand-text p { font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono); }
+
+    .admin-auth-dock {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .secret-input {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 14px;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      width: 220px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .secret-input:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 3px var(--accent-blue-glow); }
+
+    /* 主网格布局 */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 860px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+    }
+
+    .panel-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .panel-title {
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+    }
+    .panel-title::before {
+      content: '';
+      width: 4px;
+      height: 14px;
+      background: var(--accent-blue);
+      border-radius: 2px;
+    }
+
+    /* 表单控件 */
+    .form-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-label {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .form-input {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: #fff;
+      font-family: var(--font-stack);
+      font-size: 0.88rem;
+      outline: none;
+    }
+    .form-input:focus { border-color: var(--accent-blue); }
+
+    .switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+    }
+    .switch-label { font-size: 0.85rem; font-weight: 600; }
+    .switch-sub { font-size: 0.7rem; color: var(--text-muted); }
+
+    /* 开关控件 */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .slider-round {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.15);
+      transition: .3s;
+      border-radius: 24px;
+    }
+    .slider-round:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider-round { background-color: var(--accent-blue); }
+    input:checked + .slider-round:before { transform: translateX(20px); }
+
+    .btn-action {
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px var(--accent-blue-glow);
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover { opacity: 0.92; transform: translateY(-1px); }
+    .btn-action:active { transform: scale(0.98); }
+
+    /* 兑换码列表容器 */
+    .code-list-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 520px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .code-item {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+    .code-item:hover { border-color: var(--border-elevated); transform: translateX(3px); }
+
+    .code-meta-col { display: flex; flex-direction: column; gap: 4px; overflow: hidden; }
+    .code-title-row { display: flex; align-items: center; gap: 8px; }
+    .code-string { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .code-tag {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+    .tag-premium { background: rgba(37, 99, 235, 0.2); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.4); }
+    .tag-quota { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    .code-sub-row { font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono); }
+
+    .btn-delete-chip {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .btn-delete-chip:hover { color: var(--accent-rose); background: rgba(244, 63, 94, 0.12); }
+    .btn-delete-chip svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* 复制快捷键 */
+    .btn-copy-chip {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .btn-copy-chip:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
+    .btn-copy-chip svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* Toast */
+    #ui-toast {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      background: #0f141d;
+      border: 1px solid var(--border-elevated);
+      border-left: 4px solid var(--accent-blue);
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    #ui-toast.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <div id="ui-toast">操作通知</div>
+
+  <div class="container">
+    <!-- 头部凭据与状态 -->
+    <header class="admin-header">
+      <div class="brand-title">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1>JRmusic License Manager</h1>
+          <p>CLOUDFLARE EDGE & MONGODB DISPATCHER</p>
+        </div>
+      </div>
+
+      <div class="admin-auth-dock">
+        <input type="password" id="adminSecretKey" class="secret-input" placeholder="输入 Admin Secret Key..." />
+        <button class="btn-action" style="padding: 8px 14px;" onclick="AdminCore.saveAndRefresh()">
+          <span>同步连接</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 工作台操作网格 -->
+    <div class="dashboard-grid">
+      
+      <!-- 发行面板 -->
+      <section class="panel-card">
+        <div class="panel-title">发行新卡密 (Issue License)</div>
+
+        <div class="form-item">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <label class="form-label">卡密序列号 (Code Pattern)</label>
+            <span style="font-size:0.7rem; color:var(--accent-blue); cursor:pointer; font-family:var(--font-mono);" onclick="AdminCore.generateRandomCode()">[自动生成]</span>
+          </div>
+          <input type="text" id="issueCodeInput" class="form-input" placeholder="例如: VIP-PREMIUM-2026" />
+        </div>
+
+        <div class="switch-row">
+          <div>
+            <div class="switch-label">授予 Premium 资格</div>
+            <div class="switch-sub">允许听/下 Lossless 及 Hi-Res 音质</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="issueIsPremium" checked>
+            <span class="slider-round"></span>
+          </label>
+        </div>
+
+        <div class="form-item">
+          <label class="form-label">赠送离线下载配额 (Quota)</label>
+          <input type="number" id="issueQuotaInput" class="form-input" value="50" min="0" step="10" />
+        </div>
+
+        <div class="form-item">
+          <label class="form-label">会员有效期天数 (0 代表永久)</label>
+          <input type="number" id="issueDaysInput" class="form-input" value="0" min="0" placeholder="0 = 永久有效" />
+        </div>
+
+        <button class="btn-action" onclick="AdminCore.issueCode()">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          <span>立即生成并部署卡密</span>
+        </button>
+      </section>
+
+      <!-- 卡密列表面板 -->
+      <section class="panel-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 12px;">
+          <div class="panel-title" style="border:none; padding:0;">活跃卡密池 (<span id="codesCount">0</span>)</div>
+          <button class="btn-copy-chip" onclick="AdminCore.fetchCodes()" title="刷新列表">
+            <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          </button>
+        </div>
+
+        <div class="code-list-wrap" id="codesContainer">
+          <div style="text-align: center; color: var(--text-muted); padding: 40px; font-size: 0.88rem;">输入秘钥点击“同步连接”加载数据...</div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    const CONFIG = {
+      // 你的 Workers 地址
+      WORKER_API_BASE: "https://jrmusic-premium.zhangzhanhang855.workers.dev",
+      DEFAULT_ADMIN_KEY: "JR_SECRET_ADMIN_KEY_2026"
+    };
+
+    const Toast = {
+      timer: null,
+      show(msg, isError = false) {
+        const el = document.getElementById("ui-toast");
+        el.innerText = msg;
+        el.style.borderLeftColor = isError ? "var(--accent-rose)" : "var(--accent-blue)";
+        el.classList.add("show");
+        clearTimeout(Toast.timer);
+        Toast.timer = setTimeout(() => el.classList.remove("show"), 3000);
+      }
+    };
+
+    const AdminCore = {
+      getSecret() {
+        return document.getElementById("adminSecretKey").value.trim() || CONFIG.DEFAULT_ADMIN_KEY;
+      },
+
+      init() {
+        const savedKey = localStorage.getItem("jrmusic_admin_key") || CONFIG.DEFAULT_ADMIN_KEY;
+        document.getElementById("adminSecretKey").value = savedKey;
+        AdminCore.fetchCodes();
+      },
+
+      saveAndRefresh() {
+        const key = document.getElementById("adminSecretKey").value.trim();
+        localStorage.setItem("jrmusic_admin_key", key);
+        AdminCore.fetchCodes();
+        Toast.show("秘钥已保存并同步连接");
+      },
+
+      generateRandomCode() {
+        const prefix = document.getElementById("issueIsPremium").checked ? "PREMIUM" : "QUOTA";
+        const rand = Math.random().toString(36).substring(2, 8).toUpperCase();
+        const year = new Date().getFullYear();
+        document.getElementById("issueCodeInput").value = `JR-${prefix}-${year}-${rand}`;
+      },
+
+      async fetchCodes() {
+        const secret = AdminCore.getSecret();
+        try {
+          const res = await fetch(`${CONFIG.WORKER_API_BASE}/api/admin/list-codes`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "x-admin-key": secret
+            }
+          });
+
+          const json = await res.json();
+          if (!res.ok) throw new Error(json.message || "请求失败");
+
+          AdminCore.renderCodes(json.codes || []);
+        } catch (err) {
+          Toast.show(`连接异常: ${err.message}`, true);
+        }
+      },
+
+      renderCodes(codes) {
+        document.getElementById("codesCount").innerText = codes.length;
+        const container = document.getElementById("codesContainer");
+        container.innerHTML = "";
+
+        if (codes.length === 0) {
+          container.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 40px; font-size: 0.88rem;">暂无有效兑换码，请从左侧发行。</div>`;
+          return;
+        }
+
+        codes.forEach(c => {
+          const isPrem = !!c.isPremium;
+          const days = c.premiumDays ? `${c.premiumDays}天` : "永久";
+          const quota = c.grantedQuota || 0;
+
+          const item = document.createElement("div");
+          item.className = "code-item";
+          item.innerHTML = `
+            <div class="code-meta-col">
+              <div class="code-title-row">
+                <span class="code-string">${c.code}</span>
+                <span class="code-tag ${isPrem ? 'tag-premium' : 'tag-quota'}">${isPrem ? '👑 Premium' : '📦 仅配额'}</span>
+              </div>
+              <div class="code-sub-row">
+                权益: ${isPrem ? `会员(${days}) + ` : ''}${quota}次下载 · 创建于 ${new Date(c.createdAt || Date.now()).toLocaleDateString()}
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <button class="btn-copy-chip" onclick="AdminCore.copyCode('${c.code}')" title="拷贝卡密">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              </button>
+              <button class="btn-delete-chip" onclick="AdminCore.deleteCode('${c.code}')" title="销毁卡密">
+                <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+              </button>
+            </div>
+          `;
+          container.appendChild(item);
+        });
+      },
+
+      async issueCode() {
+        const code = document.getElementById("issueCodeInput").value.trim();
+        const grantedQuota = parseInt(document.getElementById("issueQuotaInput").value, 10) || 0;
+        const isPremium = document.getElementById("issueIsPremium").checked;
+        const premiumDays = parseInt(document.getElementById("issueDaysInput").value, 10) || 0;
+
+        if (!code) {
+          Toast.show("请输入或生成兑换码序列号", true);
+          return;
+        }
+
+        try {
+          const res = await fetch(`${CONFIG.WORKER_API_BASE}/api/admin/issue-code`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-admin-key": AdminCore.getSecret()
+            },
+            body: JSON.stringify({
+              code,
+              grantedQuota,
+              isPremium,
+              premiumDays
+            })
+          });
+
+          const json = await res.json();
+          if (!res.ok) throw new Error(json.message || "发行失败");
+
+          Toast.show(`卡密【${code}】已成功部署入库！`);
+          document.getElementById("issueCodeInput").value = "";
+          AdminCore.fetchCodes();
+        } catch (err) {
+          Toast.show(`发行错误: ${err.message}`, true);
+        }
+      },
+
+      async deleteCode(code) {
+        if (!confirm(`确认要销毁卡密【${code}】吗？`)) return;
+
+        try {
+          const res = await fetch(`${CONFIG.WORKER_API_BASE}/api/admin/delete-code`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-admin-key": AdminCore.getSecret()
+            },
+            body: JSON.stringify({ code })
+          });
+
+          const json = await res.json();
+          if (!res.ok) throw new Error(json.message || "删除失败");
+
+          Toast.show(`卡密【${code}】已物理注销`);
+          AdminCore.fetchCodes();
+        } catch (err) {
+          Toast.show(`删除错误: ${err.message}`, true);
+        }
+      },
+
+      copyCode(text) {
+        navigator.clipboard.writeText(text).then(() => {
+          Toast.show(`已拷贝卡密: ${text}`);
+        });
+      }
+    };
+
+    window.addEventListener("DOMContentLoaded", AdminCore.init);
+  </script>
+</body>
+</html>
