@@ -1,139 +1,81 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="format-detection" content="telephone=no" />
-  <title>JRmusic Cloud · Apple Pro Studio Audio Infrastructure</title>
+  <title>JRmusic Cloud · Enterprise Lossless Audio Infrastructure</title>
 
   <style>
-    /* ==========================================================================
-       APPLE HUMAN INTERFACE GUIDELINES (HIG) DESIGN SYSTEM
-       Cupertino Ultra-Refined Tokens & Materials
-       ========================================================================== */
     :root {
-      /* System Gray Palette (Apple iOS 18/macOS Dark Mode Baseline) */
-      --sf-bg-base: #000000;
-      --sf-bg-grouped: #0a0b0e;
-      --sf-bg-surface: rgba(28, 28, 30, 0.72);
-      --sf-bg-surface-elevated: rgba(44, 44, 46, 0.78);
-      --sf-bg-surface-hover: rgba(58, 58, 60, 0.85);
-      --sf-bg-active: rgba(72, 72, 74, 0.9);
-
-      /* Cupertino Dynamic Primary Accent (Classic Standard Slate Electric Blue) */
-      --accent-rgb: 0, 122, 255;
-      --accent: #007aff;
-      --accent-hover: #0062cc;
-      --accent-glow: rgba(0, 122, 255, 0.38);
-      --accent-dim: rgba(0, 122, 255, 0.12);
-      --accent-subtle: rgba(0, 122, 255, 0.06);
-
-      /* Functional Semantic Tokens */
-      --sf-green: #34c759;
-      --sf-green-glow: rgba(52, 199, 89, 0.35);
-      --sf-indigo: #5856d6;
-      --sf-orange: #ff9500;
-      --sf-pink: #ff2d55;
-      --sf-purple: #af52de;
-      --sf-red: #ff3b30;
-      --sf-teal: #5ac8fa;
-      --sf-yellow: #ffcc00;
-
-      /* Apple Typography Vibrancy Grades */
-      --sf-label-primary: #ffffff;
-      --sf-label-secondary: rgba(235, 235, 245, 0.65);
-      --sf-label-tertiary: rgba(235, 235, 245, 0.38);
-      --sf-label-quaternary: rgba(235, 235, 245, 0.18);
-
-      /* Liquid Glass & Separators */
-      --sf-separator: rgba(84, 84, 88, 0.45);
-      --sf-separator-opaque: #38383a;
-      --sf-border-glass: rgba(255, 255, 255, 0.14);
-      --sf-border-specular: rgba(255, 255, 255, 0.28);
-      --sf-shadow-glass: 0 16px 40px rgba(0, 0, 0, 0.45), 0 2px 10px rgba(0, 0, 0, 0.2);
-
-      /* Typography Scale */
-      --sf-font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-      --sf-font-mono: "SF Mono", "SFProMono-Regular", Menlo, Monaco, Consolas, monospace;
-
-      /* Layout & Safe Areas */
+      --bg-base: #06080b;
+      --bg-surface: #0c1017;
+      --bg-surface-elevated: #131924;
+      --bg-surface-hover: #1b2332;
+      
+      /* 默认普通用户冷光蓝主题 */
+      --accent: #2563eb;
+      --accent-glow: rgba(37, 99, 235, 0.35);
+      --accent-dim: rgba(37, 99, 235, 0.12);
+      --accent-cyan: #00d2ff;
+      --accent-emerald: #10b981;
+      
+      --text-main: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-elevated: rgba(255, 255, 255, 0.14);
+      
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Segoe UI", Roboto, sans-serif;
+      --font-mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+      
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
-      --safe-left: env(safe-area-inset-left, 0px);
-      --safe-right: env(safe-area-inset-right, 0px);
-      --dock-height: 86px;
-      --nav-height: 52px;
-
-      /* Motion */
-      --spring-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-      --spring-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --trans-theme: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      --player-dock-height: 84px;
+      --trans-theme: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* ==========================================================================
-       PREMIUM EXCLUSIVE LUXURY CHAMPAGNE GOLD THEME
-       Apple Hermès / iPhone Pro Desert Titanium Aesthetics
+       PREMIUM 独享奢华黑金主题 (当用户为 isPremium 时动态激活)
        ========================================================================== */
     body.is-premium-tier {
-      --accent-rgb: 218, 165, 32;
-      --accent: #d4af37;
-      --accent-hover: #b89727;
-      --accent-glow: rgba(212, 175, 55, 0.42);
-      --accent-dim: rgba(212, 175, 55, 0.14);
-      --accent-subtle: rgba(212, 175, 55, 0.06);
-
-      --sf-border-glass: rgba(212, 175, 55, 0.26);
-      --sf-border-specular: rgba(255, 223, 128, 0.45);
-      --sf-shadow-glass: 0 16px 44px rgba(0, 0, 0, 0.55), 0 0 24px rgba(212, 175, 55, 0.22);
+      --accent: #d97706; /* 奢华琥珀金 */
+      --accent-glow: rgba(217, 119, 6, 0.45);
+      --accent-dim: rgba(217, 119, 6, 0.16);
+      --accent-cyan: #fbbf24;
+      --border-elevated: rgba(251, 191, 36, 0.25);
     }
 
-    body.is-premium-tier::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 1;
+    body.is-premium-tier::before {
+      background-image: 
+        linear-gradient(to right, rgba(251, 191, 36, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(251, 191, 36, 0.03) 1px, transparent 1px);
     }
 
-    body.is-premium-tier .liquid-glass-pill {
-      background: rgba(255, 252, 240, 0.92) !important;
-      border: 1px solid rgba(212, 175, 55, 0.5) !important;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.28), inset 0 1.5px 1px #ffffff !important;
+    body.is-premium-tier .brand-cube-icon,
+    body.is-premium-tier .cockpit-logo-node {
+      background: linear-gradient(135deg, #f59e0b, #b45309) !important;
+      box-shadow: 0 0 25px var(--accent-glow) !important;
     }
 
-    body.is-premium-tier .liquid-nav-item.active {
-      background: rgba(212, 175, 55, 0.16) !important;
-      color: #997300 !important;
-    }
-    body.is-premium-tier .liquid-nav-item.active svg {
-      fill: #997300 !important;
-    }
-    body.is-premium-tier .liquid-nav-item.active span {
-      color: #997300 !important;
+    body.is-premium-tier .btn-cloud-action,
+    body.is-premium-tier .control-pill-btn.primary {
+      background: linear-gradient(135deg, #f59e0b, #b45309) !important;
+      box-shadow: 0 4px 20px var(--accent-glow) !important;
     }
 
     body.is-premium-tier .dock-progress-fill {
-      background: linear-gradient(90deg, #d4af37, #ffe082) !important;
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.6) !important;
+      background: linear-gradient(90deg, #f59e0b, #fde68a) !important;
     }
 
-    body.is-premium-tier .brand-symbol-box {
-      background: linear-gradient(135deg, #f3cf65 0%, #d4af37 50%, #997300 100%) !important;
-      box-shadow: 0 0 24px var(--accent-glow) !important;
+    body.is-premium-tier .liquid-nav-item.active svg {
+      fill: #d97706 !important;
+    }
+    body.is-premium-tier .liquid-nav-item.active span {
+      color: #d97706 !important;
     }
 
-    body.is-premium-tier .apple-btn-primary {
-      background: linear-gradient(135deg, #e4be49 0%, #c49d28 100%) !important;
-      color: #1a1400 !important;
-      font-weight: 800 !important;
-      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.45) !important;
-    }
-
-    /* Reset & Viewport Lock */
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -143,73 +85,78 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      height: 100vh;
+      width: 100vw;
       overflow: hidden;
-      background-color: var(--sf-bg-base);
-      color: var(--sf-label-primary);
-      font-family: var(--sf-font-sans);
-      font-size: 15px;
-      line-height: 1.4;
+      letter-spacing: -0.015em;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      transition: var(--trans-theme);
     }
 
-    /* Ambient Apple Mesh Background Canvas */
-    .apple-ambient-glow {
+    body::before {
+      content: '';
       position: fixed;
-      inset: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(ellipse at 50% 25%, rgba(var(--accent-rgb), 0.12) 0%, rgba(0, 0, 0, 0) 55%),
-                  radial-gradient(circle at 15% 85%, rgba(88, 86, 214, 0.08) 0%, transparent 45%);
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
       pointer-events: none;
       z-index: 0;
       transition: var(--trans-theme);
     }
 
-    /* Scrollbar Aesthetics */
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); border-radius: 9999px; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.32); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
 
-    /* ==========================================================================
-       FLOATING LIQUID GLASS NAVBAR (PIXEL-PERFECT REPLICA)
-       ========================================================================== */
-    header.liquid-nav-container {
+    /* FLOATING LIQUID GLASS NAVBAR */
+    header.liquid-nav-wrapper {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       padding-top: max(var(--safe-top), 14px);
-      padding-bottom: 12px;
+      padding-bottom: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 800;
+      z-index: 900;
       pointer-events: none;
     }
 
     .liquid-glass-pill {
       pointer-events: auto;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       padding: 6px 14px;
       border-radius: 9999px;
       background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(40px) saturate(210%);
-      -webkit-backdrop-filter: blur(40px) saturate(210%);
-      border: 1px solid rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(35px) saturate(200%);
+      -webkit-backdrop-filter: blur(35px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       box-shadow: 
-        0 14px 38px rgba(0, 0, 0, 0.38),
+        0 12px 36px rgba(0, 0, 0, 0.35),
         0 2px 8px rgba(0, 0, 0, 0.12),
-        inset 0 1.5px 1.5px rgba(255, 255, 255, 0.95),
+        inset 0 1.5px 1px rgba(255, 255, 255, 0.95),
         inset 0 -1px 2px rgba(0, 0, 0, 0.05);
-      transition: var(--trans-theme);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       max-width: 95vw;
+    }
+
+    body.is-premium-tier .liquid-glass-pill {
+      background: rgba(255, 251, 235, 0.92);
+      border: 1px solid rgba(251, 191, 36, 0.6);
+      box-shadow: 
+        0 12px 36px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(245, 158, 11, 0.25),
+        inset 0 1.5px 1px #fff;
     }
 
     .liquid-nav-item {
@@ -219,10 +166,10 @@
       justify-content: center;
       padding: 6px 16px;
       min-width: 64px;
-      border-radius: 22px;
+      border-radius: 20px;
       cursor: pointer;
-      color: #2c3038;
-      transition: all 0.24s var(--spring-smooth);
+      color: #2b303a;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
 
@@ -230,7 +177,7 @@
       width: 24px;
       height: 24px;
       fill: currentColor;
-      transition: transform 0.22s var(--spring-smooth), fill 0.22s ease;
+      transition: transform 0.2s ease, fill 0.2s ease;
     }
 
     .liquid-nav-item span {
@@ -241,11 +188,8 @@
       white-space: nowrap;
     }
 
-    .liquid-nav-item:active {
-      transform: scale(0.92);
-    }
+    .liquid-nav-item:active { transform: scale(0.92); }
 
-    /* Active Highlight Capsule */
     .liquid-nav-item.active {
       background: rgba(0, 0, 0, 0.06);
       color: var(--accent);
@@ -262,809 +206,394 @@
       color: var(--accent);
     }
 
-    .liquid-divider {
-      width: 1px;
-      height: 24px;
-      background: rgba(0, 0, 0, 0.09);
-      margin: 0 4px;
-    }
+    .liquid-divider { width: 1px; height: 24px; background: rgba(0, 0, 0, 0.08); margin: 0 4px; }
+    .liquid-quality-box { display: flex; align-items: center; background: rgba(0, 0, 0, 0.05); border-radius: 12px; padding: 4px 8px; }
+    .liquid-quality-select { background: transparent; border: none; color: #1e293b; font-size: 11px; font-weight: 700; font-family: var(--font-mono); outline: none; cursor: pointer; }
+    .liquid-user-btn { width: 30px; height: 30px; border-radius: 50%; background: #1e293b; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; cursor: pointer; margin-left: 4px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); transition: background 0.3s; }
+    body.is-premium-tier .liquid-user-btn { background: linear-gradient(135deg, #f59e0b, #b45309); color: #fff; box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
 
-    .liquid-quality-control {
+    /* AUTHENTICATION PORTAL */
+    #fullscreen-auth-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: var(--bg-base);
       display: flex;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 14px;
-      padding: 4px 9px;
-      transition: background 0.2s;
-    }
-    .liquid-quality-control:hover {
-      background: rgba(0, 0, 0, 0.09);
+      flex-direction: row;
+      overflow: hidden;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
     }
 
-    .liquid-quality-select {
-      background: transparent;
-      border: none;
-      color: #1e293b;
-      font-size: 11px;
-      font-weight: 700;
-      font-family: var(--sf-font-mono);
-      outline: none;
-      cursor: pointer;
+    #fullscreen-auth-stage.stage-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .auth-banner-pane {
+      flex: 1.15;
+      background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(0, 210, 255, 0.04) 0%, transparent 60%),
+                  #07090e;
+      border-right: 1px solid var(--border-subtle);
+      padding: calc(var(--safe-top) + 60px) 70px 60px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
     }
 
-    .liquid-user-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #1e293b;
-      color: #ffffff;
+    .banner-brand-row { display: flex; align-items: center; gap: 14px; }
+    .brand-cube-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-left: 4px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-      transition: transform 0.2s var(--spring-smooth), box-shadow 0.2s;
+      box-shadow: 0 0 25px var(--accent-glow);
     }
-    .liquid-user-avatar:hover {
-      transform: scale(1.05);
+    .brand-cube-icon svg { width: 22px; height: 22px; fill: #fff; }
+    .banner-brand-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.6px; color: #fff; }
+    .banner-brand-sub {
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      padding: 3px 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-elevated);
+      border-radius: 6px;
+      letter-spacing: 1px;
     }
 
-    /* ==========================================================================
-       PRIMARY APP CONTAINER & STAGE ROUTING
-       ========================================================================== */
-    #app-viewport {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      z-index: 10;
+    .banner-copy-block { max-width: 580px; display: flex; flex-direction: column; gap: 20px; margin: 40px 0; }
+    .banner-headline {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .banner-desc { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6; }
+
+    .telemetry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+    .telemetry-card { background: rgba(19, 25, 36, 0.5); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 16px; backdrop-filter: blur(10px); }
+    .telemetry-label { font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; }
+    .telemetry-value { font-size: 1.25rem; font-weight: 700; font-family: var(--font-mono); color: #fff; margin-top: 6px; display: flex; align-items: center; gap: 6px; }
+    .telemetry-value.green { color: var(--accent-emerald); }
+    .telemetry-value.cyan { color: var(--accent-cyan); }
+    .telemetry-value.amber { color: #f59e0b; }
+
+    .banner-footer-security { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: var(--text-muted); }
+    .security-status-indicator { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-emerald); box-shadow: 0 0 10px var(--accent-emerald); }
+
+    .auth-interaction-pane {
+      flex: 0.95;
+      background: #090c12;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      position: relative;
+    }
+    .auth-console-container { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 28px; }
+    .console-header { display: flex; flex-direction: column; gap: 8px; }
+    .console-title { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.8px; color: #fff; }
+    .console-subtitle { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4; }
+
+    .auth-segmented-switch { display: flex; background: #111622; padding: 4px; border-radius: 12px; border: 1px solid var(--border-subtle); }
+    .auth-segmented-tab {
+      flex: 1;
+      padding: 10px 0;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: var(--font-stack);
+      transition: all 0.2s ease;
+    }
+    .auth-segmented-tab.active { background: var(--bg-surface-elevated); color: #fff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); border: 1px solid var(--border-elevated); }
+
+    .auth-fields-block { display: flex; flex-direction: column; gap: 18px; }
+    .field-group { display: flex; flex-direction: column; gap: 8px; }
+    .field-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: flex; justify-content: space-between; }
+    .field-input-box { position: relative; display: flex; align-items: center; }
+    .field-input-box svg { position: absolute; left: 16px; width: 18px; height: 18px; fill: var(--text-muted); }
+
+    .cloud-input {
+      width: 100%;
+      background: #0d121b;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 16px 14px 48px;
+      color: #fff;
+      font-family: var(--font-stack);
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .cloud-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+
+    .btn-cloud-action {
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      color: #fff;
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px var(--accent-glow);
     }
 
-    .stage-scroll-canvas {
+    .cloud-auth-feedback { min-height: 20px; font-size: 0.82rem; font-family: var(--font-mono); text-align: center; }
+    .cloud-auth-feedback.error { color: #ff5265; }
+    .cloud-auth-feedback.success { color: #10b981; }
+
+    /* WORKSPACE */
+    #workspace-container { display: flex; flex-direction: column; height: 100vh; width: 100vw; position: relative; z-index: 10; overflow: hidden; }
+
+    .cockpit-body-scroll {
       flex: 1;
       overflow-y: auto;
-      overflow-x: hidden;
-      padding: 0 48px;
-      padding-top: calc(var(--safe-top) + 94px);
-      padding-bottom: calc(var(--dock-height) + var(--safe-bottom) + 40px);
+      padding: 32px 48px;
+      padding-top: calc(var(--safe-top) + 84px);
+      padding-bottom: calc(var(--player-dock-height) + 40px + var(--safe-bottom));
       display: flex;
       flex-direction: column;
       gap: 36px;
     }
 
-    /* Cupertino Large Hero Section */
-    .apple-hero-container {
-      display: grid;
-      grid-template-columns: 1.8fr 1fr;
-      gap: 24px;
-    }
-
-    .apple-card-glass {
-      position: relative;
-      background: var(--sf-bg-surface);
-      backdrop-filter: blur(35px) saturate(190%);
-      -webkit-backdrop-filter: blur(35px) saturate(190%);
-      border: 1px solid var(--sf-border-glass);
-      border-radius: 26px;
-      padding: 32px;
-      box-shadow: var(--sf-shadow-glass);
-      overflow: hidden;
-      transition: var(--trans-theme);
-    }
-
-    .apple-card-glass::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, var(--sf-border-specular) 50%, transparent 100%);
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      font-family: var(--sf-font-mono);
-      color: var(--accent);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .hero-large-title {
-      font-size: 2.4rem;
-      font-weight: 800;
-      letter-spacing: -1.2px;
-      line-height: 1.12;
-      margin-top: 10px;
-      color: var(--sf-label-primary);
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      color: var(--sf-label-secondary);
-      margin-top: 10px;
-      max-width: 580px;
-      line-height: 1.5;
-    }
-
-    /* Cupertino Spotlight Search Bar */
-    .apple-search-bar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid var(--sf-border-glass);
-      border-radius: 18px;
-      padding: 6px 6px 6px 18px;
-      margin-top: 24px;
-      max-width: 560px;
-      transition: all 0.25s var(--spring-smooth);
-    }
-    .apple-search-bar:focus-within {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-dim);
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .apple-search-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #ffffff;
-      font-size: 0.95rem;
-      font-family: var(--sf-font-sans);
-    }
-    .apple-search-input::placeholder {
-      color: var(--sf-label-tertiary);
-    }
-
-    .apple-btn-primary {
-      background: var(--accent);
-      color: #ffffff;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 14px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 16px var(--accent-glow);
-      transition: all 0.2s var(--spring-smooth);
-    }
-    .apple-btn-primary:active {
-      transform: scale(0.96);
-      opacity: 0.9;
-    }
-
-    .apple-actions-pillbox {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 26px;
-      flex-wrap: wrap;
-    }
-
-    .apple-pill-btn {
-      padding: 8px 16px;
-      border-radius: 9999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      border: 1px solid var(--sf-border-glass);
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--sf-label-secondary);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      transition: all 0.2s var(--spring-smooth);
-    }
-    .apple-pill-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--sf-label-primary);
-      border-color: rgba(255, 255, 255, 0.22);
-    }
-    .apple-pill-btn:active {
-      transform: scale(0.95);
-    }
-    .apple-pill-btn svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-    }
-
-    /* Hero Right Status Widget */
-    .telemetry-stack {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .telemetry-metric-unit {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      padding-bottom: 12px;
-    }
-    .telemetry-metric-unit:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .telemetry-label {
-      font-size: 0.72rem;
-      font-family: var(--sf-font-mono);
-      color: var(--sf-label-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .telemetry-val {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--sf-label-primary);
-      letter-spacing: -0.5px;
-    }
-
-    /* Section Headers */
-    .apple-section-block {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .apple-section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--sf-border-glass);
-      padding-bottom: 12px;
-    }
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.4px;
-      color: var(--sf-label-primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .section-title::before {
-      content: '';
-      width: 4px;
-      height: 18px;
-      border-radius: 2px;
-      background: var(--accent);
-    }
-
-    /* Grid Collections */
-    .apple-card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 18px;
-    }
-    .apple-interactive-card {
-      background: var(--sf-bg-surface);
-      border: 1px solid var(--sf-border-glass);
+    .hero-summary-deck { display: grid; grid-template-columns: 1.8fr 1fr; gap: 24px; }
+    .hero-panel-card {
+      background: radial-gradient(circle at 10% 10%, var(--accent-dim) 0%, transparent 60%), rgba(13, 17, 24, 0.7);
+      border: 1px solid var(--border-subtle);
       border-radius: 20px;
+      padding: 32px;
+      backdrop-filter: blur(14px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-title-tag { font-size: 0.75rem; font-weight: 700; font-family: var(--font-mono); color: var(--accent); letter-spacing: 1.5px; }
+    .hero-big-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; margin-top: 8px; color: #fff; }
+    .hero-status-pills { display: flex; align-items: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+
+    .control-pill-btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface-elevated);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-family: var(--font-stack);
+      transition: all 0.2s ease;
+    }
+    .control-pill-btn.primary { background: linear-gradient(135deg, var(--accent), #1d4ed8); border-color: transparent; }
+    .control-pill-btn.danger { background: linear-gradient(135deg, #ff4757, #c0392b); border-color: transparent; }
+
+    .hero-stats-card {
+      background: rgba(13, 17, 24, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stats-row-metric { display: flex; flex-direction: column; gap: 4px; }
+    .stats-label { font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; }
+    .stats-digit { font-size: 1.8rem; font-weight: 800; font-family: var(--font-mono); color: #fff; }
+
+    .cockpit-section-block { display: flex; flex-direction: column; gap: 18px; }
+    .cockpit-section-head { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px; }
+    .section-title-label { font-size: 1.25rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; }
+    .section-title-label::before { content: ''; width: 6px; height: 18px; background: var(--accent); border-radius: 3px; }
+
+    .grid-deck-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+    .cockpit-card {
+      background: rgba(13, 17, 24, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
       padding: 22px;
       display: flex;
       flex-direction: column;
       cursor: pointer;
-      transition: all 0.24s var(--spring-smooth);
+      transition: all 0.22s ease;
     }
-    .apple-interactive-card:hover {
-      transform: translateY(-4px);
-      background: var(--sf-bg-surface-elevated);
-      border-color: rgba(255, 255, 255, 0.22);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
-    }
-    .card-icon-bubble {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      transition: background 0.2s;
-    }
-    .card-icon-bubble svg {
-      width: 22px;
-      height: 22px;
-      fill: var(--sf-label-secondary);
-    }
-    .apple-interactive-card:hover .card-icon-bubble {
-      background: var(--accent-dim);
-    }
-    .apple-interactive-card:hover .card-icon-bubble svg {
-      fill: var(--accent);
-    }
-    .card-main-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--sf-label-primary);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .card-subtitle {
-      font-size: 0.78rem;
-      color: var(--sf-label-tertiary);
-      margin-top: 3px;
-    }
+    .cockpit-card:hover { transform: translateY(-4px); background: rgba(19, 25, 36, 0.9); }
+    .cockpit-card-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .cockpit-card-icon svg { width: 24px; height: 24px; fill: var(--text-secondary); }
+    .cockpit-card:hover .cockpit-card-icon { background: var(--accent-dim); }
+    .cockpit-card:hover .cockpit-card-icon svg { fill: var(--accent); }
+    .cockpit-card.fav-theme .cockpit-card-icon { background: var(--accent-dim); }
+    .cockpit-card.fav-theme .cockpit-card-icon svg { fill: var(--accent); }
+    .cockpit-card-title { font-size: 1rem; font-weight: 700; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cockpit-card-subtitle { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
 
-    /* Cupertino Table Stream Pipeline */
-    .stream-list-container {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .track-row-item {
+    .stream-pipeline-table { display: flex; flex-direction: column; gap: 6px; }
+    .track-row-node {
       display: grid;
-      grid-template-columns: 46px 1fr 140px 130px 100px;
+      grid-template-columns: 50px 1fr 140px 120px 100px;
       align-items: center;
-      padding: 12px 18px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid transparent;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: rgba(13, 17, 24, 0.4);
+      border: 1px solid var(--border-subtle);
       cursor: pointer;
-      transition: all 0.2s var(--spring-smooth);
     }
-    .track-row-item:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: var(--sf-border-glass);
-    }
-    .track-row-item.current-playing {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-    }
+    .track-row-node:hover { background: rgba(22, 28, 40, 0.8); }
+    .track-row-node.current-playing { background: linear-gradient(90deg, var(--accent-dim) 0%, rgba(13, 17, 24, 0.6) 100%); border-color: var(--accent); }
+    .track-idx-col { font-size: 0.85rem; font-family: var(--font-mono); color: var(--text-muted); display: flex; align-items: center; justify-content: center; }
+    .track-idx-col svg { width: 18px; height: 18px; fill: var(--accent); display: none; }
+    .track-row-node.current-playing .track-idx-col span { display: none; }
+    .track-row-node.current-playing .track-idx-col svg { display: block; }
+    .track-meta-col { display: flex; flex-direction: column; overflow: hidden; padding-right: 16px; }
+    .track-name-main { font-size: 0.95rem; font-weight: 600; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .track-row-node.current-playing .track-name-main { color: var(--accent); font-weight: 700; }
+    .track-subpath { font-size: 0.74rem; font-family: var(--font-mono); color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; }
 
-    .track-index-col {
-      font-family: var(--sf-font-mono);
-      font-size: 0.85rem;
-      color: var(--sf-label-tertiary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .track-index-col svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--accent);
-      display: none;
-    }
-    .track-row-item.current-playing .track-index-col span { display: none; }
-    .track-row-item.current-playing .track-index-col svg { display: block; }
+    .track-codec-col { font-size: 0.72rem; font-family: var(--font-mono); color: var(--accent-cyan); background: var(--accent-dim); padding: 3px 8px; border-radius: 6px; width: fit-content; }
+    .track-cache-col { font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+    .status-ping { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); }
+    .status-ping.cached { background: var(--accent-emerald); box-shadow: 0 0 8px var(--accent-emerald); }
+    .track-actions-col { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+    .action-icon-hit { background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; }
+    .action-icon-hit:hover { color: #fff; }
+    .action-icon-hit.active-fav { color: var(--accent); }
+    .action-icon-hit svg { width: 18px; height: 18px; fill: currentColor; }
 
-    .track-info-col {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      padding-right: 16px;
-    }
-    .track-title-text {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--sf-label-primary);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .track-row-item.current-playing .track-title-text {
-      color: var(--accent);
-      font-weight: 700;
-    }
-    .track-meta-text {
-      font-size: 0.76rem;
-      color: var(--sf-label-tertiary);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      margin-top: 2px;
-    }
-
-    .track-badge-col {
-      font-size: 0.72rem;
-      font-family: var(--sf-font-mono);
-      font-weight: 700;
-      color: var(--accent);
-      background: var(--accent-dim);
-      padding: 3px 8px;
-      border-radius: 6px;
-      width: fit-content;
-      letter-spacing: 0.3px;
-    }
-
-    .track-storage-col {
-      font-size: 0.75rem;
-      font-family: var(--sf-font-mono);
-      color: var(--sf-label-secondary);
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .storage-led {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--sf-label-quaternary);
-    }
-    .storage-led.cached {
-      background: var(--sf-green);
-      box-shadow: 0 0 8px var(--sf-green);
-    }
-
-    .track-buttons-col {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-    .apple-icon-hit {
-      background: transparent;
-      border: none;
-      color: var(--sf-label-tertiary);
-      cursor: pointer;
-      padding: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      transition: all 0.2s;
-    }
-    .apple-icon-hit:hover {
-      color: var(--sf-label-primary);
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .apple-icon-hit.is-fav {
-      color: var(--accent);
-    }
-    .apple-icon-hit svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-
-    /* ==========================================================================
-       BOTTOM COCKPIT AUDIO DOCK (MAC/IPAD COMPACT BAR)
-       ========================================================================== */
+    /* BOTTOM DOCK */
     footer.bottom-cockpit-dock {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: calc(var(--dock-height) + var(--safe-bottom));
-      background: rgba(18, 18, 20, 0.88);
-      backdrop-filter: blur(40px) saturate(210%);
-      -webkit-backdrop-filter: blur(40px) saturate(210%);
-      border-top: 1px solid var(--sf-border-glass);
+      height: calc(var(--player-dock-height) + var(--safe-bottom));
+      background: rgba(10, 13, 19, 0.94);
+      backdrop-filter: blur(25px);
+      border-top: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 36px var(--safe-bottom) 36px;
-      z-index: 500;
+      z-index: 50;
     }
+    .dock-meta-unit { display: flex; align-items: center; gap: 16px; width: 30%; overflow: hidden; cursor: pointer; }
+    .dock-cover-thumb { width: 52px; height: 52px; border-radius: 10px; background: #141a24; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+    .dock-cover-thumb img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .dock-cover-thumb svg { width: 26px; height: 26px; fill: var(--text-muted); }
 
-    .dock-meta-unit {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      width: 30%;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .dock-cover-thumb {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-    }
-    .dock-cover-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
-    .dock-cover-thumb svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--sf-label-tertiary);
-    }
+    .dock-text-meta { display: flex; flex-direction: column; overflow: hidden; }
+    .dock-track-title { font-size: 0.95rem; font-weight: 700; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .dock-track-sub { font-size: 0.76rem; color: var(--accent); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; }
 
-    .dock-text-meta {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .dock-song-name {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--sf-label-primary);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .dock-song-sub {
-      font-size: 0.76rem;
-      color: var(--accent);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      margin-top: 2px;
-    }
+    .dock-controls-unit { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 40%; }
+    .dock-buttons-row { display: flex; align-items: center; gap: 20px; }
+    .circle-play-trigger { width: 42px; height: 42px; border-radius: 50%; background: #fff; color: #000; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .circle-play-trigger svg { width: 20px; height: 20px; fill: currentColor; }
 
-    .dock-controls-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      width: 40%;
-    }
-    .dock-playback-row {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-    .circle-play-trigger {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #ffffff;
-      color: #000000;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
-      transition: transform 0.2s var(--spring-smooth);
-    }
-    .circle-play-trigger:active {
-      transform: scale(0.92);
-    }
-    .circle-play-trigger svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
+    .dock-scrub-bar { width: 100%; display: flex; align-items: center; gap: 12px; }
+    .dock-time-stamp { font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-muted); width: 40px; text-align: center; }
+    .dock-progress-rail { flex: 1; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.1); position: relative; cursor: pointer; }
+    .dock-progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #60a5fa); border-radius: 2px; width: 0%; }
 
-    .dock-scrub-bar {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .dock-time-stamp {
-      font-size: 0.72rem;
-      font-family: var(--sf-font-mono);
-      color: var(--sf-label-tertiary);
-      width: 40px;
-      text-align: center;
-    }
-    .dock-progress-rail {
-      flex: 1;
-      height: 4px;
-      border-radius: 2px;
-      background: rgba(255, 255, 255, 0.12);
-      position: relative;
-      cursor: pointer;
-    }
-    .dock-progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), #5ac8fa);
-      border-radius: 2px;
-      width: 0%;
-      box-shadow: 0 0 10px var(--accent-glow);
-    }
+    .dock-utilities-unit { display: flex; align-items: center; justify-content: flex-end; gap: 16px; width: 30%; }
+    .dock-vol-wrap { display: flex; align-items: center; gap: 8px; width: 120px; }
 
-    .dock-utilities-unit {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 16px;
-      width: 30%;
-    }
-    .dock-vol-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      width: 120px;
-    }
-    input[type="range"].apple-slider {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.14);
-      height: 4px;
-      border-radius: 2px;
-      outline: none;
-    }
-    input[type="range"].apple-slider::-webkit-slider-thumb {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #ffffff;
-      cursor: pointer;
-    }
+    input[type="range"].dock-slider { appearance: none; -webkit-appearance: none; width: 100%; background: rgba(255, 255, 255, 0.1); height: 4px; border-radius: 2px; outline: none; }
+    input[type="range"].dock-slider::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #fff; cursor: pointer; }
 
-    /* ==========================================================================
-       SPOTLIGHT LYRICS & MULTI-ARTIST FULLSCREEN VIEW
-       ========================================================================== */
-    #lyrics-overlay-stage {
+    /* SPOTLIGHT LYRICS & INTERACTIVE ARTIST */
+    #lyrics-fullscreen-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(20, 20, 24, 0.98) 0%, rgba(6, 6, 8, 0.99) 100%);
-      backdrop-filter: blur(50px);
-      -webkit-backdrop-filter: blur(50px);
+      background: radial-gradient(circle at center, rgba(14, 19, 28, 0.98) 0%, rgba(6, 8, 11, 0.99) 100%);
+      backdrop-filter: blur(40px);
       z-index: 2000;
       display: none;
       flex-direction: column;
       padding: calc(var(--safe-top) + 24px) 50px calc(var(--safe-bottom) + 30px) 50px;
-      transition: var(--trans-theme);
     }
-    #lyrics-overlay-stage.is-open { display: flex; }
-
-    .lyrics-top-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 48px;
-    }
-    .lyrics-close-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--sf-border-glass);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      cursor: pointer;
-    }
-
-    .lyrics-body-grid {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 50px;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .lyrics-cover-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-    }
-    .lyrics-album-art {
-      width: 360px;
-      height: 360px;
-      max-width: 75vw;
-      max-height: 75vw;
-      border-radius: 24px;
-      object-fit: cover;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-    }
-
+    #lyrics-fullscreen-overlay.is-open { display: flex; }
+    .lyrics-top-nav { display: flex; align-items: center; justify-content: space-between; height: 48px; }
+    .lyrics-close-btn { background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-subtle); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; }
+    .lyrics-body-grid { flex: 1; display: grid; grid-template-columns: 1fr 1.3fr; gap: 50px; align-items: center; overflow: hidden; }
+    .lyrics-cover-col { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+    .lyrics-album-art { width: 360px; height: 360px; max-width: 75vw; max-height: 75vw; border-radius: 20px; object-fit: cover; }
+    
     .lyrics-interactive-artist {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 16px;
-      margin-top: 8px;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--sf-border-glass);
-      color: var(--accent);
+      padding: 6px 14px;
+      margin-top: 6px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--accent-cyan);
       font-size: 0.95rem;
       cursor: pointer;
-      transition: all 0.2s var(--spring-smooth);
+      transition: all 0.2s ease;
     }
     .lyrics-interactive-artist:hover {
       background: var(--accent-dim);
       border-color: var(--accent);
       transform: translateY(-2px);
     }
-    .lyrics-interactive-artist svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-    }
+    .lyrics-interactive-artist svg { width: 14px; height: 14px; fill: currentColor; }
 
-    .lyrics-single-spotlight-col {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 30px;
-      position: relative;
-    }
-    .spotlight-lyric-text {
-      font-size: 2.3rem;
-      font-weight: 800;
-      line-height: 1.45;
-      color: #ffffff;
-      text-shadow: 0 0 35px var(--accent-glow);
-      transition: all 0.35s ease;
-      max-width: 90%;
-    }
-    .spotlight-lyric-text.animating {
-      opacity: 0.2;
-      transform: scale(0.96);
-    }
-    .spotlight-source-badge {
-      position: absolute;
-      bottom: 24px;
-      font-size: 0.75rem;
-      font-family: var(--sf-font-mono);
-      font-weight: 600;
-      color: var(--sf-label-tertiary);
-      padding: 4px 12px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 9999px;
-    }
+    .lyrics-single-spotlight-col { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 30px; position: relative; }
+    .spotlight-lyric-text { font-size: 2.3rem; font-weight: 800; line-height: 1.45; color: #ffffff; text-shadow: 0 0 35px var(--accent-glow); transition: all 0.35s ease; max-width: 90%; }
+    .spotlight-lyric-text.animating { opacity: 0.2; transform: scale(0.96); }
+    .spotlight-source-badge { position: absolute; bottom: 24px; font-size: 0.75rem; font-family: var(--font-mono); font-weight: 600; color: var(--text-muted); padding: 4px 12px; background: rgba(255, 255, 255, 0.05); border-radius: 20px; }
 
-    /* ==========================================================================
-       MODALS & DIALOGS
-       ========================================================================== */
-    .apple-modal-scrim {
+    /* MULTI-ARTIST SELECTION MODAL */
+    #artist-picker-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(18px);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 3000;
+      z-index: 3100;
       padding: 20px;
     }
-    .apple-modal-scrim.is-open { display: flex; }
-
-    .apple-dialog-card {
-      background: var(--sf-bg-surface-elevated);
-      border: 1px solid var(--sf-border-glass);
-      border-radius: 22px;
+    #artist-picker-modal.is-open { display: flex; }
+    .artist-picker-card {
+      background: #0f141d;
+      border: 1px solid var(--border-elevated);
+      border-radius: 20px;
       width: 100%;
-      max-width: 400px;
-      padding: 28px;
+      max-width: 380px;
+      padding: 26px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      gap: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
     }
-
     .artist-select-chip {
       padding: 12px 18px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--sf-border-glass);
-      border-radius: 14px;
-      color: #ffffff;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      color: #fff;
       font-weight: 600;
       cursor: pointer;
       display: flex;
@@ -1079,49 +608,39 @@
       transform: translateX(4px);
     }
 
-    /* Cupertino Toast Notifications */
-    #ui-toast-container {
+    /* MODAL */
+    #custom-prompt-modal, #confirm-logout-modal {
       position: fixed;
-      top: max(var(--safe-top), 24px);
-      right: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 9999;
-      pointer-events: none;
-    }
-    .ui-toast {
-      pointer-events: auto;
-      min-width: 290px;
-      background: var(--sf-bg-surface-elevated);
-      backdrop-filter: blur(30px);
-      border: 1px solid var(--sf-border-glass);
-      border-left: 4px solid var(--accent);
-      padding: 13px 18px;
-      border-radius: 14px;
-      display: flex;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(16px);
+      display: none;
       align-items: center;
-      gap: 12px;
-      color: #ffffff;
-      font-size: 0.88rem;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-      animation: toastSlide 0.28s var(--spring-smooth) forwards;
+      justify-content: center;
+      z-index: 3000;
+      padding: 20px;
     }
-    .ui-toast.success { border-left-color: var(--sf-green); }
-    .ui-toast.error { border-left-color: var(--sf-red); }
-    .ui-toast.info { border-left-color: var(--accent); }
-    @keyframes toastSlide { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
-    .toast-fade-out { opacity: 0 !important; transform: translateY(-10px) !important; transition: all 0.3s; }
+    #custom-prompt-modal.is-open, #confirm-logout-modal.is-open { display: flex; }
+    .prompt-box-dialog { background: #0f141d; border: 1px solid var(--border-elevated); border-radius: 18px; width: 100%; max-width: 400px; padding: 28px; display: flex; flex-direction: column; gap: 18px; }
 
-    /* Responsive Adaptation for iPhone Screen */
+    /* TOAST */
+    #ui-toast-container { position: fixed; top: max(var(--safe-top), 24px); right: 28px; display: flex; flex-direction: column; gap: 10px; z-index: 9999; pointer-events: none; }
+    .ui-toast { pointer-events: auto; min-width: 300px; background: #0f141d; border: 1px solid var(--border-elevated); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 10px; display: flex; align-items: center; gap: 12px; color: #fff; font-size: 0.88rem; animation: toastSlide 0.25s forwards; }
+    .ui-toast.success { border-left-color: var(--accent-emerald); }
+    .ui-toast.error { border-left-color: #ff4757; }
+    .ui-toast.info { border-left-color: var(--accent-cyan); }
+    @keyframes toastSlide { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+    .toast-fade-out { opacity: 0 !important; transform: translateY(-10px) !important; }
+
     @media (max-width: 900px) {
-      .stage-scroll-canvas { padding-left: 20px; padding-right: 20px; }
       .liquid-nav-item { min-width: 52px; padding: 5px 10px; }
       .liquid-nav-item span { font-size: 10px; }
-      .liquid-divider, .liquid-quality-control { display: none; }
-      .apple-hero-container { grid-template-columns: 1fr; }
-      .track-row-item { grid-template-columns: 36px 1fr 60px 40px; }
-      .track-badge-col { display: none; }
+      .liquid-divider, .liquid-quality-box { display: none; }
+      #fullscreen-auth-stage { flex-direction: column; }
+      .auth-banner-pane { display: none; }
+      .hero-summary-deck { grid-template-columns: 1fr; }
+      .track-row-node { grid-template-columns: 36px 1fr 60px 40px; }
+      .track-codec-col { display: none; }
       .dock-meta-unit { width: 60%; }
       .dock-controls-unit { width: 40%; }
       .dock-scrub-bar, .dock-utilities-unit { display: none; }
@@ -1133,11 +652,10 @@
 </head>
 <body>
 
-  <div class="apple-ambient-glow"></div>
   <div id="ui-toast-container"></div>
 
   <!-- FLOATING LIQUID GLASS CAPSULE TOPBAR -->
-  <header class="liquid-nav-container">
+  <header class="liquid-nav-wrapper">
     <nav class="liquid-glass-pill">
       <!-- 资源 / 曲库 -->
       <div class="liquid-nav-item" id="nav-all-musics" onclick="AppNavigation.switchStage('all-musics')">
@@ -1163,7 +681,7 @@
         <span>下载</span>
       </div>
 
-      <!-- 设置 / 账户 -->
+      <!-- 设置 -->
       <div class="liquid-nav-item" onclick="AuthModalController.handleAvatarClick()">
         <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
         <span>设置</span>
@@ -1172,7 +690,7 @@
       <div class="liquid-divider"></div>
 
       <!-- 音质切换下拉 -->
-      <div class="liquid-quality-control" title="选择音频规格">
+      <div class="liquid-quality-box" title="切换当前流媒体解码与下载规格">
         <select id="global-quality-selector" class="liquid-quality-select" onchange="MusicAPIEngine.onQualityChanged(this.value)">
           <option value="standard">128K</option>
           <option value="exhigh">320K</option>
@@ -1182,51 +700,51 @@
         </select>
       </div>
 
-      <!-- 个人头像 -->
-      <div class="liquid-user-avatar" id="user-avatar-initial" onclick="AuthModalController.handleAvatarClick()" title="账户管理">?</div>
+      <!-- 头像 -->
+      <div class="liquid-user-btn" id="user-avatar-initial" onclick="AuthModalController.handleAvatarClick()" title="点击管理账户">?</div>
     </nav>
   </header>
 
-  <!-- MULTI-ARTIST SELECTION MODAL -->
-  <div class="apple-modal-scrim" id="artist-picker-modal">
-    <div class="apple-dialog-card">
-      <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff;">选择检索歌手</div>
-      <div style="font-size: 0.85rem; color: var(--sf-label-secondary);">该曲目包含多位艺术家，请选择需要检索的歌手：</div>
+  <!-- 多歌手选择模态框 -->
+  <div id="artist-picker-modal">
+    <div class="artist-picker-card">
+      <div style="font-size: 1.15rem; font-weight: 800; color: #fff;">选择歌手检索</div>
+      <div style="font-size: 0.85rem; color: var(--text-secondary);">该曲目包含多位参演艺术家，请选择需要检索的歌手：</div>
       <div id="artist-chip-container" style="display: flex; flex-direction: column; gap: 8px;"></div>
       <div style="display: flex; justify-content: flex-end; margin-top: 4px;">
-        <button class="apple-pill-btn" onclick="ArtistPicker.close()">取消</button>
+        <button class="control-pill-btn" onclick="ArtistPicker.close()">取消</button>
       </div>
     </div>
   </div>
 
-  <!-- CONFIRM LOGOUT MODAL -->
-  <div class="apple-modal-scrim" id="confirm-logout-modal">
-    <div class="apple-dialog-card">
-      <div style="font-size: 1.25rem; font-weight: 800; color: #ffffff;">確認登出</div>
-      <div style="font-size: 0.9rem; color: var(--sf-label-secondary); line-height: 1.5;">
+  <!-- 登出确认对话框 -->
+  <div id="confirm-logout-modal">
+    <div class="prompt-box-dialog">
+      <div style="font-size: 1.25rem; font-weight: 800; color: #fff;">確認登出</div>
+      <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
         是否確認登出當前帳戶？登出後將立即停止所有音樂播放並返回登入界面。
       </div>
       <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 6px;">
-        <button class="apple-pill-btn" onclick="AuthModalController.cancelLogout()">取消</button>
-        <button class="apple-pill-btn" style="background: var(--sf-red); color:#fff; border-color:transparent;" onclick="AuthModalController.confirmLogout()">確認登出</button>
+        <button class="control-pill-btn" onclick="AuthModalController.cancelLogout()">取消</button>
+        <button class="control-pill-btn danger" onclick="AuthModalController.confirmLogout()">確認登出</button>
       </div>
     </div>
   </div>
 
-  <!-- SPOTLIGHT FULLSCREEN LYRICS VIEW -->
-  <div id="lyrics-overlay-stage">
+  <!-- 全屏歌词大屏浮窗 -->
+  <div id="lyrics-fullscreen-overlay">
     <div class="lyrics-top-nav">
       <button class="lyrics-close-btn" onclick="LyricsView.close()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
       </button>
-      <div style="font-size: 0.95rem; font-weight: 700; color: var(--sf-label-secondary);" id="lyrics-nav-song-name">Lyrics</div>
+      <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-secondary);" id="lyrics-nav-song-name">Lyrics</div>
       <div style="width: 40px;"></div>
     </div>
     <div class="lyrics-body-grid">
       <div class="lyrics-cover-col">
         <img class="lyrics-album-art" id="lyrics-hero-cover" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23141a24'><rect width='100' height='100'/></svg>" alt="Album Art" />
         <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
-          <h2 style="font-size: 1.4rem; color: #ffffff;" id="lyrics-modal-title">Track Title</h2>
+          <h2 style="font-size: 1.4rem; color: #fff;" id="lyrics-modal-title">Track Title</h2>
           <div class="lyrics-interactive-artist" id="lyrics-modal-artist-btn" onclick="LyricsView.onArtistClicked()" title="点击检索该歌手的所有曲目">
             <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
             <span id="lyrics-modal-artist">Artist</span>
@@ -1240,20 +758,19 @@
     </div>
   </div>
 
-  <!-- CUSTOM PROMPT MODAL -->
-  <div class="apple-modal-scrim" id="custom-prompt-modal">
-    <div class="apple-dialog-card">
-      <div style="font-size: 1.25rem; font-weight: 800; color: #ffffff;" id="custom-prompt-title">New Playlist</div>
-      <div style="font-size: 0.88rem; color: var(--sf-label-secondary);" id="custom-prompt-desc">Enter a title:</div>
-      <input type="text" class="apple-search-input" id="custom-prompt-input" style="padding: 12px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px solid var(--sf-border-glass);" />
+  <div id="custom-prompt-modal">
+    <div class="prompt-box-dialog">
+      <div style="font-size: 1.25rem; font-weight: 800; color: #fff;" id="custom-prompt-title">New Playlist</div>
+      <div style="font-size: 0.88rem; color: var(--text-secondary);" id="custom-prompt-desc">Enter a title for your collection:</div>
+      <input type="text" class="cloud-input" id="custom-prompt-input" style="padding-left: 16px;" />
       <div style="display: flex; justify-content: flex-end; gap: 10px;">
-        <button class="apple-pill-btn" onclick="CustomPrompt.cancel()">Cancel</button>
-        <button class="apple-btn-primary" onclick="CustomPrompt.confirm()">Confirm</button>
+        <button class="control-pill-btn" onclick="CustomPrompt.cancel()">Cancel</button>
+        <button class="control-pill-btn primary" onclick="CustomPrompt.confirm()">Create</button>
       </div>
     </div>
   </div>
 
-  <!-- FULLSCREEN AUTHENTICATION STAGE -->
+  <!-- 登录视窗 -->
   <div id="fullscreen-auth-stage">
     <div class="auth-banner-pane">
       <div>
@@ -1293,7 +810,7 @@
 
         <div class="banner-footer-security" style="margin-top: 32px;">
           <div class="security-status-indicator"></div>
-          <span>Cloudflare Workers Infrastructure · Local Persistence Ready</span>
+          <span>Cloudflare Workers & Render Infrastructure · Local Persistence Ready</span>
         </div>
       </div>
     </div>
@@ -1354,116 +871,107 @@
     </div>
   </div>
 
-<!-- APP VIEWPORT & STAGE CANVAS -->
-  <div id="app-viewport">
-    <main class="stage-scroll-canvas" id="main-scroll-pane">
-      <!-- Apple Large Hero Widget -->
-      <section class="apple-hero-container" id="section-start-listening">
-        <div class="apple-card-glass">
+  <!-- WORKSPACE -->
+  <div id="workspace-container">
+    <div class="cockpit-body-scroll" id="main-scroll-pane">
+      <section class="hero-summary-deck" id="section-start-listening">
+        <div class="hero-panel-card">
           <div>
-            <div class="hero-eyebrow" id="cockpit-tier-label">Global Audio Cloud · Standard Tier</div>
-            <div class="hero-large-title">Studio-Grade Audio Streaming.</div>
-            <p class="hero-subtitle">
-              Native Web Crypto decryption, direct Cloudflare POP streaming pipeline, and localized IndexedDB persistent store.
+            <div class="hero-title-tag" id="cockpit-tier-label">Global Audio Cloud · Standard Tier</div>
+            <div class="hero-big-title">Studio-Grade Audio Streaming.</div>
+            <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.95rem; max-width: 520px;">
+              Direct CDN pipeline for rapid downloading, synced lyrics, and localized IndexedDB caching.
             </p>
           </div>
-
-          <div class="apple-search-bar">
-            <input type="text" id="api-search-input" class="apple-search-input" placeholder="Search track, artist, album..." onkeydown="if(event.key==='Enter') MusicAPIEngine.search();" />
-            <button class="apple-btn-primary" onclick="MusicAPIEngine.search()">
-              <span>Search</span>
-            </button>
+          
+          <div style="margin-top: 20px; display: flex; gap: 10px; max-width: 500px;">
+            <input type="text" id="api-search-input" class="cloud-input" style="padding-left: 16px;" placeholder="Search track, artist, album..." onkeydown="if(event.key==='Enter') MusicAPIEngine.search();" />
+            <button class="control-pill-btn primary" onclick="MusicAPIEngine.search()">Search</button>
           </div>
 
-          <div class="apple-actions-pillbox">
-            <button class="apple-pill-btn" onclick="TrackListView.renderList('Favorite Musics', PlaybackState.favorites)">
-              <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <div class="hero-status-pills">
+            <button class="control-pill-btn" onclick="TrackListView.renderList('Favorite Musics', PlaybackState.favorites)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
               <span>Favorite Tracks</span>
             </button>
-            <button class="apple-pill-btn" onclick="AppNavigation.switchStage('offlines')">
-              <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+            <button class="control-pill-btn" onclick="AppNavigation.switchStage('offlines')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-emerald)"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
               <span>Offline Edge Vault</span>
             </button>
-            <button class="apple-pill-btn" onclick="MusicAPIEngine.promptDirectParse()">
-              <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+            <button class="control-pill-btn" onclick="MusicAPIEngine.promptDirectParse()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
               <span>Direct ID Parse</span>
             </button>
           </div>
         </div>
 
-        <div class="apple-card-glass telemetry-stack">
-          <div class="telemetry-metric-unit">
-            <span class="telemetry-label">Active Account</span>
-            <span class="telemetry-val" id="user-display-name" style="font-size: 1.25rem;">Not Signed In</span>
+        <div class="hero-stats-card">
+          <div class="stats-row-metric">
+            <span class="stats-label">Active Account</span>
+            <span class="stats-digit" id="user-display-name" style="font-size: 1.3rem;">Not Signed In</span>
           </div>
-          <div class="telemetry-metric-unit">
-            <span class="telemetry-label">Membership Tier</span>
-            <span class="telemetry-val" id="user-tier-label" style="font-size: 1.2rem;">Standard</span>
+          <div class="stats-row-metric">
+            <span class="stats-label">Membership Status</span>
+            <span class="stats-digit" id="user-tier-label" style="font-size: 1.25rem;">Standard</span>
           </div>
-          <div class="telemetry-metric-unit">
-            <span class="telemetry-label">Offline Edge Storage</span>
-            <span class="telemetry-val" id="offline-counter-label" style="font-size: 1.2rem; color: var(--sf-green);">0 cached</span>
-          </div>
-          <div class="telemetry-metric-unit">
-            <span class="telemetry-label">Download Quota Balance</span>
-            <span class="telemetry-val" id="header-quota-badge">0</span>
+          <div class="stats-row-metric">
+            <span class="stats-label">Download Quota Balance</span>
+            <span class="stats-digit" id="header-quota-badge">0</span>
           </div>
         </div>
       </section>
 
-      <!-- Cupertino Grid Section -->
-      <section class="apple-section-block">
-        <div class="apple-section-header">
-          <div class="section-title">Collections & Playlists</div>
+      <section class="cockpit-section-block">
+        <div class="cockpit-section-head">
+          <div class="section-title-label">Collections & Storage</div>
         </div>
 
-        <div class="apple-card-grid">
-          <div class="apple-interactive-card" onclick="TrackListView.renderList('Favorite Musics', PlaybackState.favorites)">
-            <div class="card-icon-bubble">
+        <div class="grid-deck-cards">
+          <div class="cockpit-card fav-theme" onclick="TrackListView.renderList('Favorite Musics', PlaybackState.favorites)">
+            <div class="cockpit-card-icon">
               <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             </div>
-            <div class="card-main-title">Favorite Musics</div>
-            <div class="card-subtitle">Encrypted personal vault</div>
+            <div class="cockpit-card-title">Favorite Musics</div>
+            <div class="cockpit-card-subtitle">Encrypted personal vault</div>
           </div>
 
-          <div class="apple-interactive-card" onclick="AppNavigation.switchStage('offlines')">
-            <div class="card-icon-bubble">
+          <div class="cockpit-card" onclick="AppNavigation.switchStage('offlines')">
+            <div class="cockpit-card-icon">
               <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
             </div>
-            <div class="card-main-title">Offline Edge</div>
-            <div class="card-subtitle">Local persistent cache</div>
+            <div class="cockpit-card-title">Offline Edge</div>
+            <div class="cockpit-card-subtitle">Local persistent store</div>
           </div>
 
-          <div class="apple-interactive-card" onclick="CustomPlaylistsModule.inspectPlaylist(0)">
-            <div class="card-icon-bubble">
+          <div class="cockpit-card" onclick="CustomPlaylistsModule.inspectPlaylist(0)">
+            <div class="cockpit-card-icon">
               <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
             </div>
-            <div class="card-main-title" id="pl-slot-0-name">Playlist 1</div>
-            <div class="card-subtitle">Custom playlist tracklist</div>
+            <div class="cockpit-card-title" id="pl-slot-0-name">Playlist 1</div>
+            <div class="cockpit-card-subtitle">Custom playlist tracklist</div>
           </div>
 
-          <div class="apple-interactive-card" onclick="CustomPlaylistsModule.promptNewPlaylist()">
-            <div class="card-icon-bubble">
+          <div class="cockpit-card" onclick="CustomPlaylistsModule.promptNewPlaylist()">
+            <div class="cockpit-card-icon">
               <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
             </div>
-            <div class="card-main-title">+ New Playlist</div>
-            <div class="card-subtitle">Create new collection</div>
+            <div class="cockpit-card-title">+ New Playlist</div>
+            <div class="cockpit-card-subtitle">Instantiate new collection</div>
           </div>
         </div>
       </section>
 
-      <!-- Track Listing Section -->
-      <section class="apple-section-block" id="section-track-listing">
-        <div class="apple-section-header">
-          <div class="section-title" id="listing-heading">Discovered Tracks</div>
+      <section class="cockpit-section-block" id="section-track-listing">
+        <div class="cockpit-section-head">
+          <div class="section-title-label" id="listing-heading">Discovered Tracks</div>
         </div>
-        <div class="stream-list-container" id="track-items-container">
-          <div style="padding: 40px; color: var(--sf-label-tertiary); text-align: center;">Enter a song title or artist above to query the lossless cloud engine.</div>
+        <div class="stream-pipeline-table" id="track-items-container">
+          <div style="padding: 30px; color: var(--text-muted); text-align: center;">Enter a song title or artist above to query the lossless cloud engine.</div>
         </div>
       </section>
-    </main>
+    </div>
 
-    <!-- BOTTOM COCKPIT DOCK -->
+    <!-- AUDIO DOCK -->
     <footer class="bottom-cockpit-dock">
       <div class="dock-meta-unit" onclick="LyricsView.open()">
         <div class="dock-cover-thumb" id="player-disc-icon">
@@ -1471,20 +979,20 @@
           <svg id="player-thumb-fallback" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></svg>
         </div>
         <div class="dock-text-meta">
-          <div class="dock-song-name" id="lbl-now-playing-title">Audio Pipeline Standby</div>
-          <div class="dock-song-sub" id="lbl-now-playing-sub">Select a track to initialize decode</div>
+          <div class="dock-track-title" id="lbl-now-playing-title">Audio Pipeline Standby</div>
+          <div class="dock-track-sub" id="lbl-now-playing-sub">Select a track to initialize decode</div>
         </div>
       </div>
 
       <div class="dock-controls-unit">
-        <div class="dock-playback-row">
-          <button class="apple-icon-hit" onclick="AudioEngine.prevTrack()">
+        <div class="dock-buttons-row">
+          <button class="action-icon-hit" onclick="AudioEngine.prevTrack()">
             <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
           </button>
           <button class="circle-play-trigger" id="btn-master-play" onclick="AudioEngine.togglePlayState()">
             <svg viewBox="0 0 24 24" id="play-btn-vector"><path d="M8 5v14l11-7z"/></svg>
           </button>
-          <button class="apple-icon-hit" onclick="AudioEngine.nextTrack()">
+          <button class="action-icon-hit" onclick="AudioEngine.nextTrack()">
             <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
           </button>
         </div>
@@ -1499,15 +1007,15 @@
       </div>
 
       <div class="dock-utilities-unit">
-        <button class="apple-icon-hit" title="Spotlight Lyrics" onclick="LyricsView.open()">
+        <button class="action-icon-hit" title="Lyrics Visualizer" onclick="LyricsView.open()">
           <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
         </button>
-        <button class="apple-icon-hit" id="btn-fav-active-track" onclick="AudioEngine.toggleCurrentFavorite()">
+        <button class="action-icon-hit" id="btn-fav-active-track" onclick="AudioEngine.toggleCurrentFavorite()">
           <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         </button>
         <div class="dock-vol-wrap">
-          <svg width="18" height="18" fill="var(--sf-label-tertiary)" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-          <input type="range" class="apple-slider" id="vol-range" min="0" max="1" step="0.01" value="0.8" oninput="AudioEngine.setVolume(this.value)" />
+          <svg width="18" height="18" fill="var(--text-muted)" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          <input type="range" class="dock-slider" id="vol-range" min="0" max="1" step="0.01" value="0.8" oninput="AudioEngine.setVolume(this.value)" />
         </div>
       </div>
 
@@ -1515,12 +1023,9 @@
     </footer>
   </div>
 
-  <!-- SCRIPT ENGINE -->
   <script>
     const CONFIG = {
-      // 用户认证与卡密 Workers 网关
       WORKER_API_BASE: "https://jrmusic-premium.zhangzhanhang855.workers.dev",
-      // 网易云音乐解析 Worker 网关（如果部署了网易云Worker替换此地址，未替换前沿用Render）
       BACKEND_API_BASE: "https://neteasemusicdl.onrender.com",
       DEFAULT_DOWNLOAD_QUOTA: 10,
       DB_NAME: "JRMusicOfflineStore",
@@ -1536,9 +1041,9 @@
 
         let iconSvg = '';
         if (type === 'success') {
-          iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#34c759"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>`;
+          iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#10b981"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>`;
         } else if (type === 'error') {
-          iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#ff3b30"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`;
+          iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#ff4757"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`;
         } else {
           iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`;
         }
@@ -1645,7 +1150,6 @@
           store.put(record);
           tx.oncomplete = () => {
             PlaybackState.offlineCacheCatalog.add(String(trackObj.id));
-            OfflineAudioStore.updateCounterUI();
             resolve();
           };
           tx.onerror = (err) => reject(err);
@@ -1676,13 +1180,6 @@
         const records = await OfflineAudioStore.getAllCachedRecords();
         PlaybackState.offlineCacheCatalog.clear();
         records.forEach(r => PlaybackState.offlineCacheCatalog.add(String(r.id)));
-        OfflineAudioStore.updateCounterUI();
-      },
-
-      updateCounterUI() {
-        const count = PlaybackState.offlineCacheCatalog.size;
-        const lbl = document.getElementById("offline-counter-label");
-        if (lbl) lbl.innerText = `${count} cached`;
       }
     };
 
@@ -1955,7 +1452,7 @@
           UIToast.show("No audio is currently playing", "info");
           return;
         }
-        document.getElementById("lyrics-overlay-stage").classList.add("is-open");
+        document.getElementById("lyrics-fullscreen-overlay").classList.add("is-open");
         document.getElementById("lyrics-nav-song-name").innerText = AudioEngine.currentTrack.title;
         document.getElementById("lyrics-modal-title").innerText = AudioEngine.currentTrack.title;
         document.getElementById("lyrics-modal-artist").innerText = AudioEngine.currentTrack.artist || "JRmusic Cloud";
@@ -1973,7 +1470,7 @@
       },
 
       close() {
-        document.getElementById("lyrics-overlay-stage").classList.remove("is-open");
+        document.getElementById("lyrics-fullscreen-overlay").classList.remove("is-open");
       },
 
       onArtistClicked() {
@@ -2089,7 +1586,7 @@
         const thumbFallback = document.getElementById("player-thumb-fallback");
         thumbImg.style.display = "none";
         thumbFallback.style.display = "block";
-        document.querySelectorAll(".track-row-item").forEach(el => el.classList.remove("current-playing"));
+        document.querySelectorAll(".track-row-node").forEach(el => el.classList.remove("current-playing"));
       },
 
       async loadAndPlay(track) {
@@ -2170,7 +1667,7 @@
           this.updatePlayBtnIcon(false);
         }
 
-        document.querySelectorAll(".track-row-item").forEach(el => el.classList.remove("current-playing"));
+        document.querySelectorAll(".track-row-node").forEach(el => el.classList.remove("current-playing"));
       },
 
       togglePlayState() {
@@ -2353,6 +1850,7 @@
         el.innerText = msg;
       },
 
+      // 修复核心：安全发包（添加容错与详细错误提示）
       async handlePrimaryAuth() {
         const username = document.getElementById("auth-input-user").value.trim();
         const password = document.getElementById("auth-input-pass").value.trim();
@@ -2368,7 +1866,7 @@
 
         try {
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 12000);
+          const timeoutId = setTimeout(() => controller.abort(), 12000); // 12秒超时
 
           const res = await fetch(`${CONFIG.WORKER_API_BASE}${endpoint}`, {
             method: "POST",
@@ -2509,7 +2007,7 @@
         container.innerHTML = "";
 
         if (!trackArray || trackArray.length === 0) {
-          container.innerHTML = `<div style="padding: 40px; color: var(--sf-label-tertiary); text-align: center;">No tracks found in this view.</div>`;
+          container.innerHTML = `<div style="padding: 30px; color: var(--text-muted); text-align: center;">No tracks found in this view.</div>`;
           return;
         }
 
@@ -2519,26 +2017,26 @@
           const isCurrent = AudioEngine.currentTrack && String(AudioEngine.currentTrack.id) === String(track.id);
 
           const row = document.createElement("div");
-          row.className = `track-row-item ${isCurrent ? 'current-playing' : ''}`;
+          row.className = `track-row-node ${isCurrent ? 'current-playing' : ''}`;
           row.innerHTML = `
-            <div class="track-index-col">
+            <div class="track-idx-col">
               <span>${index + 1}</span>
               <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
             </div>
-            <div class="track-info-col">
-              <span class="track-title-text">${track.title}</span>
-              <span class="track-meta-text">${track.artist} · ${track.album}</span>
+            <div class="track-meta-col">
+              <span class="track-name-main">${track.title}</span>
+              <span class="track-subpath">${track.artist} · ${track.album}</span>
             </div>
-            <div class="track-badge-col">${(track.quality || PlaybackState.currentQuality).toUpperCase()}</div>
-            <div class="track-storage-col">
-              <span class="storage-led ${isCached ? 'cached' : ''}"></span>
+            <div class="track-codec-col">${(track.quality || PlaybackState.currentQuality).toUpperCase()}</div>
+            <div class="track-cache-col">
+              <span class="status-ping ${isCached ? 'cached' : ''}"></span>
               <span>${isCached ? 'Edge Cached' : 'Cloud CDN'}</span>
             </div>
-            <div class="track-buttons-col">
-              <button class="apple-icon-hit ${isFav ? 'is-fav' : ''}" onclick="event.stopPropagation(); TrackListView.toggleFav('${encodeURIComponent(JSON.stringify(track))}')">
+            <div class="track-actions-col">
+              <button class="action-icon-hit ${isFav ? 'active-fav' : ''}" onclick="event.stopPropagation(); TrackListView.toggleFav('${encodeURIComponent(JSON.stringify(track))}')">
                 <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
               </button>
-              <button class="apple-icon-hit" onclick="event.stopPropagation(); MusicAPIEngine.downloadDirect('${track.id}')" title="Direct CDN download to IndexedDB">
+              <button class="action-icon-hit" onclick="event.stopPropagation(); MusicAPIEngine.downloadDirect('${track.id}')" title="Direct CDN download to IndexedDB">
                 <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
               </button>
             </div>
@@ -2562,6 +2060,7 @@
           PlaybackState.favorites.push(track);
           UIToast.show(`Added "${track.title}" to favorites`, "success");
         }
+        document.getElementById("fav-counter-label").innerText = `${PlaybackState.favorites.length} songs`;
         TrackListView.syncUserData();
         TrackListView.refreshCurrentView();
       },
