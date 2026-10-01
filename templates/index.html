@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>JR AI Cloud · 網易雲音樂無損解析與批次下載終端</title>
+  <title>JR AI Cloud · Binary Lossless Studio & ID3 Audio Encoder</title>
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Google Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       1. DESIGN TOKENS & SYSTEM ARCHITECTURE
+       1. DESIGN SYSTEM CORE TOKENS
        ========================================================================== */
     :root {
       --bg-deep: #030712;
@@ -20,7 +20,7 @@
       --bg-surface: #0f172a;
       --bg-surface-elevated: #1e293b;
       --bg-surface-hover: #334155;
-      --bg-glass: rgba(15, 23, 42, 0.78);
+      --bg-glass: rgba(15, 23, 42, 0.75);
       --bg-glass-card: rgba(30, 41, 59, 0.55);
 
       --accent: #3b82f6;
@@ -85,9 +85,9 @@
       position: fixed;
       inset: 0;
       background: 
-        radial-gradient(ellipse at 15% 0%, rgba(59, 130, 246, 0.15), transparent 50%),
+        radial-gradient(ellipse at 15% 0%, rgba(59, 130, 246, 0.14), transparent 50%),
         radial-gradient(ellipse at 85% 100%, rgba(6, 182, 212, 0.12), transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(15, 23, 42, 0.7), transparent 100%);
+        radial-gradient(ellipse at 50% 50%, rgba(15, 23, 42, 0.65), transparent 100%);
       pointer-events: none;
       z-index: 0;
     }
@@ -109,7 +109,7 @@
     ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
     /* ==========================================================================
-       2. NOTIFICATION TOAST NOTIFIER
+       2. REALTIME TOAST NOTIFICATIONS
        ========================================================================== */
     #ui-toast-container {
       position: fixed;
@@ -125,7 +125,7 @@
     .ui-toast {
       pointer-events: auto;
       min-width: 320px;
-      max-width: 460px;
+      max-width: 480px;
       padding: 14px 20px;
       background: rgba(15, 23, 42, 0.94);
       backdrop-filter: blur(28px) saturate(180%);
@@ -170,7 +170,7 @@
     }
 
     /* ==========================================================================
-       3. WORKSPACE LAYOUT & SIDEBAR
+       3. WORKSPACE CORE LAYOUT
        ========================================================================== */
     #workspace-container {
       position: relative;
@@ -218,7 +218,7 @@
     .brand-cube-badge svg { width: 24px; height: 24px; fill: #fff; }
 
     .brand-text-block { display: flex; flex-direction: column; }
-    .brand-main-title { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; line-height: 1.2; }
+    .brand-main-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; line-height: 1.2; }
     .brand-sub-badge {
       font-size: 0.68rem;
       font-family: var(--font-mono);
@@ -268,7 +268,7 @@
     }
     .liquid-nav-item.active svg { fill: var(--accent); transform: scale(1.08); }
 
-    .sidebar-meta-card {
+    .sidebar-tag-spec-card {
       background: var(--bg-glass-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
@@ -277,12 +277,9 @@
       flex-direction: column;
       gap: 8px;
     }
-    .meta-card-title { font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; }
-    .meta-card-val { font-size: 0.88rem; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: space-between; }
+    .tag-spec-title { font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase; }
+    .tag-spec-status { font-size: 0.85rem; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: space-between; }
 
-    /* ==========================================================================
-       4. MAIN BODY WORKSPACE
-       ========================================================================== */
     main.studio-main-body {
       flex: 1;
       height: 100%;
@@ -378,7 +375,7 @@
       border-radius: var(--radius-full);
     }
     .quality-spec-badge label {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-family: var(--font-mono);
       font-weight: 700;
       color: var(--accent-cyan);
@@ -409,7 +406,7 @@
     /* Hero Summary Deck */
     .hero-summary-deck {
       display: grid;
-      grid-template-columns: 2fr 1.1fr;
+      grid-template-columns: 2fr 1.15fr;
       gap: 24px;
     }
 
@@ -533,9 +530,9 @@
     }
     .stats-row-metric:last-child { border-bottom: none; padding-bottom: 0; }
     .stats-label { font-size: 0.74rem; font-family: var(--font-mono); font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .stats-digit { font-size: 1.35rem; font-weight: 800; font-family: var(--font-mono); color: #fff; }
+    .stats-digit { font-size: 1.25rem; font-weight: 800; font-family: var(--font-mono); color: #fff; }
 
-    /* Section Component Layout */
+    /* Section & Track Pipeline List */
     .cockpit-section-block {
       display: flex;
       flex-direction: column;
@@ -567,13 +564,6 @@
       box-shadow: 0 0 12px var(--accent);
     }
 
-    .section-head-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* Track Pipeline Table */
     .stream-pipeline-table {
       display: flex;
       flex-direction: column;
@@ -582,7 +572,7 @@
 
     .track-row-node {
       display: grid;
-      grid-template-columns: 50px 1fr 140px 140px 140px;
+      grid-template-columns: 50px 1fr 140px 130px 180px;
       align-items: center;
       padding: 14px 20px;
       border-radius: var(--radius-md);
@@ -652,23 +642,13 @@
       text-transform: uppercase;
     }
 
-    .track-cache-col {
-      font-size: 0.76rem;
+    .track-tag-indicator {
+      font-size: 0.75rem;
       font-family: var(--font-mono);
-      color: var(--text-secondary);
+      color: var(--accent-emerald);
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-    .status-ping {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--text-muted);
-    }
-    .status-ping.cached {
-      background: var(--accent-emerald);
-      box-shadow: 0 0 10px var(--accent-emerald);
+      gap: 6px;
     }
 
     .track-actions-col {
@@ -677,24 +657,30 @@
       justify-content: flex-end;
       gap: 8px;
     }
-    .action-icon-hit {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
+
+    .action-btn-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
       cursor: pointer;
-      padding: 8px;
-      border-radius: 50%;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 6px;
       transition: var(--trans-quick);
     }
-    .action-icon-hit:hover { color: #fff; background: rgba(255, 255, 255, 0.12); }
-    .action-icon-hit.active-fav { color: var(--accent-rose); }
-    .action-icon-hit svg { width: 18px; height: 18px; fill: currentColor; }
+    .action-btn-pill:hover {
+      background: var(--accent);
+      border-color: transparent;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
 
     /* ==========================================================================
-       5. BOTTOM AUDIO MASTER DOCK
+       4. INTEGRATED DOCK CONTROLLER
        ========================================================================== */
     footer.bottom-cockpit-dock {
       position: fixed;
@@ -836,6 +822,21 @@
       width: 28%;
     }
 
+    .action-icon-hit {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--trans-quick);
+    }
+    .action-icon-hit:hover { color: #fff; background: rgba(255, 255, 255, 0.12); }
+    .action-icon-hit svg { width: 18px; height: 18px; fill: currentColor; }
+
     .dock-vol-wrap {
       display: flex;
       align-items: center;
@@ -882,7 +883,7 @@
     }
 
     /* ==========================================================================
-       6. SPOTLIGHT FULLSCREEN LYRICS OVERLAY
+       5. FULLSCREEN LYRICS SPOTLIGHT
        ========================================================================== */
     #lyrics-fullscreen-overlay {
       position: fixed;
@@ -949,28 +950,6 @@
       border: 1px solid var(--border-elevated);
     }
 
-    .lyrics-interactive-artist {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      margin-top: 10px;
-      border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border-subtle);
-      color: var(--accent-cyan);
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--trans-quick);
-    }
-    .lyrics-interactive-artist:hover {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .lyrics-interactive-artist svg { width: 16px; height: 16px; fill: currentColor; }
-
     .lyrics-single-spotlight-col {
       height: 100%;
       display: flex;
@@ -996,23 +975,7 @@
       transform: scale(0.95) translateY(10px);
     }
 
-    .spotlight-source-badge {
-      position: absolute;
-      bottom: 24px;
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      padding: 6px 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-full);
-    }
-
-    /* ==========================================================================
-       7. MODALS & POPUPS
-       ========================================================================== */
+    /* Modals & Dialogs */
     #custom-prompt-modal, #batch-download-modal {
       position: fixed;
       inset: 0;
@@ -1061,23 +1024,13 @@
       transition: width 0.2s ease;
     }
 
-    /* ==========================================================================
-       8. RESPONSIVE ADAPTATIONS
-       ========================================================================== */
-    @media (max-width: 1024px) {
-      .hero-summary-deck { grid-template-columns: 1fr; }
-      .lyrics-body-grid { grid-template-columns: 1fr; gap: 30px; }
-      .lyrics-album-art { width: 240px; height: 240px; }
-      .spotlight-lyric-text { font-size: 1.8rem; }
-    }
-
     @media (max-width: 820px) {
       aside.studio-sidebar { display: none; }
       .dock-scrub-bar, .dock-utilities-unit { display: none; }
       .dock-meta-unit { width: 60%; }
       .dock-controls-unit { width: 40%; }
-      .track-row-node { grid-template-columns: 36px 1fr 60px 50px; }
-      .track-codec-col { display: none; }
+      .track-row-node { grid-template-columns: 36px 1fr 100px; }
+      .track-codec-col, .track-tag-indicator { display: none; }
       .cockpit-body-scroll { padding: 20px 20px 140px 20px; }
       header.studio-action-bar { padding: var(--safe-top) 20px 0 20px; }
     }
@@ -1085,58 +1038,54 @@
 </head>
 <body>
 
-  <!-- Background Layer -->
   <div class="app-ambient-grid"></div>
-
-  <!-- Realtime Toast Notifications -->
   <div id="ui-toast-container"></div>
 
-  <!-- STUDIO WORKSPACE -->
   <div id="workspace-container">
     
     <!-- LEFT SIDEBAR -->
-    <aside class="studio-sidebar" id="app-sidebar-nav">
+    <aside class="studio-sidebar">
       <div>
         <div class="sidebar-brand-block">
           <div class="brand-cube-badge">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
           </div>
           <div class="brand-text-block">
-            <span class="brand-main-title">JR AI Cloud</span>
-            <span class="brand-sub-badge">Lossless Studio</span>
+            <span class="brand-main-title">JR Tag Studio</span>
+            <span class="brand-sub-badge">Binary Meta Engine</span>
           </div>
         </div>
 
         <nav class="sidebar-menu-list">
-          <div class="menu-group-label">Routing Module</div>
-
-          <div class="liquid-nav-item active" id="nav-main-home" onclick="AppNavigation.switchStage('home')">
+          <div class="menu-group-label">Routing</div>
+          <div class="liquid-nav-item active" onclick="AppNavigation.switchStage('home')">
             <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-            <span>檢索工作台</span>
+            <span>Search & Encode</span>
           </div>
-
-          <div class="liquid-nav-item" id="nav-my-playlists" onclick="MusicAPIEngine.promptPlaylistParse()">
+          <div class="liquid-nav-item" onclick="MusicAPIEngine.promptPlaylistParse()">
             <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            <span>歌單解析載入</span>
+            <span>Playlist Parse</span>
           </div>
-
-          <div class="liquid-nav-item" id="nav-offlines" onclick="AppNavigation.switchStage('offlines')">
+          <div class="liquid-nav-item" onclick="BatchDownloader.startBatchModal()">
             <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
-            <span>離線邊緣快取</span>
-          </div>
-
-          <div class="liquid-nav-item" id="nav-favorites" onclick="AppNavigation.switchStage('favorites')">
-            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            <span>喜愛收藏庫</span>
+            <span>Batch Download</span>
           </div>
         </nav>
       </div>
 
-      <div class="sidebar-meta-card">
-        <div class="meta-card-title">IndexedDB 邊緣存儲</div>
-        <div class="meta-card-val">
-          <span>本機快取歌曲</span>
-          <span id="sidebar-cached-count" style="color: var(--accent-emerald);">0 首</span>
+      <div class="sidebar-tag-spec-card">
+        <div class="tag-spec-title">Frontend Tagging Pipeline</div>
+        <div class="tag-spec-status">
+          <span>MP3 Engine</span>
+          <span style="color: var(--accent-cyan);">ID3v2.3 UTF-16</span>
+        </div>
+        <div class="tag-spec-status">
+          <span>FLAC Engine</span>
+          <span style="color: var(--accent-emerald);">Vorbis + Picture</span>
+        </div>
+        <div class="tag-spec-status">
+          <span>Embedded Metadata</span>
+          <span style="color: var(--accent-amber);">Art + Lyrics</span>
         </div>
       </div>
     </aside>
@@ -1144,70 +1093,61 @@
     <!-- MAIN CONSOLE -->
     <main class="studio-main-body">
       
-      <!-- TOP ACTION BAR -->
       <header class="studio-action-bar">
         <div class="search-dock-module">
           <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-          <input type="text" id="api-search-input" class="cloud-input" placeholder="輸入歌曲名、歌手、專輯或歌曲 ID..." onkeydown="if(event.key==='Enter') MusicAPIEngine.search();" />
-          <button class="search-quick-btn" onclick="MusicAPIEngine.search()">檢索</button>
+          <input type="text" id="api-search-input" class="cloud-input" placeholder="Query track title, composer, artist, song ID..." onkeydown="if(event.key==='Enter') MusicAPIEngine.search();" />
+          <button class="search-quick-btn" onclick="MusicAPIEngine.search()">Search</button>
         </div>
 
         <div class="action-bar-right-controls">
-          <div class="quality-spec-badge" title="設定請求的音質解析度">
-            <label>格式</label>
-            <select id="global-quality-selector" class="liquid-quality-select" onchange="PlaybackState.currentQuality = this.value; UIToast.show(`已切換預設品質: ${this.value.toUpperCase()}`, 'info');">
-              <option value="lossless" selected>FLAC 無損 (Lossless)</option>
-              <option value="hires">Hi-Res 母帶 (24-bit)</option>
-              <option value="jymaster">JY-Master (黑膠/臻品)</option>
-              <option value="exhigh">320K MP3 (高品)</option>
-              <option value="standard">128K MP3 (標準)</option>
+          <div class="quality-spec-badge">
+            <label>Codec Target</label>
+            <select id="global-quality-selector" class="liquid-quality-select" onchange="PlaybackState.currentQuality = this.value; UIToast.show(`Target codec changed to ${this.value.toUpperCase()}`, 'info');">
+              <option value="lossless" selected>FLAC (Lossless)</option>
+              <option value="exhigh">MP3 (320K HQ)</option>
+              <option value="standard">MP3 (128K Standard)</option>
             </select>
           </div>
         </div>
       </header>
 
-      <!-- SCROLLABLE CONTENT VIEWPORT -->
       <div class="cockpit-body-scroll" id="main-scroll-pane">
         
-        <!-- HERO TELEMETRY -->
         <section class="hero-summary-deck">
           <div class="hero-panel-card">
             <div>
-              <div class="hero-title-tag">High-Precision Audio Routing Engine</div>
-              <h1 class="hero-big-title">網易雲音樂無損解析與批次下載</h1>
+              <div class="hero-title-tag">Client-Side Audio Tagging & Packaging Engine</div>
+              <h1 class="hero-big-title">Direct FLAC/MP3 In-Browser Tag Injector</h1>
               <p class="hero-desc">
-                直接呼叫網易雲音樂原生 API 節點，支援高音質 MP3 及 FLAC 雙向直鏈解析。提供多線程歌單批次導出、本地 IndexedDB 邊緣存儲與同步雙語滾動歌詞。
+                No server proxy needed for tagging. Directly fetches clean byte streams from CDN, fetches artwork and synchronized lyrics, binary-encodes standard ID3v2.3 or Vorbis Comment blocks into the ArrayBuffer, and triggers direct file downloads.
               </p>
             </div>
 
             <div class="hero-status-pills">
               <button class="control-pill-btn primary" onclick="MusicAPIEngine.promptPlaylistParse()">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-                <span>歌單解析</span>
-              </button>
-              <button class="control-pill-btn" onclick="MusicAPIEngine.promptDirectParse()">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
-                <span>單曲 ID 直解</span>
+                <span>Parse Playlist</span>
               </button>
               <button class="control-pill-btn" onclick="BatchDownloader.startBatchModal()">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--accent-emerald)"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
-                <span>整單批次導出 (MP3/FLAC)</span>
+                <span>Batch Download Current List</span>
               </button>
             </div>
           </div>
 
           <div class="hero-stats-card">
             <div class="stats-row-metric">
-              <span class="stats-label">解析後端狀態</span>
-              <span class="stats-digit" style="color: var(--accent-emerald);">Render Cloud 在線</span>
+              <span class="stats-label">Metadata Standards</span>
+              <span class="stats-digit" style="color: var(--accent-cyan); font-size: 1.1rem;">ID3v2.3.0 & Vorbis</span>
             </div>
             <div class="stats-row-metric">
-              <span class="stats-label">當前解碼等級</span>
-              <span class="stats-digit" id="stats-current-quality" style="color: var(--accent-cyan);">FLAC Lossless</span>
+              <span class="stats-label">Tag Fields Injected</span>
+              <span class="stats-digit" style="color: var(--accent-emerald); font-size: 1.1rem;">Title / Artist / Album / Art / USLT</span>
             </div>
             <div class="stats-row-metric">
-              <span class="stats-label">緩衝池曲目</span>
-              <span class="stats-digit" id="stats-track-pool-count">0 首</span>
+              <span class="stats-label">Indexed Buffer Pool</span>
+              <span class="stats-digit" id="stats-track-pool-count">0 Tracks</span>
             </div>
           </div>
         </section>
@@ -1215,15 +1155,12 @@
         <!-- TRACK PIPELINE TABLE -->
         <section class="cockpit-section-block">
           <div class="cockpit-section-head">
-            <div class="section-title-label" id="listing-heading">檢索與解析列表</div>
-            <div class="section-head-actions">
-              <button class="control-pill-btn" onclick="TrackListView.saveAllToLocal()" title="儲存當前列表所有曲目資訊">一鍵收錄</button>
-            </div>
+            <div class="section-title-label" id="listing-heading">Track Catalog</div>
           </div>
 
           <div class="stream-pipeline-table" id="track-items-container">
             <div style="padding: 48px; color: var(--text-muted); text-align: center; font-family: var(--font-mono); font-size: 0.95rem;">
-              請在上方輸入歌曲關鍵字，或點擊「歌單解析」貼入網易雲音樂歌單鏈接。
+              Enter a track query or paste a NetEase playlist link to initiate stream and metadata ingestion.
             </div>
           </div>
         </section>
@@ -1233,26 +1170,26 @@
 
     <!-- INTEGRATED BOTTOM MASTER DOCK -->
     <footer class="bottom-cockpit-dock">
-      <div class="dock-meta-unit" onclick="LyricsView.open()" title="開啟全螢幕即時歌詞">
+      <div class="dock-meta-unit" onclick="LyricsView.open()" title="Open Fullscreen Lyrics Stage">
         <div class="dock-cover-thumb" id="player-disc-icon">
           <img id="player-thumb-img" src="" alt="Album Cover" />
           <svg id="player-thumb-fallback" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></svg>
         </div>
         <div class="dock-text-meta">
-          <div class="dock-track-title" id="lbl-now-playing-title">管線就緒 (Standby)</div>
-          <div class="dock-track-sub" id="lbl-now-playing-sub">點選任意曲目開始直解回放</div>
+          <div class="dock-track-title" id="lbl-now-playing-title">Audio Pipeline Standby</div>
+          <div class="dock-track-sub" id="lbl-now-playing-sub">Select track to decode stream</div>
         </div>
       </div>
 
       <div class="dock-controls-unit">
         <div class="dock-buttons-row">
-          <button class="action-icon-hit" onclick="AudioEngine.prevTrack()" title="上一首">
+          <button class="action-icon-hit" onclick="AudioEngine.prevTrack()" title="Previous">
             <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
           </button>
-          <button class="circle-play-trigger" id="btn-master-play" onclick="AudioEngine.togglePlayState()" title="播放 / 暫停">
+          <button class="circle-play-trigger" id="btn-master-play" onclick="AudioEngine.togglePlayState()" title="Play / Pause">
             <svg viewBox="0 0 24 24" id="play-btn-vector"><path d="M8 5v14l11-7z"/></svg>
           </button>
-          <button class="action-icon-hit" onclick="AudioEngine.nextTrack()" title="下一首">
+          <button class="action-icon-hit" onclick="AudioEngine.nextTrack()" title="Next">
             <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
           </button>
         </div>
@@ -1275,11 +1212,8 @@
           <div class="spectrum-bar" style="height: 6px;"></div>
         </div>
 
-        <button class="action-icon-hit" title="歌詞全螢幕" onclick="LyricsView.open()">
+        <button class="action-icon-hit" title="Lyrics Spotlight" onclick="LyricsView.open()">
           <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-        </button>
-        <button class="action-icon-hit" id="btn-fav-active-track" onclick="AudioEngine.toggleCurrentFavorite()" title="加入最愛">
-          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         </button>
         <div class="dock-vol-wrap">
           <svg width="18" height="18" fill="var(--text-muted)" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
@@ -1287,7 +1221,6 @@
         </div>
       </div>
 
-      <!-- Core Audio Element -->
       <audio id="core-audio-sink" preload="metadata"></audio>
     </footer>
   </div>
@@ -1295,7 +1228,7 @@
   <!-- SPOTLIGHT FULLSCREEN LYRICS OVERLAY -->
   <div id="lyrics-fullscreen-overlay">
     <div class="lyrics-top-nav">
-      <button class="lyrics-close-btn" onclick="LyricsView.close()" title="關閉舞台">
+      <button class="lyrics-close-btn" onclick="LyricsView.close()" title="Close Stage">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
       </button>
       <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-secondary); font-family: var(--font-mono);" id="lyrics-nav-song-name">Lyrics Stage</div>
@@ -1307,16 +1240,12 @@
         <img class="lyrics-album-art" id="lyrics-hero-cover" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23141a24'><rect width='100' height='100'/></svg>" alt="Album Art" />
         <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
           <h2 style="font-size: 1.6rem; color: #fff; font-weight: 800;" id="lyrics-modal-title">Track Title</h2>
-          <div class="lyrics-interactive-artist" onclick="LyricsView.onArtistClicked()" title="搜尋該藝人作品">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            <span id="lyrics-modal-artist">Artist</span>
-          </div>
+          <div style="color: var(--accent-cyan); font-weight: 600; margin-top: 8px;" id="lyrics-modal-artist">Artist</div>
         </div>
       </div>
 
       <div class="lyrics-single-spotlight-col">
         <div class="spotlight-lyric-text" id="lyrics-spotlight-line">Ready for playback...</div>
-        <div class="spotlight-source-badge" id="lyrics-source-badge">LYRICS ENGINE</div>
       </div>
     </div>
   </div>
@@ -1324,12 +1253,12 @@
   <!-- CUSTOM PROMPT MODAL -->
   <div id="custom-prompt-modal">
     <div class="prompt-box-dialog">
-      <div style="font-size: 1.3rem; font-weight: 800; color: #fff;" id="custom-prompt-title">提示輸入</div>
-      <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5;" id="custom-prompt-desc">請輸入內容：</div>
+      <div style="font-size: 1.3rem; font-weight: 800; color: #fff;" id="custom-prompt-title">Prompt</div>
+      <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5;" id="custom-prompt-desc">Enter input:</div>
       <input type="text" class="cloud-input" id="custom-prompt-input" style="padding-left: 18px;" />
       <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px;">
-        <button class="control-pill-btn" onclick="CustomPrompt.cancel()">取消</button>
-        <button class="control-pill-btn primary" onclick="CustomPrompt.confirm()">確定</button>
+        <button class="control-pill-btn" onclick="CustomPrompt.cancel()">Cancel</button>
+        <button class="control-pill-btn primary" onclick="CustomPrompt.confirm()">Confirm</button>
       </div>
     </div>
   </div>
@@ -1337,8 +1266,8 @@
   <!-- BATCH DOWNLOAD PROGRESS MODAL -->
   <div id="batch-download-modal">
     <div class="prompt-box-dialog">
-      <div style="font-size: 1.3rem; font-weight: 800; color: #fff;">歌單整單批次導出</div>
-      <div style="font-size: 0.9rem; color: var(--text-secondary);" id="batch-status-text">準備初始化下載任務佇列...</div>
+      <div style="font-size: 1.3rem; font-weight: 800; color: #fff;">Batch Direct Tag & Export</div>
+      <div style="font-size: 0.9rem; color: var(--text-secondary);" id="batch-status-text">Preparing queue...</div>
       
       <div class="progress-track-bar">
         <div class="progress-fill-node" id="batch-progress-fill"></div>
@@ -1350,21 +1279,335 @@
       </div>
 
       <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px;">
-        <button class="control-pill-btn" onclick="BatchDownloader.abort()">中斷下載</button>
+        <button class="control-pill-btn" onclick="BatchDownloader.abort()">Abort</button>
       </div>
     </div>
   </div>
 
   <!-- ==========================================================================
-       9. SCRIPT CORE ENGINE
-       ========================================================================== -->
+       6. CORE JAVASCRIPT: BINARY TAG ENCODERS & LOGIC
+       ========================================================================== */
+  -->
   <script>
     const CONFIG = {
-      BACKEND_API_BASE: "https://neteasemusicdl.onrender.com",
-      DB_NAME: "JRMusicOfflineStore_V2",
-      DB_VERSION: 1
+      BACKEND_API_BASE: "https://neteasemusicdl.onrender.com"
     };
 
+    /* ==========================================================================
+       BINARY TAG INJECTION ENGINE (IN-BROWSER TAGGING)
+       ========================================================================== */
+    const BinaryTagWriter = {
+      encodeUTF16LE(str, withBOM = true) {
+        const len = str.length;
+        const buf = new Uint8Array((len + (withBOM ? 1 : 0)) * 2);
+        let offset = 0;
+        if (withBOM) {
+          buf[0] = 0xFF;
+          buf[1] = 0xFE;
+          offset = 2;
+        }
+        for (let i = 0; i < len; i++) {
+          const code = str.charCodeAt(i);
+          buf[offset++] = code & 0xFF;
+          buf[offset++] = (code >> 8) & 0xFF;
+        }
+        return buf;
+      },
+
+      encodeUTF8(str) {
+        return new TextEncoder().encode(str);
+      },
+
+      /**
+       * Construct ID3v2.3 Text Frame (TIT2, TPE1, TALB)
+       */
+      createID3v23TextFrame(frameId, text) {
+        if (!text) return new Uint8Array(0);
+        const utf16Bytes = this.encodeUTF16LE(text, true);
+        const framePayload = new Uint8Array(1 + utf16Bytes.length);
+        framePayload[0] = 0x01; // Encoding byte: 0x01 = Unicode with BOM
+        framePayload.set(utf16Bytes, 1);
+
+        const frameHeader = new Uint8Array(10);
+        for (let i = 0; i < 4; i++) frameHeader[i] = frameId.charCodeAt(i);
+        const len = framePayload.length;
+        frameHeader[4] = (len >> 24) & 0xFF;
+        frameHeader[5] = (len >> 16) & 0xFF;
+        frameHeader[6] = (len >> 8) & 0xFF;
+        frameHeader[7] = len & 0xFF;
+        frameHeader[8] = 0x00; // Flags
+        frameHeader[9] = 0x00;
+
+        const frame = new Uint8Array(10 + len);
+        frame.set(frameHeader, 0);
+        frame.set(framePayload, 10);
+        return frame;
+      },
+
+      /**
+       * Construct ID3v2.3 Lyrics Frame (USLT)
+       */
+      createID3v23LyricsFrame(lyricsText) {
+        if (!lyricsText) return new Uint8Array(0);
+        const lang = [0x65, 0x6E, 0x67]; // "eng"
+        const descBytes = this.encodeUTF16LE("", true); // Empty description
+        const lyricBytes = this.encodeUTF16LE(lyricsText, true);
+
+        // Encoding(1) + Lang(3) + Desc(2) + Lyric(len)
+        const framePayload = new Uint8Array(1 + 3 + descBytes.length + lyricBytes.length);
+        framePayload[0] = 0x01; // UTF-16 with BOM
+        framePayload.set(lang, 1);
+        framePayload.set(descBytes, 4);
+        framePayload.set(lyricBytes, 4 + descBytes.length);
+
+        const frameHeader = new Uint8Array(10);
+        const frameId = "USLT";
+        for (let i = 0; i < 4; i++) frameHeader[i] = frameId.charCodeAt(i);
+        const len = framePayload.length;
+        frameHeader[4] = (len >> 24) & 0xFF;
+        frameHeader[5] = (len >> 16) & 0xFF;
+        frameHeader[6] = (len >> 8) & 0xFF;
+        frameHeader[7] = len & 0xFF;
+        frameHeader[8] = 0x00;
+        frameHeader[9] = 0x00;
+
+        const frame = new Uint8Array(10 + len);
+        frame.set(frameHeader, 0);
+        frame.set(framePayload, 10);
+        return frame;
+      },
+
+      /**
+       * Construct ID3v2.3 Picture Frame (APIC)
+       */
+      createID3v23PictureFrame(imageBytes, mimeType = "image/jpeg") {
+        if (!imageBytes || imageBytes.byteLength === 0) return new Uint8Array(0);
+        const mimeArray = this.encodeUTF8(mimeType);
+        // Encoding(1) + MIME + Term(1) + PicType(1: front cover) + DescTerm(2) + imageBytes
+        const payloadLength = 1 + mimeArray.length + 1 + 1 + 2 + imageBytes.byteLength;
+        const framePayload = new Uint8Array(payloadLength);
+        let offset = 0;
+
+        framePayload[offset++] = 0x00; // ISO-8859-1 for MIME and description
+        framePayload.set(mimeArray, offset);
+        offset += mimeArray.length;
+        framePayload[offset++] = 0x00; // Terminate MIME
+        framePayload[offset++] = 0x03; // Picture Type: Front Cover
+        framePayload[offset++] = 0x00; // Description terminator (1)
+        framePayload[offset++] = 0x00; // Description terminator (2)
+        framePayload.set(new Uint8Array(imageBytes), offset);
+
+        const frameHeader = new Uint8Array(10);
+        const frameId = "APIC";
+        for (let i = 0; i < 4; i++) frameHeader[i] = frameId.charCodeAt(i);
+        const len = framePayload.length;
+        frameHeader[4] = (len >> 24) & 0xFF;
+        frameHeader[5] = (len >> 16) & 0xFF;
+        frameHeader[6] = (len >> 8) & 0xFF;
+        frameHeader[7] = len & 0xFF;
+        frameHeader[8] = 0x00;
+        frameHeader[9] = 0x00;
+
+        const frame = new Uint8Array(10 + len);
+        frame.set(frameHeader, 0);
+        frame.set(framePayload, 10);
+        return frame;
+      },
+
+      /**
+       * Encode and Prepend ID3v2.3 Header onto MP3 Buffer
+       */
+      tagMP3Buffer(audioBuffer, metadata, coverBuffer) {
+        const frames = [];
+        if (metadata.title) frames.push(this.createID3v23TextFrame("TIT2", metadata.title));
+        if (metadata.artist) frames.push(this.createID3v23TextFrame("TPE1", metadata.artist));
+        if (metadata.album) frames.push(this.createID3v23TextFrame("TALB", metadata.album));
+        if (metadata.lyrics) frames.push(this.createID3v23LyricsFrame(metadata.lyrics));
+        if (coverBuffer && coverBuffer.byteLength > 0) {
+          frames.push(this.createID3v23PictureFrame(coverBuffer, "image/jpeg"));
+        }
+
+        let totalFramesLen = 0;
+        frames.forEach(f => totalFramesLen += f.length);
+
+        // ID3v2 Header: 10 bytes
+        const id3Header = new Uint8Array(10);
+        id3Header[0] = 0x49; // 'I'
+        id3Header[1] = 0x44; // 'D'
+        id3Header[2] = 0x33; // '3'
+        id3Header[3] = 0x03; // Version 2.3.0
+        id3Header[4] = 0x00;
+        id3Header[5] = 0x00; // Flags
+
+        // Synchsafe integer size (7 bits per byte)
+        id3Header[6] = (totalFramesLen >> 21) & 0x7F;
+        id3Header[7] = (totalFramesLen >> 14) & 0x7F;
+        id3Header[8] = (totalFramesLen >> 7) & 0x7F;
+        id3Header[9] = totalFramesLen & 0x7F;
+
+        // Check if original buffer has existing ID3 tag; strip if found
+        let audioOffset = 0;
+        const srcBytes = new Uint8Array(audioBuffer);
+        if (srcBytes[0] === 0x49 && srcBytes[1] === 0x44 && srcBytes[2] === 0x33) {
+          const oldSize = (srcBytes[6] << 21) | (srcBytes[7] << 14) | (srcBytes[8] << 7) | srcBytes[9];
+          audioOffset = 10 + oldSize;
+        }
+
+        const validAudio = srcBytes.subarray(audioOffset);
+        const result = new Uint8Array(10 + totalFramesLen + validAudio.length);
+        result.set(id3Header, 0);
+
+        let ptr = 10;
+        for (const f of frames) {
+          result.set(f, ptr);
+          ptr += f.length;
+        }
+        result.set(validAudio, ptr);
+
+        return result.buffer;
+      },
+
+      /**
+       * Construct METADATA_BLOCK_PICTURE for FLAC
+       */
+      createFlacPictureBlock(coverBuffer, mimeType = "image/jpeg") {
+        if (!coverBuffer || coverBuffer.byteLength === 0) return null;
+        const mimeBytes = this.encodeUTF8(mimeType);
+        const descBytes = this.encodeUTF8("");
+        const picBytes = new Uint8Array(coverBuffer);
+
+        // Size: Type(4) + MimeLen(4) + Mime + DescLen(4) + Desc + Width(4) + Height(4) + Depth(4) + Colors(4) + DataLen(4) + Data
+        const payloadLen = 4 + 4 + mimeBytes.length + 4 + descBytes.length + 4 + 4 + 4 + 4 + 4 + picBytes.length;
+        const block = new Uint8Array(payloadLen);
+        const view = new DataView(block.buffer);
+
+        let offset = 0;
+        view.setUint32(offset, 3, false); offset += 4; // Type: 3 = Front Cover
+        view.setUint32(offset, mimeBytes.length, false); offset += 4;
+        block.set(mimeBytes, offset); offset += mimeBytes.length;
+        view.setUint32(offset, descBytes.length, false); offset += 4;
+        block.set(descBytes, offset); offset += descBytes.length;
+        view.setUint32(offset, 0, false); offset += 4; // Width
+        view.setUint32(offset, 0, false); offset += 4; // Height
+        view.setUint32(offset, 24, false); offset += 4; // Depth
+        view.setUint32(offset, 0, false); offset += 4; // Colors
+        view.setUint32(offset, picBytes.length, false); offset += 4;
+        block.set(picBytes, offset);
+
+        return block;
+      },
+
+      /**
+       * Construct VORBIS_COMMENT Block for FLAC
+       */
+      createFlacVorbisCommentBlock(metadata) {
+        const comments = [];
+        if (metadata.title) comments.push(`TITLE=${metadata.title}`);
+        if (metadata.artist) comments.push(`ARTIST=${metadata.artist}`);
+        if (metadata.album) comments.push(`ALBUM=${metadata.album}`);
+        if (metadata.lyrics) comments.push(`LYRICS=${metadata.lyrics}`);
+
+        const vendorString = "JR AI Lossless Encoder";
+        const vendorBytes = this.encodeUTF8(vendorString);
+
+        let totalCommentBytesLen = 0;
+        const encodedComments = comments.map(c => {
+          const b = this.encodeUTF8(c);
+          totalCommentBytesLen += 4 + b.length;
+          return b;
+        });
+
+        const totalPayloadLen = 4 + vendorBytes.length + 4 + totalCommentBytesLen;
+        const block = new Uint8Array(totalPayloadLen);
+        const view = new DataView(block.buffer);
+
+        let offset = 0;
+        view.setUint32(offset, vendorBytes.length, true); offset += 4; // Little-endian vendor length
+        block.set(vendorBytes, offset); offset += vendorBytes.length;
+
+        view.setUint32(offset, comments.length, true); offset += 4; // Little-endian comment count
+        for (const cb of encodedComments) {
+          view.setUint32(offset, cb.length, true); offset += 4;
+          block.set(cb, offset); offset += cb.length;
+        }
+
+        return block;
+      },
+
+      /**
+       * Tag Native FLAC Stream: Inject VORBIS_COMMENT & PICTURE blocks
+       */
+      tagFLACBuffer(audioBuffer, metadata, coverBuffer) {
+        const bytes = new Uint8Array(audioBuffer);
+        // Verify FLAC signature "fLaC"
+        if (bytes[0] !== 0x66 || bytes[1] !== 0x4C || bytes[2] !== 0x61 || bytes[3] !== 0x43) {
+          throw new Error("Invalid FLAC stream binary");
+        }
+
+        // Parse existing blocks, retain STREAMINFO (Type 0)
+        let offset = 4;
+        let streamInfoBlock = null;
+        let isLast = false;
+
+        while (offset < bytes.length && !isLast) {
+          const header = bytes[offset];
+          isLast = (header & 0x80) !== 0;
+          const blockType = header & 0x7F;
+          const length = (bytes[offset + 1] << 16) | (bytes[offset + 2] << 8) | bytes[offset + 3];
+
+          if (blockType === 0) {
+            // STREAMINFO block is strictly 34 bytes
+            streamInfoBlock = bytes.subarray(offset + 4, offset + 4 + length);
+          }
+          offset += 4 + length;
+        }
+
+        const audioFramesData = bytes.subarray(offset);
+
+        // Reconstruct metadata blocks
+        const vorbisPayload = this.createFlacVorbisCommentBlock(metadata);
+        const picturePayload = this.createFlacPictureBlock(coverBuffer);
+
+        const blocksToWrite = [];
+        // Block 1: STREAMINFO (Type 0, length: 34)
+        blocksToWrite.push({ type: 0, payload: streamInfoBlock });
+        // Block 2: VORBIS_COMMENT (Type 4)
+        blocksToWrite.push({ type: 4, payload: vorbisPayload });
+        // Block 3: PICTURE (Type 6)
+        if (picturePayload) {
+          blocksToWrite.push({ type: 6, payload: picturePayload });
+        }
+
+        // Calculate total headers and payloads
+        let metaTotalSize = 4; // "fLaC"
+        blocksToWrite.forEach(b => metaTotalSize += 4 + b.payload.length);
+
+        const taggedFlac = new Uint8Array(metaTotalSize + audioFramesData.length);
+        taggedFlac.set([0x66, 0x4C, 0x61, 0x43], 0);
+
+        let ptr = 4;
+        for (let i = 0; i < blocksToWrite.length; i++) {
+          const b = blocksToWrite[i];
+          const isFinal = (i === blocksToWrite.length - 1);
+          const headerByte = (isFinal ? 0x80 : 0x00) | (b.type & 0x7F);
+          const len = b.payload.length;
+
+          taggedFlac[ptr++] = headerByte;
+          taggedFlac[ptr++] = (len >> 16) & 0xFF;
+          taggedFlac[ptr++] = (len >> 8) & 0xFF;
+          taggedFlac[ptr++] = len & 0xFF;
+          taggedFlac.set(b.payload, ptr);
+          ptr += len;
+        }
+
+        taggedFlac.set(audioFramesData, ptr);
+        return taggedFlac.buffer;
+      }
+    };
+
+    /* ==========================================================================
+       UI TOAST, PROMPT & MODAL LOGIC
+       ========================================================================== */
     const UIToast = {
       show(message, type = 'info', duration = 3400) {
         const container = document.getElementById("ui-toast-container");
@@ -1418,86 +1661,9 @@
       }
     };
 
-    const OfflineAudioStore = {
-      db: null,
-
-      async init() {
-        return new Promise((resolve, reject) => {
-          const req = indexedDB.open(CONFIG.DB_NAME, CONFIG.DB_VERSION);
-          req.onupgradeneeded = (e) => {
-            const db = e.target.result;
-            if (!db.objectStoreNames.contains("audio_blobs")) {
-              db.createObjectStore("audio_blobs", { keyPath: "id" });
-            }
-          };
-          req.onsuccess = (e) => {
-            OfflineAudioStore.db = e.target.result;
-            OfflineAudioStore.refreshCatalog().then(resolve);
-          };
-          req.onerror = (err) => reject(err);
-        });
-      },
-
-      async saveTrackBlob(trackObj, blob, ext = 'flac') {
-        return new Promise((resolve, reject) => {
-          const tx = OfflineAudioStore.db.transaction(["audio_blobs"], "readwrite");
-          const store = tx.objectStore("audio_blobs");
-          const record = {
-            id: String(trackObj.id),
-            title: trackObj.title,
-            artist: trackObj.artist,
-            album: trackObj.album,
-            picUrl: trackObj.picUrl,
-            quality: trackObj.quality || PlaybackState.currentQuality,
-            ext: ext,
-            lyric: trackObj.lyric || '',
-            tlyric: trackObj.tlyric || '',
-            blob: blob,
-            timestamp: Date.now()
-          };
-          store.put(record);
-          tx.oncomplete = () => {
-            PlaybackState.offlineCacheCatalog.add(String(trackObj.id));
-            OfflineAudioStore.updateCounterUI();
-            resolve();
-          };
-          tx.onerror = (err) => reject(err);
-        });
-      },
-
-      async getTrackRecord(songId) {
-        return new Promise((resolve) => {
-          const tx = OfflineAudioStore.db.transaction(["audio_blobs"], "readonly");
-          const store = tx.objectStore("audio_blobs");
-          const req = store.get(String(songId));
-          req.onsuccess = () => resolve(req.result || null);
-          req.onerror = () => resolve(null);
-        });
-      },
-
-      async getAllCachedRecords() {
-        return new Promise((resolve) => {
-          const tx = OfflineAudioStore.db.transaction(["audio_blobs"], "readonly");
-          const store = tx.objectStore("audio_blobs");
-          const req = store.getAll();
-          req.onsuccess = () => resolve(req.result || []);
-          req.onerror = () => resolve([]);
-        });
-      },
-
-      async refreshCatalog() {
-        const records = await OfflineAudioStore.getAllCachedRecords();
-        PlaybackState.offlineCacheCatalog.clear();
-        records.forEach(r => PlaybackState.offlineCacheCatalog.add(String(r.id)));
-        OfflineAudioStore.updateCounterUI();
-      },
-
-      updateCounterUI() {
-        const el = document.getElementById("sidebar-cached-count");
-        if (el) el.innerText = `${PlaybackState.offlineCacheCatalog.size} 首`;
-      }
-    };
-
+    /* ==========================================================================
+       LYRICS & METADATA PARSER
+       ========================================================================== */
     const MetaParser = {
       lrctrim(lyrics) {
         if (!lyrics) return [];
@@ -1543,12 +1709,10 @@
       },
 
       parseFullLyrics(lrcRaw, tLrcRaw) {
-        const badgeEl = document.getElementById("lyrics-source-badge");
         if (!lrcRaw) {
           PlaybackState.activeLyrics = [];
           PlaybackState.currentLyricIndex = -1;
-          if (badgeEl) badgeEl.innerText = "純音樂 / 無歌詞";
-          LyricsView.renderSpotlightText("純音樂演奏 (無動態歌詞)");
+          LyricsView.renderSpotlightText("Instrumental / No Lyrics Available");
           return;
         }
 
@@ -1556,24 +1720,23 @@
         if (merged.length > 0) {
           PlaybackState.activeLyrics = merged;
           PlaybackState.currentLyricIndex = -1;
-          if (badgeEl) badgeEl.innerText = "雙語動態歌詞";
-          LyricsView.renderSpotlightText(merged[0].text || "準備回放...");
+          LyricsView.renderSpotlightText(merged[0].text || "Ready for playback...");
         } else {
           PlaybackState.activeLyrics = [];
           PlaybackState.currentLyricIndex = -1;
-          if (badgeEl) badgeEl.innerText = "純文字歌詞";
-          LyricsView.renderSpotlightText(lrcRaw.substring(0, 100));
+          LyricsView.renderSpotlightText(lrcRaw.substring(0, 80));
         }
       }
     };
 
+    /* ==========================================================================
+       AUDIO & PLAYBACK STATE ENGINE
+       ========================================================================== */
     const PlaybackState = {
       currentQuality: 'lossless',
       flatTrackIndex: [],
       currentPlaylist: [],
       currentTrackPointer: -1,
-      favorites: JSON.parse(localStorage.getItem("jrmusic_favs") || "[]"),
-      offlineCacheCatalog: new Set(),
       activeLyrics: [],
       currentLyricIndex: -1,
       activeCoverUrl: null
@@ -1583,18 +1746,18 @@
       async search() {
         const keyword = document.getElementById("api-search-input").value.trim();
         if (!keyword) {
-          UIToast.show("請先輸入檢索關鍵字或歌曲 ID", "error");
+          UIToast.show("Please enter a query or track ID", "error");
           return;
         }
         await MusicAPIEngine.executeSearch(keyword);
       },
 
       async executeSearch(keyword) {
-        UIToast.show(`正在檢索「${keyword}」...`, "info");
+        UIToast.show(`Searching for "${keyword}"...`, "info");
         try {
           const formData = new FormData();
           formData.append("keyword", keyword);
-          formData.append("limit", "40");
+          formData.append("limit", "30");
 
           const res = await fetch(`${CONFIG.BACKEND_API_BASE}/Search`, {
             method: "POST",
@@ -1613,14 +1776,14 @@
             }));
 
             PlaybackState.flatTrackIndex = tracks;
-            document.getElementById("stats-track-pool-count").innerText = `${tracks.length} 首`;
-            TrackListView.renderList(`搜尋結果: ${keyword}`, tracks);
-            UIToast.show(`成功命中 ${tracks.length} 首曲目`, "success");
+            document.getElementById("stats-track-pool-count").innerText = `${tracks.length} Tracks`;
+            TrackListView.renderList(`Search Results: ${keyword}`, tracks);
+            UIToast.show(`Indexed ${tracks.length} tracks`, "success");
           } else {
-            UIToast.show("未找到相符的曲目資源", "error");
+            UIToast.show("No matching tracks returned from API", "error");
           }
         } catch (err) {
-          UIToast.show(`搜尋 API 發生異常: ${err.message}`, "error");
+          UIToast.show(`Search API Error: ${err.message}`, "error");
         }
       },
 
@@ -1639,43 +1802,13 @@
         if (json.status === 200 && json.data) {
           return json.data;
         }
-        throw new Error(json.data ? json.data.msg : "解析曲目串流節點失敗");
-      },
-
-      async promptDirectParse() {
-        const inputVal = await CustomPrompt.show("單曲 ID / 鏈接解析", "輸入網易雲單曲 ID 或分享鏈接:", "");
-        if (!inputVal) return;
-
-        let songId = inputVal.trim();
-        const idMatch = songId.match(/id=(\d+)/);
-        if (idMatch) songId = idMatch[1];
-
-        UIToast.show(`正在解析曲目 #${songId}...`, "info");
-        try {
-          const streamData = await MusicAPIEngine.resolveSongStream(songId, PlaybackState.currentQuality);
-          const track = {
-            id: String(songId),
-            title: streamData.name,
-            artist: streamData.ar_name,
-            album: streamData.al_name,
-            picUrl: streamData.pic,
-            resolvedUrl: streamData.url,
-            lyric: streamData.lyric,
-            tlyric: streamData.tlyric
-          };
-          PlaybackState.currentPlaylist = [track];
-          PlaybackState.currentTrackPointer = 0;
-          TrackListView.renderList(`直解曲目: ${track.title}`, [track]);
-          AudioEngine.loadAndPlay(track);
-        } catch (e) {
-          UIToast.show(e.message, "error");
-        }
+        throw new Error(json.data ? json.data.msg : "Failed to resolve stream");
       },
 
       async promptPlaylistParse() {
         const inputStr = await CustomPrompt.show(
-          "歌單鏈接解析",
-          "請輸入網易雲歌單鏈接 (如 https://music.163.com/playlist?id=...) 或歌單 ID：",
+          "Playlist Parser",
+          "Enter NetEase playlist link (https://music.163.com/playlist?id=...) or ID:",
           ""
         );
         if (!inputStr) return;
@@ -1685,7 +1818,7 @@
         if (match) playlistId = match[1];
 
         if (!playlistId || !/^\d+$/.test(playlistId)) {
-          UIToast.show("無法識別有效的歌單 ID", "error");
+          UIToast.show("Invalid Playlist ID", "error");
           return;
         }
 
@@ -1693,7 +1826,7 @@
       },
 
       async resolvePlaylist(playlistId) {
-        UIToast.show(`正在載入歌單 #${playlistId} 完整曲庫...`, "info");
+        UIToast.show(`Resolving playlist #${playlistId}...`, "info");
         try {
           let res = await fetch(`${CONFIG.BACKEND_API_BASE}/playlist`, {
             method: "POST",
@@ -1723,76 +1856,106 @@
             }));
 
             if (tracks.length === 0) {
-              UIToast.show(`歌單「${pl.name}」未包含有效歌曲`, "error");
+              UIToast.show(`Playlist "${pl.name}" contains no valid songs`, "error");
               return;
             }
 
             PlaybackState.flatTrackIndex = tracks;
             PlaybackState.currentPlaylist = tracks;
             PlaybackState.currentTrackPointer = 0;
-            document.getElementById("stats-track-pool-count").innerText = `${tracks.length} 首`;
+            document.getElementById("stats-track-pool-count").innerText = `${tracks.length} Tracks`;
 
-            AppNavigation.switchStage('home');
-            TrackListView.renderList(`歌單: ${pl.name} (${tracks.length} 首)`, tracks);
-            UIToast.show(`成功載入「${pl.name}」，共 ${tracks.length} 首歌`, "success");
+            TrackListView.renderList(`Playlist: ${pl.name} (${tracks.length} tracks)`, tracks);
+            UIToast.show(`Loaded "${pl.name}" successfully`, "success");
           } else {
-            throw new Error((json && json.message) || "獲取歌單失敗，請確認歌單已設為公開");
+            throw new Error((json && json.message) || "Failed to fetch playlist");
           }
         } catch (err) {
-          console.error("Playlist Exception:", err);
-          UIToast.show(`歌單解析異常: ${err.message}`, "error");
+          UIToast.show(`Playlist Error: ${err.message}`, "error");
         }
       },
 
-      async downloadTrackBlob(track, targetQuality = null) {
-        const quality = targetQuality || PlaybackState.currentQuality;
-        UIToast.show(`請求「${track.title}」直解資源 [${quality.toUpperCase()}]...`, "info");
+      /**
+       * Core Download & In-Memory Tagging Pipeline
+       */
+      async downloadAndTagDirect(track, targetFormat = null) {
+        const format = targetFormat || (PlaybackState.currentQuality === 'lossless' ? 'flac' : 'mp3');
+        const reqQuality = (format === 'flac') ? 'lossless' : 'exhigh';
 
-        const streamData = await MusicAPIEngine.resolveSongStream(track.id, quality);
-        if (!streamData || !streamData.url) throw new Error("未能獲取官方音頻下載節點");
+        UIToast.show(`Fetching stream & lyrics for "${track.title}"...`, "info");
 
-        const res = await fetch(streamData.url);
-        if (!res.ok) throw new Error("音頻流連線中斷");
-        const blob = await res.blob();
+        try {
+          const streamData = await MusicAPIEngine.resolveSongStream(track.id, reqQuality);
+          if (!streamData || !streamData.url) throw new Error("Could not obtain stream URL");
 
-        const isFlac = streamData.type === 'flac' || quality.includes('lossless') || quality.includes('hires') || quality.includes('master');
-        const fileExt = isFlac ? 'flac' : 'mp3';
+          const title = streamData.name || track.title;
+          const artist = streamData.ar_name || track.artist;
+          const album = streamData.al_name || track.album;
+          const lyrics = streamData.lyric || "";
+          const picUrl = streamData.pic || track.picUrl;
 
-        const enrichedTrack = {
-          id: String(track.id),
-          title: streamData.name || track.title,
-          artist: streamData.ar_name || track.artist,
-          album: streamData.al_name || track.album,
-          picUrl: streamData.pic || track.picUrl,
-          quality: quality,
-          lyric: streamData.lyric,
-          tlyric: streamData.tlyric
-        };
+          // 1. Fetch Audio Buffer
+          UIToast.show(`Downloading audio buffer [${format.toUpperCase()}]...`, "info");
+          const audioRes = await fetch(streamData.url);
+          if (!audioRes.ok) throw new Error("Audio stream transmission failed");
+          const rawAudioBuffer = await audioRes.arrayBuffer();
 
-        // 存入 IndexedDB
-        await OfflineAudioStore.saveTrackBlob(enrichedTrack, blob, fileExt);
+          // 2. Fetch Album Cover Buffer
+          let coverBuffer = null;
+          if (picUrl) {
+            try {
+              const picRes = await fetch(picUrl);
+              if (picRes.ok) coverBuffer = await picRes.arrayBuffer();
+            } catch (err) {
+              console.warn("Cover fetch failed, continuing without art:", err);
+            }
+          }
 
-        // 觸發瀏覽器實體檔案下載
-        const downloadUrl = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = downloadUrl;
-        a.download = `${enrichedTrack.artist} - ${enrichedTrack.title}.${fileExt}`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(() => URL.revokeObjectURL(downloadUrl), 5000);
+          // 3. Binary Tag Injection
+          UIToast.show(`Embedding ID3/Vorbis tags & lyrics...`, "info");
+          let finalBuffer;
 
-        TrackListView.refreshCurrentView();
-        UIToast.show(`「${enrichedTrack.title}」下載完成 (.${fileExt})`, "success");
+          const metaObj = { title, artist, album, lyrics };
+
+          if (format === 'flac') {
+            try {
+              finalBuffer = BinaryTagWriter.tagFLACBuffer(rawAudioBuffer, metaObj, coverBuffer);
+            } catch (e) {
+              console.warn("FLAC tagging fallback to raw stream:", e);
+              finalBuffer = rawAudioBuffer;
+            }
+          } else {
+            finalBuffer = BinaryTagWriter.tagMP3Buffer(rawAudioBuffer, metaObj, coverBuffer);
+          }
+
+          // 4. Trigger Direct File Download
+          const mimeType = (format === 'flac') ? 'audio/flac' : 'audio/mpeg';
+          const blob = new Blob([finalBuffer], { type: mimeType });
+          const blobUrl = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = blobUrl;
+          a.download = `${artist} - ${title}.${format}`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+
+          UIToast.show(`Tagging complete: "${title}.${format}" exported!`, "success");
+        } catch (e) {
+          UIToast.show(`Export Failed: ${e.message}`, "error");
+        }
       }
     };
 
+    /* ==========================================================================
+       BATCH DOWNLOAD CONTROLLER
+       ========================================================================== */
     const BatchDownloader = {
       isAborted: false,
 
       async startBatchModal() {
         if (!PlaybackState.flatTrackIndex || PlaybackState.flatTrackIndex.length === 0) {
-          UIToast.show("目前沒有可批次下載的曲目，請先檢索或解析歌單！", "error");
+          UIToast.show("No active tracks in catalog to download", "error");
           return;
         }
 
@@ -1808,34 +1971,35 @@
 
         let completed = 0;
         const total = tracks.length;
+        const targetExt = (PlaybackState.currentQuality === 'lossless') ? 'flac' : 'mp3';
 
         for (let i = 0; i < total; i++) {
           if (BatchDownloader.isAborted) {
-            UIToast.show("批次下載作業已手動中斷", "info");
+            UIToast.show("Batch download operation aborted by user", "info");
             break;
           }
 
           const track = tracks[i];
-          statusText.innerText = `正在下載 (${i + 1}/${total}): ${track.artist} - ${track.title}`;
+          statusText.innerText = `Tagging & Exporting (${i + 1}/${total}): ${track.artist} - ${track.title}`;
           countText.innerText = `${i + 1} / ${total}`;
           const pct = Math.round(((i + 1) / total) * 100);
           pctText.innerText = `${pct}%`;
           fillBar.style.width = `${pct}%`;
 
           try {
-            await MusicAPIEngine.downloadTrackBlob(track, PlaybackState.currentQuality);
+            await MusicAPIEngine.downloadAndTagDirect(track, targetExt);
             completed++;
           } catch (e) {
-            console.warn(`下載「${track.title}」失敗:`, e);
+            console.warn(`Failed batch export for "${track.title}":`, e);
           }
 
-          // 防風控微延遲
+          // Buffer delay to prevent upstream rate-limiting
           await new Promise(r => setTimeout(r, 600));
         }
 
         setTimeout(() => {
           modal.classList.remove("is-open");
-          UIToast.show(`批次導出結束：成功 ${completed} / ${total} 首`, "success");
+          UIToast.show(`Batch Completed: ${completed} / ${total} exported with tags`, "success");
         }, 800);
       },
 
@@ -1845,16 +2009,19 @@
       }
     };
 
+    /* ==========================================================================
+       SPOTLIGHT FULLSCREEN LYRICS STAGE
+       ========================================================================== */
     const LyricsView = {
       open() {
         if (!AudioEngine.currentTrack) {
-          UIToast.show("目前沒有正在播放的音訊串流", "info");
+          UIToast.show("No audio is currently playing", "info");
           return;
         }
         document.getElementById("lyrics-fullscreen-overlay").classList.add("is-open");
         document.getElementById("lyrics-nav-song-name").innerText = AudioEngine.currentTrack.title;
         document.getElementById("lyrics-modal-title").innerText = AudioEngine.currentTrack.title;
-        document.getElementById("lyrics-modal-artist").innerText = AudioEngine.currentTrack.artist || "JR AI Cloud";
+        document.getElementById("lyrics-modal-artist").innerText = AudioEngine.currentTrack.artist || "JR Tag Studio";
         
         const coverEl = document.getElementById("lyrics-hero-cover");
         coverEl.src = PlaybackState.activeCoverUrl || AudioEngine.currentTrack.picUrl || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' fill='%23141a24'><rect width='300' height='300'/></svg>";
@@ -1870,14 +2037,6 @@
 
       close() {
         document.getElementById("lyrics-fullscreen-overlay").classList.remove("is-open");
-      },
-
-      onArtistClicked() {
-        if (!AudioEngine.currentTrack || !AudioEngine.currentTrack.artist) return;
-        const artist = AudioEngine.currentTrack.artist.split('/')[0].trim();
-        LyricsView.close();
-        document.getElementById("api-search-input").value = artist;
-        MusicAPIEngine.executeSearch(artist);
       },
 
       renderSpotlightText(text) {
@@ -1906,48 +2065,14 @@
           PlaybackState.currentLyricIndex = activeIdx;
           const currentText = PlaybackState.activeLyrics[activeIdx].text;
           document.getElementById("lbl-now-playing-sub").innerText = currentText;
-          MediaSessionController.updateCurrentLyric(currentText);
           LyricsView.renderSpotlightText(currentText);
         }
       }
     };
 
-    const MediaSessionController = {
-      init() {
-        if ('mediaSession' in navigator) {
-          navigator.mediaSession.setActionHandler('play', () => AudioEngine.togglePlayState());
-          navigator.mediaSession.setActionHandler('pause', () => AudioEngine.togglePlayState());
-          navigator.mediaSession.setActionHandler('previoustrack', () => AudioEngine.prevTrack());
-          navigator.mediaSession.setActionHandler('nexttrack', () => AudioEngine.nextTrack());
-          navigator.mediaSession.setActionHandler('seekto', (details) => {
-            if (details.seekTime && AudioEngine.sink.duration) {
-              AudioEngine.sink.currentTime = details.seekTime;
-            }
-          });
-        }
-      },
-
-      updateMetadata(track, coverUrl) {
-        if ('mediaSession' in navigator) {
-          const artwork = [];
-          if (coverUrl) artwork.push({ src: coverUrl, sizes: '512x512', type: 'image/jpeg' });
-
-          navigator.mediaSession.metadata = new MediaMetadata({
-            title: track.title,
-            artist: track.artist || "JR AI Music",
-            album: track.album || "Lossless Pipeline",
-            artwork: artwork
-          });
-        }
-      },
-
-      updateCurrentLyric(lyricText) {
-        if ('mediaSession' in navigator && navigator.mediaSession.metadata) {
-          navigator.mediaSession.metadata.artist = lyricText;
-        }
-      }
-    };
-
+    /* ==========================================================================
+       AUDIO STREAM SINK ENGINE
+       ========================================================================== */
     const AudioEngine = {
       sink: document.getElementById("core-audio-sink"),
       currentTrack: null,
@@ -1955,21 +2080,18 @@
       init() {
         this.sink.ontimeupdate = this.onTimeUpdate;
         this.sink.onended = () => this.nextTrack();
-        this.sink.onerror = () => {
-          UIToast.show("音訊解碼回放時遇到異常", "error");
-        };
-        MediaSessionController.init();
+        this.sink.onerror = () => UIToast.show("Audio decode stream error", "error");
       },
 
       async loadAndPlay(track) {
         this.currentTrack = track;
         document.getElementById("lbl-now-playing-title").innerText = track.title;
-        document.getElementById("lbl-now-playing-sub").innerText = "正在檢查邊緣快取與串流管線...";
+        document.getElementById("lbl-now-playing-sub").innerText = "Resolving stream and metadata...";
 
         PlaybackState.activeLyrics = [];
         PlaybackState.currentLyricIndex = -1;
         PlaybackState.activeCoverUrl = track.picUrl || null;
-        LyricsView.renderSpotlightText("同步動態歌詞中...");
+        LyricsView.renderSpotlightText("Syncing lyrics...");
 
         const thumbImg = document.getElementById("player-thumb-img");
         const thumbFallback = document.getElementById("player-thumb-fallback");
@@ -1984,46 +2106,22 @@
         }
 
         try {
-          const localRecord = await OfflineAudioStore.getTrackRecord(track.id);
+          const streamData = await MusicAPIEngine.resolveSongStream(track.id, PlaybackState.currentQuality);
+          const playUrl = streamData.url;
+          if (!playUrl) throw new Error("Empty audio stream link returned");
 
-          if (localRecord && localRecord.blob) {
-            document.getElementById("lbl-now-playing-sub").innerText = `IndexedDB 離線快取 · [${(localRecord.quality || 'FLAC').toUpperCase()}]`;
-            this.sink.src = URL.createObjectURL(localRecord.blob);
-            MetaParser.parseFullLyrics(localRecord.lyric, localRecord.tlyric);
-          } else {
-            let playUrl = track.resolvedUrl;
-            let lyric = track.lyric;
-            let tlyric = track.tlyric;
+          track.resolvedUrl = playUrl;
+          track.artist = streamData.ar_name || track.artist;
+          track.album = streamData.al_name || track.album;
+          track.picUrl = streamData.pic || track.picUrl;
+          PlaybackState.activeCoverUrl = track.picUrl;
 
-            if (!playUrl || track.level !== PlaybackState.currentQuality) {
-              const streamData = await MusicAPIEngine.resolveSongStream(track.id, PlaybackState.currentQuality);
-              playUrl = streamData.url;
-              lyric = streamData.lyric;
-              tlyric = streamData.tlyric;
-              track.resolvedUrl = playUrl;
-              track.artist = streamData.ar_name || track.artist;
-              track.album = streamData.al_name || track.album;
-              track.picUrl = streamData.pic || track.picUrl;
-              track.level = PlaybackState.currentQuality;
-              PlaybackState.activeCoverUrl = track.picUrl;
-
-              if (track.picUrl) {
-                thumbImg.src = track.picUrl;
-                thumbImg.style.display = "block";
-                thumbFallback.style.display = "none";
-              }
-            }
-
-            if (!playUrl) throw new Error("服務端未回傳可用的串流位址");
-
-            document.getElementById("lbl-now-playing-sub").innerText = `官方 CDN 直播 · [${PlaybackState.currentQuality.toUpperCase()}]`;
-            this.sink.src = playUrl;
-            MetaParser.parseFullLyrics(lyric, tlyric);
-          }
+          document.getElementById("lbl-now-playing-sub").innerText = `${track.artist} · [${PlaybackState.currentQuality.toUpperCase()}]`;
+          this.sink.src = playUrl;
+          MetaParser.parseFullLyrics(streamData.lyric, streamData.tlyric);
 
           await this.sink.play();
           this.updatePlayBtnIcon(true);
-          MediaSessionController.updateMetadata(track, PlaybackState.activeCoverUrl);
         } catch (err) {
           UIToast.show(err.message, "error");
           this.updatePlayBtnIcon(false);
@@ -2091,12 +2189,6 @@
         AudioEngine.sink.volume = parseFloat(val);
       },
 
-      toggleCurrentFavorite() {
-        if (this.currentTrack) {
-          TrackListView.toggleFav(encodeURIComponent(JSON.stringify(this.currentTrack)));
-        }
-      },
-
       formatTime(sec) {
         const m = Math.floor(sec / 60);
         const s = Math.floor(sec % 60);
@@ -2104,6 +2196,9 @@
       }
     };
 
+    /* ==========================================================================
+       VIEW & TABLE RENDERER
+       ========================================================================== */
     const TrackListView = {
       renderList(title, trackArray) {
         document.getElementById("listing-heading").innerText = title;
@@ -2111,13 +2206,11 @@
         container.innerHTML = "";
 
         if (!trackArray || trackArray.length === 0) {
-          container.innerHTML = `<div style="padding: 48px; color: var(--text-muted); text-align: center; font-family: var(--font-mono); font-size: 0.95rem;">此視圖目前無曲目資料。</div>`;
+          container.innerHTML = `<div style="padding: 48px; color: var(--text-muted); text-align: center; font-family: var(--font-mono); font-size: 0.95rem;">No tracks found in buffer.</div>`;
           return;
         }
 
         trackArray.forEach((track, index) => {
-          const isCached = PlaybackState.offlineCacheCatalog.has(String(track.id));
-          const isFav = PlaybackState.favorites.some(f => String(f.id) === String(track.id));
           const isCurrent = AudioEngine.currentTrack && String(AudioEngine.currentTrack.id) === String(track.id);
 
           const row = document.createElement("div");
@@ -2132,17 +2225,17 @@
               <span class="track-name-main">${track.title}</span>
               <span class="track-subpath">${track.artist} · ${track.album}</span>
             </div>
-            <div class="track-codec-col">${(track.quality || PlaybackState.currentQuality).toUpperCase()}</div>
-            <div class="track-cache-col">
-              <span class="status-ping ${isCached ? 'cached' : ''}"></span>
-              <span>${isCached ? '本地快取' : '官方 CDN'}</span>
+            <div class="track-codec-col">${PlaybackState.currentQuality.toUpperCase()}</div>
+            <div class="track-tag-indicator">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Tags Ready</span>
             </div>
             <div class="track-actions-col">
-              <button class="action-icon-hit ${isFav ? 'active-fav' : ''}" title="加入最愛" onclick="event.stopPropagation(); TrackListView.toggleFav('${encodeURIComponent(JSON.stringify(track))}')">
-                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              <button class="action-btn-pill" onclick="event.stopPropagation(); MusicAPIEngine.downloadAndTagDirect({ id: '${track.id}', title: '${track.title.replace(/'/g, "\\'")}', artist: '${track.artist.replace(/'/g, "\\'")}', album: '${(track.album || '').replace(/'/g, "\\'")}', picUrl: '${track.picUrl || ''}' }, 'flac')" title="Download FLAC with embedded Vorbis comment, Picture & Lyrics">
+                <span>FLAC</span>
               </button>
-              <button class="action-icon-hit" onclick="event.stopPropagation(); MusicAPIEngine.downloadTrackBlob({ id: '${track.id}', title: '${track.title.replace(/'/g, "\\'")}', artist: '${track.artist.replace(/'/g, "\\'")}', album: '${(track.album || '').replace(/'/g, "\\'")}', picUrl: '${track.picUrl || ''}' })" title="直接下載至本機 (MP3/FLAC)">
-                <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+              <button class="action-btn-pill" onclick="event.stopPropagation(); MusicAPIEngine.downloadAndTagDirect({ id: '${track.id}', title: '${track.title.replace(/'/g, "\\'")}', artist: '${track.artist.replace(/'/g, "\\'")}', album: '${(track.album || '').replace(/'/g, "\\'")}', picUrl: '${track.picUrl || ''}' }, 'mp3')" title="Download MP3 with embedded ID3v2.3 tags, APIC & USLT">
+                <span>MP3</span>
               </button>
             </div>
           `;
@@ -2155,20 +2248,6 @@
         });
       },
 
-      toggleFav(encoded) {
-        const track = JSON.parse(decodeURIComponent(encoded));
-        const idx = PlaybackState.favorites.findIndex(f => String(f.id) === String(track.id));
-        if (idx >= 0) {
-          PlaybackState.favorites.splice(idx, 1);
-          UIToast.show(`已從喜愛清單移除「${track.title}」`, "info");
-        } else {
-          PlaybackState.favorites.push(track);
-          UIToast.show(`已加入喜愛清單：「${track.title}」`, "success");
-        }
-        localStorage.setItem("jrmusic_favs", JSON.stringify(PlaybackState.favorites));
-        TrackListView.refreshCurrentView();
-      },
-
       highlightCurrentTrack() {
         document.querySelectorAll(".track-row-node").forEach(el => {
           if (AudioEngine.currentTrack && el.getAttribute("data-track-id") === String(AudioEngine.currentTrack.id)) {
@@ -2177,55 +2256,18 @@
             el.classList.remove("current-playing");
           }
         });
-      },
-
-      refreshCurrentView() {
-        const title = document.getElementById("listing-heading").innerText;
-        if (title.startsWith("喜愛收藏庫")) {
-          AppNavigation.switchStage('favorites');
-        } else if (title.startsWith("離線邊緣快取")) {
-          AppNavigation.switchStage('offlines');
-        } else {
-          TrackListView.renderList(title, PlaybackState.flatTrackIndex);
-        }
-      },
-
-      saveAllToLocal() {
-        if (!PlaybackState.flatTrackIndex || PlaybackState.flatTrackIndex.length === 0) return;
-        localStorage.setItem("jrmusic_last_pool", JSON.stringify(PlaybackState.flatTrackIndex));
-        UIToast.show(`已保存 ${PlaybackState.flatTrackIndex.length} 首曲目資料至本機儲存庫`, "success");
       }
     };
 
     const AppNavigation = {
-      async switchStage(target) {
-        document.querySelectorAll(".liquid-nav-item").forEach(el => el.classList.remove("active"));
-
+      switchStage(target) {
         if (target === 'home') {
-          document.getElementById("nav-main-home").classList.add("active");
-          TrackListView.renderList("檢索與解析列表", PlaybackState.flatTrackIndex);
-        } else if (target === 'favorites') {
-          document.getElementById("nav-favorites").classList.add("active");
-          TrackListView.renderList("喜愛收藏庫", PlaybackState.favorites);
-        } else if (target === 'offlines') {
-          document.getElementById("nav-offlines").classList.add("active");
-          const records = await OfflineAudioStore.getAllCachedRecords();
-          const list = records.map(r => ({
-            id: String(r.id),
-            title: r.title,
-            artist: r.artist,
-            album: r.album,
-            picUrl: r.picUrl,
-            quality: r.quality,
-            lyric: r.lyric,
-            tlyric: r.tlyric
-          }));
-          TrackListView.renderList(`離線邊緣快取 (${list.length} 首)`, list);
+          TrackListView.renderList("Track Catalog", PlaybackState.flatTrackIndex);
         }
       }
     };
 
-    // 音訊視覺化動態頻譜模擬
+    // Spectrum Animation
     setInterval(() => {
       const bars = document.querySelectorAll("#live-spectrum-box .spectrum-bar");
       const isPlaying = AudioEngine.sink && !AudioEngine.sink.paused;
@@ -2239,20 +2281,9 @@
       });
     }, 150);
 
-    // 生命週期初始化
-    window.addEventListener("DOMContentLoaded", async () => {
-      await OfflineAudioStore.init();
+    // Initialization
+    window.addEventListener("DOMContentLoaded", () => {
       AudioEngine.init();
-
-      // 載入上次快照
-      const lastPool = localStorage.getItem("jrmusic_last_pool");
-      if (lastPool) {
-        try {
-          PlaybackState.flatTrackIndex = JSON.parse(lastPool);
-          document.getElementById("stats-track-pool-count").innerText = `${PlaybackState.flatTrackIndex.length} 首`;
-          TrackListView.renderList("上次儲存的歌曲池", PlaybackState.flatTrackIndex);
-        } catch (e) {}
-      }
     });
   </script>
 </body>
