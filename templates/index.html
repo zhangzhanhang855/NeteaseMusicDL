@@ -3,93 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>JRmusic Cloud · Enterprise Lossless Audio Infrastructure</title>
-
-  <!-- Typography & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>JRmusic · iOS Native Lossless Audio</title>
 
   <style>
     /* ==========================================================================
-       DESIGN SYSTEM CORE & DESIGN TOKENS
+       APPLE HUMAN INTERFACE GUIDELINES (iOS 18 / APPLE MUSIC DESIGN SYSTEM)
        ========================================================================== */
     :root {
-      /* Studio Dark Archetype */
-      --bg-deep: #030712;
-      --bg-base: #080d1a;
-      --bg-surface: #0f172a;
-      --bg-surface-elevated: #1e293b;
-      --bg-surface-hover: #334155;
-      --bg-glass: rgba(15, 23, 42, 0.75);
-      --bg-glass-card: rgba(30, 41, 59, 0.55);
+      /* iOS System Dark Mode Surfaces */
+      --ios-bg-primary: #000000;
+      --ios-bg-secondary: #1c1c1e;
+      --ios-bg-tertiary: #2c2c2e;
+      --ios-bg-elevated: #3a3a3c;
+      --ios-bg-grouped: #111113;
 
-      /* Accent Standard (Cobalt Electric & Cyan Glow) */
-      --accent: #3b82f6;
-      --accent-hover: #2563eb;
-      --accent-glow: rgba(59, 130, 246, 0.45);
-      --accent-dim: rgba(59, 130, 246, 0.12);
-      --accent-cyan: #06b6d4;
-      --accent-cyan-glow: rgba(6, 182, 212, 0.35);
-      --accent-emerald: #10b981;
-      --accent-emerald-glow: rgba(16, 185, 129, 0.35);
-      --accent-rose: #f43f5e;
-      --spotify-green: #1db954;
-      --spotify-glow: rgba(29, 185, 84, 0.45);
+      /* Vibrancy & Translucent Materials */
+      --ios-material-thick: rgba(28, 28, 30, 0.84);
+      --ios-material-regular: rgba(30, 30, 32, 0.72);
+      --ios-material-thin: rgba(44, 44, 46, 0.58);
+      --ios-material-ultrathin: rgba(255, 255, 255, 0.07);
+      --ios-material-chrome: rgba(18, 18, 20, 0.78);
 
-      /* Typography Tokens */
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --text-dark: #0f172a;
+      /* Apple Music & iOS System Accents */
+      --ios-tint: #fa2d48;
+      --ios-tint-hover: #ff455e;
+      --ios-tint-soft: rgba(250, 45, 72, 0.16);
+      --ios-tint-glow: rgba(250, 45, 72, 0.42);
+      --ios-blue: #0a84ff;
+      --ios-green: #30d158;
+      --ios-indigo: #5e5ce6;
+      --ios-orange: #ff9f0a;
+      --ios-yellow: #ffd60a;
+      --ios-teal: #64d2ff;
+      --ios-spotify: #1ed760;
 
-      /* Border Architecture */
-      --border-subtle: rgba(255, 255, 255, 0.07);
-      --border-elevated: rgba(255, 255, 255, 0.14);
-      --border-accent: rgba(59, 130, 246, 0.35);
+      /* iOS Label Hierarchy */
+      --ios-label-primary: #ffffff;
+      --ios-label-secondary: rgba(235, 235, 245, 0.62);
+      --ios-label-tertiary: rgba(235, 235, 245, 0.36);
+      --ios-label-quaternary: rgba(235, 235, 245, 0.18);
 
-      /* Typography Stacks */
-      --font-stack: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+      /* Hairline Separators */
+      --ios-separator: rgba(84, 84, 88, 0.48);
+      --ios-separator-subtle: rgba(255, 255, 255, 0.08);
 
-      /* Geometry & Spacing */
+      /* Native Typography Stacks */
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang SC", sans-serif;
+      --font-mono: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+
+      /* Safe Area & Layout Metrics */
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
-      --sidebar-width: 260px;
-      --player-dock-height: 94px;
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 22px;
-      --radius-full: 9999px;
+      --sidebar-width: 268px;
+      --mini-player-height: 66px;
+      --mobile-tab-height: 56px;
 
-      /* Transition Physics */
-      --trans-spring: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      --trans-quick: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Squircle Radii */
+      --radius-xs: 8px;
+      --radius-sm: 11px;
+      --radius-md: 15px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-pill: 9999px;
+
+      /* Core Animation Spring Curves */
+      --spring-snappy: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      --spring-sheet: transform 0.48s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.35s ease;
+      --spring-bounce: all 0.42s cubic-bezier(0.175, 0.885, 0.32, 1.18);
     }
 
-    /* VIP Luxury Theme */
+    /* Light Mode Appearance Support */
+    body.ios-light-mode {
+      --ios-bg-primary: #f2f2f7;
+      --ios-bg-secondary: #ffffff;
+      --ios-bg-tertiary: #e5e5ea;
+      --ios-bg-elevated: #d1d1d6;
+      --ios-bg-grouped: #f2f2f7;
+      --ios-material-thick: rgba(255, 255, 255, 0.88);
+      --ios-material-regular: rgba(255, 255, 255, 0.76);
+      --ios-material-thin: rgba(242, 242, 247, 0.68);
+      --ios-material-ultrathin: rgba(0, 0, 0, 0.05);
+      --ios-material-chrome: rgba(249, 249, 251, 0.85);
+      --ios-label-primary: #000000;
+      --ios-label-secondary: rgba(60, 60, 67, 0.66);
+      --ios-label-tertiary: rgba(60, 60, 67, 0.38);
+      --ios-separator: rgba(60, 60, 67, 0.22);
+      --ios-separator-subtle: rgba(0, 0, 0, 0.07);
+    }
+
+    /* VIP Gold Lossless Edition Override */
     body.is-premium-tier {
-      --accent: #f59e0b;
-      --accent-hover: #d97706;
-      --accent-glow: rgba(245, 158, 11, 0.5);
-      --accent-dim: rgba(245, 158, 11, 0.15);
-      --accent-cyan: #fbbf24;
-      --accent-cyan-glow: rgba(251, 191, 36, 0.4);
-      --border-accent: rgba(245, 158, 11, 0.45);
-      --border-elevated: rgba(251, 191, 36, 0.3);
-    }
-
-    body.is-premium-tier .premium-gradient-fill {
-      background: linear-gradient(135deg, #fbbf24, #d97706) !important;
-      color: #000 !important;
-    }
-
-    body.is-premium-tier .brand-glow-halo {
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%) !important;
-    }
-
-    body.is-premium-tier .spectrum-bar {
-      background: linear-gradient(180deg, #fde68a, #f59e0b) !important;
+      --ios-tint: #f59e0b;
+      --ios-tint-hover: #fbbf24;
+      --ios-tint-soft: rgba(245, 158, 11, 0.18);
+      --ios-tint-glow: rgba(245, 158, 11, 0.45);
     }
 
     *, *::before, *::after {
@@ -106,114 +115,97 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: var(--bg-deep);
-      color: var(--text-primary);
-      font-family: var(--font-stack);
-      letter-spacing: -0.015em;
+      background-color: var(--ios-bg-primary);
+      color: var(--ios-label-primary);
+      font-family: var(--font-sans);
+      letter-spacing: -0.014em;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.35s ease, color 0.35s ease;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: 
-        radial-gradient(ellipse at 15% 0%, rgba(59, 130, 246, 0.12), transparent 50%),
-        radial-gradient(ellipse at 85% 100%, rgba(6, 182, 212, 0.08), transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(15, 23, 42, 0.6), transparent 100%);
-      pointer-events: none;
-      z-index: 0;
-      transition: var(--trans-spring);
-    }
-
-    body.is-premium-tier::before {
-      background: 
-        radial-gradient(ellipse at 20% 0%, rgba(245, 158, 11, 0.15), transparent 55%),
-        radial-gradient(ellipse at 80% 100%, rgba(217, 119, 6, 0.1), transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(15, 23, 42, 0.7), transparent 100%);
-    }
-
+    /* Ambient Dynamic Mesh Backdrop */
     .app-ambient-grid {
       position: fixed;
       inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 48px 48px;
+      background:
+        radial-gradient(circle at 12% 8%, var(--ios-tint-soft), transparent 45%),
+        radial-gradient(circle at 88% 18%, rgba(10, 132, 255, 0.10), transparent 48%),
+        radial-gradient(circle at 50% 92%, rgba(94, 92, 230, 0.08), transparent 55%);
       pointer-events: none;
-      z-index: 1;
+      z-index: 0;
+      transition: var(--spring-snappy);
     }
 
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 99px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    ::-webkit-scrollbar-thumb { background: var(--ios-separator); border-radius: 99px; }
 
     /* ==========================================================================
-       NOTIFICATION TOAST NOTIFIER
+       DYNAMIC ISLAND TOAST NOTIFIER
        ========================================================================== */
     #ui-toast-container {
       position: fixed;
-      top: max(var(--safe-top), 20px);
-      right: 24px;
+      top: calc(var(--safe-top) + 12px);
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      align-items: center;
+      gap: 8px;
       z-index: 99999;
       pointer-events: none;
+      width: 92%;
+      max-width: 400px;
     }
 
     .ui-toast {
       pointer-events: auto;
-      min-width: 320px;
-      max-width: 440px;
-      padding: 14px 18px;
-      background: rgba(15, 23, 42, 0.94);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid var(--border-elevated);
-      border-radius: var(--radius-md);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+      width: auto;
+      min-width: 260px;
+      max-width: 100%;
+      padding: 12px 18px;
+      background: rgba(22, 22, 24, 0.92);
+      backdrop-filter: blur(36px) saturate(200%);
+      -webkit-backdrop-filter: blur(36px) saturate(200%);
+      border: 0.5px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-pill);
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
-      gap: 14px;
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 500;
-      animation: toastIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      transition: var(--trans-quick);
-      position: relative;
-      overflow: hidden;
+      gap: 12px;
+      color: #ffffff;
+      font-size: 0.86rem;
+      font-weight: 600;
+      animation: islandPopIn 0.42s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
     .ui-toast::before {
       content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: var(--accent);
-      box-shadow: 0 0 12px var(--accent);
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--ios-blue);
+      box-shadow: 0 0 10px var(--ios-blue);
+      flex-shrink: 0;
     }
-    .ui-toast.success::before { background: var(--accent-emerald); box-shadow: 0 0 12px var(--accent-emerald); }
-    .ui-toast.spotify::before { background: var(--spotify-green); box-shadow: 0 0 12px var(--spotify-green); }
-    .ui-toast.error::before { background: var(--accent-rose); box-shadow: 0 0 12px var(--accent-rose); }
-    .ui-toast.info::before { background: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-cyan); }
+    .ui-toast.success::before { background: var(--ios-green); box-shadow: 0 0 10px var(--ios-green); }
+    .ui-toast.spotify::before { background: var(--ios-spotify); box-shadow: 0 0 10px var(--ios-spotify); }
+    .ui-toast.error::before { background: var(--ios-tint); box-shadow: 0 0 10px var(--ios-tint); }
+    .ui-toast.info::before { background: var(--ios-teal); box-shadow: 0 0 10px var(--ios-teal); }
 
-    @keyframes toastIn {
-      from { opacity: 0; transform: translateY(-16px) scale(0.96); }
+    @keyframes islandPopIn {
+      from { opacity: 0; transform: translateY(-24px) scale(0.85); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
     .toast-fade-out {
       opacity: 0 !important;
-      transform: translateY(-12px) scale(0.95) !important;
+      transform: translateY(-16px) scale(0.9) !important;
       transition: all 0.25s ease !important;
     }
 
     /* ==========================================================================
-       APP WORKSPACE LAYOUT
+       MAIN WORKSPACE & iPAD/MAC SPLIT-VIEW SIDEBAR
        ========================================================================== */
     #workspace-container {
       position: relative;
@@ -227,136 +219,178 @@
     aside.studio-sidebar {
       width: var(--sidebar-width);
       height: 100%;
-      background: rgba(10, 15, 26, 0.85);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border-right: 1px solid var(--border-subtle);
+      background: var(--ios-material-chrome);
+      backdrop-filter: blur(40px) saturate(190%);
+      -webkit-backdrop-filter: blur(40px) saturate(190%);
+      border-right: 0.5px solid var(--ios-separator-subtle);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: calc(var(--safe-top) + 24px) 18px calc(var(--player-dock-height) + var(--safe-bottom) + 16px) 18px;
+      padding: calc(var(--safe-top) + 20px) 14px calc(var(--mini-player-height) + var(--safe-bottom) + 24px) 14px;
       z-index: 30;
-      transition: var(--trans-spring);
+      flex-shrink: 0;
     }
 
     .sidebar-brand-block {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 6px 10px 24px 10px;
-      border-bottom: 1px solid var(--border-subtle);
+      justify-content: space-between;
+      padding: 6px 10px 18px 10px;
+    }
+
+    .brand-left-wrap {
+      display: flex;
+      align-items: center;
+      gap: 11px;
     }
 
     .brand-cube-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(145deg, var(--ios-tint), #c91834);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 24px var(--accent-glow);
-      position: relative;
+      box-shadow: 0 6px 16px var(--ios-tint-glow);
       flex-shrink: 0;
     }
-    .brand-cube-badge svg { width: 22px; height: 22px; fill: #fff; }
+    .brand-cube-badge svg { width: 21px; height: 21px; fill: #fff; }
 
-    .brand-main-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; line-height: 1.2; }
+    .brand-main-title {
+      font-size: 1.22rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ios-label-primary);
+      display: block;
+      line-height: 1.1;
+    }
     .brand-sub-badge {
-      font-size: 0.65rem;
-      font-family: var(--font-mono);
+      font-size: 0.66rem;
       font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.08em;
+      color: var(--ios-tint);
+      letter-spacing: 0.04em;
       text-transform: uppercase;
+      display: block;
       margin-top: 2px;
     }
+
+    .ios-icon-circle-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--ios-material-ultrathin);
+      border: 0.5px solid var(--ios-separator-subtle);
+      color: var(--ios-label-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--spring-snappy);
+    }
+    .ios-icon-circle-btn:hover { background: var(--ios-bg-tertiary); transform: scale(1.05); }
+    .ios-icon-circle-btn:active { transform: scale(0.92); }
+    .ios-icon-circle-btn svg { width: 17px; height: 17px; fill: currentColor; }
 
     .sidebar-menu-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-top: 24px;
+      gap: 3px;
+      overflow-y: auto;
+      padding-right: 2px;
     }
 
     .menu-group-label {
-      font-size: 0.68rem;
-      font-family: var(--font-mono);
+      font-size: 0.72rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--ios-label-tertiary);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 6px 12px;
+      letter-spacing: 0.06em;
+      padding: 14px 12px 6px 12px;
     }
 
     .liquid-nav-item {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 12px 14px;
-      border-radius: var(--radius-md);
-      color: var(--text-secondary);
-      font-size: 0.9rem;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--ios-label-secondary);
+      font-size: 0.92rem;
       font-weight: 600;
       cursor: pointer;
-      transition: var(--trans-quick);
+      transition: var(--spring-snappy);
     }
-    .liquid-nav-item svg { width: 20px; height: 20px; fill: currentColor; }
-    .liquid-nav-item:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+    .liquid-nav-item svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--ios-tint);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .liquid-nav-item:hover {
+      color: var(--ios-label-primary);
+      background: var(--ios-material-ultrathin);
+    }
+    .liquid-nav-item:active { transform: scale(0.98); }
     .liquid-nav-item.active {
-      color: #fff;
-      background: var(--accent-dim);
-      border: 1px solid var(--border-accent);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      color: #ffffff;
+      background: var(--ios-tint);
+      box-shadow: 0 4px 14px var(--ios-tint-glow);
     }
-    .liquid-nav-item.active svg { fill: var(--accent); transform: scale(1.08); }
+    .liquid-nav-item.active svg { fill: #ffffff; }
 
+    /* User Apple ID Style Pill Card */
     .sidebar-user-card {
-      background: var(--bg-glass-card);
-      border: 1px solid var(--border-subtle);
+      background: var(--ios-material-thin);
+      border: 0.5px solid var(--ios-separator-subtle);
       border-radius: var(--radius-md);
-      padding: 12px 14px;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      transition: var(--trans-quick);
+      transition: var(--spring-snappy);
+      margin-top: 12px;
     }
-    .sidebar-user-card:hover {
-      background: var(--bg-surface-elevated);
-      border-color: var(--border-elevated);
-      transform: translateY(-2px);
-    }
+    .sidebar-user-card:hover { background: var(--ios-bg-tertiary); }
+    .sidebar-user-card:active { transform: scale(0.97); }
 
-    .user-card-profile { display: flex; align-items: center; gap: 12px; overflow: hidden; }
+    .user-card-profile { display: flex; align-items: center; gap: 10px; overflow: hidden; }
     .liquid-user-btn {
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: var(--bg-surface-elevated);
-      border: 1.5px solid var(--border-elevated);
+      background: linear-gradient(135deg, var(--ios-tint), var(--ios-indigo));
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #fff;
       flex-shrink: 0;
       overflow: hidden;
     }
     .liquid-user-btn img { width: 100%; height: 100%; object-fit: cover; }
 
-    body.is-premium-tier .liquid-user-btn {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #000;
-      border-color: #fde68a;
-      box-shadow: 0 0 16px var(--accent-glow);
+    .user-card-info { display: flex; flex-direction: column; overflow: hidden; }
+    .user-card-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ios-label-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .user-card-role {
+      font-size: 0.72rem;
+      color: var(--ios-label-secondary);
+      font-weight: 500;
     }
 
-    .user-card-info { display: flex; flex-direction: column; overflow: hidden; }
-    .user-card-name { font-size: 0.88rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .user-card-role { font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-muted); }
-
+    /* ==========================================================================
+       MAIN STAGE & STICKY TRANSLUCENT NAVIGATION HEADER
+       ========================================================================== */
     main.studio-main-body {
       flex: 1;
       height: 100%;
@@ -367,244 +401,279 @@
     }
 
     header.studio-action-bar {
-      height: calc(var(--safe-top) + 68px);
-      padding-top: var(--safe-top);
-      padding-left: 36px;
-      padding-right: 36px;
+      min-height: calc(var(--safe-top) + 60px);
+      padding: calc(var(--safe-top) + 8px) 24px 8px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      background: rgba(8, 13, 26, 0.7);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-subtle);
+      gap: 14px;
+      background: var(--ios-material-chrome);
+      backdrop-filter: blur(35px) saturate(190%);
+      -webkit-backdrop-filter: blur(35px) saturate(190%);
+      border-bottom: 0.5px solid var(--ios-separator-subtle);
       z-index: 25;
     }
 
+    /* Native iOS Spotlight Search Bar */
     .search-dock-module {
       flex: 1;
-      max-width: 580px;
+      max-width: 480px;
       position: relative;
       display: flex;
       align-items: center;
     }
-    .search-dock-module svg {
+    .search-dock-module svg.search-icon {
       position: absolute;
-      left: 16px;
-      width: 18px;
-      height: 18px;
-      fill: var(--text-muted);
+      left: 12px;
+      width: 16px;
+      height: 16px;
+      fill: var(--ios-label-secondary);
       pointer-events: none;
     }
 
     .cloud-input {
       width: 100%;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-full);
-      padding: 12px 18px 12px 46px;
-      color: #fff;
-      font-family: var(--font-stack);
-      font-size: 0.9rem;
+      background: var(--ios-bg-secondary);
+      border: 0.5px solid var(--ios-separator-subtle);
+      border-radius: 11px;
+      padding: 9px 78px 9px 36px;
+      color: var(--ios-label-primary);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
       font-weight: 500;
       outline: none;
-      transition: var(--trans-quick);
+      transition: var(--spring-snappy);
     }
+    .cloud-input::placeholder { color: var(--ios-label-tertiary); }
     .cloud-input:focus {
-      border-color: var(--accent);
-      background: rgba(15, 23, 42, 0.98);
-      box-shadow: 0 0 0 4px var(--accent-dim);
+      background: var(--ios-bg-tertiary);
+      border-color: var(--ios-tint);
+      box-shadow: 0 0 0 3px var(--ios-tint-soft);
     }
 
     .search-quick-btn {
       position: absolute;
-      right: 6px;
-      top: 6px;
-      bottom: 6px;
-      padding: 0 16px;
-      border-radius: var(--radius-full);
-      background: var(--accent);
+      right: 5px;
+      top: 5px;
+      bottom: 5px;
+      padding: 0 13px;
+      border-radius: 8px;
+      background: var(--ios-tint);
       color: #fff;
       border: none;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: var(--trans-quick);
+      transition: var(--spring-snappy);
     }
-    .search-quick-btn:hover { background: var(--accent-hover); box-shadow: 0 0 14px var(--accent-glow); }
+    .search-quick-btn:hover { background: var(--ios-tint-hover); }
+    .search-quick-btn:active { transform: scale(0.94); }
 
     .action-bar-right-controls {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 10px;
     }
 
+    /* Apple Music Lossless Badge Pill */
     .quality-spec-badge {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-elevated);
-      border-radius: var(--radius-full);
+      gap: 6px;
+      padding: 6px 11px;
+      background: var(--ios-bg-secondary);
+      border: 0.5px solid var(--ios-separator-subtle);
+      border-radius: var(--radius-pill);
+    }
+    .quality-spec-badge svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--ios-teal);
     }
     .quality-spec-badge label {
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
+      font-size: 0.68rem;
       font-weight: 700;
-      color: var(--accent-cyan);
+      color: var(--ios-label-secondary);
       text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
     .liquid-quality-select {
       background: transparent;
       border: none;
-      color: #fff;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
+      color: var(--ios-label-primary);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
       font-weight: 700;
       outline: none;
       cursor: pointer;
     }
     .liquid-quality-select option {
-      background: #0f172a;
-      color: #fff;
+      background: var(--ios-bg-secondary);
+      color: var(--ios-label-primary);
     }
 
+    /* Scrollable Content Area */
     .cockpit-body-scroll {
       flex: 1;
       overflow-y: auto;
       overflow-x: hidden;
-      padding: 32px 36px calc(var(--player-dock-height) + var(--safe-bottom) + 36px) 36px;
+      padding: 20px 24px calc(var(--mini-player-height) + var(--safe-bottom) + 90px) 24px;
       display: flex;
       flex-direction: column;
-      gap: 36px;
+      gap: 28px;
+      -webkit-overflow-scrolling: touch;
     }
 
+    /* iOS Large Title Bar inside Scroll View */
+    .ios-large-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 10px;
+      border-bottom: 0.5px solid var(--ios-separator-subtle);
+    }
+    .ios-super-subtitle {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ios-tint);
+      margin-bottom: 2px;
+    }
+    .ios-large-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ios-label-primary);
+      line-height: 1.08;
+    }
+
+    /* ==========================================================================
+       APPLE MUSIC SHOWCASE BENTO CARDS
+       ========================================================================== */
     .hero-summary-deck {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 24px;
+      grid-template-columns: 1.65fr 1fr;
+      gap: 16px;
     }
 
     .hero-panel-card {
       position: relative;
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
-      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, #2a1219 0%, #14141c 55%, #0d1b2a 100%);
+      border: 0.5px solid rgba(255, 255, 255, 0.14);
       border-radius: var(--radius-lg);
-      padding: 32px;
+      padding: 24px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
     }
-    .hero-panel-card::after {
-      content: '';
-      position: absolute;
-      right: -30px;
-      bottom: -30px;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      pointer-events: none;
+    body.ios-light-mode .hero-panel-card {
+      background: linear-gradient(135deg, #ffeff2 0%, #f3f4ff 60%, #e8f4ff 100%);
+      border-color: rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
     }
 
     .hero-title-tag {
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--ios-tint);
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
     .hero-title-tag::before {
       content: '';
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
+      background: var(--ios-tint);
     }
 
     .hero-big-title {
-      font-size: 2.1rem;
+      font-size: 1.65rem;
       font-weight: 800;
-      line-height: 1.2;
-      color: #fff;
-      letter-spacing: -0.03em;
-      margin-top: 10px;
+      line-height: 1.18;
+      color: var(--ios-label-primary);
+      letter-spacing: -0.025em;
+      margin-top: 6px;
     }
 
     .hero-desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      max-width: 600px;
-      margin-top: 10px;
+      font-size: 0.88rem;
+      color: var(--ios-label-secondary);
+      line-height: 1.5;
+      max-width: 540px;
+      margin-top: 6px;
     }
 
     .hero-status-pills {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-top: 26px;
+      gap: 8px;
+      margin-top: 20px;
       flex-wrap: wrap;
     }
 
     .control-pill-btn {
-      padding: 10px 20px;
-      border-radius: var(--radius-full);
-      font-size: 0.85rem;
-      font-weight: 700;
-      border: 1px solid var(--border-elevated);
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
+      padding: 8px 15px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 0.5px solid var(--ios-separator-subtle);
+      background: var(--ios-material-thin);
+      color: var(--ios-label-primary);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       cursor: pointer;
-      transition: var(--trans-quick);
-      backdrop-filter: blur(12px);
+      transition: var(--spring-snappy);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
-    .control-pill-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      transform: translateY(-2px);
+    .control-pill-btn:hover { background: var(--ios-bg-tertiary); }
+    .control-pill-btn:active { transform: scale(0.95); }
+    .control-pill-btn.primary {
+      background: var(--ios-tint);
+      border-color: var(--ios-tint);
+      color: #ffffff;
     }
     .control-pill-btn.spotify-btn {
-      background: rgba(29, 185, 84, 0.15);
-      border-color: var(--spotify-green);
-      color: #1db954;
+      background: rgba(30, 215, 96, 0.16);
+      border-color: rgba(30, 215, 96, 0.45);
+      color: #1ed760;
+    }
+    body.ios-light-mode .control-pill-btn.spotify-btn {
+      background: #1ed760;
+      color: #000000;
     }
     .control-pill-btn.spotify-btn:hover {
-      background: var(--spotify-green);
-      color: #000;
-      box-shadow: 0 0 18px var(--spotify-glow);
+      background: var(--ios-spotify);
+      color: #000000;
     }
 
+    /* iOS Grouped Telemetry Widget Card */
     .hero-stats-card {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--border-subtle);
+      background: var(--ios-bg-secondary);
+      border: 0.5px solid var(--ios-separator-subtle);
       border-radius: var(--radius-lg);
-      padding: 26px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 16px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      gap: 12px;
     }
 
     .stats-row-metric {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-subtle);
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 0.5px solid var(--ios-separator-subtle);
     }
     .stats-row-metric:last-child {
       border-bottom: none;
@@ -612,324 +681,408 @@
     }
 
     .stats-label {
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ios-label-secondary);
     }
     .stats-digit {
-      font-size: 1.4rem;
-      font-weight: 800;
+      font-size: 0.92rem;
+      font-weight: 700;
       font-family: var(--font-mono);
-      color: #fff;
+      color: var(--ios-label-primary);
     }
 
+    /* ==========================================================================
+       COLLECTIONS & PLAYLISTS SQUIRCLE SHELF
+       ========================================================================== */
     .cockpit-section-block {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 14px;
+    }
+
+    .section-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .section-title-label {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: #fff;
+      color: var(--ios-label-primary);
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-    .section-title-label::before {
-      content: '';
-      width: 4px;
-      height: 20px;
-      background: var(--accent);
-      border-radius: 99px;
-      box-shadow: 0 0 12px var(--accent);
+      gap: 8px;
     }
 
     .grid-deck-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 14px;
     }
 
     .cockpit-card {
-      background: var(--bg-glass-card);
-      border: 1px solid var(--border-subtle);
+      background: var(--ios-bg-secondary);
+      border: 0.5px solid var(--ios-separator-subtle);
       border-radius: var(--radius-md);
-      padding: 22px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      min-height: 112px;
       cursor: pointer;
-      transition: var(--trans-spring);
+      transition: var(--spring-snappy);
+      position: relative;
+      overflow: hidden;
     }
     .cockpit-card:hover {
-      background: var(--bg-surface-elevated);
-      border-color: var(--border-elevated);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+      background: var(--ios-bg-tertiary);
+      transform: translateY(-2px);
     }
+    .cockpit-card:active { transform: scale(0.97); }
 
-    .cockpit-card-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
+    .cockpit-card-icon-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--ios-tint-soft);
+      color: var(--ios-tint);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
     }
-    .cockpit-card-icon svg { width: 22px; height: 22px; fill: var(--text-secondary); }
+    .cockpit-card-icon-badge svg { width: 18px; height: 18px; fill: currentColor; }
 
     .cockpit-card-title {
-      font-size: 1.05rem;
+      font-size: 0.96rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--ios-label-primary);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     .cockpit-card-subtitle {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 4px;
+      font-size: 0.76rem;
+      color: var(--ios-label-secondary);
+      margin-top: 3px;
     }
 
+    /* ==========================================================================
+       QUICK FILTER CHIPS & LOCAL SEARCH BAR
+       ========================================================================== */
+    .ios-filter-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .ios-segmented-pills {
+      display: inline-flex;
+      background: var(--ios-bg-secondary);
+      padding: 3px;
+      border-radius: 10px;
+      border: 0.5px solid var(--ios-separator-subtle);
+      gap: 2px;
+    }
+    .ios-seg-btn {
+      border: none;
+      background: transparent;
+      color: var(--ios-label-secondary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: var(--spring-snappy);
+    }
+    .ios-seg-btn.active {
+      background: var(--ios-bg-tertiary);
+      color: var(--ios-label-primary);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+    }
+
+    .ios-inline-filter-input {
+      background: var(--ios-bg-secondary);
+      border: 0.5px solid var(--ios-separator-subtle);
+      border-radius: 9px;
+      padding: 6px 12px;
+      color: var(--ios-label-primary);
+      font-size: 0.8rem;
+      outline: none;
+      width: 210px;
+    }
+    .ios-inline-filter-input:focus { border-color: var(--ios-tint); }
+
+    /* ==========================================================================
+       iOS INSET GROUPED TRACK LIST TABLE
+       ========================================================================== */
     .stream-pipeline-table {
+      background: var(--ios-bg-secondary);
+      border: 0.5px solid var(--ios-separator-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 6px;
     }
 
     .track-row-node {
       display: grid;
-      grid-template-columns: 46px 1fr 130px 140px 110px;
+      grid-template-columns: 38px 46px 1fr auto auto auto;
       align-items: center;
-      padding: 12px 20px;
-      border-radius: var(--radius-md);
-      background: rgba(15, 23, 42, 0.45);
-      border: 1px solid var(--border-subtle);
+      gap: 12px;
+      padding: 10px 16px;
+      background: transparent;
+      border-bottom: 0.5px solid var(--ios-separator-subtle);
       cursor: pointer;
-      transition: var(--trans-quick);
+      transition: background 0.18s ease;
     }
-    .track-row-node:hover {
-      background: rgba(30, 41, 59, 0.75);
-      border-color: var(--border-elevated);
-      transform: translateX(4px);
-    }
+    .track-row-node:last-child { border-bottom: none; }
+    .track-row-node:hover { background: var(--ios-material-ultrathin); }
+    .track-row-node:active { background: var(--ios-bg-tertiary); }
     .track-row-node.current-playing {
-      background: linear-gradient(90deg, var(--accent-dim) 0%, rgba(30, 41, 59, 0.8) 100%);
-      border-color: var(--accent);
+      background: var(--ios-tint-soft);
+    }
+    .track-row-node.current-playing .track-name-main {
+      color: var(--ios-tint);
     }
 
     .track-idx-col {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-family: var(--font-mono);
-      font-weight: 700;
-      color: var(--text-muted);
+      font-weight: 600;
+      color: var(--ios-label-tertiary);
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .track-row-art {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: var(--ios-bg-tertiary);
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 0.5px solid var(--ios-separator-subtle);
     }
 
     .track-meta-col {
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      padding-right: 18px;
+      padding-right: 8px;
     }
     .track-name-main {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #fff;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--ios-label-primary);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     .track-subpath {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      margin-top: 3px;
-    }
-
-    .track-codec-col {
-      font-size: 0.7rem;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      color: var(--accent-cyan);
-      background: rgba(6, 182, 212, 0.1);
-      border: 1px solid rgba(6, 182, 212, 0.25);
-      padding: 3px 10px;
-      border-radius: var(--radius-full);
-      width: fit-content;
-      text-transform: uppercase;
-    }
-
-    .track-cache-col {
-      font-size: 0.75rem;
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .status-ping {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--text-muted);
-    }
-    .status-ping.cached {
-      background: var(--accent-emerald);
-      box-shadow: 0 0 10px var(--accent-emerald);
-    }
-
-    .track-actions-col {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-    .action-icon-hit {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 6px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--trans-quick);
-    }
-    .action-icon-hit:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
-    }
-    .action-icon-hit.active-fav { color: var(--accent-rose); }
-    .action-icon-hit svg { width: 18px; height: 18px; fill: currentColor; }
-
-    footer.bottom-cockpit-dock {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      height: calc(var(--player-dock-height) + var(--safe-bottom));
-      padding-bottom: var(--safe-bottom);
-      padding-left: 32px; padding-right: 32px;
-      background: rgba(8, 13, 26, 0.88);
-      backdrop-filter: blur(32px) saturate(200%);
-      border-top: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 100;
-    }
-
-    .dock-meta-unit {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      width: 28%;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .dock-cover-thumb {
-      width: 56px;
-      height: 56px;
-      border-radius: var(--radius-md);
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-elevated);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-    .dock-cover-thumb img { width: 100%; height: 100%; object-fit: cover; display: none; }
-    .dock-cover-thumb svg { width: 26px; height: 26px; fill: var(--text-muted); }
-
-    .dock-track-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #fff;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .dock-track-sub {
-      font-size: 0.76rem;
-      color: var(--accent);
-      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--ios-label-secondary);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       margin-top: 2px;
     }
 
+    .track-codec-col {
+      font-size: 0.64rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--ios-label-secondary);
+      background: var(--ios-material-ultrathin);
+      border: 0.5px solid var(--ios-separator-subtle);
+      padding: 2px 7px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .track-cache-col {
+      font-size: 0.73rem;
+      color: var(--ios-label-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .status-ping {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ios-label-tertiary);
+    }
+    .status-ping.cached {
+      background: var(--ios-green);
+      box-shadow: 0 0 8px var(--ios-green);
+    }
+
+    .track-actions-col {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+    .action-icon-hit {
+      background: transparent;
+      border: none;
+      color: var(--ios-label-secondary);
+      cursor: pointer;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--spring-snappy);
+    }
+    .action-icon-hit:hover {
+      color: var(--ios-label-primary);
+      background: var(--ios-material-ultrathin);
+    }
+    .action-icon-hit:active { transform: scale(0.88); }
+    .action-icon-hit.active-fav { color: var(--ios-tint); }
+    .action-icon-hit.active-mode { color: var(--ios-tint); background: var(--ios-tint-soft); }
+    .action-icon-hit svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ==========================================================================
+       FLOATING APPLE MUSIC MINI-PLAYER DOCK
+       ========================================================================== */
+    footer.bottom-cockpit-dock {
+      position: fixed;
+      bottom: calc(var(--safe-bottom) + 12px);
+      left: calc(var(--sidebar-width) + 16px);
+      right: 16px;
+      height: var(--mini-player-height);
+      padding: 0 18px;
+      background: var(--ios-material-thick);
+      backdrop-filter: blur(45px) saturate(210%);
+      -webkit-backdrop-filter: blur(45px) saturate(210%);
+      border: 0.5px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      transition: var(--spring-snappy);
+    }
+    body.ios-light-mode footer.bottom-cockpit-dock {
+      border-color: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .dock-meta-unit {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 30%;
+      min-width: 180px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .dock-cover-thumb {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background: var(--ios-bg-tertiary);
+      border: 0.5px solid var(--ios-separator-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+    }
+    .dock-cover-thumb img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .dock-cover-thumb svg { width: 22px; height: 22px; fill: var(--ios-label-tertiary); }
+
+    .dock-track-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ios-label-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .dock-track-sub {
+      font-size: 0.75rem;
+      color: var(--ios-label-secondary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-top: 1px;
+    }
+
     .dock-controls-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
-      width: 44%;
-      max-width: 640px;
+      gap: 4px;
+      width: 42%;
+      max-width: 520px;
     }
 
     .dock-buttons-row {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 16px;
     }
 
     .circle-play-trigger {
-      width: 46px;
-      height: 46px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: #fff;
-      color: #000;
+      background: var(--ios-label-primary);
+      color: var(--ios-bg-primary);
       border: none;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
-      transition: var(--trans-quick);
+      transition: var(--spring-snappy);
     }
-    .circle-play-trigger svg { width: 22px; height: 22px; fill: currentColor; }
+    .circle-play-trigger:active { transform: scale(0.9); }
+    .circle-play-trigger svg { width: 20px; height: 20px; fill: currentColor; }
 
     .dock-scrub-bar {
       width: 100%;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
     }
     .dock-time-stamp {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-family: var(--font-mono);
-      color: var(--text-muted);
-      width: 42px;
+      color: var(--ios-label-tertiary);
+      width: 34px;
       text-align: center;
     }
 
     .dock-progress-rail {
       flex: 1;
-      height: 5px;
+      height: 4px;
       border-radius: 99px;
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--ios-separator);
       position: relative;
       cursor: pointer;
+      transition: height 0.15s ease;
     }
+    .dock-progress-rail:hover { height: 6px; }
     .dock-progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--accent-cyan));
+      background: var(--ios-label-primary);
       border-radius: 99px;
       width: 0%;
       transition: width 0.1s linear;
@@ -939,97 +1092,336 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 16px;
+      gap: 8px;
       width: 28%;
+    }
+
+    .ios-volume-Mini {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 90px;
+    }
+    .ios-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 99px;
+      background: var(--ios-separator);
+      outline: none;
+      cursor: pointer;
+    }
+    .ios-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.4);
     }
 
     .studio-live-spectrum {
       display: flex;
       align-items: flex-end;
-      gap: 3px;
-      height: 22px;
+      gap: 2.5px;
+      height: 16px;
+      padding: 0 4px;
     }
     .spectrum-bar {
-      width: 3px;
-      background: var(--accent);
-      border-radius: 2px;
+      width: 2.5px;
+      background: var(--ios-tint);
+      border-radius: 99px;
       height: 4px;
       transition: height 0.15s ease;
     }
 
     /* ==========================================================================
-       SPOTLIGHT FULLSCREEN LYRICS
-       ========================================================================= */
+       MOBILE BOTTOM TAB BAR (iPHONE PORTRAIT MODE)
+       ========================================================================== */
+    .ios-mobile-tabbar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: calc(var(--mobile-tab-height) + var(--safe-bottom));
+      padding-bottom: var(--safe-bottom);
+      background: var(--ios-material-chrome);
+      backdrop-filter: blur(35px) saturate(190%);
+      -webkit-backdrop-filter: blur(35px) saturate(190%);
+      border-top: 0.5px solid var(--ios-separator-subtle);
+      z-index: 95;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .ios-tab-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: var(--ios-label-tertiary);
+      background: none;
+      border: none;
+      font-size: 0.65rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 0;
+    }
+    .ios-tab-btn svg { width: 22px; height: 22px; fill: currentColor; }
+    .ios-tab-btn.active { color: var(--ios-tint); }
+
+    /* ==========================================================================
+       APPLE MUSIC FULLSCREEN NOW PLAYING & SING LYRICS SHEET
+       ========================================================================== */
     #lyrics-fullscreen-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.98) 0%, rgba(3, 7, 18, 0.99) 100%);
-      backdrop-filter: blur(48px);
+      background: rgba(12, 12, 16, 0.92);
+      backdrop-filter: blur(65px) saturate(210%);
+      -webkit-backdrop-filter: blur(65px) saturate(210%);
       z-index: 2000;
-      display: none;
+      display: flex;
       flex-direction: column;
-      padding: calc(var(--safe-top) + 24px) 50px calc(var(--safe-bottom) + 30px) 50px;
+      padding: calc(var(--safe-top) + 14px) 40px calc(var(--safe-bottom) + 24px) 40px;
+      transform: translateY(105%);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--spring-sheet);
+      overflow: hidden;
     }
-    #lyrics-fullscreen-overlay.is-open { display: flex; }
+    #lyrics-fullscreen-overlay.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Dynamic blurred album art background inside sheet */
+    .sheet-dynamic-bg {
+      position: absolute;
+      inset: -60px;
+      background-size: cover;
+      background-position: center;
+      filter: blur(80px) saturate(190%) brightness(0.42);
+      opacity: 0.75;
+      z-index: -1;
+      pointer-events: none;
+      transition: background-image 0.6s ease;
+    }
+
+    .sheet-grabber-bar {
+      width: 40px;
+      height: 5px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.3);
+      margin: 0 auto 10px auto;
+      cursor: pointer;
+    }
 
     .lyrics-top-nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 56px;
+      height: 44px;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
     }
     .lyrics-close-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border-elevated);
+      background: rgba(255, 255, 255, 0.12);
+      border: none;
       border-radius: 50%;
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
       cursor: pointer;
+      transition: var(--spring-snappy);
     }
+    .lyrics-close-btn:hover { background: rgba(255, 255, 255, 0.22); }
 
     .lyrics-body-grid {
       flex: 1;
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 60px;
+      grid-template-columns: 420px 1fr;
+      gap: 56px;
       align-items: center;
-      max-width: 1200px;
+      max-width: 1180px;
       margin: 0 auto;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .sheet-left-player-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
       width: 100%;
     }
 
     .lyrics-album-art {
-      width: 380px;
-      height: 380px;
-      border-radius: var(--radius-lg);
+      width: 320px;
+      height: 320px;
+      border-radius: 22px;
       object-fit: cover;
-      border: 1px solid var(--border-elevated);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      border: 0.5px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.65);
+      transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .lyrics-album-art.is-playing-scale {
+      transform: scale(1.03);
+    }
+
+    .sheet-track-meta-box {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .sheet-scrubber-block {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sheet-rail {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 99px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .sheet-rail-fill {
+      height: 100%;
+      width: 0%;
+      background: #ffffff;
+      border-radius: 99px;
+    }
+
+    .sheet-transport-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      width: 100%;
+    }
+    .sheet-transport-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    .sheet-transport-btn:active { transform: scale(0.86); }
+    .sheet-transport-btn svg { width: 34px; height: 34px; fill: currentColor; }
+    .sheet-transport-btn.play-hero svg { width: 48px; height: 48px; }
+
+    /* Apple Music Sing Scrollable Lyrics + Spotlight Line */
+    .sheet-right-lyrics-column {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
     }
 
     .spotlight-lyric-text {
-      font-size: 2.6rem;
+      font-size: 1.55rem;
       font-weight: 800;
-      line-height: 1.4;
+      line-height: 1.35;
       color: #ffffff;
-      text-shadow: 0 0 40px var(--accent-glow);
-      text-align: center;
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 0.5px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      text-align: left;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+
+    .apple-sing-scroll-box {
+      flex: 1;
+      max-height: 56vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 40px 12px 120px 8px;
+      scroll-behavior: smooth;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 85%, transparent 100%);
+    }
+
+    .sing-lyric-line {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.32);
+      line-height: 1.35;
+      cursor: pointer;
+      transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-origin: left center;
+      filter: blur(0.4px);
+    }
+    .sing-lyric-line:hover {
+      color: rgba(255, 255, 255, 0.75);
+      filter: blur(0px);
+    }
+    .sing-lyric-line.active-sing-line {
+      color: #ffffff;
+      font-size: 1.75rem;
+      filter: blur(0px);
+      text-shadow: 0 4px 24px rgba(255, 255, 255, 0.35);
     }
 
     /* ==========================================================================
-       MODALS & AUTH STAGES
+       SLIDE-OVER UP NEXT QUEUE & SLEEP TIMER DRAWER
+       ========================================================================== */
+    #ios-queue-drawer {
+      position: fixed;
+      top: calc(var(--safe-top) + 12px);
+      bottom: calc(var(--mini-player-height) + var(--safe-bottom) + 24px);
+      right: 16px;
+      width: 360px;
+      max-width: calc(100vw - 32px);
+      background: var(--ios-material-thick);
+      backdrop-filter: blur(45px) saturate(200%);
+      -webkit-backdrop-filter: blur(45px) saturate(200%);
+      border: 0.5px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      z-index: 1500;
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+      transform: translateX(115%);
+      transition: var(--spring-snappy);
+    }
+    #ios-queue-drawer.is-open { transform: translateX(0); }
+
+    /* ==========================================================================
+       AUTHENTICATION GATEWAY & iOS ALERT MODALS
        ========================================================================== */
     #fullscreen-auth-stage {
       position: fixed;
       inset: 0;
-      z-index: 1000;
-      background: var(--bg-deep);
+      z-index: 2500;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(35px);
+      -webkit-backdrop-filter: blur(35px);
       display: flex;
-      transition: var(--trans-spring);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: var(--spring-snappy);
     }
     #fullscreen-auth-stage.stage-hidden {
       opacity: 0;
@@ -1037,88 +1429,67 @@
       pointer-events: none;
     }
 
-    .auth-banner-pane {
-      flex: 1.1;
-      background: radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 60%), #070a13;
-      border-right: 1px solid var(--border-subtle);
-      padding: calc(var(--safe-top) + 60px) 70px 60px 70px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .auth-interaction-pane {
-      flex: 0.9;
-      background: #090d18;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-    }
-    .auth-console-container {
+    .ios-auth-sheet-card {
       width: 100%;
       max-width: 420px;
+      background: var(--ios-bg-secondary);
+      border: 0.5px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-xl);
+      padding: 32px 28px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 22px;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.75);
+      text-align: center;
+      position: relative;
     }
 
     .brand-oauth-btn {
       width: 100%;
-      padding: 13px 20px;
-      border-radius: var(--radius-full);
-      font-size: 0.95rem;
+      padding: 13px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.94rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       cursor: pointer;
-      transition: var(--trans-quick);
-      border: 1px solid transparent;
+      transition: var(--spring-snappy);
+      border: none;
+    }
+    .brand-oauth-btn:active { transform: scale(0.97); }
+    .brand-oauth-btn.spotify {
+      background: var(--ios-spotify);
+      color: #000;
     }
     .brand-oauth-btn.google {
-      background: #fff;
-      color: #1f2937;
-      border-color: #e5e7eb;
+      background: #ffffff;
+      color: #1c1c1e;
     }
-    .brand-oauth-btn.google:hover {
-      background: #f3f4f6;
-      transform: translateY(-2px);
-    }
-    .brand-oauth-btn.spotify {
-      background: #1db954;
-      color: #000;
-      box-shadow: 0 4px 16px var(--spotify-glow);
-    }
-    .brand-oauth-btn.spotify:hover {
-      background: #1ed760;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(29, 185, 84, 0.6);
-    }
-    .brand-oauth-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .brand-oauth-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
 
     .auth-or-divider {
       display: flex;
       align-items: center;
-      gap: 14px;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      font-family: var(--font-mono);
+      gap: 12px;
+      color: var(--ios-label-tertiary);
+      font-size: 0.74rem;
+      font-weight: 700;
     }
     .auth-or-divider::before, .auth-or-divider::after {
       content: '';
       flex: 1;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.08);
+      height: 0.5px;
+      background: var(--ios-separator);
     }
 
     #custom-prompt-modal, #confirm-logout-modal, #playlist-picker-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.82);
+      background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -1128,36 +1499,66 @@
     #custom-prompt-modal.is-open, #confirm-logout-modal.is-open, #playlist-picker-modal.is-open { display: flex; }
 
     .prompt-box-dialog, .playlist-picker-card {
-      background: #0f172a;
-      border: 1px solid var(--border-elevated);
-      border-radius: var(--radius-lg);
+      background: var(--ios-material-thick);
+      backdrop-filter: blur(40px);
+      border: 0.5px solid rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
       width: 100%;
-      max-width: 440px;
-      padding: 30px;
+      max-width: 360px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+      gap: 16px;
+      box-shadow: 0 24px 54px rgba(0, 0, 0, 0.65);
     }
 
     .playlist-select-chip {
-      padding: 14px 18px;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      color: #fff;
+      padding: 12px 14px;
+      background: var(--ios-bg-tertiary);
+      border-radius: var(--radius-sm);
+      color: var(--ios-label-primary);
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: var(--trans-quick);
+      transition: var(--spring-snappy);
     }
     .playlist-select-chip:hover {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateX(4px);
+      background: var(--ios-tint);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS FOR iPHONE / COMPACT VIEWPORTS
+       ========================================================================== */
+    @media (max-width: 900px) {
+      aside.studio-sidebar { display: none; }
+      .ios-mobile-tabbar { display: flex; }
+      footer.bottom-cockpit-dock {
+        left: 10px;
+        right: 10px;
+        bottom: calc(var(--mobile-tab-height) + var(--safe-bottom) + 8px);
+        padding: 0 12px;
+      }
+      .dock-controls-unit { width: auto; }
+      .dock-scrub-bar, .dock-utilities-unit .ios-volume-Mini, .dock-utilities-unit .studio-live-spectrum {
+        display: none;
+      }
+      .dock-meta-unit { width: 58%; }
+      .hero-summary-deck { grid-template-columns: 1fr; }
+      .lyrics-body-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        overflow-y: auto;
+      }
+      .lyrics-album-art { width: 200px; height: 200px; }
+      #lyrics-fullscreen-overlay { padding: calc(var(--safe-top) + 10px) 20px calc(var(--safe-bottom) + 16px) 20px; }
+      .track-codec-col, .track-cache-col { display: none; }
+      .track-row-node { grid-template-columns: 28px 42px 1fr auto; }
+      header.studio-action-bar { padding-left: 14px; padding-right: 14px; }
+      .cockpit-body-scroll { padding-left: 14px; padding-right: 14px; }
     }
   </style>
 </head>
@@ -1166,168 +1567,240 @@
   <div class="app-ambient-grid"></div>
   <div id="ui-toast-container"></div>
 
-  <!-- STUDIO WORKSPACE -->
+  <!-- MAIN iOS / iPadOS WORKSPACE -->
   <div id="workspace-container">
     
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR (iPadOS / macOS Split View) -->
     <aside class="studio-sidebar" id="app-sidebar-nav">
-      <div>
+      <div style="display: flex; flex-direction: column; overflow: hidden; flex: 1;">
         <div class="sidebar-brand-block">
-          <div class="brand-cube-badge">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          <div class="brand-left-wrap">
+            <div class="brand-cube-badge">
+              <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            </div>
+            <div>
+              <span class="brand-main-title">JRmusic</span>
+              <span class="brand-sub-badge" id="cockpit-tier-label">Apple Lossless</span>
+            </div>
           </div>
-          <div>
-            <span class="brand-main-title">JRmusic</span>
-            <span class="brand-sub-badge" id="cockpit-tier-label">Cloud Studio</span>
-          </div>
+          <button class="ios-icon-circle-btn" onclick="iOSExtras.toggleTheme()" title="Toggle Light/Dark Appearance">
+            <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+          </button>
         </div>
 
         <nav class="sidebar-menu-list">
-          <div class="menu-group-label">Routing Console</div>
+          <div class="menu-group-label">Apple Music</div>
           <div class="liquid-nav-item active" id="nav-main-home" onclick="AppNavigation.switchStage('home')">
-            <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-            <span>Console Master</span>
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Listen Now</span>
           </div>
           <div class="liquid-nav-item" id="nav-all-musics" onclick="AppNavigation.switchStage('all-musics')">
-            <svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
-            <span>Network Library</span>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span>Browse Catalog</span>
           </div>
+          <div class="liquid-nav-item" id="nav-recent-history" onclick="iOSExtras.showRecentHistory()">
+            <svg viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+            <span>Recently Played</span>
+          </div>
+
+          <div class="menu-group-label">Library</div>
           <div class="liquid-nav-item" id="nav-my-playlists" onclick="AppNavigation.switchStage('my-playlists')">
-            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            <span>Playlists Vault</span>
+            <svg viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>
+            <span>Playlists</span>
+          </div>
+          <div class="liquid-nav-item" onclick="TrackListView.renderList('Favorite Musics', PlaybackState.favorites)">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>Favorite Songs</span>
           </div>
           <div class="liquid-nav-item" id="nav-offlines" onclick="AppNavigation.switchStage('offlines')">
             <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
-            <span>Offline Edge</span>
+            <span>Downloaded</span>
+          </div>
+
+          <div class="menu-group-label">Utilities</div>
+          <div class="liquid-nav-item" onclick="iOSExtras.cycleSleepTimer()">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+            <span id="sidebar-sleep-label">Sleep Timer: Off</span>
           </div>
           <div class="liquid-nav-item" onclick="AuthModalController.handleAvatarClick()">
-            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
-            <span>Account Prefs</span>
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span>Account & Sync</span>
           </div>
         </nav>
       </div>
 
+      <!-- Apple ID Profile Card -->
       <div class="sidebar-user-card" onclick="AuthModalController.handleAvatarClick()">
         <div class="user-card-profile">
           <div class="liquid-user-btn" id="user-avatar-initial">?</div>
           <div class="user-card-info">
             <span class="user-card-name" id="user-display-name">Not Signed In</span>
-            <span class="user-card-role" id="user-tier-label">Standard</span>
+            <span class="user-card-role" id="user-tier-label">Tap to Sign In</span>
           </div>
         </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--ios-label-tertiary)"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       </div>
     </aside>
 
-    <!-- MAIN BODY -->
+    <!-- MAIN CONTENT VIEW -->
     <main class="studio-main-body">
       <header class="studio-action-bar">
         <div class="search-dock-module">
-          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-          <input type="text" id="api-search-input" class="cloud-input" placeholder="Query track title, composer, artist, catalog..." onkeydown="if(event.key==='Enter') MusicAPIEngine.search();" />
+          <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" id="api-search-input" class="cloud-input" placeholder="Artists, Songs, Lyrics, and More" onkeydown="if(event.key==='Enter') MusicAPIEngine.search();" />
           <button class="search-quick-btn" onclick="MusicAPIEngine.search()">Search</button>
         </div>
 
         <div class="action-bar-right-controls">
-          <div class="quality-spec-badge">
-            <label>Codec</label>
+          <div class="quality-spec-badge" title="Lossless Audio Codec">
+            <svg viewBox="0 0 24 24"><path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/></svg>
+            <label>Audio</label>
             <select id="global-quality-selector" class="liquid-quality-select" onchange="MusicAPIEngine.onQualityChanged(this.value)">
-              <option value="standard">128K MP3</option>
-              <option value="exhigh">320K HQ</option>
-              <option value="lossless" selected>FLAC Lossless ★</option>
-              <option value="hires">Hi-Res Master ★</option>
-              <option value="jymaster">JY-Master ★</option>
+              <option value="standard">AAC 128k</option>
+              <option value="exhigh">AAC 320k</option>
+              <option value="lossless" selected>Lossless 24-bit</option>
+              <option value="hires">Hi-Res Lossless</option>
+              <option value="jymaster">Studio Master</option>
             </select>
           </div>
+
+          <button class="ios-icon-circle-btn" onclick="iOSExtras.toggleQueueDrawer()" title="Up Next Queue">
+            <svg viewBox="0 0 24 24"><path d="M4 10h12v2H4zm0-4h12v2H4zm0 8h8v2H4zm10 0v6l5-3z"/></svg>
+          </button>
         </div>
       </header>
 
       <div class="cockpit-body-scroll" id="main-scroll-pane">
-        <!-- HERO DECK -->
+        <!-- iOS LARGE HEADER -->
+        <div class="ios-large-header-row">
+          <div>
+            <div class="ios-super-subtitle" id="ios-greeting-sub">APPLE MUSIC LOSSLESS</div>
+            <h1 class="ios-large-title" id="ios-stage-large-title">Listen Now</h1>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="control-pill-btn" onclick="iOSExtras.shufflePlayAll()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--ios-tint)"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+              <span>Shuffle</span>
+            </button>
+            <button class="control-pill-btn" onclick="MusicAPIEngine.promptDirectParse()">
+              <span>Direct ID</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- BENTO SHOWCASE DECK -->
         <section class="hero-summary-deck">
           <div class="hero-panel-card">
             <div>
-              <div class="hero-title-tag">Studio Lossless Routing Pipeline</div>
-              <h1 class="hero-big-title">Studio-Grade Audio Streaming.</h1>
+              <div class="hero-title-tag">Spatial & Lossless Audio</div>
+              <h2 class="hero-big-title">Studio Master Pipeline</h2>
               <p class="hero-desc">
-                High-throughput official CDN transmission pipeline, synchronized spotlight lyrics telemetry, and localized IndexedDB edge persistent caching.
+                Bit-perfect 24-bit/192kHz FLAC streaming with real-time Apple Music Sing lyrics and IndexedDB offline caching.
               </p>
             </div>
 
             <div class="hero-status-pills">
-              <!-- Spotify 一键同步按钮 -->
               <button class="control-pill-btn spotify-btn" onclick="SpotifyIntegration.initiateLogin()">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.306c-.216.353-.675.467-1.028.25-2.817-1.722-6.362-2.112-10.538-1.158-.403.092-.806-.157-.898-.56-.092-.403.157-.806.56-.898 4.568-1.044 8.484-.598 11.654 1.338.353.216.467.675.25 1.028zm1.468-3.262c-.272.441-.85.58-1.291.308-3.225-1.982-8.14-2.557-11.954-1.399-.494.15-1.024-.13-1.174-.624-.15-.494.13-1.024.624-1.174 4.356-1.321 9.773-.674 13.487 1.608.441.272.58.85.308 1.281zm.126-3.41c-3.867-2.296-10.25-2.508-13.957-1.381-.593.181-1.222-.158-1.403-.751-.181-.593.158-1.222.751-1.403 4.257-1.293 11.31-1.047 15.753 1.59.533.316.708 1.01.392 1.543-.316.533-1.01.708-1.536.392z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.306c-.216.353-.675.467-1.028.25-2.817-1.722-6.362-2.112-10.538-1.158-.403.092-.806-.157-.898-.56-.092-.403.157-.806.56-.898 4.568-1.044 8.484-.598 11.654 1.338.353.216.467.675.25 1.028zm1.468-3.262c-.272.441-.85.58-1.291.308-3.225-1.982-8.14-2.557-11.954-1.399-.494.15-1.024-.13-1.174-.624-.15-.494.13-1.024.624-1.174 4.356-1.321 9.773-.674 13.487 1.608.441.272.58.85.308 1.281zm.126-3.41c-3.867-2.296-10.25-2.508-13.957-1.381-.593.181-1.222-.158-1.403-.751-.181-.593.158-1.222.751-1.403 4.257-1.293 11.31-1.047 15.753 1.59.533.316.708 1.01.392 1.543-.316.533-1.01.708-1.536.392z"/></svg>
                 <span>Sync Spotify Top 20</span>
               </button>
               <button class="control-pill-btn" onclick="TrackListView.renderList('Favorite Musics', PlaybackState.favorites)">
                 <span>Favorites (<span id="fav-counter-label">0</span>)</span>
               </button>
               <button class="control-pill-btn" onclick="AppNavigation.switchStage('offlines')">
-                <span>Offline Edge Vault</span>
+                <span>Downloaded (<span id="offline-counter-label">0</span>)</span>
               </button>
-              <button class="control-pill-btn" onclick="MusicAPIEngine.promptDirectParse()">
-                <span>Direct ID Parse</span>
+              <button class="control-pill-btn" onclick="iOSExtras.exportPlaylistsJSON()">
+                <span>Export Backup</span>
               </button>
             </div>
           </div>
 
           <div class="hero-stats-card">
             <div class="stats-row-metric">
-              <span class="stats-label">Active Connection</span>
-              <span class="stats-digit" id="telemetry-tier-label" style="font-size: 1.15rem; color: var(--accent-cyan);">24-Bit FLAC Lossless</span>
+              <span class="stats-label">Audio Codec</span>
+              <span class="stats-digit" id="telemetry-tier-label" style="color: var(--ios-teal);">24-Bit FLAC</span>
             </div>
             <div class="stats-row-metric">
-              <span class="stats-label">Download Quota Balance</span>
-              <span class="stats-digit" id="header-quota-badge">0</span>
+              <span class="stats-label">Offline Tracks</span>
+              <span class="stats-digit" id="header-quota-badge">0 Cached</span>
             </div>
             <div class="stats-row-metric">
-              <span class="stats-label">Worker Edge Nodes</span>
-              <span class="stats-digit" style="color: var(--accent-emerald);">280+ POPs Active</span>
+              <span class="stats-label">Playback Mode</span>
+              <span class="stats-digit" id="telemetry-playmode-label" style="color: var(--ios-green);">Sequential</span>
+            </div>
+            <div class="stats-row-metric">
+              <span class="stats-label">Edge Storage</span>
+              <button class="control-pill-btn" style="padding: 4px 10px; font-size: 0.72rem;" onclick="iOSExtras.clearOfflineCache()">Clear Cache</button>
             </div>
           </div>
         </section>
 
-        <!-- COLLECTIONS -->
+        <!-- LIBRARY PINS & PLAYLISTS -->
         <section class="cockpit-section-block">
-          <div class="section-title-label">Collections & Local Persistence</div>
+          <div class="section-header-bar">
+            <div class="section-title-label">Library & Playlists</div>
+            <div style="display: flex; gap: 8px;">
+              <button class="control-pill-btn" style="padding: 5px 12px; font-size: 0.76rem;" onclick="iOSExtras.triggerImportJSON()">Import JSON</button>
+              <input type="file" id="json-import-input" accept=".json" style="display:none" onchange="iOSExtras.handleImportJSON(event)" />
+              <button class="control-pill-btn primary" style="padding: 5px 12px; font-size: 0.76rem;" onclick="CustomPlaylistsModule.promptNewPlaylist()">+ New Playlist</button>
+            </div>
+          </div>
           <div class="grid-deck-cards" id="custom-playlists-shelf"></div>
         </section>
 
-        <!-- TRACK PIPELINE TABLE -->
+        <!-- TRACK PIPELINE LIST -->
         <section class="cockpit-section-block">
-          <div class="section-title-label" id="listing-heading">Discovered Tracks</div>
+          <div class="ios-filter-toolbar">
+            <div class="section-title-label" id="listing-heading">Discovered Tracks</div>
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <div class="ios-segmented-pills">
+                <button class="ios-seg-btn active" onclick="iOSExtras.filterDisplayedTracks('all', this)">All</button>
+                <button class="ios-seg-btn" onclick="iOSExtras.filterDisplayedTracks('cached', this)">Offline</button>
+                <button class="ios-seg-btn" onclick="iOSExtras.filterDisplayedTracks('fav', this)">Favorites</button>
+              </div>
+              <input type="text" class="ios-inline-filter-input" id="local-table-filter" placeholder="Filter current list..." oninput="iOSExtras.filterByKeyword(this.value)" />
+            </div>
+          </div>
+
           <div class="stream-pipeline-table" id="track-items-container">
-            <div style="padding: 40px; color: var(--text-muted); text-align: center; font-family: var(--font-mono); font-size: 0.9rem;">
-              Enter a track query in the studio console above to initialize stream pipeline.
+            <div style="padding: 44px 20px; color: var(--ios-label-tertiary); text-align: center; font-size: 0.9rem;">
+              Search for any song, artist, or album above, or sync your Spotify Top 20 to begin listening.
             </div>
           </div>
         </section>
       </div>
     </main>
 
-    <!-- MASTER AUDIO DOCK -->
+    <!-- FLOATING iOS MINI-PLAYER DOCK -->
     <footer class="bottom-cockpit-dock">
       <div class="dock-meta-unit" onclick="LyricsView.open()">
         <div class="dock-cover-thumb" id="player-disc-icon">
           <img id="player-thumb-img" src="" alt="Album Art" />
-          <svg id="player-thumb-fallback" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></svg>
+          <svg id="player-thumb-fallback" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
         </div>
         <div style="display: flex; flex-direction: column; overflow: hidden;">
-          <div class="dock-track-title" id="lbl-now-playing-title">Audio Pipeline Standby</div>
-          <div class="dock-track-sub" id="lbl-now-playing-sub">Select a track to initialize decode</div>
+          <div class="dock-track-title" id="lbl-now-playing-title">Not Playing</div>
+          <div class="dock-track-sub" id="lbl-now-playing-sub">Tap to open Apple Music Sing</div>
         </div>
       </div>
 
       <div class="dock-controls-unit">
         <div class="dock-buttons-row">
-          <button class="action-icon-hit" onclick="AudioEngine.prevTrack()">
+          <button class="action-icon-hit" id="btn-dock-mode" onclick="iOSExtras.cyclePlayMode()" title="Playback Mode">
+            <svg viewBox="0 0 24 24" id="icon-dock-mode"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          </button>
+          <button class="action-icon-hit" onclick="AudioEngine.prevTrack()" title="Previous">
             <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
           </button>
           <button class="circle-play-trigger" id="btn-master-play" onclick="AudioEngine.togglePlayState()">
             <svg viewBox="0 0 24 24" id="play-btn-vector"><path d="M8 5v14l11-7z"/></svg>
           </button>
-          <button class="action-icon-hit" onclick="AudioEngine.nextTrack()">
+          <button class="action-icon-hit" onclick="AudioEngine.nextTrack()" title="Next">
             <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+          <button class="action-icon-hit" onclick="iOSExtras.cyclePlaybackSpeed()" title="Playback Speed">
+            <span id="lbl-speed-badge" style="font-size: 0.7rem; font-weight: 800; font-family: var(--font-mono);">1.0x</span>
           </button>
         </div>
 
@@ -1343,133 +1816,213 @@
       <div class="dock-utilities-unit">
         <div class="studio-live-spectrum" id="live-spectrum-box">
           <div class="spectrum-bar" style="height: 4px;"></div>
-          <div class="spectrum-bar" style="height: 12px;"></div>
-          <div class="spectrum-bar" style="height: 8px;"></div>
-          <div class="spectrum-bar" style="height: 16px;"></div>
-          <div class="spectrum-bar" style="height: 6px;"></div>
+          <div class="spectrum-bar" style="height: 11px;"></div>
+          <div class="spectrum-bar" style="height: 7px;"></div>
+          <div class="spectrum-bar" style="height: 14px;"></div>
+          <div class="spectrum-bar" style="height: 5px;"></div>
         </div>
-        <button class="action-icon-hit" onclick="LyricsView.open()" title="Lyrics Spotlight">
-          <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+
+        <div class="ios-volume-Mini" title="Volume">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--ios-label-secondary)"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          <input type="range" min="0" max="1" step="0.01" value="1" class="ios-slider" oninput="iOSExtras.setVolume(this.value)" />
+        </div>
+
+        <button class="action-icon-hit" onclick="LyricsView.open()" title="Apple Music Sing Lyrics">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
         </button>
-        <button class="action-icon-hit" id="btn-fav-active-track" onclick="AudioEngine.toggleCurrentFavorite()">
+        <button class="action-icon-hit" id="btn-fav-active-track" onclick="AudioEngine.toggleCurrentFavorite()" title="Favorite">
           <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         </button>
       </div>
 
       <audio id="core-audio-sink" preload="metadata"></audio>
     </footer>
+
+    <!-- MOBILE BOTTOM TAB BAR (iPhone Viewports) -->
+    <nav class="ios-mobile-tabbar">
+      <button class="ios-tab-btn active" id="mob-tab-home" onclick="AppNavigation.switchStage('home')">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>Listen Now</span>
+      </button>
+      <button class="ios-tab-btn" id="mob-tab-playlists" onclick="AppNavigation.switchStage('my-playlists')">
+        <svg viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>
+        <span>Playlists</span>
+      </button>
+      <button class="ios-tab-btn" id="mob-tab-offlines" onclick="AppNavigation.switchStage('offlines')">
+        <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+        <span>Downloaded</span>
+      </button>
+      <button class="ios-tab-btn" onclick="AuthModalController.handleAvatarClick()">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <span>Account</span>
+      </button>
+    </nav>
   </div>
 
-  <!-- SPOTLIGHT FULLSCREEN LYRICS OVERLAY -->
+  <!-- SLIDE-OVER UP NEXT QUEUE DRAWER -->
+  <aside id="ios-queue-drawer">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+      <div>
+        <div style="font-size: 1.05rem; font-weight: 800;">Playing Next</div>
+        <div style="font-size: 0.74rem; color: var(--ios-label-secondary);" id="queue-count-sub">0 songs in queue</div>
+      </div>
+      <div style="display: flex; gap: 6px;">
+        <button class="control-pill-btn" style="padding: 5px 10px; font-size: 0.72rem;" onclick="iOSExtras.clearQueue()">Clear</button>
+        <button class="ios-icon-circle-btn" onclick="iOSExtras.toggleQueueDrawer()">✕</button>
+      </div>
+    </div>
+    <div id="ios-queue-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;"></div>
+  </aside>
+
+  <!-- APPLE MUSIC FULLSCREEN NOW PLAYING & SING LYRICS OVERLAY -->
   <div id="lyrics-fullscreen-overlay">
+    <div class="sheet-dynamic-bg" id="sheet-ambient-art"></div>
+    <div class="sheet-grabber-bar" onclick="LyricsView.close()"></div>
+
     <div class="lyrics-top-nav">
-      <button class="lyrics-close-btn" onclick="LyricsView.close()">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      <button class="lyrics-close-btn" onclick="LyricsView.close()" title="Dismiss">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
       </button>
-      <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-secondary); font-family: var(--font-mono);" id="lyrics-nav-song-name">Lyrics Stage</div>
-      <div style="width: 44px;"></div>
+      <div style="font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 0.04em; text-transform: uppercase;" id="lyrics-nav-song-name">Now Playing</div>
+      <button class="lyrics-close-btn" onclick="PlaylistPicker.showCurrentTrack()" title="Add to Playlist">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      </button>
     </div>
     
     <div class="lyrics-body-grid">
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 24px;">
-        <img class="lyrics-album-art" id="lyrics-hero-cover" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23141a24'><rect width='100' height='100'/></svg>" />
-        <div style="text-align: center;">
-          <h2 style="font-size: 1.6rem; color: #fff; font-weight: 800;" id="lyrics-modal-title">Track Title</h2>
-          <div style="display: flex; gap: 10px; margin-top: 10px; justify-content: center;">
-            <button class="control-pill-btn" onclick="PlaylistPicker.showCurrentTrack()">
-              <span>+ 加入歌单</span>
+      <!-- Left Column: Artwork & Apple Music Scrubber Controls -->
+      <div class="sheet-left-player-column">
+        <img class="lyrics-album-art is-playing-scale" id="lyrics-hero-cover" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%231c1c1e'><rect width='100' height='100'/></svg>" alt="Cover" />
+        
+        <div class="sheet-track-meta-box">
+          <div style="overflow: hidden;">
+            <h2 style="font-size: 1.35rem; color: #fff; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="lyrics-modal-title">Not Playing</h2>
+            <div style="font-size: 0.92rem; color: rgba(255,255,255,0.65); font-weight: 600; margin-top: 2px;" id="lyrics-modal-artist">Select a song</div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="lyrics-close-btn" onclick="AudioEngine.toggleCurrentFavorite()" title="Favorite">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+            <button class="lyrics-close-btn" onclick="PlaylistPicker.showCurrentTrack()" title="Add to Playlist">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
             </button>
           </div>
         </div>
-      </div>
 
-      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
-        <div class="spotlight-lyric-text" id="lyrics-spotlight-line">Ready for playback...</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- AUTHENTICATION GATEWAY -->
-  <div id="fullscreen-auth-stage">
-    <div class="auth-banner-pane">
-      <div>
-        <h1 style="font-size: 2.8rem; font-weight: 800; line-height: 1.1;">Enterprise Lossless Audio Network.</h1>
-        <p style="font-size: 1rem; color: var(--text-secondary); margin-top: 14px;">
-          Seamless integration with Spotify Top 20 synchronization and Google OAuth.
-        </p>
-      </div>
-      <div style="font-size: 0.8rem; color: var(--text-muted);">
-        Cloudflare Workers & MongoDB Database · Local Persistence Ready
-      </div>
-    </div>
-
-    <div class="auth-interaction-pane">
-      <div class="auth-console-container">
-        <div>
-          <div style="font-size: 1.85rem; font-weight: 800; color: #fff;">Sign in to JRmusic</div>
-          <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px;">
-            Authenticate with Spotify or your corporate Google account.
+        <div class="sheet-scrubber-block">
+          <div class="sheet-rail" id="sheet-seek-rail" onclick="iOSExtras.seekFromSheet(event)">
+            <div class="sheet-rail-fill" id="sheet-seek-fill"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.72rem; font-family: var(--font-mono); color: rgba(255,255,255,0.55);">
+            <span id="sheet-time-elapsed">0:00</span>
+            <span>LOSSLESS</span>
+            <span id="sheet-time-duration">0:00</span>
           </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <button class="brand-oauth-btn spotify" onclick="SpotifyIntegration.initiateLogin()">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.306c-.216.353-.675.467-1.028.25-2.817-1.722-6.362-2.112-10.538-1.158-.403.092-.806-.157-.898-.56-.092-.403.157-.806.56-.898 4.568-1.044 8.484-.598 11.654 1.338.353.216.467.675.25 1.028zm1.468-3.262c-.272.441-.85.58-1.291.308-3.225-1.982-8.14-2.557-11.954-1.399-.494.15-1.024-.13-1.174-.624-.15-.494.13-1.024.624-1.174 4.356-1.321 9.773-.674 13.487 1.608.441.272.58.85.308 1.281zm.126-3.41c-3.867-2.296-10.25-2.508-13.957-1.381-.593.181-1.222-.158-1.403-.751-.181-.593.158-1.222.751-1.403 4.257-1.293 11.31-1.047 15.753 1.59.533.316.708 1.01.392 1.543-.316.533-1.01.708-1.536.392z"/></svg>
-            <span>Continue with Spotify</span>
+        <div class="sheet-transport-row">
+          <button class="sheet-transport-btn" onclick="AudioEngine.prevTrack()">
+            <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
           </button>
-
-          <div class="auth-or-divider">OR</div>
-
-          <button class="brand-oauth-btn google" onclick="AuthModalController.triggerGoogleSignIn()">
-            <svg viewBox="0 0 24 24">
-              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-            </svg>
-            <span>Continue with Google</span>
+          <button class="sheet-transport-btn play-hero" onclick="AudioEngine.togglePlayState()">
+            <svg viewBox="0 0 24 24" id="sheet-play-vector"><path d="M8 5v14l11-7z"/></svg>
           </button>
+          <button class="sheet-transport-btn" onclick="AudioEngine.nextTrack()">
+            <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Spotlight Active Line + Scrollable Apple Music Sing Lyrics -->
+      <div class="sheet-right-lyrics-column">
+        <div class="spotlight-lyric-text" id="lyrics-spotlight-line">Ready for playback...</div>
+        <div class="apple-sing-scroll-box" id="apple-sing-lyrics-list">
+          <div class="sing-lyric-line active-sing-line">Tap any track to experience synchronized Apple Music Sing lyrics.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- PROMPT / PLAYLIST MODAL -->
+  <!-- iOS AUTHENTICATION SHEET -->
+  <div id="fullscreen-auth-stage">
+    <div class="ios-auth-sheet-card">
+      <button class="ios-icon-circle-btn" style="position: absolute; top: 16px; right: 16px;" onclick="AuthModalController.closeModal()">✕</button>
+      
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        <div class="brand-cube-badge" style="width: 56px; height: 56px; border-radius: 16px;">
+          <svg viewBox="0 0 24 24" style="width: 30px; height: 30px;"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        </div>
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--ios-label-primary);">Sign in to JRmusic</div>
+        <div style="font-size: 0.88rem; color: var(--ios-label-secondary); line-height: 1.45;">
+          Sync your Spotify Top 20 tracks, cloud playlists, and offline lossless vault across devices.
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <button class="brand-oauth-btn spotify" onclick="SpotifyIntegration.initiateLogin()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.306c-.216.353-.675.467-1.028.25-2.817-1.722-6.362-2.112-10.538-1.158-.403.092-.806-.157-.898-.56-.092-.403.157-.806.56-.898 4.568-1.044 8.484-.598 11.654 1.338.353.216.467.675.25 1.028zm1.468-3.262c-.272.441-.85.58-1.291.308-3.225-1.982-8.14-2.557-11.954-1.399-.494.15-1.024-.13-1.174-.624-.15-.494.13-1.024.624-1.174 4.356-1.321 9.773-.674 13.487 1.608.441.272.58.85.308 1.281zm.126-3.41c-3.867-2.296-10.25-2.508-13.957-1.381-.593.181-1.222-.158-1.403-.751-.181-.593.158-1.222.751-1.403 4.257-1.293 11.31-1.047 15.753 1.59.533.316.708 1.01.392 1.543-.316.533-1.01.708-1.536.392z"/></svg>
+          <span>Continue with Spotify</span>
+        </button>
+
+        <div class="auth-or-divider">OR</div>
+
+        <button class="brand-oauth-btn google" onclick="AuthModalController.triggerGoogleSignIn()">
+          <svg viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <button class="control-pill-btn" style="justify-content: center; margin-top: 4px;" onclick="AuthModalController.closeModal()">
+          Continue as Guest
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYLIST PICKER MODAL -->
   <div id="playlist-picker-modal">
     <div class="playlist-picker-card">
-      <div style="font-size: 1.3rem; font-weight: 800; color: #fff;">添加到歌单</div>
-      <div id="playlist-chip-container" style="display: flex; flex-direction: column; gap: 8px; max-height: 260px; overflow-y: auto;"></div>
+      <div style="font-size: 1.15rem; font-weight: 800; color: var(--ios-label-primary);">Add to Playlist</div>
+      <div id="playlist-chip-container" style="display: flex; flex-direction: column; gap: 8px; max-height: 240px; overflow-y: auto;"></div>
       <div style="display: flex; justify-content: flex-end;">
-        <button class="control-pill-btn" onclick="PlaylistPicker.close()">取消</button>
+        <button class="control-pill-btn" onclick="PlaylistPicker.close()">Cancel</button>
       </div>
     </div>
   </div>
 
+  <!-- CUSTOM PROMPT MODAL -->
   <div id="custom-prompt-modal">
     <div class="prompt-box-dialog">
-      <div style="font-size: 1.3rem; font-weight: 800; color: #fff;" id="custom-prompt-title">New Playlist</div>
-      <input type="text" class="cloud-input" id="custom-prompt-input" style="padding-left: 18px;" />
-      <div style="display: flex; justify-content: flex-end; gap: 12px;">
+      <div style="font-size: 1.15rem; font-weight: 800; color: var(--ios-label-primary);" id="custom-prompt-title">New Playlist</div>
+      <input type="text" class="cloud-input" id="custom-prompt-input" style="padding-left: 14px; padding-right: 14px;" onkeydown="if(event.key==='Enter') CustomPrompt.confirm();" />
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
         <button class="control-pill-btn" onclick="CustomPrompt.cancel()">Cancel</button>
-        <button class="control-pill-btn primary" onclick="CustomPrompt.confirm()">Create</button>
+        <button class="control-pill-btn primary" onclick="CustomPrompt.confirm()">Confirm</button>
       </div>
     </div>
   </div>
 
+  <!-- CONFIRM LOGOUT MODAL -->
   <div id="confirm-logout-modal">
     <div class="prompt-box-dialog">
-      <div style="font-size: 1.3rem; font-weight: 800; color: #fff;">確認登出</div>
-      <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
-        是否確認登出當前帳戶？
+      <div style="font-size: 1.15rem; font-weight: 800; color: var(--ios-label-primary);">Sign Out</div>
+      <div style="font-size: 0.88rem; color: var(--ios-label-secondary); line-height: 1.5;">
+        Are you sure you want to sign out of your current JRmusic session?
       </div>
-      <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px;">
-        <button class="control-pill-btn" onclick="AuthModalController.cancelLogout()">取消</button>
-        <button class="control-pill-btn primary" onclick="AuthModalController.confirmLogout()">確認登出</button>
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 6px;">
+        <button class="control-pill-btn" onclick="AuthModalController.cancelLogout()">Cancel</button>
+        <button class="control-pill-btn primary" onclick="AuthModalController.confirmLogout()">Sign Out</button>
       </div>
     </div>
   </div>
 
-  <!-- RUNTIME LOGIC ENGINE -->
+  <!-- ==========================================================================
+       CORE RUNTIME LOGIC ENGINE (100% PRESERVED + iOS NATIVE ENHANCEMENTS)
+       ========================================================================== -->
   <script>
     const CONFIG = {
       SPOTIFY_CLIENT_ID: "ca0dd7e0e54c4e9aad140edf72c13ce3",
@@ -1484,7 +2037,7 @@
     };
 
     const UIToast = {
-      show(message, type = 'info', duration = 3400) {
+      show(message, type = 'info', duration = 3200) {
         const container = document.getElementById("ui-toast-container");
         const toast = document.createElement("div");
         toast.className = `ui-toast ${type}`;
@@ -1505,8 +2058,9 @@
           document.getElementById("custom-prompt-title").innerText = title;
           const input = document.getElementById("custom-prompt-input");
           input.value = defaultVal;
+          input.placeholder = desc || "";
           document.getElementById("custom-prompt-modal").classList.add("is-open");
-          input.focus();
+          setTimeout(() => input.focus(), 60);
         });
       },
       confirm() {
@@ -1564,6 +2118,7 @@
           store.put(record);
           tx.oncomplete = () => {
             PlaybackState.offlineCacheCatalog.add(String(trackObj.id));
+            iOSExtras.updateCounters();
             resolve();
           };
           tx.onerror = (err) => reject(err);
@@ -1591,6 +2146,7 @@
         const records = await OfflineAudioStore.getAllCachedRecords();
         PlaybackState.offlineCacheCatalog.clear();
         records.forEach(r => PlaybackState.offlineCacheCatalog.add(String(r.id)));
+        iOSExtras.updateCounters();
       },
       async getAllLocalPlaylists() {
         return new Promise((resolve) => {
@@ -1650,11 +2206,13 @@
         if (!lrcRaw) {
           PlaybackState.activeLyrics = [];
           LyricsView.renderSpotlightText("Instrumental / No Lyrics");
+          LyricsView.renderFullSingSheet([]);
           return;
         }
         const merged = MetaParser.lrctran(lrcRaw, tLrcRaw);
         PlaybackState.activeLyrics = merged;
         LyricsView.renderSpotlightText(merged.length > 0 ? merged[0].text : lrcRaw.substring(0, 80));
+        LyricsView.renderFullSingSheet(merged);
       }
     };
 
@@ -1672,21 +2230,22 @@
       ],
       offlineCacheCatalog: new Set(),
       activeLyrics: [],
-      currentLyricIndex: -1
+      currentLyricIndex: -1,
+      playMode: 'sequence', // 'sequence' | 'shuffle' | 'repeat-one'
+      playbackSpeed: 1.0,
+      recentHistory: [],
+      displayedTracksCache: []
     };
 
     /**
-     * =========================================================================
-     * SPOTIFY OAUTH 2.0 PKCE 引擎 & TOP 20 导入 (修复 WebKit 模式匹配错误)
-     * =========================================================================
+     =========================================================================
+     SPOTIFY OAUTH 2.0 PKCE 引擎 & TOP 20 导入 (完全保留原逻辑)
+     =========================================================================
      */
     const SpotifyIntegration = {
-      // 保持当前部署的干净绝对路径，去除 query 与 hash
       getRedirectUri() {
         return window.location.origin + window.location.pathname;
       },
-
-      // 生成符合 RFC 7636 标准的 PKCE Code Verifier
       generateRandomString(length) {
         const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
         let result = '';
@@ -1697,32 +2256,25 @@
         }
         return result;
       },
-
-      // 修复核心：安全转换二进制为 Base64URL，防止 WebKit 报 pattern 错误
       async generateCodeChallenge(codeVerifier) {
         const encoder = new TextEncoder();
         const data = encoder.encode(codeVerifier);
         const digest = await window.crypto.subtle.digest('SHA-256', data);
-
         const bytes = new Uint8Array(digest);
         let binary = '';
         for (let i = 0; i < bytes.byteLength; i++) {
           binary += String.fromCharCode(bytes[i]);
         }
-
         return btoa(binary)
           .replace(/\+/g, '-')
           .replace(/\//g, '_')
           .replace(/=+$/, '');
       },
-
       async initiateLogin() {
         try {
           const verifier = SpotifyIntegration.generateRandomString(64);
           const challenge = await SpotifyIntegration.generateCodeChallenge(verifier);
-
           localStorage.setItem("spotify_verifier", verifier);
-
           const params = new URLSearchParams({
             client_id: CONFIG.SPOTIFY_CLIENT_ID,
             response_type: 'code',
@@ -1731,15 +2283,12 @@
             code_challenge_method: 'S256',
             code_challenge: challenge
           });
-
           window.location.href = `https://accounts.spotify.com/authorize?${params.toString()}`;
         } catch (err) {
           console.error("PKCE Init Error:", err);
           UIToast.show(`PKCE Generation Error: ${err.message}`, "error");
         }
       },
-
-      // 修复核心：严谨解析重定向参数，兼容 Search 与 Hash
       async checkRedirectCallback() {
         let queryString = window.location.search;
         if (!queryString && window.location.hash.includes('?')) {
@@ -1756,12 +2305,9 @@
           window.history.replaceState({}, document.title, SpotifyIntegration.getRedirectUri());
           return;
         }
-
         if (!code) return;
 
-        // 提取 code 后立即重置干净的 URL
         window.history.replaceState({}, document.title, SpotifyIntegration.getRedirectUri());
-
         const verifier = localStorage.getItem("spotify_verifier");
         if (!verifier) {
           UIToast.show("PKCE verification session lost. Please login again.", "error");
@@ -1771,7 +2317,6 @@
         UIToast.show("Synchronizing Spotify profile & Top 20...", "spotify");
 
         try {
-          // 统一由后端 Worker 完成 Token 交换与 Top 20 抓取，防止前端 CORS 与凭证泄露
           const res = await fetch(`${CONFIG.WORKER_API_BASE}/api/spotify-code-auth`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -1806,12 +2351,20 @@
     const MusicAPIEngine = {
       onQualityChanged(val) {
         PlaybackState.currentQuality = val;
-        UIToast.show(`Audio Quality: ${val.toUpperCase()}`, "info");
+        const labelMap = {
+          standard: "AAC 128k",
+          exhigh: "AAC 320k",
+          lossless: "24-Bit FLAC",
+          hires: "Hi-Res 192kHz",
+          jymaster: "Studio Master"
+        };
+        document.getElementById("telemetry-tier-label").innerText = labelMap[val] || val.toUpperCase();
+        UIToast.show(`Audio Quality: ${labelMap[val] || val.toUpperCase()}`, "info");
       },
       async search() {
         const keyword = document.getElementById("api-search-input").value.trim();
         if (!keyword) return;
-        UIToast.show(`Searching for "${keyword}"...`);
+        UIToast.show(`Searching Apple Music proxy for "${keyword}"...`);
         try {
           const formData = new FormData();
           formData.append("keyword", keyword);
@@ -1850,6 +2403,7 @@
           AuthModalController.openModal();
           return;
         }
+        UIToast.show("Caching lossless stream to Offline Store...", "info");
         try {
           const streamData = await MusicAPIEngine.resolveSongStream(songId);
           const audioRes = await fetch(streamData.url);
@@ -1865,43 +2419,77 @@
             tlyric: streamData.tlyric
           };
           await OfflineAudioStore.saveTrackBlob(trackRecord, blob);
-          UIToast.show(`Downloaded "${streamData.name}"!`, "success");
+          UIToast.show(`Downloaded "${streamData.name}" to device!`, "success");
+          TrackListView.renderList(document.getElementById("listing-heading").innerText, PlaybackState.displayedTracksCache);
         } catch (e) {
           UIToast.show(`Download failed: ${e.message}`, "error");
         }
       },
       async promptDirectParse() {
-        const idOrUrl = await CustomPrompt.show("Direct Parse", "Enter Song ID:");
+        const idOrUrl = await CustomPrompt.show("Direct Song ID", "Enter NetEase Song ID:");
         if (!idOrUrl) return;
         let songId = idOrUrl.trim();
-        const streamData = await MusicAPIEngine.resolveSongStream(songId);
-        const track = {
-          id: String(songId),
-          title: streamData.name,
-          artist: streamData.ar_name,
-          album: streamData.al_name,
-          picUrl: streamData.pic,
-          resolvedUrl: streamData.url,
-          lyric: streamData.lyric,
-          tlyric: streamData.tlyric
-        };
-        AudioEngine.loadAndPlay(track);
+        try {
+          const streamData = await MusicAPIEngine.resolveSongStream(songId);
+          const track = {
+            id: String(songId),
+            title: streamData.name,
+            artist: streamData.ar_name,
+            album: streamData.al_name,
+            picUrl: streamData.pic,
+            resolvedUrl: streamData.url,
+            lyric: streamData.lyric,
+            tlyric: streamData.tlyric
+          };
+          AudioEngine.loadAndPlay(track);
+        } catch (e) {
+          UIToast.show(`Direct Parse Error: ${e.message}`, "error");
+        }
       }
     };
 
     const LyricsView = {
       open() {
-        if (!AudioEngine.currentTrack) return;
+        if (!AudioEngine.currentTrack) {
+          UIToast.show("Play a track first to open Apple Music Sing", "info");
+          return;
+        }
         document.getElementById("lyrics-fullscreen-overlay").classList.add("is-open");
-        document.getElementById("lyrics-nav-song-name").innerText = AudioEngine.currentTrack.title;
+        document.getElementById("lyrics-nav-song-name").innerText = AudioEngine.currentTrack.album || "Apple Music Sing";
         document.getElementById("lyrics-modal-title").innerText = AudioEngine.currentTrack.title;
-        document.getElementById("lyrics-hero-cover").src = AudioEngine.currentTrack.picUrl || "";
+        document.getElementById("lyrics-modal-artist").innerText = AudioEngine.currentTrack.artist || "";
+        const artUrl = AudioEngine.currentTrack.picUrl || "";
+        if (artUrl) {
+          document.getElementById("lyrics-hero-cover").src = artUrl;
+          document.getElementById("sheet-ambient-art").style.backgroundImage = `url('${artUrl}')`;
+        }
       },
       close() {
         document.getElementById("lyrics-fullscreen-overlay").classList.remove("is-open");
       },
       renderSpotlightText(text) {
         document.getElementById("lyrics-spotlight-line").innerText = text || "♫ ...";
+      },
+      renderFullSingSheet(lyricsArray) {
+        const container = document.getElementById("apple-sing-lyrics-list");
+        if (!container) return;
+        container.innerHTML = "";
+        if (!lyricsArray || lyricsArray.length === 0) {
+          container.innerHTML = `<div class="sing-lyric-line active-sing-line">Instrumental / No synchronized lyrics available for this track.</div>`;
+          return;
+        }
+        lyricsArray.forEach((item, idx) => {
+          const lineEl = document.createElement("div");
+          lineEl.className = "sing-lyric-line";
+          lineEl.id = `sing-line-${idx}`;
+          lineEl.innerText = item.text || "•••";
+          lineEl.onclick = () => {
+            if (AudioEngine.sink && AudioEngine.sink.duration) {
+              AudioEngine.sink.currentTime = item.time;
+            }
+          };
+          container.appendChild(lineEl);
+        });
       },
       updateHighlight(currentTime) {
         if (!PlaybackState.activeLyrics || PlaybackState.activeLyrics.length === 0) return;
@@ -1913,8 +2501,15 @@
         if (activeIdx !== PlaybackState.currentLyricIndex && activeIdx !== -1) {
           PlaybackState.currentLyricIndex = activeIdx;
           const currentText = PlaybackState.activeLyrics[activeIdx].text;
-          document.getElementById("lbl-now-playing-sub").innerText = currentText;
+          document.getElementById("lbl-now-playing-sub").innerText = currentText || AudioEngine.currentTrack?.artist || "";
           LyricsView.renderSpotlightText(currentText);
+
+          document.querySelectorAll(".sing-lyric-line").forEach(el => el.classList.remove("active-sing-line"));
+          const activeLineEl = document.getElementById(`sing-line-${activeIdx}`);
+          if (activeLineEl) {
+            activeLineEl.classList.add("active-sing-line");
+            activeLineEl.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
         }
       }
     };
@@ -1924,29 +2519,64 @@
       currentTrack: null,
       init() {
         this.sink.ontimeupdate = this.onTimeUpdate;
-        this.sink.onended = this.nextTrack;
+        this.sink.onended = () => {
+          if (PlaybackState.playMode === 'repeat-one') {
+            AudioEngine.sink.currentTime = 0;
+            AudioEngine.sink.play();
+          } else {
+            AudioEngine.nextTrack();
+          }
+        };
       },
       async loadAndPlay(track) {
         this.currentTrack = track;
+        PlaybackState.currentLyricIndex = -1;
         document.getElementById("lbl-now-playing-title").innerText = track.title;
-        document.getElementById("lbl-now-playing-sub").innerText = "Decoding stream...";
+        document.getElementById("lbl-now-playing-sub").innerText = track.artist || "Loading stream...";
+        document.getElementById("lyrics-modal-title").innerText = track.title;
+        document.getElementById("lyrics-modal-artist").innerText = track.artist || "";
+
         const thumbImg = document.getElementById("player-thumb-img");
+        const fallbackSvg = document.getElementById("player-thumb-fallback");
         if (track.picUrl) {
           thumbImg.src = track.picUrl;
           thumbImg.style.display = "block";
+          if (fallbackSvg) fallbackSvg.style.display = "none";
+          document.getElementById("lyrics-hero-cover").src = track.picUrl;
+          document.getElementById("sheet-ambient-art").style.backgroundImage = `url('${track.picUrl}')`;
         }
+
+        iOSExtras.recordRecentTrack(track);
+        iOSExtras.updateFavoriteBtnState();
+        iOSExtras.renderQueueList();
+
         try {
           const localRecord = await OfflineAudioStore.getTrackRecord(track.id);
           if (localRecord && localRecord.blob) {
             this.sink.src = URL.createObjectURL(localRecord.blob);
+            if (localRecord.picUrl && !track.picUrl) {
+              thumbImg.src = localRecord.picUrl;
+              thumbImg.style.display = "block";
+            }
             MetaParser.parseFullLyrics(localRecord.lyric, localRecord.tlyric);
           } else {
             const streamData = await MusicAPIEngine.resolveSongStream(track.id);
             this.sink.src = streamData.url;
+            if (streamData.pic) {
+              track.picUrl = streamData.pic;
+              thumbImg.src = streamData.pic;
+              thumbImg.style.display = "block";
+              if (fallbackSvg) fallbackSvg.style.display = "none";
+              document.getElementById("lyrics-hero-cover").src = streamData.pic;
+              document.getElementById("sheet-ambient-art").style.backgroundImage = `url('${streamData.pic}')`;
+            }
             MetaParser.parseFullLyrics(streamData.lyric, streamData.tlyric);
           }
+          this.sink.playbackRate = PlaybackState.playbackSpeed;
           await this.sink.play();
           this.updatePlayBtnIcon(true);
+          iOSExtras.updateMediaSession(track);
+          TrackListView.highlightCurrentRow();
         } catch (err) {
           UIToast.show(err.message, "error");
         }
@@ -1962,12 +2592,21 @@
         }
       },
       updatePlayBtnIcon(isPlaying) {
-        document.getElementById("play-btn-vector").innerHTML = isPlaying ? 
+        const vector = isPlaying ?
           `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>` : `<path d="M8 5v14l11-7z"/>`;
+        document.getElementById("play-btn-vector").innerHTML = vector;
+        const sheetVec = document.getElementById("sheet-play-vector");
+        if (sheetVec) sheetVec.innerHTML = vector;
+        const cover = document.getElementById("lyrics-hero-cover");
+        if (cover) cover.classList.toggle("is-playing-scale", isPlaying);
       },
       nextTrack() {
         if (PlaybackState.currentPlaylist.length === 0) return;
-        PlaybackState.currentTrackPointer = (PlaybackState.currentTrackPointer + 1) % PlaybackState.currentPlaylist.length;
+        if (PlaybackState.playMode === 'shuffle') {
+          PlaybackState.currentTrackPointer = Math.floor(Math.random() * PlaybackState.currentPlaylist.length);
+        } else {
+          PlaybackState.currentTrackPointer = (PlaybackState.currentTrackPointer + 1) % PlaybackState.currentPlaylist.length;
+        }
         AudioEngine.loadAndPlay(PlaybackState.currentPlaylist[PlaybackState.currentTrackPointer]);
       },
       prevTrack() {
@@ -1978,10 +2617,21 @@
       onTimeUpdate() {
         const curr = AudioEngine.sink.currentTime || 0;
         const dur = AudioEngine.sink.duration || 0;
-        document.getElementById("lbl-time-elapsed").innerText = AudioEngine.formatTime(curr);
-        document.getElementById("lbl-time-duration").innerText = AudioEngine.formatTime(dur);
+        const formattedCurr = AudioEngine.formatTime(curr);
+        const formattedDur = AudioEngine.formatTime(dur);
+
+        document.getElementById("lbl-time-elapsed").innerText = formattedCurr;
+        document.getElementById("lbl-time-duration").innerText = formattedDur;
+        const sheetCurr = document.getElementById("sheet-time-elapsed");
+        const sheetDur = document.getElementById("sheet-time-duration");
+        if (sheetCurr) sheetCurr.innerText = formattedCurr;
+        if (sheetDur) sheetDur.innerText = formattedDur;
+
         if (dur > 0) {
-          document.getElementById("seek-fill").style.width = ((curr / dur) * 100) + "%";
+          const pct = ((curr / dur) * 100) + "%";
+          document.getElementById("seek-fill").style.width = pct;
+          const sheetFill = document.getElementById("sheet-seek-fill");
+          if (sheetFill) sheetFill.style.width = pct;
         }
         LyricsView.updateHighlight(curr);
       },
@@ -1996,9 +2646,11 @@
       toggleCurrentFavorite() {
         if (this.currentTrack) {
           TrackListView.toggleFav(encodeURIComponent(JSON.stringify(this.currentTrack)));
+          iOSExtras.updateFavoriteBtnState();
         }
       },
       formatTime(sec) {
+        if (!sec || isNaN(sec)) return "0:00";
         const m = Math.floor(sec / 60), s = Math.floor(sec % 60);
         return `${m}:${s < 10 ? '0' : ''}${s}`;
       }
@@ -2015,12 +2667,22 @@
         if (!shelf) return;
         shelf.innerHTML = `
           <div class="cockpit-card" onclick="TrackListView.renderList('Favorite Musics', PlaybackState.favorites)">
-            <div class="cockpit-card-title">Favorite Musics</div>
-            <div class="cockpit-card-subtitle">Encrypted personal vault</div>
+            <div class="cockpit-card-icon-badge">
+              <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            <div>
+              <div class="cockpit-card-title">Favorite Songs</div>
+              <div class="cockpit-card-subtitle">${PlaybackState.favorites.length} songs · iCloud Sync</div>
+            </div>
           </div>
           <div class="cockpit-card" onclick="AppNavigation.switchStage('offlines')">
-            <div class="cockpit-card-title">Offline Edge</div>
-            <div class="cockpit-card-subtitle">Local persistent store</div>
+            <div class="cockpit-card-icon-badge" style="background: rgba(48, 209, 88, 0.16); color: var(--ios-green);">
+              <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+            </div>
+            <div>
+              <div class="cockpit-card-title">Downloaded</div>
+              <div class="cockpit-card-subtitle">${PlaybackState.offlineCacheCatalog.size} lossless files</div>
+            </div>
           </div>
         `;
         PlaybackState.customPlaylists.forEach(pl => {
@@ -2028,22 +2690,19 @@
           card.className = "cockpit-card";
           card.onclick = () => TrackListView.renderList(`Playlist: ${pl.name}`, pl.tracks);
           card.innerHTML = `
-            <div class="cockpit-card-title">${pl.name}</div>
-            <div class="cockpit-card-subtitle">${pl.tracks ? pl.tracks.length : 0} tracks · Cloud Vault</div>
+            <div class="cockpit-card-icon-badge" style="background: rgba(10, 132, 255, 0.16); color: var(--ios-blue);">
+              <svg viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>
+            </div>
+            <div>
+              <div class="cockpit-card-title">${pl.name}</div>
+              <div class="cockpit-card-subtitle">${pl.tracks ? pl.tracks.length : 0} tracks · Playlist</div>
+            </div>
           `;
           shelf.appendChild(card);
         });
-        const addCard = document.createElement("div");
-        addCard.className = "cockpit-card";
-        addCard.onclick = () => CustomPlaylistsModule.promptNewPlaylist();
-        addCard.innerHTML = `
-          <div class="cockpit-card-title">+ New Playlist</div>
-          <div class="cockpit-card-subtitle">Instantiate new collection</div>
-        `;
-        shelf.appendChild(addCard);
       },
       async promptNewPlaylist() {
-        const name = await CustomPrompt.show("New Playlist", "Title:");
+        const name = await CustomPrompt.show("New Playlist", "Enter playlist title...");
         if (name && name.trim()) {
           const newPl = {
             id: "pl_" + Date.now(),
@@ -2060,21 +2719,25 @@
     };
 
     const PlaylistPicker = {
-      showCurrentTrack() {
-        if (!AudioEngine.currentTrack) return;
+      targetTrack: null,
+      showCurrentTrack(customTrack = null) {
+        const trackToUse = customTrack || AudioEngine.currentTrack;
+        if (!trackToUse) return;
+        PlaylistPicker.targetTrack = trackToUse;
         const container = document.getElementById("playlist-chip-container");
         container.innerHTML = "";
         PlaybackState.customPlaylists.forEach(pl => {
           const chip = document.createElement("div");
           chip.className = "playlist-select-chip";
-          chip.innerHTML = `<span>${pl.name}</span><span>${pl.tracks ? pl.tracks.length : 0} tracks</span>`;
+          chip.innerHTML = `<span>${pl.name}</span><span style="opacity:0.6; font-size:0.8rem;">${pl.tracks ? pl.tracks.length : 0} songs</span>`;
           chip.onclick = async () => {
             PlaylistPicker.close();
-            pl.tracks.push(AudioEngine.currentTrack);
+            pl.tracks = pl.tracks || [];
+            pl.tracks.push(PlaylistPicker.targetTrack);
             await OfflineAudioStore.saveLocalPlaylist(pl);
             CustomPlaylistsModule.renderShelf();
             TrackListView.syncUserData();
-            UIToast.show(`Added to ${pl.name}`, "success");
+            UIToast.show(`Added to "${pl.name}"`, "success");
           };
           container.appendChild(chip);
         });
@@ -2086,35 +2749,47 @@
     };
 
     const TrackListView = {
-      renderList(title, trackArray) {
+      renderList(title, trackArray, skipCacheSave = false) {
         document.getElementById("listing-heading").innerText = title;
+        if (!skipCacheSave) {
+          PlaybackState.displayedTracksCache = Array.isArray(trackArray) ? [...trackArray] : [];
+        }
         const container = document.getElementById("track-items-container");
         container.innerHTML = "";
         if (!trackArray || trackArray.length === 0) {
-          container.innerHTML = `<div style="padding: 40px; color: var(--text-muted); text-align: center;">No tracks found.</div>`;
+          container.innerHTML = `<div style="padding: 44px 20px; color: var(--ios-label-tertiary); text-align: center;">No songs in "${title}".</div>`;
           return;
         }
+        const defaultArt = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' fill='%232c2c2e'><rect width='80' height='80'/><path d='M40 22v22.5c-1.2-.7-2.6-1.1-4-1.1-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8V30h8v-8H40z' fill='%23666'/></svg>";
+
         trackArray.forEach((track, index) => {
           const isCached = PlaybackState.offlineCacheCatalog.has(String(track.id));
-          const isFav = PlaybackState.favorites.some(f => f.id === track.id);
+          const isFav = PlaybackState.favorites.some(f => String(f.id) === String(track.id));
+          const isPlayingThis = AudioEngine.currentTrack && String(AudioEngine.currentTrack.id) === String(track.id);
+
           const row = document.createElement("div");
-          row.className = "track-row-node";
+          row.className = `track-row-node ${isPlayingThis ? 'current-playing' : ''}`;
+          row.dataset.trackId = String(track.id);
           row.innerHTML = `
-            <div class="track-idx-col"><span>${index + 1}</span></div>
+            <div class="track-idx-col"><span>${isPlayingThis ? '♫' : index + 1}</span></div>
+            <img class="track-row-art" src="${track.picUrl || defaultArt}" alt="" loading="lazy" />
             <div class="track-meta-col">
               <span class="track-name-main">${track.title}</span>
-              <span class="track-subpath">${track.artist} · ${track.album || ''}</span>
+              <span class="track-subpath">${track.artist || 'Unknown Artist'}${track.album ? ' · ' + track.album : ''}</span>
             </div>
             <div class="track-codec-col">LOSSLESS</div>
             <div class="track-cache-col">
               <span class="status-ping ${isCached ? 'cached' : ''}"></span>
-              <span>${isCached ? 'Edge Cached' : 'Cloud CDN'}</span>
+              <span>${isCached ? 'Downloaded' : 'iCloud'}</span>
             </div>
             <div class="track-actions-col">
-              <button class="action-icon-hit ${isFav ? 'active-fav' : ''}" onclick="event.stopPropagation(); TrackListView.toggleFav('${encodeURIComponent(JSON.stringify(track))}')">
+              <button class="action-icon-hit ${isFav ? 'active-fav' : ''}" title="Favorite" onclick="event.stopPropagation(); TrackListView.toggleFav('${encodeURIComponent(JSON.stringify(track))}')">
                 <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
               </button>
-              <button class="action-icon-hit" onclick="event.stopPropagation(); MusicAPIEngine.downloadDirect('${track.id}')">
+              <button class="action-icon-hit" title="Add to Playlist" onclick="event.stopPropagation(); PlaylistPicker.showCurrentTrack(JSON.parse(decodeURIComponent('${encodeURIComponent(JSON.stringify(track))}')))">
+                <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              </button>
+              <button class="action-icon-hit" title="Download Offline" onclick="event.stopPropagation(); MusicAPIEngine.downloadDirect('${track.id}')">
                 <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
               </button>
             </div>
@@ -2127,17 +2802,28 @@
           container.appendChild(row);
         });
       },
+      highlightCurrentRow() {
+        document.querySelectorAll(".track-row-node").forEach((row, idx) => {
+          const isMatch = AudioEngine.currentTrack && row.dataset.trackId === String(AudioEngine.currentTrack.id);
+          row.classList.toggle("current-playing", !!isMatch);
+          const idxSpan = row.querySelector(".track-idx-col span");
+          if (idxSpan) idxSpan.innerText = isMatch ? "♫" : (idx + 1);
+        });
+      },
       toggleFav(encoded) {
         const track = JSON.parse(decodeURIComponent(encoded));
-        const idx = PlaybackState.favorites.findIndex(f => f.id === track.id);
+        const idx = PlaybackState.favorites.findIndex(f => String(f.id) === String(track.id));
         if (idx >= 0) {
           PlaybackState.favorites.splice(idx, 1);
-          UIToast.show(`Removed from favorites`);
+          UIToast.show(`Removed from Favorite Songs`);
         } else {
           PlaybackState.favorites.push(track);
-          UIToast.show(`Added to favorites`, "success");
+          UIToast.show(`Added to Favorite Songs`, "success");
         }
-        document.getElementById("fav-counter-label").innerText = `${PlaybackState.favorites.length}`;
+        localStorage.setItem("jrmusic_favorites", JSON.stringify(PlaybackState.favorites));
+        iOSExtras.updateCounters();
+        CustomPlaylistsModule.renderShelf();
+        TrackListView.renderList(document.getElementById("listing-heading").innerText, PlaybackState.displayedTracksCache, true);
         TrackListView.syncUserData();
       },
       async syncUserData() {
@@ -2172,7 +2858,7 @@
         PlaybackState.currentUser = null;
         localStorage.removeItem("jrmusic_session");
         UIFeedback.updateUserVisuals();
-        UIToast.show("Logged out.");
+        UIToast.show("Signed out of Apple Music / JRmusic.");
       },
       openModal() {
         document.getElementById("fullscreen-auth-stage").classList.remove("stage-hidden");
@@ -2184,21 +2870,38 @@
         if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.nativeGoogleLogin) {
           window.webkit.messageHandlers.nativeGoogleLogin.postMessage({ clientId: CONFIG.GOOGLE_CLIENT_ID });
         } else {
-          UIToast.show("Starting Google native auth...", "info");
+          UIToast.show("Starting Google native authentication...", "info");
         }
       },
       setSession(userObj) {
         PlaybackState.currentUser = userObj;
+        if (Array.isArray(userObj.favorites) && userObj.favorites.length > 0) {
+          PlaybackState.favorites = userObj.favorites;
+        }
+        if (Array.isArray(userObj.customPlaylists) && userObj.customPlaylists.length > 0) {
+          PlaybackState.customPlaylists = userObj.customPlaylists;
+          CustomPlaylistsModule.renderShelf();
+        }
         localStorage.setItem("jrmusic_session", JSON.stringify(userObj));
         AuthModalController.closeModal();
         UIFeedback.updateUserVisuals();
+        iOSExtras.updateCounters();
       },
       restoreSession() {
         const stored = localStorage.getItem("jrmusic_session");
         if (stored) {
           try {
             PlaybackState.currentUser = JSON.parse(stored);
+            AuthModalController.closeModal();
           } catch (e) {}
+        }
+        const savedFavs = localStorage.getItem("jrmusic_favorites");
+        if (savedFavs) {
+          try { PlaybackState.favorites = JSON.parse(savedFavs); } catch (e) {}
+        }
+        const savedRecent = localStorage.getItem("jrmusic_recent");
+        if (savedRecent) {
+          try { PlaybackState.recentHistory = JSON.parse(savedRecent); } catch (e) {}
         }
       }
     };
@@ -2222,17 +2925,25 @@
 
     const AppNavigation = {
       switchStage(target) {
-        document.querySelectorAll(".liquid-nav-item").forEach(el => el.classList.remove("active"));
-        if (target === 'home') {
-          document.getElementById("nav-main-home").classList.add("active");
+        document.querySelectorAll(".liquid-nav-item, .ios-tab-btn").forEach(el => el.classList.remove("active"));
+        const titleEl = document.getElementById("ios-stage-large-title");
+
+        if (target === 'home' || target === 'all-musics') {
+          document.getElementById(target === 'home' ? "nav-main-home" : "nav-all-musics")?.classList.add("active");
+          document.getElementById("mob-tab-home")?.classList.add("active");
+          if (titleEl) titleEl.innerText = target === 'home' ? "Listen Now" : "Browse Catalog";
           TrackListView.renderList("Discovered Tracks", PlaybackState.flatTrackIndex);
         } else if (target === 'offlines') {
-          document.getElementById("nav-offlines").classList.add("active");
+          document.getElementById("nav-offlines")?.classList.add("active");
+          document.getElementById("mob-tab-offlines")?.classList.add("active");
+          if (titleEl) titleEl.innerText = "Downloaded Music";
           OfflineAudioStore.getAllCachedRecords().then(records => {
             TrackListView.renderList("Offline Edge Vault", records);
           });
         } else if (target === 'my-playlists') {
-          document.getElementById("nav-my-playlists").classList.add("active");
+          document.getElementById("nav-my-playlists")?.classList.add("active");
+          document.getElementById("mob-tab-playlists")?.classList.add("active");
+          if (titleEl) titleEl.innerText = "Playlists";
           if (PlaybackState.customPlaylists.length > 0) {
             TrackListView.renderList(PlaybackState.customPlaylists[0].name, PlaybackState.customPlaylists[0].tracks);
           }
@@ -2245,6 +2956,7 @@
         if (PlaybackState.currentUser) {
           const name = PlaybackState.currentUser.username;
           document.getElementById("user-display-name").innerText = name;
+          document.getElementById("user-tier-label").innerText = "Apple Music · Cloud Synced";
           const avatarBtn = document.getElementById("user-avatar-initial");
           if (PlaybackState.currentUser.avatar) {
             avatarBtn.innerHTML = `<img src="${PlaybackState.currentUser.avatar}" alt="Avatar" />`;
@@ -2253,23 +2965,328 @@
           }
         } else {
           document.getElementById("user-display-name").innerText = "Not Signed In";
+          document.getElementById("user-tier-label").innerText = "Tap to Sign In";
           document.getElementById("user-avatar-initial").innerText = "?";
         }
       }
     };
 
+    /**
+     =========================================================================
+     NEW iOS NATIVE CONVENIENCE & PRACTICAL MODULES
+     =========================================================================
+     */
+    const iOSExtras = {
+      sleepTimerId: null,
+      sleepMinutes: 0,
+
+      toggleTheme() {
+        document.body.classList.toggle("ios-light-mode");
+        const isLight = document.body.classList.contains("ios-light-mode");
+        localStorage.setItem("jrmusic_theme", isLight ? "light" : "dark");
+        UIToast.show(`Appearance: ${isLight ? "iOS Light" : "iOS Dark"}`, "info");
+      },
+
+      cyclePlayMode() {
+        const modes = ['sequence', 'shuffle', 'repeat-one'];
+        const labels = {
+          'sequence': 'Sequential',
+          'shuffle': 'Shuffle Active',
+          'repeat-one': 'Repeat One'
+        };
+        const nextIdx = (modes.indexOf(PlaybackState.playMode) + 1) % modes.length;
+        PlaybackState.playMode = modes[nextIdx];
+        document.getElementById("telemetry-playmode-label").innerText = labels[PlaybackState.playMode];
+        document.getElementById("btn-dock-mode").classList.toggle("active-mode", PlaybackState.playMode !== 'sequence');
+        UIToast.show(`Play Mode: ${labels[PlaybackState.playMode]}`, "info");
+      },
+
+      cyclePlaybackSpeed() {
+        const speeds = [0.75, 1.0, 1.25, 1.5, 2.0];
+        const idx = (speeds.indexOf(PlaybackState.playbackSpeed) + 1) % speeds.length;
+        PlaybackState.playbackSpeed = speeds[idx];
+        if (AudioEngine.sink) AudioEngine.sink.playbackRate = PlaybackState.playbackSpeed;
+        document.getElementById("lbl-speed-badge").innerText = `${PlaybackState.playbackSpeed.toFixed(2).replace('.00', '.0')}x`;
+        UIToast.show(`Playback Speed: ${PlaybackState.playbackSpeed}x`, "info");
+      },
+
+      setVolume(val) {
+        if (AudioEngine.sink) AudioEngine.sink.volume = parseFloat(val);
+      },
+
+      seekFromSheet(e) {
+        const rail = document.getElementById("sheet-seek-rail");
+        const rect = rail.getBoundingClientRect();
+        const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        if (AudioEngine.sink.duration) {
+          AudioEngine.sink.currentTime = ratio * AudioEngine.sink.duration;
+        }
+      },
+
+      shufflePlayAll() {
+        const pool = PlaybackState.displayedTracksCache.length > 0
+          ? PlaybackState.displayedTracksCache
+          : PlaybackState.flatTrackIndex;
+        if (!pool || pool.length === 0) {
+          UIToast.show("No tracks in current view to shuffle", "error");
+          return;
+        }
+        PlaybackState.playMode = 'shuffle';
+        document.getElementById("telemetry-playmode-label").innerText = "Shuffle Active";
+        PlaybackState.currentPlaylist = pool;
+        PlaybackState.currentTrackPointer = Math.floor(Math.random() * pool.length);
+        AudioEngine.loadAndPlay(pool[PlaybackState.currentTrackPointer]);
+      },
+
+      recordRecentTrack(track) {
+        if (!track || !track.id) return;
+        PlaybackState.recentHistory = PlaybackState.recentHistory.filter(t => String(t.id) !== String(track.id));
+        PlaybackState.recentHistory.unshift(track);
+        if (PlaybackState.recentHistory.length > 50) PlaybackState.recentHistory.pop();
+        localStorage.setItem("jrmusic_recent", JSON.stringify(PlaybackState.recentHistory));
+      },
+
+      showRecentHistory() {
+        document.querySelectorAll(".liquid-nav-item").forEach(el => el.classList.remove("active"));
+        document.getElementById("nav-recent-history")?.classList.add("active");
+        document.getElementById("ios-stage-large-title").innerText = "Recently Played";
+        TrackListView.renderList("Recently Played History", PlaybackState.recentHistory);
+      },
+
+      filterDisplayedTracks(mode, btnEl) {
+        document.querySelectorAll(".ios-seg-btn").forEach(b => b.classList.remove("active"));
+        if (btnEl) btnEl.classList.add("active");
+
+        const base = PlaybackState.displayedTracksCache;
+        if (mode === 'all') {
+          TrackListView.renderList(document.getElementById("listing-heading").innerText, base, true);
+        } else if (mode === 'cached') {
+          const filtered = base.filter(t => PlaybackState.offlineCacheCatalog.has(String(t.id)));
+          TrackListView.renderList(document.getElementById("listing-heading").innerText, filtered, true);
+        } else if (mode === 'fav') {
+          const filtered = base.filter(t => PlaybackState.favorites.some(f => String(f.id) === String(t.id)));
+          TrackListView.renderList(document.getElementById("listing-heading").innerText, filtered, true);
+        }
+      },
+
+      filterByKeyword(query) {
+        const q = (query || "").toLowerCase().trim();
+        if (!q) {
+          TrackListView.renderList(document.getElementById("listing-heading").innerText, PlaybackState.displayedTracksCache, true);
+          return;
+        }
+        const filtered = PlaybackState.displayedTracksCache.filter(t =>
+          (t.title && t.title.toLowerCase().includes(q)) ||
+          (t.artist && t.artist.toLowerCase().includes(q)) ||
+          (t.album && t.album.toLowerCase().includes(q))
+        );
+        TrackListView.renderList(document.getElementById("listing-heading").innerText, filtered, true);
+      },
+
+      toggleQueueDrawer() {
+        const drawer = document.getElementById("ios-queue-drawer");
+        drawer.classList.toggle("is-open");
+        if (drawer.classList.contains("is-open")) {
+          iOSExtras.renderQueueList();
+        }
+      },
+
+      renderQueueList() {
+        const container = document.getElementById("ios-queue-list");
+        const sub = document.getElementById("queue-count-sub");
+        if (!container) return;
+        const list = PlaybackState.currentPlaylist || [];
+        sub.innerText = `${list.length} songs in queue`;
+        container.innerHTML = "";
+        if (list.length === 0) {
+          container.innerHTML = `<div style="color:var(--ios-label-tertiary); font-size:0.84rem; text-align:center; padding:30px 0;">Queue is empty.</div>`;
+          return;
+        }
+        list.forEach((track, i) => {
+          const isCurrent = i === PlaybackState.currentTrackPointer;
+          const item = document.createElement("div");
+          item.className = "playlist-select-chip";
+          if (isCurrent) item.style.border = "1px solid var(--ios-tint)";
+          item.innerHTML = `
+            <div style="overflow:hidden; padding-right:8px;">
+              <div style="font-size:0.86rem; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                ${isCurrent ? '▶ ' : ''}${track.title}
+              </div>
+              <div style="font-size:0.72rem; opacity:0.65; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                ${track.artist || ''}
+              </div>
+            </div>
+            <button class="action-icon-hit" onclick="event.stopPropagation(); iOSExtras.removeFromQueue(${i})">✕</button>
+          `;
+          item.onclick = () => {
+            PlaybackState.currentTrackPointer = i;
+            AudioEngine.loadAndPlay(track);
+          };
+          container.appendChild(item);
+        });
+      },
+
+      removeFromQueue(index) {
+        PlaybackState.currentPlaylist.splice(index, 1);
+        iOSExtras.renderQueueList();
+      },
+
+      clearQueue() {
+        PlaybackState.currentPlaylist = [];
+        PlaybackState.currentTrackPointer = -1;
+        iOSExtras.renderQueueList();
+        UIToast.show("Playback queue cleared");
+      },
+
+      cycleSleepTimer() {
+        const options = [0, 15, 30, 45, 60];
+        const nextIdx = (options.indexOf(this.sleepMinutes) + 1) % options.length;
+        this.sleepMinutes = options[nextIdx];
+        if (this.sleepTimerId) clearTimeout(this.sleepTimerId);
+
+        const label = document.getElementById("sidebar-sleep-label");
+        if (this.sleepMinutes === 0) {
+          if (label) label.innerText = "Sleep Timer: Off";
+          UIToast.show("Sleep Timer disabled", "info");
+        } else {
+          if (label) label.innerText = `Sleep Timer: ${this.sleepMinutes}m`;
+          UIToast.show(`Sleep Timer set for ${this.sleepMinutes} minutes`, "success");
+          this.sleepTimerId = setTimeout(() => {
+            if (AudioEngine.sink && !AudioEngine.sink.paused) {
+              AudioEngine.togglePlayState();
+            }
+            this.sleepMinutes = 0;
+            if (label) label.innerText = "Sleep Timer: Off";
+            UIToast.show("Sleep Timer paused playback", "info");
+          }, this.sleepMinutes * 60 * 1000);
+        }
+      },
+
+      async clearOfflineCache() {
+        if (!OfflineAudioStore.db) return;
+        const tx = OfflineAudioStore.db.transaction(["audio_blobs"], "readwrite");
+        tx.objectStore("audio_blobs").clear();
+        tx.oncomplete = async () => {
+          await OfflineAudioStore.refreshCatalog();
+          UIToast.show("Offline audio cache purged", "info");
+        };
+      },
+
+      exportPlaylistsJSON() {
+        const payload = {
+          exportedAt: new Date().toISOString(),
+          favorites: PlaybackState.favorites,
+          customPlaylists: PlaybackState.customPlaylists
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `jrmusic-library-backup.json`;
+        a.click();
+        UIToast.show("Exported library JSON backup", "success");
+      },
+
+      triggerImportJSON() {
+        document.getElementById("json-import-input").click();
+      },
+
+      handleImportJSON(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = async (ev) => {
+          try {
+            const parsed = JSON.parse(ev.target.result);
+            if (Array.isArray(parsed.favorites)) {
+              PlaybackState.favorites = parsed.favorites;
+              localStorage.setItem("jrmusic_favorites", JSON.stringify(PlaybackState.favorites));
+            }
+            if (Array.isArray(parsed.customPlaylists)) {
+              PlaybackState.customPlaylists = parsed.customPlaylists;
+              for (const pl of parsed.customPlaylists) {
+                await OfflineAudioStore.saveLocalPlaylist(pl);
+              }
+            }
+            CustomPlaylistsModule.renderShelf();
+            iOSExtras.updateCounters();
+            UIToast.show("Library backup restored!", "success");
+          } catch (err) {
+            UIToast.show("Invalid backup JSON file", "error");
+          }
+        };
+        reader.readAsText(file);
+      },
+
+      updateCounters() {
+        const favCount = PlaybackState.favorites.length;
+        const offCount = PlaybackState.offlineCacheCatalog.size;
+        const favEl = document.getElementById("fav-counter-label");
+        const offEl = document.getElementById("offline-counter-label");
+        const quotaEl = document.getElementById("header-quota-badge");
+        if (favEl) favEl.innerText = String(favCount);
+        if (offEl) offEl.innerText = String(offCount);
+        if (quotaEl) quotaEl.innerText = `${offCount} Cached`;
+      },
+
+      updateFavoriteBtnState() {
+        const btn = document.getElementById("btn-fav-active-track");
+        if (!btn || !AudioEngine.currentTrack) return;
+        const isFav = PlaybackState.favorites.some(f => String(f.id) === String(AudioEngine.currentTrack.id));
+        btn.classList.toggle("active-fav", isFav);
+      },
+
+      updateMediaSession(track) {
+        if ('mediaSession' in navigator && track) {
+          navigator.mediaSession.metadata = new MediaMetadata({
+            title: track.title || 'JRmusic',
+            artist: track.artist || 'Apple Music Lossless',
+            album: track.album || 'JRmusic Cloud',
+            artwork: track.picUrl ? [{ src: track.picUrl, sizes: '512x512', type: 'image/jpeg' }] : []
+          });
+          navigator.mediaSession.setActionHandler('play', () => AudioEngine.togglePlayState());
+          navigator.mediaSession.setActionHandler('pause', () => AudioEngine.togglePlayState());
+          navigator.mediaSession.setActionHandler('previoustrack', () => AudioEngine.prevTrack());
+          navigator.mediaSession.setActionHandler('nexttrack', () => AudioEngine.nextTrack());
+        }
+      },
+
+      initKeyboardShortcuts() {
+        window.addEventListener("keydown", (e) => {
+          if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) return;
+          if (e.code === "Space") {
+            e.preventDefault();
+            AudioEngine.togglePlayState();
+          } else if (e.code === "ArrowRight" && AudioEngine.sink?.duration) {
+            AudioEngine.sink.currentTime = Math.min(AudioEngine.sink.duration, AudioEngine.sink.currentTime + 5);
+          } else if (e.code === "ArrowLeft" && AudioEngine.sink?.duration) {
+            AudioEngine.sink.currentTime = Math.max(0, AudioEngine.sink.currentTime - 5);
+          } else if (e.key === "l" || e.key === "L") {
+            const overlay = document.getElementById("lyrics-fullscreen-overlay");
+            overlay.classList.contains("is-open") ? LyricsView.close() : LyricsView.open();
+          }
+        });
+      }
+    };
+
+    // Live Spectrum Visualizer Loop
     setInterval(() => {
       const isPlaying = AudioEngine.sink && !AudioEngine.sink.paused;
       document.querySelectorAll(".spectrum-bar").forEach(b => {
-        b.style.height = isPlaying ? (Math.floor(Math.random() * 18) + 4) + 'px' : '4px';
+        b.style.height = isPlaying ? (Math.floor(Math.random() * 14) + 3) + 'px' : '3px';
       });
     }, 150);
 
+    // Application Bootstrap
     window.addEventListener("DOMContentLoaded", async () => {
+      if (localStorage.getItem("jrmusic_theme") === "light") {
+        document.body.classList.add("ios-light-mode");
+      }
+      AuthModalController.restoreSession();
       await OfflineAudioStore.init();
       AudioEngine.init();
-      AuthModalController.restoreSession();
       UIFeedback.updateUserVisuals();
+      iOSExtras.updateCounters();
+      iOSExtras.initKeyboardShortcuts();
       await SpotifyIntegration.checkRedirectCallback();
     });
   </script>
