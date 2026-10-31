@@ -2,725 +2,1523 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网易云音乐工具箱 - NextGen Studio</title>
-    <!-- Stylesheets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CloudMusic Studio Enterprise - 音频元数据工作站</title>
+    <!-- Core Vendor CSS -->
     <link href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/aplayer/1.10.1/APlayer.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
+        /* ==========================================================================
+           1. DESIGN SYSTEM VARIABLES & ROOT TOKENS
+           ========================================================================== */
         :root {
-            --primary-gradient: linear-gradient(135deg, #e11d48 0%, #be123c 50%, #881337 100%);
-            --accent-glow: rgba(225, 29, 72, 0.35);
-            --bg-base: #0b0f19;
-            --bg-surface: rgba(18, 24, 38, 0.72);
-            --bg-card: rgba(24, 32, 51, 0.65);
+            --brand-primary: #ec4899;
+            --brand-crimson: #e11d48;
+            --brand-indigo: #6366f1;
+            --brand-cyan: #06b6d4;
+            --brand-emerald: #10b981;
+            --brand-amber: #f59e0b;
+            
+            --bg-deep: #030712;
+            --bg-panel: rgba(15, 23, 42, 0.45);
+            --bg-surface: rgba(30, 41, 59, 0.35);
+            --bg-glass-input: rgba(11, 15, 25, 0.55);
+            --bg-glass-card: rgba(18, 24, 38, 0.5);
+            --bg-glass-heavy: rgba(10, 15, 28, 0.75);
+
             --border-glass: rgba(255, 255, 255, 0.08);
-            --border-active: rgba(225, 29, 72, 0.5);
-            --text-main: #f8fafc;
+            --border-glass-specular: rgba(255, 255, 255, 0.22);
+            --border-highlight: rgba(225, 29, 72, 0.4);
+
+            --liquid-refract-1: rgba(225, 29, 72, 0.18);
+            --liquid-refract-2: rgba(99, 102, 241, 0.16);
+            --liquid-refract-3: rgba(6, 182, 212, 0.12);
+
+            --text-heading: #f8fafc;
+            --text-body: #cbd5e1;
             --text-muted: #94a3b8;
-            --text-dim: #64748b;
-            --card-radius: 20px;
-            --item-radius: 14px;
-            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            --text-faint: #475569;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-full: 9999px;
+
+            --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+            --shadow-elevation: 0 16px 40px -8px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+            --shadow-glow: 0 0 25px -4px rgba(225, 29, 72, 0.45);
+            --shadow-liquid: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.4), 0 12px 32px -4px rgba(0, 0, 0, 0.7);
+
+            --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            --font-code: 'JetBrains Mono', monospace;
+            --font-sans: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
         }
 
+        /* ==========================================================================
+           2. GLOBAL RESETS & LIQUID GLASS CANVAS SETUP
+           ========================================================================== */
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
             outline: none !important;
         }
 
-        body {
-            background-color: var(--bg-base);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(225, 29, 72, 0.18) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.8) 0px, transparent 100%);
-            background-attachment: fixed;
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        html, body {
+            width: 100%;
+            height: 100%;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            font-family: var(--font-sans);
             overflow-x: hidden;
+            font-size: 14px;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 940px;
+        /* Liquid refraction container with SVG filter backdrop */
+        .liquid-viewport {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
         }
 
-        /* Scrollbar Stylings */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.6);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(225, 29, 72, 0.6);
+        .liquid-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.65;
+            mix-blend-mode: screen;
+            animation: orbFloat 24s ease-in-out infinite alternate;
         }
 
-        /* Header Visuals */
-        .app-header {
+        .orb-1 {
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, var(--brand-crimson) 0%, transparent 70%);
+            top: -150px;
+            left: -100px;
+            animation-duration: 22s;
+        }
+
+        .orb-2 {
+            width: 750px;
+            height: 750px;
+            background: radial-gradient(circle, var(--brand-indigo) 0%, transparent 70%);
+            bottom: -200px;
+            right: -100px;
+            animation-duration: 28s;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--brand-cyan) 0%, transparent 70%);
+            top: 40%;
+            left: 35%;
+            opacity: 0.4;
+            animation-duration: 32s;
+            animation-delay: -10s;
+        }
+
+        .mesh-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(60px, -40px) scale(1.08) rotate(45deg); }
+            66% { transform: translate(-40px, 60px) scale(0.94) rotate(90deg); }
+            100% { transform: translate(30px, 30px) scale(1.04) rotate(135deg); }
+        }
+
+        /* Fluid glass refraction layer */
+        .glass-refract {
+            position: relative;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-top: 1px solid var(--border-glass-specular);
+            border-left: 1px solid var(--border-glass-specular);
+            backdrop-filter: blur(28px) saturate(190%);
+            -webkit-backdrop-filter: blur(28px) saturate(190%);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-liquid);
+            transition: var(--transition-smooth);
+        }
+
+        .glass-refract:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+            border-top-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .liquid-specular-bar {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+            pointer-events: none;
+        }
+
+        /* ==========================================================================
+           3. APPLICATION WORKSPACE LAYOUT (3-COLUMN DENSE VIEWPORT)
+           ========================================================================== */
+        .app-shell {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-navigation {
+            height: 64px;
+            border-bottom: 1px solid var(--border-glass);
+            background: rgba(8, 12, 22, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .studio-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #e11d48 0%, #4f46e5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-glow);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .studio-status-pills {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .engine-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: var(--radius-full);
+            color: #34d399;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: var(--font-code);
+        }
+
+        .engine-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 10px #10b981;
+            animation: pulseSignal 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseSignal {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        /* Primary Grid Layout */
+        .workspace-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 280px minmax(500px, 1fr) 380px;
+            gap: 18px;
+            padding: 18px 24px;
+            max-width: 1920px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Column Specifics */
+        .sidebar-col {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .main-deck-col {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-width: 0;
+        }
+
+        .inspector-col {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* Mode Selector Sub-Navigation in Sidebar */
+        .mode-nav-matrix {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .mode-matrix-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            border-radius: var(--radius-md);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-align: left;
+        }
+
+        .mode-matrix-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.08);
+            transform: translateX(3px);
+        }
+
+        .mode-matrix-btn.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.25) 0%, rgba(99, 102, 241, 0.2) 100%);
+            border-color: rgba(225, 29, 72, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 4px 15px rgba(225, 29, 72, 0.2);
+        }
+
+        .mode-matrix-btn .btn-left-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mode-matrix-btn i {
+            width: 18px;
             text-align: center;
-            margin-bottom: 2rem;
+        }
+
+        .mode-badge-tag {
+            font-size: 0.65rem;
+            padding: 2px 7px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            font-family: var(--font-code);
+        }
+
+        .mode-matrix-btn.active .mode-badge-tag {
+            background: rgba(225, 29, 72, 0.4);
+            color: #fff;
+        }
+
+        /* Telemetry & Quick Metric Cards */
+        .metric-card-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .metric-cell {
+            background: rgba(11, 15, 25, 0.5);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .metric-title {
+            font-size: 0.72rem;
+            color: var(--text-faint);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-value {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            font-family: var(--font-code);
+        }
+
+        /* Operational Deck Panels */
+        .deck-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .deck-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            letter-spacing: -0.01em;
+        }
+
+        .deck-title i {
+            color: var(--brand-crimson);
+        }
+
+        .deck-body {
+            padding: 20px;
+        }
+
+        /* Form Controls */
+        .form-label-custom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .form-label-custom span.subtext {
+            color: var(--text-faint);
+            font-size: 0.7rem;
+            text-transform: none;
+            font-family: var(--font-code);
+        }
+
+        .glass-input-wrapper {
             position: relative;
         }
 
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(225, 29, 72, 0.12);
-            border: 1px solid rgba(225, 29, 72, 0.28);
-            border-radius: 9999px;
-            color: #fb7185;
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            backdrop-filter: blur(8px);
-        }
-
-        .main-title {
-            font-size: 2.6rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.4rem;
-        }
-
-        .sub-title {
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        /* Glassmorphism Cards */
-        .glass-panel {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--card-radius);
-            box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 2rem;
-            margin-bottom: 2rem;
+        .glass-input-wrapper .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-faint);
+            pointer-events: none;
             transition: var(--transition-smooth);
         }
 
-        .glass-panel:hover {
-            border-color: rgba(255, 255, 255, 0.14);
-        }
-
-        /* Mode Selector Pills */
-        .mode-selector-wrapper {
-            background: rgba(11, 15, 25, 0.7);
-            padding: 6px;
-            border-radius: 16px;
-            border: 1px solid var(--border-glass);
-            display: flex;
-            gap: 6px;
-            margin-bottom: 1.8rem;
-            overflow-x: auto;
-        }
-
-        .mode-btn {
-            flex: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 14px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            background: transparent;
-            border: none;
-            border-radius: 11px;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-
-        .mode-btn:hover {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .mode-btn.active {
-            color: #ffffff;
-            background: var(--primary-gradient);
-            box-shadow: 0 4px 16px var(--accent-glow);
-        }
-
-        /* Form UI elements */
-        .form-label {
-            font-size: 0.86rem;
-            font-weight: 600;
-            color: #cbd5e1;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .form-control, .form-select {
-            background-color: rgba(15, 23, 42, 0.65) !important;
+        .form-control-enterprise, .form-select-enterprise {
+            width: 100%;
+            background: var(--bg-glass-input) !important;
             border: 1px solid var(--border-glass) !important;
-            border-radius: 12px !important;
-            color: #ffffff !important;
-            padding: 12px 16px !important;
-            font-size: 0.95rem !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: var(--radius-md) !important;
+            color: var(--text-heading) !important;
+            padding: 12px 14px 12px 42px !important;
+            font-size: 0.9rem !important;
+            font-weight: 500;
             transition: var(--transition-smooth) !important;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        .form-control:focus, .form-select:focus {
-            border-color: #e11d48 !important;
-            box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.2) !important;
-            background-color: rgba(15, 23, 42, 0.9) !important;
+        .form-control-enterprise:focus, .form-select-enterprise:focus {
+            border-color: var(--brand-crimson) !important;
+            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+            background: rgba(15, 23, 42, 0.75) !important;
         }
 
-        .form-select option {
+        .form-control-enterprise:focus + .input-icon {
+            color: var(--brand-crimson);
+        }
+
+        .form-select-enterprise {
+            padding-left: 14px !important;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 14px center !important;
+            background-size: 16px !important;
+        }
+
+        .form-select-enterprise option {
             background-color: #0f172a;
-            color: #ffffff;
+            color: #fff;
         }
 
-        .action-button {
-            background: var(--primary-gradient);
-            border: none;
-            border-radius: 12px;
+        /* Action Buttons */
+        .btn-launch-engine {
+            width: 100%;
+            padding: 13px 22px;
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 60%, #9f1239 100%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: var(--radius-md);
             color: #ffffff;
-            font-size: 0.98rem;
+            font-size: 0.92rem;
             font-weight: 700;
-            padding: 13px 24px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 4px 18px var(--accent-glow);
-            transition: var(--transition-smooth);
             cursor: pointer;
+            box-shadow: var(--shadow-glow), 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition-smooth);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        .action-button:hover:not(:disabled) {
+        .btn-launch-engine:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(225, 29, 72, 0.5);
-            color: #ffffff;
+            box-shadow: 0 0 30px rgba(225, 29, 72, 0.65), 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.35);
         }
 
-        .action-button:active:not(:disabled) {
+        .btn-launch-engine:active:not(:disabled) {
             transform: translateY(0);
         }
 
-        .action-button:disabled {
-            opacity: 0.6;
+        .btn-launch-engine:disabled {
+            opacity: 0.55;
             cursor: not-allowed;
+            filter: grayscale(40%);
         }
 
-        /* Track Item Cards */
-        .list-group {
-            border-radius: var(--item-radius);
-            gap: 8px;
+        .btn-launch-warning {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            box-shadow: 0 0 25px -4px rgba(217, 119, 6, 0.45);
+        }
+        .btn-launch-warning:hover:not(:disabled) {
+            box-shadow: 0 0 30px rgba(217, 119, 6, 0.65);
         }
 
-        .list-group-item {
-            background: var(--bg-card) !important;
-            border: 1px solid var(--border-glass) !important;
-            border-radius: var(--item-radius) !important;
-            color: var(--text-main) !important;
-            padding: 12px 18px !important;
+        .btn-launch-info {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            box-shadow: 0 0 25px -4px rgba(2, 132, 199, 0.45);
+        }
+        .btn-launch-info:hover:not(:disabled) {
+            box-shadow: 0 0 30px rgba(2, 132, 199, 0.65);
+        }
+
+        .btn-launch-success {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            box-shadow: 0 0 25px -4px rgba(5, 150, 105, 0.45);
+        }
+        .btn-launch-success:hover:not(:disabled) {
+            box-shadow: 0 0 30px rgba(5, 150, 105, 0.65);
+        }
+
+        /* Results Matrix & Dense Table */
+        .dense-table-container {
+            max-height: 520px;
+            overflow-y: auto;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-glass);
+            background: rgba(10, 14, 26, 0.4);
+        }
+
+        .dense-list-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .dense-track-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 10px 16px;
+            background: rgba(15, 23, 42, 0.65);
             transition: var(--transition-smooth);
-            backdrop-filter: blur(10px);
+            gap: 14px;
         }
 
-        .list-group-item:hover {
-            border-color: rgba(255, 255, 255, 0.2) !important;
-            background: rgba(30, 41, 67, 0.8) !important;
-            transform: scale(1.006);
+        .dense-track-row:hover {
+            background: rgba(30, 41, 59, 0.8);
         }
 
-        .song-title, .playlist-title {
-            display: inline-block;
-            max-width: 260px;
-            vertical-align: middle;
+        .track-identity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .dense-thumb-cover {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+            border: 1px solid var(--border-glass);
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dense-track-info {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .dense-track-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-heading);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-weight: 600;
-            color: #f1f5f9;
+            display: block;
         }
 
-        .track-meta {
+        .dense-track-meta {
+            font-size: 0.75rem;
             color: var(--text-muted);
-            font-size: 0.88rem;
-        }
-
-        .track-img {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            object-fit: cover;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-glass);
-            flex-shrink: 0;
-            margin-right: 14px;
-        }
-
-        .btn-sub-action {
-            border-radius: 9px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 7px 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border: 1px solid var(--border-glass);
-            transition: var(--transition-smooth);
-        }
-
-        .btn-outline-custom {
-            color: #38bdf8;
-            background: rgba(56, 189, 248, 0.08);
-            border-color: rgba(56, 189, 248, 0.25);
-        }
-        .btn-outline-custom:hover {
-            background: #38bdf8;
-            color: #0f172a;
-            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
-        }
-
-        .btn-download-custom {
-            color: #34d399;
-            background: rgba(52, 211, 153, 0.08);
-            border-color: rgba(52, 211, 153, 0.25);
-        }
-        .btn-download-custom:hover {
-            background: #10b981;
-            color: #042f2e;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        /* Song Detailed Stage */
-        .song-banner-card {
-            background: linear-gradient(145deg, rgba(20, 27, 45, 0.85) 0%, rgba(13, 18, 30, 0.95) 100%);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--card-radius);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            white-space: nowrap;
             overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            margin-top: 2px;
         }
 
-        .badge-chip {
-            display: inline-flex;
+        .dense-actions {
+            display: flex;
             align-items: center;
             gap: 6px;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.78rem;
+            flex-shrink: 0;
+        }
+
+        .btn-compact-action {
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.74rem;
             font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-
-        .badge-chip-primary { background: rgba(225, 29, 72, 0.15); color: #fb7185; border: 1px solid rgba(225, 29, 72, 0.3); }
-        .badge-chip-secondary { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.25); }
-        .badge-chip-success { background: rgba(52, 211, 153, 0.15); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.3); }
-        .badge-chip-warning { background: rgba(251, 191, 36, 0.15); color: #fde047; border: 1px solid rgba(251, 191, 36, 0.3); }
-        .badge-chip-info { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
-
-        /* Lyric Box styling */
-        .lyric-box {
-            max-height: 220px;
-            overflow-y: auto;
-            background: rgba(10, 14, 23, 0.6);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
             border: 1px solid var(--border-glass);
-            border-radius: 12px;
-            padding: 16px 20px;
-            font-size: 0.92rem;
-            color: #94a3b8;
-            line-height: 1.8;
-            font-family: 'JetBrains Mono', monospace;
-            box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-body);
         }
 
-        /* Customized APlayer Skin */
+        .btn-compact-action:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-compact-parse {
+            border-color: rgba(6, 182, 212, 0.3);
+            color: #38bdf8;
+            background: rgba(6, 182, 212, 0.08);
+        }
+        .btn-compact-parse:hover {
+            background: #0284c7;
+            color: #fff;
+            box-shadow: 0 0 12px rgba(2, 132, 199, 0.5);
+        }
+
+        .btn-compact-download {
+            border-color: rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            background: rgba(16, 185, 129, 0.08);
+        }
+        .btn-compact-download:hover {
+            background: #059669;
+            color: #fff;
+            box-shadow: 0 0 12px rgba(5, 150, 105, 0.5);
+        }
+
+        /* Inspector / Metadata Sidebar Elements */
+        .inspector-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .cover-preview-deck {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+            aspect-ratio: 1 / 1;
+            background: rgba(8, 12, 22, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cover-preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            transition: transform 0.5s ease;
+        }
+
+        .cover-preview-img:hover {
+            transform: scale(1.04);
+        }
+
+        .cover-placeholder-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-faint);
+        }
+
+        .cover-placeholder-state i {
+            font-size: 2.8rem;
+        }
+
+        .meta-property-matrix {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .meta-property-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(11, 15, 25, 0.45);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+
+        .meta-label {
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-value {
+            color: var(--text-heading);
+            font-weight: 600;
+            font-family: var(--font-code);
+            max-width: 180px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Lyric Display Container */
+        .lyric-box {
+            height: 200px;
+            overflow-y: auto;
+            background: rgba(9, 13, 24, 0.6);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-family: var(--font-code);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Persistent Bottom Player Bar */
+        .transport-bar-wrapper {
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 15, 26, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-top: 1px solid var(--border-glass);
+            border-top-color: var(--border-glass-specular);
+            padding: 10px 24px;
+            box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .transport-inner-container {
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        /* Custom APlayer Modern Theme */
         .aplayer {
-            background: rgba(15, 23, 42, 0.8) !important;
-            border: 1px solid var(--border-glass) !important;
-            border-radius: 14px !important;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
             margin: 0 !important;
             font-family: inherit !important;
         }
+        .aplayer .aplayer-body {
+            background: transparent !important;
+        }
+        .aplayer .aplayer-pic {
+            border-radius: var(--radius-sm) !important;
+            border: 1px solid var(--border-glass) !important;
+            width: 54px !important;
+            height: 54px !important;
+        }
         .aplayer .aplayer-info {
-            border-top: none !important;
-            padding: 14px 16px !important;
+            padding: 7px 14px 7px 10px !important;
+            height: 54px !important;
+            border-bottom: none !important;
         }
-        .aplayer .aplayer-title {
-            color: #ffffff !important;
-            font-weight: 600 !important;
-            font-size: 1rem !important;
+        .aplayer .aplayer-info .aplayer-music {
+            margin-bottom: 4px !important;
         }
-        .aplayer .aplayer-author {
-            color: #94a3b8 !important;
+        .aplayer .aplayer-info .aplayer-music .aplayer-title {
+            color: #fff !important;
+            font-size: 0.95rem !important;
+            font-weight: 700 !important;
+        }
+        .aplayer .aplayer-info .aplayer-music .aplayer-author {
+            color: var(--text-muted) !important;
+            font-size: 0.8rem !important;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
+            background: rgba(255, 255, 255, 0.1) !important;
+            height: 4px !important;
+            border-radius: 999px !important;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+            background: var(--brand-crimson) !important;
+            height: 4px !important;
+            border-radius: 999px !important;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+            background: #fff !important;
+            box-shadow: 0 0 10px var(--brand-crimson) !important;
+            transform: scale(0.9) !important;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+            color: var(--text-muted) !important;
+            font-family: var(--font-code) !important;
+            font-size: 0.75rem !important;
         }
         .aplayer .aplayer-lrc:before, .aplayer .aplayer-lrc:after {
             display: none !important;
         }
         .aplayer .aplayer-lrc p {
-            color: #64748b !important;
-            font-size: 0.85rem !important;
+            color: var(--text-faint) !important;
+            font-size: 0.8rem !important;
         }
         .aplayer .aplayer-lrc p.aplayer-lrc-current {
-            color: #fb7185 !important;
+            color: var(--brand-crimson) !important;
             font-weight: 700 !important;
         }
-        .aplayer .aplayer-bar-wrap .aplayer-bar .aplayer-played {
-            background: #e11d48 !important;
-        }
-        .aplayer .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
-            background: #fb7185 !important;
-            box-shadow: 0 0 10px #e11d48;
+
+        /* Download progress indicator */
+        .download-stage-box {
+            padding: 14px;
+            background: rgba(8, 12, 22, 0.6);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
         }
 
-        /* Progress Bar */
-        .progress {
-            background-color: rgba(15, 23, 42, 0.7);
-            border-radius: 9999px;
-            height: 10px;
+        .liquid-progress {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-full);
+            height: 8px;
             overflow: hidden;
             border: 1px solid var(--border-glass);
-        }
-        .progress-bar-animated-custom {
-            background: linear-gradient(90deg, #e11d48, #3b82f6, #10b981);
-            background-size: 200% 100%;
-            animation: gradientMove 2s linear infinite;
+            position: relative;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 100% 0; }
-            100% { background-position: -100% 0; }
+        .liquid-progress-bar {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #ec4899, #e11d48, #6366f1, #06b6d4, #10b981);
+            background-size: 300% 100%;
+            animation: liquidFlow 2.5s ease infinite;
         }
 
-        /* Modal styling */
-        .modal-content {
-            background: rgba(18, 24, 38, 0.95);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--card-radius);
-            backdrop-filter: blur(25px);
-            color: #ffffff;
+        @keyframes liquidFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .modal-header {
+
+        /* Modal Styles */
+        .modal-content-glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(35px) saturate(200%);
+            -webkit-backdrop-filter: blur(35px) saturate(200%);
+            border: 1px solid var(--border-glass-specular);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+
+        .modal-header-clean {
             border-bottom: 1px solid var(--border-glass);
-        }
-        .btn-close {
-            filter: invert(1) grayscale(100%) brightness(200%);
+            padding: 16px 22px;
         }
 
-        /* Toast notification */
-        .toast-notify {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 99999;
-            background: rgba(15, 23, 42, 0.95);
+        .modal-close-btn {
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
-            border-left: 4px solid #10b981;
-            padding: 14px 20px;
-            border-radius: 12px;
+            color: var(--text-muted);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .modal-close-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Toast HUD System */
+        .hud-toast-container {
+            position: fixed;
+            top: 76px;
+            right: 24px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .hud-toast {
+            pointer-events: auto;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-glass);
+            border-left: 4px solid var(--brand-crimson);
+            backdrop-filter: blur(20px);
+            padding: 12px 18px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-elevation);
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .toast-notify.show {
-            transform: translateY(0);
-            opacity: 1;
+            color: #fff;
+            font-size: 0.85rem;
+            transform: translateX(120%);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        footer {
-            margin-top: auto;
-            padding: 24px 0;
-            border-top: 1px solid var(--border-glass);
-            color: var(--text-dim);
-            font-size: 0.85rem;
+        .hud-toast.active {
+            transform: translateX(0);
         }
-        footer a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition-smooth);
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1400px) {
+            .workspace-grid {
+                grid-template-columns: 260px 1fr 320px;
+                gap: 14px;
+                padding: 14px 18px;
+            }
         }
-        footer a:hover {
-            color: #fb7185;
+
+        @media (max-width: 1100px) {
+            .workspace-grid {
+                grid-template-columns: 240px 1fr;
+            }
+            .inspector-col {
+                grid-column: span 2;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
         }
 
         @media (max-width: 768px) {
-            .main-title { font-size: 2rem; }
-            .mode-selector-wrapper { flex-wrap: nowrap; overflow-x: scroll; }
-            .song-title, .playlist-title { max-width: 140px; }
-            .glass-panel { padding: 1.25rem; }
+            .workspace-grid {
+                grid-template-columns: 1fr;
+                padding: 12px;
+            }
+            .sidebar-col {
+                display: none;
+            }
+            .inspector-col {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+            .dense-track-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .dense-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container py-4">
-        <!-- Header -->
-        <header class="app-header">
-            <div class="brand-badge"><i class="fa-solid fa-bolt"></i> NETEASE MUSIC PRO</div>
-            <h1 class="main-title">网易云音乐工具箱</h1>
-            <p class="sub-title">无损母带解析 · 歌单/专辑提取 · 智能元数据嵌入</p>
+    <!-- Liquid refraction ambient background -->
+    <div class="liquid-viewport">
+        <div class="mesh-grid"></div>
+        <div class="liquid-orb orb-1"></div>
+        <div class="liquid-orb orb-2"></div>
+        <div class="liquid-orb orb-3"></div>
+    </div>
+
+    <!-- Application Shell -->
+    <div class="app-shell">
+        <!-- Top Operational Ribbon -->
+        <header class="top-navigation">
+            <div class="studio-brand">
+                <div class="brand-logo-icon">
+                    <i class="fa-solid fa-compact-disc fa-spin" style="--fa-animation-duration: 8s;"></i>
+                </div>
+                <span>CloudMusic <span style="font-weight: 300; opacity: 0.8;">Studio Pro</span></span>
+            </div>
+
+            <div class="studio-status-pills">
+                <div class="engine-indicator">
+                    <div class="engine-dot"></div>
+                    <span>AUDIO_ENGINE_ONLINE</span>
+                </div>
+                <div class="engine-indicator" style="background: rgba(99, 102, 241, 0.1); border-color: rgba(99, 102, 241, 0.25); color: #818cf8;">
+                    <i class="fa-solid fa-microchip"></i>
+                    <span>METADATA_INJECTOR: V2.4</span>
+                </div>
+            </div>
         </header>
 
-        <!-- Main Panel -->
-        <div class="glass-panel">
-            <!-- Mode Switcher Nav -->
-            <div class="mode-selector-wrapper">
-                <button type="button" class="mode-btn active" data-mode="search"><i class="fa-solid fa-magnifying-glass"></i> 歌曲搜索</button>
-                <button type="button" class="mode-btn" data-mode="parse"><i class="fa-solid fa-cube"></i> 单曲解析</button>
-                <button type="button" class="mode-btn" data-mode="playlist"><i class="fa-solid fa-list-ul"></i> 歌单解析</button>
-                <button type="button" class="mode-btn" data-mode="album"><i class="fa-solid fa-compact-disc"></i> 专辑解析</button>
-                <button type="button" class="mode-btn" data-mode="download"><i class="fa-solid fa-circle-down"></i> 音乐下载</button>
-            </div>
-
-            <!-- Main Form (Original IDs preserved) -->
-            <form id="main-form">
-                <!-- Keep hidden select for JS sync with existing script expectations -->
-                <select id="mode-select" class="d-none">
-                    <option value="search">歌曲搜索</option>
-                    <option value="parse">单曲解析</option>
-                    <option value="playlist">歌单解析</option>
-                    <option value="album">专辑解析</option>
-                    <option value="download">音乐下载</option>
-                </select>
-
-                <!-- Search Area -->
-                <div id="search-area">
-                    <div class="row g-3">
-                        <div class="col-md-9">
-                            <label for="search_keywords" class="form-label"><i class="fa-solid fa-terminal"></i> 搜索关键词</label>
-                            <input type="text" id="search_keywords" class="form-control" placeholder="输入歌名、歌手或相关关键词...">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="search_limit" class="form-label"><i class="fa-solid fa-sliders"></i> 返回条数</label>
-                            <input type="number" id="search_limit" class="form-control" value="10" min="1" max="50">
-                        </div>
+        <!-- Main Workspace Grid -->
+        <main class="workspace-grid">
+            <!-- Left Console: Navigation & Telemetry -->
+            <aside class="sidebar-col">
+                <!-- Navigation Selector -->
+                <div class="glass-refract p-3">
+                    <div class="liquid-specular-bar"></div>
+                    <div class="d-flex align-items-center justify-content-between mb-3 px-1">
+                        <span class="text-faint text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 0.5px;">工作台模式</span>
+                        <i class="fa-solid fa-cubes text-faint"></i>
                     </div>
-                    <div class="text-center mt-4">
-                        <button type="button" id="search-btn" class="action-button w-100"><i class="fa-solid fa-magnifying-glass"></i> 立即搜索</button>
+
+                    <div class="mode-nav-matrix">
+                        <button type="button" class="mode-matrix-btn active" data-mode="search">
+                            <span class="btn-left-content">
+                                <i class="fa-solid fa-magnifying-glass text-danger"></i>
+                                <span>单曲搜索</span>
+                            </span>
+                            <span class="mode-badge-tag">SRC</span>
+                        </button>
+                        <button type="button" class="mode-matrix-btn" data-mode="parse">
+                            <span class="btn-left-content">
+                                <i class="fa-solid fa-cube text-info"></i>
+                                <span>单曲解析</span>
+                            </span>
+                            <span class="mode-badge-tag">PRS</span>
+                        </button>
+                        <button type="button" class="mode-matrix-btn" data-mode="playlist">
+                            <span class="btn-left-content">
+                                <i class="fa-solid fa-list-ul text-warning"></i>
+                                <span>歌单提取</span>
+                            </span>
+                            <span class="mode-badge-tag">LST</span>
+                        </button>
+                        <button type="button" class="mode-matrix-btn" data-mode="album">
+                            <span class="btn-left-content">
+                                <i class="fa-solid fa-record-vinyl text-primary"></i>
+                                <span>专辑归档</span>
+                            </span>
+                            <span class="mode-badge-tag">ALB</span>
+                        </button>
+                        <button type="button" class="mode-matrix-btn" data-mode="download">
+                            <span class="btn-left-content">
+                                <i class="fa-solid fa-cloud-arrow-down text-success"></i>
+                                <span>音频导出</span>
+                            </span>
+                            <span class="mode-badge-tag">FLAC</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Parse Area -->
-                <div id="parse-area" style="display:none;">
-                    <div class="row g-3">
-                        <div class="col-md-8">
-                            <label for="song_ids" class="form-label"><i class="fa-solid fa-link"></i> 歌曲 ID 或 URL</label>
-                            <input type="text" id="song_ids" class="form-control" placeholder="例如: 186016 或 https://music.163.com/#/song?id=186016">
+                <!-- Live Stream Statistics -->
+                <div class="glass-refract p-3">
+                    <div class="liquid-specular-bar"></div>
+                    <div class="d-flex align-items-center justify-content-between mb-3 px-1">
+                        <span class="text-faint text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 0.5px;">工作站监控</span>
+                        <i class="fa-solid fa-chart-simple text-faint"></i>
+                    </div>
+                    <div class="metric-card-group">
+                        <div class="metric-cell">
+                            <span class="metric-title">解析会话</span>
+                            <span class="metric-value" id="stat-parse-count">0</span>
                         </div>
-                        <div class="col-md-4">
-                            <label for="level" class="form-label"><i class="fa-solid fa-headphones"></i> 音质等级</label>
-                            <select id="level" class="form-select">
-                                <option value="standard">标准音质 (128kbps)</option>
-                                <option value="exhigh">极高音质 (320kbps)</option>
-                                <option value="lossless">无损音质 (FLAC)</option>
-                                <option value="hires">Hi-Res 高清母带</option>
-                                <option value="sky">沉浸环绕声</option>
-                                <option value="jyeffect">高清环绕声</option>
-                                <option value="jymaster">超清母带</option>
-                                <option value="dolby">杜比全景声</option>
+                        <div class="metric-cell">
+                            <span class="metric-title">下载封装</span>
+                            <span class="metric-value" id="stat-download-count">0</span>
+                        </div>
+                        <div class="metric-cell">
+                            <span class="metric-title">音质比特率</span>
+                            <span class="metric-value" style="font-size: 0.9rem; color: #34d399;" id="stat-bitrate-label">FLAC Lossless</span>
+                        </div>
+                        <div class="metric-cell">
+                            <span class="metric-title">命名规范</span>
+                            <span class="metric-value" style="font-size: 0.85rem; color: #38bdf8;">Standardized</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Format Rule Guard Box -->
+                <div class="glass-refract p-3">
+                    <div class="liquid-specular-bar"></div>
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <i class="fa-solid fa-shield-halved text-success"></i>
+                        <span class="fw-bold text-white" style="font-size: 0.82rem;">文件导出命名规则</span>
+                    </div>
+                    <p class="text-faint mb-2" style="font-size: 0.76rem;">已启用严格过滤逻辑。导出文件将强制标准化命名为：</p>
+                    <div class="p-2 rounded bg-black border border-secondary border-opacity-25 text-center font-monospace" style="font-size: 0.8rem; color: #a5f3fc;">
+                        &lt;SongName&gt;.mp3 / .flac
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Deck: Operational Area & Matrix Results -->
+            <section class="main-deck-col">
+                <!-- Functional Form Controller -->
+                <div class="glass-refract">
+                    <div class="liquid-specular-bar"></div>
+                    <div class="deck-header">
+                        <div class="deck-title">
+                            <i class="fa-solid fa-sliders"></i>
+                            <span id="current-deck-caption">歌曲搜索控制台</span>
+                        </div>
+                        <span class="text-faint font-monospace" style="font-size: 0.72rem;">OP_STATUS: READY</span>
+                    </div>
+
+                    <div class="deck-body">
+                        <!-- Keep hidden select for compatibility with legacy programmatic updates -->
+                        <form id="main-form">
+                            <select id="mode-select" class="d-none">
+                                <option value="search" selected>歌曲搜索</option>
+                                <option value="parse">单曲解析</option>
+                                <option value="playlist">歌单解析</option>
+                                <option value="album">专辑解析</option>
+                                <option value="download">音乐下载</option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="text-center mt-4">
-                        <button type="button" id="parse-btn" class="action-button w-100"><i class="fa-solid fa-bolt"></i> 解析单曲信息</button>
+
+                            <!-- 1. Search Deck -->
+                            <div id="search-area">
+                                <div class="row g-3">
+                                    <div class="col-md-9">
+                                        <div class="form-label-custom">
+                                            <span>搜索关键词</span>
+                                            <span class="subtext">NAME / SINGER / ALBUM</span>
+                                        </div>
+                                        <div class="glass-input-wrapper">
+                                            <input type="text" id="search_keywords" class="form-control-enterprise" placeholder="输入关键词快速检索网易云曲库...">
+                                            <i class="fa-solid fa-magnifying-glass input-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-label-custom">
+                                            <span>返回条数</span>
+                                            <span class="subtext">MAX: 50</span>
+                                        </div>
+                                        <div class="glass-input-wrapper">
+                                            <input type="number" id="search_limit" class="form-control-enterprise" value="10" min="1" max="50">
+                                            <i class="fa-solid fa-arrow-down-wide-short input-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="button" id="search-btn" class="btn-launch-engine">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span>执行云端音频检索</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 2. Parse Deck -->
+                            <div id="parse-area" style="display:none;">
+                                <div class="row g-3">
+                                    <div class="col-md-8">
+                                        <div class="form-label-custom">
+                                            <span>歌曲 ID 或直链</span>
+                                            <span class="subtext">SONG ID / 163CN URL</span>
+                                        </div>
+                                        <div class="glass-input-wrapper">
+                                            <input type="text" id="song_ids" class="form-control-enterprise" placeholder="输入网易云歌曲ID或分享链接 (如: 186016)...">
+                                            <i class="fa-solid fa-link input-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-label-custom">
+                                            <span>目标音质阶梯</span>
+                                            <span class="subtext">ENCODING LEVEL</span>
+                                        </div>
+                                        <select id="level" class="form-select-enterprise">
+                                            <option value="standard">标准音质 (128kbps)</option>
+                                            <option value="exhigh">极高音质 (320kbps)</option>
+                                            <option value="lossless" selected>无损音质 (FLAC)</option>
+                                            <option value="hires">Hi-Res 高清母带</option>
+                                            <option value="sky">沉浸环绕声 (Sky)</option>
+                                            <option value="jyeffect">高清环绕声 (JYEffect)</option>
+                                            <option value="jymaster">超清母带 (Master)</option>
+                                            <option value="dolby">杜比全景声 (Dolby Atmos)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="button" id="parse-btn" class="btn-launch-engine btn-launch-info">
+                                        <i class="fa-solid fa-bolt-lightning"></i>
+                                        <span>启动高精度单曲解析</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 3. Playlist Deck -->
+                            <div id="playlist-area" style="display:none;">
+                                <div class="mb-3">
+                                    <div class="form-label-custom">
+                                        <span>歌单 ID 或链接</span>
+                                        <span class="subtext">PLAYLIST ID / SHARE LINK</span>
+                                    </div>
+                                    <div class="glass-input-wrapper">
+                                        <input type="text" id="playlist_id" class="form-control-enterprise" placeholder="输入歌单 ID 或网易云歌单链接...">
+                                        <i class="fa-solid fa-rectangle-list input-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="button" id="playlist-btn" class="btn-launch-engine btn-launch-warning">
+                                        <i class="fa-solid fa-list-check"></i>
+                                        <span>提取并索引歌单曲目</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 4. Album Deck -->
+                            <div id="album-area" style="display:none;">
+                                <div class="mb-3">
+                                    <div class="form-label-custom">
+                                        <span>专辑 ID 或链接</span>
+                                        <span class="subtext">ALBUM ID / SHARE LINK</span>
+                                    </div>
+                                    <div class="glass-input-wrapper">
+                                        <input type="text" id="album_id" class="form-control-enterprise" placeholder="输入专辑 ID 或网易云专辑分享链接...">
+                                        <i class="fa-solid fa-compact-disc input-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="button" id="album-btn" class="btn-launch-engine btn-launch-info">
+                                        <i class="fa-solid fa-layer-group"></i>
+                                        <span>分析专辑结构及曲目</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 5. Download Deck -->
+                            <div id="download-area" style="display:none;">
+                                <div class="row g-3">
+                                    <div class="col-md-8">
+                                        <div class="form-label-custom">
+                                            <span>音乐 ID 或 URL</span>
+                                            <span class="subtext">TARGET SONG RESOURCE</span>
+                                        </div>
+                                        <div class="glass-input-wrapper">
+                                            <input type="text" id="download_id" class="form-control-enterprise" placeholder="输入需要打包下载的歌曲 ID 或 URL...">
+                                            <i class="fa-solid fa-music input-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-label-custom">
+                                            <span>封装音质</span>
+                                            <span class="subtext">AUDIO CONTAINER</span>
+                                        </div>
+                                        <select id="download_quality" class="form-select-enterprise">
+                                            <option value="standard">标准音质 (MP3)</option>
+                                            <option value="exhigh">极高音质 (320K MP3)</option>
+                                            <option value="lossless" selected>无损音质 (FLAC)</option>
+                                            <option value="hires">Hi-Res 母带 (FLAC)</option>
+                                            <option value="sky">沉浸环绕声</option>
+                                            <option value="jyeffect">高清环绕声</option>
+                                            <option value="jymaster">超清母带</option>
+                                            <option value="dolby">杜比全景声</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="button" id="download-btn" class="btn-launch-engine btn-launch-success">
+                                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                                        <span>写入元信息并开始封装下载</span>
+                                    </button>
+                                </div>
+
+                                <div id="download-progress" class="mt-4 d-none">
+                                    <div class="download-stage-box">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="small fw-bold text-white"><i class="fa-solid fa-spinner fa-spin me-2 text-success"></i>流式传输中并处理 ID3/Vorbis 元信息...</span>
+                                            <span class="font-monospace small text-muted">BUFFERING</span>
+                                        </div>
+                                        <div class="liquid-progress">
+                                            <div class="liquid-progress-bar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
-                <!-- Playlist Area -->
-                <div id="playlist-area" style="display:none;">
-                    <div class="mb-3">
-                        <label for="playlist_id" class="form-label"><i class="fa-solid fa-rectangle-list"></i> 歌单 ID 或链接</label>
-                        <input type="text" id="playlist_id" class="form-control" placeholder="输入歌单 ID 或网易云歌单分享链接...">
-                    </div>
-                    <div class="text-center mt-4">
-                        <button type="button" id="playlist-btn" class="action-button w-100" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%);"><i class="fa-solid fa-list-check"></i> 解析歌单全部曲目</button>
-                    </div>
-                </div>
-
-                <!-- Album Area -->
-                <div id="album-area" style="display:none;">
-                    <div class="mb-3">
-                        <label for="album_id" class="form-label"><i class="fa-solid fa-record-vinyl"></i> 专辑 ID 或链接</label>
-                        <input type="text" id="album_id" class="form-control" placeholder="输入专辑 ID 或网易云专辑分享链接...">
-                    </div>
-                    <div class="text-center mt-4">
-                        <button type="button" id="album-btn" class="action-button w-100" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);"><i class="fa-solid fa-compact-disc"></i> 解析专辑全部内容</button>
-                    </div>
-                </div>
-
-                <!-- Download Area -->
-                <div id="download-area" style="display:none;">
-                    <div class="row g-3">
-                        <div class="col-md-8">
-                            <label for="download_id" class="form-label"><i class="fa-solid fa-music"></i> 音乐 ID 或 URL</label>
-                            <input type="text" id="download_id" class="form-control" placeholder="输入歌曲 ID 或复制分享链接...">
+                <!-- Search Results Grid Panel -->
+                <div id="search-result" class="glass-refract d-none">
+                    <div class="liquid-specular-bar"></div>
+                    <div class="deck-header">
+                        <div class="deck-title">
+                            <i class="fa-solid fa-list-ol"></i>
+                            <span>曲目检索结果</span>
                         </div>
-                        <div class="col-md-4">
-                            <label for="download_quality" class="form-label"><i class="fa-solid fa-wave-square"></i> 音质等级</label>
-                            <select id="download_quality" class="form-select">
-                                <option value="standard">标准音质</option>
-                                <option value="exhigh">极高音质</option>
-                                <option value="lossless" selected>无损音质 (FLAC)</option>
-                                <option value="hires">Hi-Res 音质</option>
-                                <option value="sky">沉浸环绕声</option>
-                                <option value="jyeffect">高清环绕声</option>
-                                <option value="jymaster">超清母带</option>
-                                <option value="dolby">杜比全景声</option>
-                            </select>
-                        </div>
+                        <span class="text-faint font-monospace" style="font-size: 0.72rem;" id="search-count-badge">BATCH_READY</span>
                     </div>
-                    <div class="text-center mt-4">
-                        <button type="button" id="download-btn" class="action-button w-100" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);"><i class="fa-solid fa-cloud-arrow-down"></i> 下载并封装元数据</button>
-                    </div>
-                    <div id="download-progress" class="mt-4 d-none">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-animated-custom" role="progressbar" style="width: 100%"></div>
-                        </div>
-                        <div class="text-center mt-2">
-                            <small class="text-muted"><i class="fa-solid fa-spinner fa-spin me-1"></i> 正在向网易云服务器请求数据并写入 ID3/FLAC 元信息...</small>
+                    <div class="p-3">
+                        <div class="dense-table-container">
+                            <ul class="dense-list-group list-unstyled mb-0" id="search-list"></ul>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
 
-        <!-- Search Results View -->
-        <div id="search-result" class="glass-panel d-none">
-            <h5 class="mb-3 d-flex align-items-center gap-2"><i class="fa-solid fa-square-poll-vertical text-danger"></i> 搜索结果</h5>
-            <ul class="list-group" id="search-list"></ul>
-        </div>
-
-        <!-- Single Song Result Detail View -->
-        <div id="song-info" class="song-banner-card glass-panel d-none p-0">
-            <div class="p-4">
-                <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3 mb-3">
-                    <div>
-                        <h3 class="mb-2" id="song_name" style="font-weight: 800; color: #fff;"></h3>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="badge-chip badge-chip-primary"><i class="fa-solid fa-user"></i> <span id="artist_names"></span></span>
-                            <span class="badge-chip badge-chip-secondary"><i class="fa-solid fa-compact-disc"></i> <span id="song_alname"></span></span>
-                            <span class="badge-chip badge-chip-success"><i class="fa-solid fa-shield-halved"></i> <span id="song_level"></span></span>
-                            <span class="badge-chip badge-chip-warning"><i class="fa-solid fa-database"></i> <span id="song_size"></span></span>
+                <!-- Playlist Results View -->
+                <div id="playlist-result" class="glass-refract d-none">
+                    <div class="liquid-specular-bar"></div>
+                    <div class="deck-header">
+                        <div class="deck-title">
+                            <i class="fa-solid fa-folder-tree"></i>
+                            <span id="playlist-header-title">歌单详情清单</span>
                         </div>
+                        <span class="badge bg-secondary font-monospace" id="playlist-count-badge">0 TRACKS</span>
                     </div>
-                    <div class="d-flex gap-2">
-                        <button id="show-big-pic" type="button" class="btn btn-outline-light btn-sm btn-sub-action"><i class="fa-solid fa-image"></i> 查看封面</button>
-                        <a id="song_url" href="" target="_blank" class="btn btn-danger btn-sm btn-sub-action"><i class="fa-solid fa-arrow-up-right-from-square"></i> 直链直通</a>
+                    <div class="p-3">
+                        <div class="d-flex align-items-center gap-3 p-3 rounded mb-3" style="background: rgba(11, 15, 25, 0.45); border: 1px solid var(--border-glass);">
+                            <img id="playlist-cover" src="" alt="cover" class="dense-thumb-cover" style="width: 56px; height: 56px; border-radius: var(--radius-md);">
+                            <div class="min-w-0 flex-grow-1">
+                                <h6 id="playlist-name" class="text-white fw-bold mb-1 text-truncate"></h6>
+                                <div class="text-muted small" id="playlist-creator"></div>
+                            </div>
+                        </div>
+                        <div id="playlist-desc" class="mb-3 text-muted small p-2 rounded bg-black bg-opacity-25 border border-secondary border-opacity-10" style="max-height: 80px; overflow-y: auto;"></div>
+                        <div class="dense-table-container">
+                            <ul class="dense-list-group list-unstyled mb-0" id="playlist-tracks"></ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="mb-2 text-muted small"><i class="fa-solid fa-align-left me-1"></i> 歌词同步解析</div>
-                <div class="lyric-box mb-4" id="lyric"></div>
+                <!-- Album Results View -->
+                <div id="album-result" class="glass-refract d-none">
+                    <div class="liquid-specular-bar"></div>
+                    <div class="deck-header">
+                        <div class="deck-title">
+                            <i class="fa-solid fa-record-vinyl"></i>
+                            <span id="album-header-title">专辑归档清单</span>
+                        </div>
+                        <span class="badge bg-secondary font-monospace" id="album-count-badge">0 TRACKS</span>
+                    </div>
+                    <div class="p-3">
+                        <div class="d-flex align-items-center gap-3 p-3 rounded mb-3" style="background: rgba(11, 15, 25, 0.45); border: 1px solid var(--border-glass);">
+                            <img id="album-cover" src="" alt="cover" class="dense-thumb-cover" style="width: 56px; height: 56px; border-radius: var(--radius-md);">
+                            <div class="min-w-0 flex-grow-1">
+                                <h6 id="album-name" class="text-white fw-bold mb-1 text-truncate"></h6>
+                                <div class="text-muted small" id="album-artist"></div>
+                            </div>
+                        </div>
+                        <div id="album-desc" class="mb-3 text-muted small p-2 rounded bg-black bg-opacity-25 border border-secondary border-opacity-10" style="max-height: 80px; overflow-y: auto;"></div>
+                        <div class="dense-table-container">
+                            <ul class="dense-list-group list-unstyled mb-0" id="album-tracks"></ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            <!-- Right Inspector Deck: Metadata, Lyrics & Cover Artwork -->
+            <aside class="inspector-col">
+                <!-- Cover Preview Deck -->
+                <div class="glass-refract p-3">
+                    <div class="liquid-specular-bar"></div>
+                    <div class="d-flex align-items-center justify-content-between mb-3 px-1">
+                        <span class="text-faint text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 0.5px;">高保真封面渲染</span>
+                        <button type="button" id="show-big-pic" class="btn btn-sm btn-compact-action text-info"><i class="fa-solid fa-expand"></i> 视口放大</button>
+                    </div>
+
+                    <div class="cover-preview-deck mb-3">
+                        <img id="inspector-artwork-img" src="" alt="Album Artwork" class="cover-preview-img">
+                        <div class="cover-placeholder-state" id="cover-empty-state">
+                            <i class="fa-solid fa-compact-disc"></i>
+                            <span style="font-size: 0.8rem;">等待音频载入</span>
+                        </div>
+                    </div>
+
+                    <!-- Song Metadata Matrix -->
+                    <div class="meta-property-matrix">
+                        <div class="meta-property-row">
+                            <span class="meta-label"><i class="fa-solid fa-music"></i> 歌名</span>
+                            <span class="meta-value" id="song_name">--</span>
+                        </div>
+                        <div class="meta-property-row">
+                            <span class="meta-label"><i class="fa-solid fa-user"></i> 歌手</span>
+                            <span class="meta-value" id="artist_names">--</span>
+                        </div>
+                        <div class="meta-property-row">
+                            <span class="meta-label"><i class="fa-solid fa-compact-disc"></i> 唱片</span>
+                            <span class="meta-value" id="song_alname">--</span>
+                        </div>
+                        <div class="meta-property-row">
+                            <span class="meta-label"><i class="fa-solid fa-wave-square"></i> 音质</span>
+                            <span class="meta-value text-success" id="song_level">--</span>
+                        </div>
+                        <div class="meta-property-row">
+                            <span class="meta-label"><i class="fa-solid fa-hard-drive"></i> 大小</span>
+                            <span class="meta-value text-warning" id="song_size">--</span>
+                        </div>
+                        <div class="meta-property-row">
+                            <span class="meta-label"><i class="fa-solid fa-link"></i> 物理直链</span>
+                            <a id="song_url" href="" target="_blank" class="meta-value text-info text-decoration-none">等待生成</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Synchronized Lyric Teleprompter -->
+                <div class="glass-refract p-3">
+                    <div class="liquid-specular-bar"></div>
+                    <div class="d-flex align-items-center justify-content-between mb-2 px-1">
+                        <span class="text-faint text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 0.5px;">双语时间轴歌词</span>
+                        <i class="fa-solid fa-align-left text-faint"></i>
+                    </div>
+                    <div class="lyric-box" id="lyric">
+                        <div class="text-center text-muted py-5" style="font-size: 0.8rem;">[暂无载入的歌词流]</div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Bottom Global Audio Transport Bar -->
+        <footer class="transport-bar-wrapper">
+            <div class="transport-inner-container">
                 <div id="aplayer"></div>
             </div>
-        </div>
-
-        <!-- Playlist Result View -->
-        <div id="playlist-result" class="glass-panel d-none">
-            <div class="d-flex align-items-center mb-3">
-                <img id="playlist-cover" src="" alt="cover" class="track-img" style="width: 70px; height: 70px;">
-                <div>
-                    <h5 id="playlist-name" class="mb-1 text-white fw-bold"></h5>
-                    <div class="text-muted small" id="playlist-creator"></div>
-                    <div class="text-dim small mt-1">共 <span id="playlist-count" class="text-danger fw-bold"></span> 首歌</div>
-                </div>
-            </div>
-            <div id="playlist-desc" class="mb-3 text-muted small" style="white-space: pre-line;"></div>
-            <ul class="list-group" id="playlist-tracks"></ul>
-        </div>
-
-        <!-- Album Result View -->
-        <div id="album-result" class="glass-panel d-none">
-            <div class="d-flex align-items-center mb-3">
-                <img id="album-cover" src="" alt="cover" class="track-img" style="width: 70px; height: 70px;">
-                <div>
-                    <h5 id="album-name" class="mb-1 text-white fw-bold"></h5>
-                    <div class="text-muted small" id="album-artist"></div>
-                    <div class="text-dim small mt-1">共 <span id="album-count" class="text-info fw-bold"></span> 首歌</div>
-                </div>
-            </div>
-            <div id="album-desc" class="mb-3 text-muted small" style="white-space: pre-line;"></div>
-            <ul class="list-group" id="album-tracks"></ul>
-        </div>
+        </footer>
     </div>
 
-    <!-- Modal for big picture -->
-    <div class="modal fade" id="bigPicModal" tabindex="-1" aria-labelledby="bigPicModalLabel" aria-hidden="true">
+    <!-- Hidden compatibility container for legacy alert wrapper -->
+    <div id="song-info" class="d-none"></div>
+
+    <!-- Modal for High-Res Artwork Preview -->
+    <div class="modal fade" id="bigPicModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="modal-title" id="bigPicModalLabel"><i class="fa-solid fa-image me-2 text-danger"></i> 高清原图预览</h6>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content modal-content-glass">
+                <div class="modal-header modal-header-clean d-flex justify-content-between align-items-center">
+                    <h6 class="modal-title fw-bold text-white mb-0"><i class="fa-solid fa-image me-2 text-danger"></i> 高清唱片封面视图</h6>
+                    <button type="button" class="modal-close-btn" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 <div class="modal-body text-center p-3">
-                    <img id="big-pic-img" src="" alt="大图" style="max-width:100%; max-height:65vh; border-radius:12px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
+                    <img id="big-pic-img" src="" alt="大图" style="max-width:100%; max-height:68vh; border-radius: var(--radius-md); box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Toast Component -->
-    <div id="app-toast" class="toast-notify">
-        <i class="fa-solid fa-circle-check text-success fs-5"></i>
-        <span id="toast-text" class="text-white small fw-bold">操作成功</span>
+    <!-- Toast Notification Viewport -->
+    <div class="hud-toast-container">
+        <div id="app-hud-toast" class="hud-toast">
+            <i class="fa-solid fa-circle-check text-success fs-5"></i>
+            <div>
+                <div class="fw-bold text-white" id="toast-title">系统就绪</div>
+                <div class="text-muted small" id="toast-body">操作已成功执行</div>
+            </div>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer text-center">
-        <div class="container">
-            <span>网易云音乐工具箱 &copy; 2026 | NextGen Web Audio Engine | Powered by JackZ</span>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
+    <!-- Dependencies -->
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
     <script>
         $(document).ready(function() {
-            // Memory storage for mapping song names cleanly to download files
-            window.songNameCache = {};
+            // Memory storage for clean filename mapping
+            window.songNameDatabase = {};
+            window.activeAudioPlayer = null;
+            let parseSessionCount = 0;
+            let downloadSessionCount = 0;
 
-            function showToast(msg) {
-                const toast = $('#app-toast');
-                $('#toast-text').text(msg);
-                toast.addClass('show');
+            // HUD notification system
+            function triggerToast(title, message, isError = false) {
+                const toast = $('#app-hud-toast');
+                $('#toast-title').text(title);
+                $('#toast-body').text(message);
+                if (isError) {
+                    toast.css('border-left-color', '#ef4444');
+                    toast.find('i').attr('class', 'fa-solid fa-circle-exclamation text-danger fs-5');
+                } else {
+                    toast.css('border-left-color', '#10b981');
+                    toast.find('i').attr('class', 'fa-solid fa-circle-check text-success fs-5');
+                }
+                toast.addClass('active');
                 setTimeout(() => {
-                    toast.removeClass('show');
+                    toast.removeClass('active');
                 }, 3200);
             }
 
+            // Sanitizer to enforce strict "<SongName>.ext"
+            function sanitizeToStrictFilename(songName, fallbackId, extension) {
+                let cleanName = songName || '';
+                if (!cleanName && window.songNameDatabase[fallbackId]) {
+                    cleanName = window.songNameDatabase[fallbackId];
+                }
+                if (!cleanName) {
+                    cleanName = `Song_${fallbackId}`;
+                }
+
+                // Strip directory traversal, Windows reserved symbols and quotes
+                cleanName = cleanName.replace(/[\\/:*?"<>|]/g, '_').trim();
+                return `${cleanName}.${extension}`;
+            }
+
+            // Parsing engine lyrics helpers (original logic strictly maintained)
             function lrctrim(lyrics) {
                 const lines = lyrics.split('\n');
                 const data = [];
@@ -801,43 +1599,56 @@
                 }
             }
 
-            // Custom Tab Pill Switcher synced with #mode-select
-            $('.mode-btn').on('click', function() {
-                $('.mode-btn').removeClass('active');
-                $(this).addClass('active');
+            // Sync visual navigation matrix with mode selectors
+            $('.mode-matrix-btn').on('click', function() {
                 const targetMode = $(this).data('mode');
+                $('.mode-matrix-btn').removeClass('active');
+                $(this).addClass('active');
                 $('#mode-select').val(targetMode).trigger('change');
             });
 
-            // 切换功能区 (Exact logic preserved)
+            // Mode switching coordinator
             $('#mode-select').on('change', function() {
-                const currentMode = $(this).val();
-                $(`.mode-btn[data-mode="${currentMode}"]`).addClass('active').siblings().removeClass('active');
+                const mode = $(this).val();
+                $(`.mode-matrix-btn[data-mode="${mode}"]`).addClass('active').siblings().removeClass('active');
 
-                if (currentMode === 'search') {
-                    $('#search-area').fadeIn(200);
+                const deckCaptions = {
+                    search: '歌曲搜索控制台',
+                    parse: '单曲精细解析控制台',
+                    playlist: '歌单全量提取控制台',
+                    album: '唱片专辑提取控制台',
+                    download: '音频元数据打包导出'
+                };
+                $('#current-deck-caption').text(deckCaptions[mode] || '工作台控制中心');
+
+                // Standard toggles matching legacy rules
+                if (mode === 'search') {
+                    $('#search-area').show();
                     $('#parse-area, #playlist-area, #album-area, #download-area').hide();
                     $('#song-info, #playlist-result, #album-result').addClass('d-none');
-                } else if (currentMode === 'parse') {
-                    $('#parse-area').fadeIn(200);
-                    $('#search-area, #playlist-area, #album-area, #download-area').hide();
+                } else if (mode === 'parse') {
+                    $('#search-area').hide();
+                    $('#parse-area').show();
+                    $('#playlist-area, #album-area, #download-area').hide();
                     $('#search-result, #playlist-result, #album-result').addClass('d-none');
-                } else if (currentMode === 'playlist') {
-                    $('#playlist-area').fadeIn(200);
-                    $('#search-area, #parse-area, #album-area, #download-area').hide();
+                } else if (mode === 'playlist') {
+                    $('#search-area, #parse-area').hide();
+                    $('#playlist-area').show();
+                    $('#album-area, #download-area').hide();
                     $('#search-result, #song-info, #album-result').addClass('d-none');
-                } else if (currentMode === 'album') {
-                    $('#album-area').fadeIn(200);
-                    $('#search-area, #parse-area, #playlist-area, #download-area').hide();
+                } else if (mode === 'album') {
+                    $('#search-area, #parse-area, #playlist-area').hide();
+                    $('#album-area').show();
+                    $('#download-area').hide();
                     $('#search-result, #song-info, #playlist-result').addClass('d-none');
-                } else if (currentMode === 'download') {
-                    $('#download-area').fadeIn(200);
+                } else if (mode === 'download') {
                     $('#search-area, #parse-area, #playlist-area, #album-area').hide();
+                    $('#download-area').show();
                     $('#search-result, #song-info, #playlist-result, #album-result').addClass('d-none');
                 }
             });
 
-            // 搜索功能
+            // 1. Search Logic
             $('#search-btn').on('click', function() {
                 const keywords = $('#search_keywords').val().trim();
                 const limit = $('#search_limit').val();
@@ -846,7 +1657,7 @@
                     return;
                 }
                 const $btn = $(this);
-                $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 正在搜索...');
+                $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 正在向网易云请求数据...');
 
                 $.ajax({
                     url: '/Search',
@@ -854,51 +1665,63 @@
                     data: { keyword: keywords, limit: limit },
                     dataType: 'json',
                     success: function(data) {
-                        $btn.prop('disabled', false).html('<i class="fa-solid fa-magnifying-glass"></i> 立即搜索');
+                        $btn.prop('disabled', false).html('<i class="fa-solid fa-magnifying-glass"></i> 执行云端音频检索');
                         if (data.status === 200) {
                             $('#search-list').empty();
-                            data.data.forEach(function(song) {
-                                // Cache song name
-                                window.songNameCache[song.id] = song.name;
+                            $('#search-count-badge').text(`FOUND ${data.data.length} TRACKS`);
 
-                                const item = `<li class="list-group-item">
-                                    <div class="d-flex align-items-center">
-                                        <img src="${song.picUrl}" alt="cover" class="track-img">
-                                        <div>
-                                            <div><strong class='song-title'>${song.name}</strong></div>
-                                            <div class="track-meta"><span>${song.artists}</span> <span class="text-dim">· ${song.album}</span></div>
+                            data.data.forEach(function(song) {
+                                // Keep memory index of song name for download renamer
+                                window.songNameDatabase[song.id] = song.name;
+
+                                const item = `<li class="dense-track-row">
+                                    <div class="track-identity">
+                                        <img src="${song.picUrl}" alt="cover" class="dense-thumb-cover">
+                                        <div class="dense-track-info">
+                                            <span class="dense-track-title">${song.name}</span>
+                                            <span class="dense-track-meta">${song.artists} &bull; ${song.album}</span>
                                         </div>
                                     </div>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <button class="btn btn-sm btn-sub-action btn-outline-custom select-song" data-id="${song.id}" data-name="${song.name}"><i class="fa-solid fa-cube"></i> 解析</button>
-                                        <button class="btn btn-sm btn-sub-action btn-download-custom download-song" data-id="${song.id}" data-name="${song.name}"><i class="fa-solid fa-download"></i> 下载</button>
+                                    <div class="dense-actions">
+                                        <button class="btn btn-compact-action btn-compact-parse select-song" data-id="${song.id}" data-name="${song.name}">
+                                            <i class="fa-solid fa-cube"></i> 解析
+                                        </button>
+                                        <button class="btn btn-compact-action btn-compact-download download-song" data-id="${song.id}" data-name="${song.name}">
+                                            <i class="fa-solid fa-cloud-arrow-down"></i> 下载
+                                        </button>
                                     </div>
                                 </li>`;
                                 $('#search-list').append(item);
                             });
                             $('#search-result').removeClass('d-none');
+                            triggerToast('检索完成', `共获取 ${data.data.length} 首符合条件的曲目`);
                         } else {
-                            $('#search-list').html('<li class="list-group-item text-center text-muted">未找到相关歌曲</li>');
+                            $('#search-list').html('<li class="p-3 text-center text-muted">未检索到相关曲目</li>');
                             $('#search-result').removeClass('d-none');
                         }
                     },
                     error: function() {
-                        $btn.prop('disabled', false).html('<i class="fa-solid fa-magnifying-glass"></i> 立即搜索');
-                        $('#search-list').html('<li class="list-group-item text-center text-danger">搜索失败，请重试</li>');
+                        $btn.prop('disabled', false).html('<i class="fa-solid fa-magnifying-glass"></i> 执行云端音频检索');
+                        $('#search-list').html('<li class="p-3 text-center text-danger">搜索请求失败，请检查服务连通性</li>');
                         $('#search-result').removeClass('d-none');
+                        triggerToast('请求异常', '无法连接至远程搜索端点', true);
                     }
                 });
             });
 
-            // 搜索结果点击解析
+            // Quick Jump To Parser
             $(document).on('click', '.select-song', function() {
                 const songId = $(this).data('id');
+                const songName = $(this).data('name');
+                if (songName) {
+                    window.songNameDatabase[songId] = songName;
+                }
                 $('#song_ids').val(songId);
                 $('#mode-select').val('parse').trigger('change');
-                $('html,body').animate({scrollTop: $('#main-form').offset().top - 20}, 300);
+                $('html,body').animate({scrollTop: $('#main-form').offset().top - 20}, 250);
             });
 
-            // 单曲解析
+            // 2. Single Song Parser Logic
             $('#parse-btn').on('click', function() {
                 const songIds = $('#song_ids').val().trim();
                 const level = $('#level').val();
@@ -907,32 +1730,49 @@
                     return;
                 }
                 const $btn = $(this);
-                $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 正在解析中...');
+                $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 正在抓取音频元数据...');
 
                 $.post('/Song_V1', { url: songIds, level: level, type:'json' }, function(data) {
-                    $btn.prop('disabled', false).html('<i class="fa-solid fa-bolt"></i> 解析单曲信息');
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-bolt-lightning"></i> 启动高精度单曲解析');
                     if (data.status === 200) {
+                        parseSessionCount++;
+                        $('#stat-parse-count').text(parseSessionCount);
+                        $('#stat-bitrate-label').text(data.data.level || level);
+
+                        // Update metadata panels
                         $('#song_name').text(data.data.name);
                         $('#artist_names').text(data.data.ar_name);
                         $('#song_alname').text(data.data.al_name);
                         $('#song_level').text(data.data.level);
                         $('#song_size').text(data.data.size);
 
-                        // Cache clean song name for downloader
+                        // Cache clean song name for download pipeline
                         if (data.data.id) {
-                            window.songNameCache[data.data.id] = data.data.name;
+                            window.songNameDatabase[data.data.id] = data.data.name;
                         }
 
+                        // Artwork Inspector Update
+                        if (data.data.pic) {
+                            $('#cover-empty-state').hide();
+                            $('#inspector-artwork-img').attr('src', data.data.pic).fadeIn();
+                            $('#show-big-pic').data('pic', data.data.pic);
+                        }
+
+                        // Process Lyrics
                         let processedLyrics = data.data.lyric;
                         if (data.data.tlyric) {
                             processedLyrics = lrctran(data.data.lyric, data.data.tlyric);
                         }
-                        $('#lyric').html(processedLyrics.replace(/\n/g, '<br>'));
-                        $('#song_url').attr('href', data.data.url).html('<i class="fa-solid fa-arrow-up-right-from-square"></i> 点击下载');
+                        $('#lyric').html(processedLyrics ? processedLyrics.replace(/\n/g, '<br>') : '<div class="text-center text-muted py-5">[纯音乐或无歌词文本]</div>');
+                        $('#song_url').attr('href', data.data.url).text('访问直接流');
                         $('#song-info').removeClass('d-none');
-                        $('#show-big-pic').data('pic', data.data.pic);
 
-                        new APlayer({
+                        // Transport APlayer initialization
+                        if (window.activeAudioPlayer) {
+                            window.activeAudioPlayer.destroy();
+                        }
+
+                        window.activeAudioPlayer = new APlayer({
                             container: document.getElementById('aplayer'),
                             lrcType: 1,
                             audio: [{
@@ -943,25 +1783,31 @@
                                 lrc: processedLyrics
                             }]
                         });
-                        showToast(`已解析: ${data.data.name}`);
+
+                        triggerToast('单曲解析成功', `${data.data.name} - ${data.data.ar_name}`);
                     } else {
                         alert(data.data.msg);
+                        triggerToast('解析失败', data.data.msg || '无法解析此歌曲', true);
                     }
                 }, 'json').fail(function() {
-                    $btn.prop('disabled', false).html('<i class="fa-solid fa-bolt"></i> 解析单曲信息');
-                    alert('请求失败，请检查网络或后端接口');
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-bolt-lightning"></i> 启动高精度单曲解析');
+                    alert('网络通信异常，请重试');
                 });
             });
 
-            // 显示大图按钮事件
+            // Artwork Enlargement Modal Trigger
             $(document).on('click', '#show-big-pic', function() {
-                var picUrl = $(this).data('pic');
+                var picUrl = $(this).data('pic') || $('#inspector-artwork-img').attr('src');
+                if (!picUrl) {
+                    alert('当前无载入的唱片封面');
+                    return;
+                }
                 $('#big-pic-img').attr('src', picUrl);
                 var modal = new bootstrap.Modal(document.getElementById('bigPicModal'));
                 modal.show();
             });
 
-            // 歌单解析
+            // 3. Playlist Parser Logic
             $('#playlist-btn').on('click', function() {
                 let pid = $('#playlist_id').val().trim();
                 if (!pid) {
@@ -972,50 +1818,54 @@
                 if (idMatch) pid = idMatch[1];
 
                 const $btn = $(this);
-                $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 解析歌单中...');
+                $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 正在解包歌单内容...');
 
                 $.get('/Playlist', { id: pid }, function(data) {
-                    $btn.prop('disabled', false).html('<i class="fa-solid fa-list-check"></i> 解析歌单全部曲目');
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-list-check"></i> 提取并索引歌单曲目');
                     if (data.status === 200) {
                         const pl = data.data.playlist;
                         $('#playlist-cover').attr('src', pl.coverImgUrl);
                         $('#playlist-name').text(pl.name);
-                        $('#playlist-creator').text('By ' + pl.creator);
-                        $('#playlist-desc').text(pl.description || '');
-                        $('#playlist-count').text(pl.trackCount);
+                        $('#playlist-creator').text('创建者: ' + pl.creator);
+                        $('#playlist-desc').text(pl.description || '暂无描述');
+                        $('#playlist-count-badge').text(`${pl.trackCount} TRACKS`);
                         $('#playlist-tracks').empty();
 
                         pl.tracks.forEach(function(song, idx) {
-                            window.songNameCache[song.id] = song.name;
+                            window.songNameDatabase[song.id] = song.name;
 
-                            const item = `<li class="list-group-item">
-                                <div class="d-flex align-items-center">
-                                    <img src="${song.picUrl}" alt="cover" class="track-img" style="width: 40px; height: 40px;">
-                                    <div>
-                                        <div><strong class="playlist-title">${idx+1}. ${song.name}</strong></div>
-                                        <div class="track-meta"><span>${song.artists}</span> <span class="text-dim">· ${song.album}</span></div>
+                            const item = `<li class="dense-track-row">
+                                <div class="track-identity">
+                                    <img src="${song.picUrl}" alt="cover" class="dense-thumb-cover">
+                                    <div class="dense-track-info">
+                                        <span class="dense-track-title">${idx + 1}. ${song.name}</span>
+                                        <span class="dense-track-meta">${song.artists} &bull; ${song.album}</span>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center gap-2">
-                                    <button class="btn btn-sm btn-sub-action btn-outline-custom select-song" data-id="${song.id}" data-name="${song.name}"><i class="fa-solid fa-cube"></i> 解析</button>
-                                    <button class="btn btn-sm btn-sub-action btn-download-custom download-song" data-id="${song.id}" data-name="${song.name}"><i class="fa-solid fa-download"></i> 下载</button>
+                                <div class="dense-actions">
+                                    <button class="btn btn-compact-action btn-compact-parse select-song" data-id="${song.id}" data-name="${song.name}">
+                                        <i class="fa-solid fa-cube"></i> 解析
+                                    </button>
+                                    <button class="btn btn-compact-action btn-compact-download download-song" data-id="${song.id}" data-name="${song.name}">
+                                        <i class="fa-solid fa-cloud-arrow-down"></i> 下载
+                                    </button>
                                 </div>
                             </li>`;
                             $('#playlist-tracks').append(item);
                         });
                         $('#playlist-result').removeClass('d-none');
-                        showToast(`歌单解析成功: 共 ${pl.trackCount} 首`);
+                        triggerToast('歌单解析就绪', `已导入歌单: ${pl.name}`);
                     } else {
                         $('#playlist-result').removeClass('d-none');
-                        $('#playlist-tracks').html('<li class="list-group-item text-danger">歌单解析失败：'+data.data.msg+'</li>');
+                        $('#playlist-tracks').html('<li class="p-3 text-danger text-center">歌单解析失败：' + data.data.msg + '</li>');
                     }
                 }, 'json').fail(function() {
-                    $btn.prop('disabled', false).html('<i class="fa-solid fa-list-check"></i> 解析歌单全部曲目');
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-list-check"></i> 提取并索引歌单曲目');
                     alert('网络连接错误，解析歌单失败');
                 });
             });
 
-            // 专辑解析
+            // 4. Album Parser Logic
             $(document).on('click', '#album-btn', function() {
                 let aid = $('#album_id').val().trim();
                 if (!aid) {
@@ -1026,50 +1876,54 @@
                 if (idMatch) aid = idMatch[1];
 
                 const $btn = $(this);
-                $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 解析专辑中...');
+                $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 正在解包专辑内容...');
 
                 $.get('/Album', { id: aid }, function(data) {
-                    $btn.prop('disabled', false).html('<i class="fa-solid fa-compact-disc"></i> 解析专辑全部内容');
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-layer-group"></i> 分析专辑结构及曲目');
                     if (data.status === 200) {
                         const al = data.data.album;
                         $('#album-cover').attr('src', al.coverImgUrl);
                         $('#album-name').text(al.name);
-                        $('#album-artist').text('Artist: ' + al.artist);
-                        $('#album-desc').text(al.description || '');
-                        $('#album-count').text(al.songs.length);
+                        $('#album-artist').text('艺术家: ' + al.artist);
+                        $('#album-desc').text(al.description || '暂无专辑描述');
+                        $('#album-count-badge').text(`${al.songs.length} TRACKS`);
                         $('#album-tracks').empty();
 
                         al.songs.forEach(function(song, idx) {
-                            window.songNameCache[song.id] = song.name;
+                            window.songNameDatabase[song.id] = song.name;
 
-                            const item = `<li class="list-group-item">
-                                <div class="d-flex align-items-center">
-                                    <img src="${song.picUrl}" alt="cover" class="track-img" style="width: 40px; height: 40px;">
-                                    <div>
-                                        <div><strong class="playlist-title">${idx+1}. ${song.name}</strong></div>
-                                        <div class="track-meta"><span>${song.artists}</span> <span class="text-dim">· ${song.album}</span></div>
+                            const item = `<li class="dense-track-row">
+                                <div class="track-identity">
+                                    <img src="${song.picUrl}" alt="cover" class="dense-thumb-cover">
+                                    <div class="dense-track-info">
+                                        <span class="dense-track-title">${idx + 1}. ${song.name}</span>
+                                        <span class="dense-track-meta">${song.artists} &bull; ${song.album}</span>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center gap-2">
-                                    <button class="btn btn-sm btn-sub-action btn-outline-custom select-song" data-id="${song.id}" data-name="${song.name}"><i class="fa-solid fa-cube"></i> 解析</button>
-                                    <button class="btn btn-sm btn-sub-action btn-download-custom download-song" data-id="${song.id}" data-name="${song.name}"><i class="fa-solid fa-download"></i> 下载</button>
+                                <div class="dense-actions">
+                                    <button class="btn btn-compact-action btn-compact-parse select-song" data-id="${song.id}" data-name="${song.name}">
+                                        <i class="fa-solid fa-cube"></i> 解析
+                                    </button>
+                                    <button class="btn btn-compact-action btn-compact-download download-song" data-id="${song.id}" data-name="${song.name}">
+                                        <i class="fa-solid fa-cloud-arrow-down"></i> 下载
+                                    </button>
                                 </div>
                             </li>`;
                             $('#album-tracks').append(item);
                         });
                         $('#album-result').removeClass('d-none');
-                        showToast(`专辑解析成功: 共 ${al.songs.length} 首`);
+                        triggerToast('专辑解析就绪', `已导入专辑: ${al.name}`);
                     } else {
                         $('#album-result').removeClass('d-none');
-                        $('#album-tracks').html('<li class="list-group-item text-danger">专辑解析失败：'+data.data.msg+'</li>');
+                        $('#album-tracks').html('<li class="p-3 text-danger text-center">专辑解析失败：' + data.data.msg + '</li>');
                     }
                 }, 'json').fail(function() {
-                    $btn.prop('disabled', false).html('<i class="fa-solid fa-compact-disc"></i> 解析专辑全部内容');
+                    $btn.prop('disabled', false).html('<i class="fa-solid fa-layer-group"></i> 分析专辑结构及曲目');
                     alert('网络连接错误，解析专辑失败');
                 });
             });
 
-            // 音乐下载功能（已修改为强制重命名为 <SongName>.mp3 / <SongName>.flac）
+            // 5. Downloader Logic: Strictly adheres to "<SongName>.mp3/.flac"
             $('#download-btn').on('click', function() {
                 const musicId = $('#download_id').val().trim();
                 const quality = $('#download_quality').val();
@@ -1079,16 +1933,15 @@
                     return;
                 }
                 
-                // 提取ID（支持URL格式）
+                // Extract pure ID
                 let processedId = musicId;
                 const idMatch = musicId.match(/song\?id=(\d+)/);
                 if (idMatch) {
                     processedId = idMatch[1];
                 }
                 
-                // 显示进度条
                 $('#download-progress').removeClass('d-none');
-                $('#download-btn').prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 下载并写入元数据中...');
+                $('#download-btn').prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> 正在向服务端申请音频封装...');
                 
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', '/Download', true);
@@ -1101,7 +1954,7 @@
                         const encodedFilename = xhr.getResponseHeader('X-Download-Filename');
                         let serverFilename = encodedFilename ? decodeURIComponent(encodedFilename) : '';
 
-                        // 确定文件扩展名
+                        // Determine extension according to bitstream format
                         let ext = 'flac';
                         if (['standard', 'exhigh'].includes(quality)) {
                             ext = 'mp3';
@@ -1110,68 +1963,63 @@
                             ext = serverFilename.substring(serverFilename.lastIndexOf('.') + 1).toLowerCase();
                         }
 
-                        // 优先从缓存或UI获取纯粹的 SongName，达到 "<SongName>.mp3/.flac" 规则
-                        let targetSongName = window.songNameCache[processedId] || window.currentActiveSongName || '';
+                        // Resolve clean SongName
+                        let targetSongName = window.songNameDatabase[processedId] || window.currentActiveSongName || '';
 
-                        // 如果缓存没有，再从服务端返回的文件名中解析清洗纯歌名
+                        // If not cached, extract from server header
                         if (!targetSongName && serverFilename) {
-                            let raw = serverFilename.substring(0, serverFilename.lastIndexOf('.')) || serverFilename;
-                            if (raw.includes(' - ')) {
-                                // 多数网易云格式是 "歌手 - 歌名"，取出歌名部分
-                                targetSongName = raw.split(' - ').slice(1).join(' - ').trim();
+                            let pureBase = serverFilename.substring(0, serverFilename.lastIndexOf('.')) || serverFilename;
+                            if (pureBase.includes(' - ')) {
+                                targetSongName = pureBase.split(' - ').slice(1).join(' - ').trim();
                             } else {
-                                targetSongName = raw;
+                                targetSongName = pureBase;
                             }
                         }
 
-                        // 保底命名
-                        if (!targetSongName) {
-                            targetSongName = `Music_${processedId}`;
-                        }
+                        // Enforce final sanitized "<SongName>.mp3/.flac"
+                        const finalStandardFilename = sanitizeToStrictFilename(targetSongName, processedId, ext);
 
-                        // 清洗非法文件名字符 (\ / : * ? " < > |)
-                        targetSongName = targetSongName.replace(/[\\/:*?"<>|]/g, '_').trim();
-
-                        // 最终纯净格式: <SongName>.ext
-                        const finalFilename = `${targetSongName}.${ext}`;
-                        
-                        // 创建下载触发
+                        // Trigger file download
                         const blob = xhr.response;
                         const url = window.URL.createObjectURL(blob);
                         const a = document.createElement('a');
                         a.href = url;
-                        a.download = finalFilename;
+                        a.download = finalStandardFilename;
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
                         window.URL.revokeObjectURL(url);
                         
-                        showToast(`已下载: ${finalFilename}`);
-                        console.log(`[NextGen Studio] 文件下载成功: ${finalFilename}`);
+                        downloadSessionCount++;
+                        $('#stat-download-count').text(downloadSessionCount);
+
+                        triggerToast('导出封装成功', finalStandardFilename);
+                        console.log(`[Studio Engine] 写入元数据完成，导出文件: ${finalStandardFilename}`);
                         if (downloadMessage) {
-                            console.log(`[NextGen Studio] 服务端状态: ${downloadMessage}`);
+                            console.log(`[Studio Engine] 服务器状态回执: ${downloadMessage}`);
                         }
                     } else {
                         alert('下载失败，请重试');
+                        triggerToast('下载错误', '服务端未能输出有效音频流', true);
                     }
                     
-                    // 重置按钮状态
                     $('#download-progress').addClass('d-none');
-                    $('#download-btn').prop('disabled', false).html('<i class="fa-solid fa-cloud-arrow-down"></i> 下载并封装元数据');
+                    $('#download-btn').prop('disabled', false).html('<i class="fa-solid fa-cloud-arrow-down"></i> 写入元信息并开始封装下载');
                 };
                 
                 xhr.onerror = function() {
                     alert('下载出错，请重试');
                     $('#download-progress').addClass('d-none');
-                    $('#download-btn').prop('disabled', false).html('<i class="fa-solid fa-cloud-arrow-down"></i> 下载并封装元数据');
+                    $('#download-btn').prop('disabled', false).html('<i class="fa-solid fa-cloud-arrow-down"></i> 写入元信息并开始封装下载');
+                    triggerToast('通信异常', 'Blob流下载被中断', true);
                 };
                 
-                // 发送请求 (参数规则完全原样发送)
+                // Transmit form data
                 const formData = `id=${encodeURIComponent(processedId)}&quality=${encodeURIComponent(quality)}`;
                 xhr.send(formData);
             });
 
-            // 列表下载按钮跳转
+            // Quick Download Jump
             $(document).on('click', '.download-song', function() {
                 const musicId = $(this).data('id');
                 const songName = $(this).data('name');
@@ -1181,15 +2029,14 @@
                     return;
                 }
                 
-                // 缓存当前歌名供下载命名
                 if (songName) {
                     window.currentActiveSongName = songName;
-                    window.songNameCache[musicId] = songName;
+                    window.songNameDatabase[musicId] = songName;
                 }
 
                 $('#download_id').val(musicId);
                 $('#mode-select').val('download').trigger('change');
-                $('html,body').animate({scrollTop: $('#main-form').offset().top - 20}, 300);
+                $('html,body').animate({scrollTop: $('#main-form').offset().top - 20}, 250);
             });
         });
     </script>
