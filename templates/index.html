@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>网易云音乐工具箱 · JR Studio</title>
+    <!-- Core External Assets -->
+    <link href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/aplayer/1.10.1/APlayer.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --jr-emerald: #009944;
+            --jr-emerald-bright: #10b981;
+            --jr-crimson: #e60012;
+            --jr-crimson-hover: #c90010;
+            --jr-blue: #0072bc;
+            --jr-blue-bright: #38bdf8;
+            --jr-amber: #f59e0b;
+            --bg-canvas: #0b0f17;
+            --bg-surface: #111827;
+            --bg-panel: #151e2e;
+            --bg-elevated: #1c273b;
+            --bg-input: #0d1320;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --radius-xs: 4px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-pill: 9999px;
+            --shadow-panel: 0 12px 32px rgba(0, 0, 0, 0.45);
+            --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.78);
+            --transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            --font-sans: 'Plus Jakarta Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; background-color: var(--bg-canvas); color: var(--text-primary); font-family: var(--font-sans); font-size: 14px; line-height: 1.5; min-height: 100vh; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(to right, rgba(255,255,255,0.024) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.024) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; z-index: 0; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.25); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(148,163,184,0.45); }
+        .app-shell { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; padding-bottom: 112px; }
+        .jr-stripe { height: 3px; width: 100%; background: linear-gradient(90deg, var(--jr-emerald) 0%, var(--jr-emerald) 35%, var(--jr-crimson) 35%, var(--jr-crimson) 70%, var(--jr-blue) 70%, var(--jr-blue) 100%); }
+        .app-header { position: sticky; top: 0; z-index: 500; background: rgba(11,15,23,0.9); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-subtle); }
+        .header-inner { max-width: 1560px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .brand-block { display: flex; align-items: center; gap: 14px; }
+        .jr-station-badge { width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--jr-crimson); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; box-shadow: 0 0 0 2px rgba(230,0,18,0.28); flex-shrink: 0; }
+        .brand-meta h1 { margin: 0; font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+        .brand-line-code { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: var(--radius-xs); background: rgba(0,153,68,0.16); color: var(--jr-emerald-bright); border: 1px solid rgba(0,153,68,0.38); letter-spacing: 0.04em; }
+        .brand-sub { font-size: 0.74rem; color: var(--text-muted); font-family: var(--font-mono); display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+        .header-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .auth-status-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: var(--radius-sm); background: var(--bg-panel); border: 1px solid var(--border-strong); color: var(--text-primary); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .auth-status-btn:hover { border-color: var(--jr-emerald-bright); background: var(--bg-elevated); }
+        .auth-status-btn.is-valid { border-color: rgba(16,185,129,0.45); background: rgba(16,185,129,0.08); }
+        .auth-status-btn.is-invalid { border-color: rgba(245,158,11,0.45); background: rgba(245,158,11,0.08); }
+        .status-led { width: 8px; height: 8px; border-radius: 50%; background: var(--text-dim); flex-shrink: 0; }
+        .status-led.valid { background: var(--jr-emerald-bright); box-shadow: 0 0 8px var(--jr-emerald-bright); }
+        .status-led.invalid { background: var(--jr-amber); box-shadow: 0 0 8px var(--jr-amber); }
+        .quality-control { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-panel); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); padding: 0 10px; }
+        .quality-control-label { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em; }
+        .quality-select { background: transparent; border: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; padding: 8px 4px; cursor: pointer; outline: none; }
+        .quality-select option { background: var(--bg-surface); color: var(--text-primary); }
+        .workspace { flex: 1; width: 100%; max-width: 1560px; margin: 0 auto; padding: 22px 24px; display: flex; flex-direction: column; gap: 20px; }
+        .omnibox-card { background: var(--bg-panel); border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 16px 18px; box-shadow: var(--shadow-panel); }
+        .omnibox-row { display: flex; align-items: center; gap: 10px; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 6px 6px 6px 16px; transition: var(--transition); }
+        .omnibox-row:focus-within { border-color: var(--jr-crimson); box-shadow: 0 0 0 3px rgba(230,0,18,0.18); }
+        .omnibox-icon { color: var(--jr-crimson); font-size: 1rem; flex-shrink: 0; }
+        .omnibox-input { flex: 1; min-width: 0; background: transparent; border: none; color: var(--text-primary); font-size: 0.96rem; font-weight: 500; padding: 8px 0; outline: none; }
+        .omnibox-input::placeholder { color: var(--text-dim); }
+        .btn-primary-jr { background: var(--jr-crimson); color: #fff; border: none; border-radius: var(--radius-sm); padding: 10px 20px; font-size: 0.86rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: var(--transition); flex-shrink: 0; }
+        .btn-primary-jr:hover:not(:disabled) { background: var(--jr-crimson-hover); transform: translateY(-1px); }
+        .btn-primary-jr:disabled { opacity: 0.6; cursor: not-allowed; }
+        .omnibox-hints { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+        .hint-tag { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 3px 9px; display: inline-flex; align-items: center; gap: 6px; }
+        .hint-tag.accent { color: var(--jr-blue-bright); border-color: rgba(56,189,248,0.3); background: rgba(56,189,248,0.06); }
+        .decks-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(340px, 1fr); gap: 20px; align-items: start; }
+        .jr-panel { background: var(--bg-panel); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); box-shadow: var(--shadow-panel); overflow: hidden; }
+        .panel-header { padding: 14px 18px; border-bottom: 1px solid var(--border-subtle); background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .panel-title-wrap { display: flex; align-items: center; gap: 10px; min-width: 0; }
+        .panel-marker { width: 4px; height: 18px; border-radius: 2px; background: var(--jr-crimson); flex-shrink: 0; }
+        .panel-marker.emerald { background: var(--jr-emerald); }
+        .panel-marker.blue { background: var(--jr-blue); }
+        .panel-title { margin: 0; font-size: 0.95rem; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .count-badge { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; color: var(--text-secondary); background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 2px 8px; flex-shrink: 0; }
+        .btn-emerald-jr { background: var(--jr-emerald); color: #fff; border: none; border-radius: var(--radius-sm); padding: 7px 14px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: var(--transition); flex-shrink: 0; }
+        .btn-emerald-jr:hover:not(:disabled) { background: #008239; transform: translateY(-1px); }
+        .btn-emerald-jr:disabled { opacity: 0.4; cursor: not-allowed; }
+        .batch-progress-bar-wrap { padding: 12px 18px; border-bottom: 1px solid var(--border-subtle); background: rgba(0,153,68,0.06); display: none; }
+        .batch-progress-bar-wrap.active { display: block; }
+        .batch-progress-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; margin-bottom: 8px; }
+        .progress-track { height: 6px; background: rgba(255,255,255,0.08); border-radius: var(--radius-pill); overflow: hidden; }
+        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--jr-emerald), var(--jr-blue-bright)); transition: width 0.25s ease; }
+        .tracks-scroll { max-height: 600px; overflow-y: auto; padding: 12px; }
+        .empty-state { text-align: center; padding: 64px 20px; color: var(--text-dim); }
+        .empty-state i { font-size: 2.4rem; margin-bottom: 12px; opacity: 0.35; }
+        .track-list { display: flex; flex-direction: column; gap: 8px; }
+        .track-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: var(--radius-sm); background: rgba(255,255,255,0.025); border: 1px solid var(--border-subtle); transition: var(--transition); }
+        .track-row:hover { background: var(--bg-elevated); border-color: var(--border-strong); }
+        .track-info { display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1; }
+        .track-index { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-dim); width: 24px; text-align: right; flex-shrink: 0; }
+        .track-thumb { width: 44px; height: 44px; border-radius: var(--radius-xs); object-fit: cover; border: 1px solid var(--border-subtle); flex-shrink: 0; background: var(--bg-input); }
+        .track-thumb-fallback { width: 44px; height: 44px; border-radius: var(--radius-xs); border: 1px solid var(--border-subtle); flex-shrink: 0; background: var(--bg-input); display: flex; align-items: center; justify-content: center; color: var(--text-dim); }
+        .track-text { min-width: 0; flex: 1; }
+        .track-name { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .track-sub { font-size: 0.76rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+        .track-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+        .btn-chip { padding: 6px 12px; border-radius: var(--radius-xs); font-size: 0.76rem; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; border: 1px solid transparent; transition: var(--transition); }
+        .btn-chip-play { color: var(--jr-blue-bright); background: rgba(56,189,248,0.1); border-color: rgba(56,189,248,0.25); }
+        .btn-chip-play:hover { background: var(--jr-blue); color: #fff; }
+        .btn-chip-dl { color: var(--jr-emerald-bright); background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.25); }
+        .btn-chip-dl:hover:not(:disabled) { background: var(--jr-emerald); color: #fff; }
+        .btn-chip:disabled { opacity: 0.55; cursor: not-allowed; }
+        .inspector-stack { display: flex; flex-direction: column; gap: 18px; }
+        .stage-body { padding: 16px; }
+        .artwork-frame { position: relative; width: 100%; aspect-ratio: 16 / 10; border-radius: var(--radius-sm); background: var(--bg-input); border: 1px solid var(--border-subtle); overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+        .artwork-img { width: 100%; height: 100%; object-fit: cover; display: none; }
+        .artwork-img.visible { display: block; }
+        .artwork-placeholder { font-size: 2.8rem; color: var(--text-dim); opacity: 0.4; }
+        .artwork-caption { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 42%, rgba(11,15,23,0.94) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 14px; }
+        .stage-title { font-size: 1rem; font-weight: 800; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .stage-artist { font-size: 0.8rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+        .meta-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+        .meta-pill { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 5px 10px; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
+        .meta-pill i { color: var(--jr-crimson); }
+        .meta-pill.link-pill { color: var(--jr-blue-bright); border-color: rgba(56,189,248,0.25); }
+        .meta-pill.link-pill:hover { background: rgba(56,189,248,0.12); color: #fff; }
+        .lyrics-box { height: 260px; overflow-y: auto; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px; font-family: var(--font-mono); font-size: 0.84rem; line-height: 1.85; color: var(--text-secondary); }
+        .filter-badge { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: var(--radius-xs); background: rgba(16,185,129,0.14); color: var(--jr-emerald-bright); border: 1px solid rgba(16,185,129,0.3); }
+        .app-footer-credit { text-align: center; font-size: 0.74rem; color: var(--text-dim); font-family: var(--font-mono); padding: 6px 0 4px; }
+        .player-dock { position: fixed; bottom: 14px; left: 20px; right: 20px; max-width: 1440px; margin: 0 auto; z-index: 600; background: rgba(17,24,39,0.92); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); border: 1px solid var(--border-strong); border-top: 2px solid var(--jr-crimson); border-radius: var(--radius-md); box-shadow: 0 18px 44px rgba(0,0,0,0.75); padding: 6px 14px; }
+        .aplayer { background: transparent !important; box-shadow: none !important; margin: 0 !important; font-family: var(--font-sans) !important; }
+        .aplayer .aplayer-body { background: transparent !important; }
+        .aplayer .aplayer-pic { width: 50px !important; height: 50px !important; border-radius: var(--radius-sm) !important; border: 1px solid var(--border-strong) !important; }
+        .aplayer .aplayer-info { border-bottom: none !important; padding: 6px 14px !important; height: 50px !important; }
+        .aplayer .aplayer-info .aplayer-music .aplayer-title { color: #fff !important; font-weight: 700 !important; }
+        .aplayer .aplayer-info .aplayer-music .aplayer-author { color: var(--text-muted) !important; }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar { background: rgba(255,255,255,0.12) !important; height: 4px !important; }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played { background: var(--jr-crimson) !important; height: 4px !important; }
+        .aplayer .aplayer-lrc:before, .aplayer .aplayer-lrc:after { display: none !important; }
+        .aplayer .aplayer-lrc p { color: var(--text-dim) !important; }
+        .aplayer .aplayer-lrc p.aplayer-lrc-current { color: var(--jr-crimson) !important; font-weight: 700 !important; }
+        .jr-modal-overlay { position: fixed; inset: 0; z-index: 2000; background: rgba(5,8,15,0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; padding: 16px; }
+        .jr-modal-overlay.open { display: flex; }
+        .jr-modal { width: 100%; max-width: 480px; background: var(--bg-surface); border: 1px solid var(--border-strong); border-top: 3px solid var(--jr-crimson); border-radius: var(--radius-md); box-shadow: var(--shadow-modal); overflow: hidden; animation: modalPop 0.18s ease-out; }
+        .jr-modal.qr-modal { max-width: 520px; border-top-color: var(--jr-emerald); }
+        @keyframes modalPop { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .jr-modal-header { padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .jr-modal-title { font-size: 0.98rem; font-weight: 800; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+        .modal-close-btn { background: transparent; border: 1px solid var(--border-subtle); color: var(--text-muted); width: 30px; height: 30px; border-radius: var(--radius-xs); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .modal-close-btn:hover { color: #fff; border-color: var(--border-strong); background: var(--bg-elevated); }
+        .jr-modal-body { padding: 20px; }
+        .id-option-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; margin-bottom: 10px; background: var(--bg-panel); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-primary); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .id-option-btn:last-child { margin-bottom: 0; }
+        .id-option-btn:hover { border-color: var(--jr-crimson); background: rgba(230,0,18,0.1); transform: translateX(2px); }
+        .qr-stage { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 12px 0 18px; }
+        .qr-frame { position: relative; width: 212px; height: 212px; padding: 12px; background: #ffffff; border-radius: var(--radius-md); box-shadow: 0 10px 30px rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .qr-frame img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .qr-overlay { position: absolute; inset: 0; background: rgba(11,15,23,0.86); color: #fff; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px; text-align: center; }
+        .qr-overlay.active { display: flex; }
+        .qr-state-pill { font-size: 0.82rem; font-weight: 600; padding: 6px 14px; border-radius: var(--radius-pill); background: var(--bg-elevated); border: 1px solid var(--border-subtle); color: var(--text-secondary); display: inline-flex; align-items: center; gap: 8px; }
+        .qr-state-pill.waiting { color: var(--jr-blue-bright); border-color: rgba(56,189,248,0.35); }
+        .qr-state-pill.scanned { color: var(--jr-amber); border-color: rgba(245,158,11,0.4); }
+        .qr-state-pill.success { color: var(--jr-emerald-bright); border-color: rgba(16,185,129,0.45); background: rgba(16,185,129,0.1); }
+        .qr-state-pill.expired, .qr-state-pill.error { color: #f87171; border-color: rgba(248,113,113,0.4); }
+        .qr-actions-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .btn-outline-jr { background: var(--bg-panel); border: 1px solid var(--border-strong); color: var(--text-primary); border-radius: var(--radius-sm); padding: 7px 14px; font-size: 0.8rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: var(--transition); }
+        .btn-outline-jr:hover { background: var(--bg-elevated); border-color: var(--text-muted); }
+        .btn-outline-jr.danger { color: #f87171; border-color: rgba(248,113,113,0.35); }
+        .btn-outline-jr.danger:hover { background: rgba(239,68,68,0.14); }
+        .cookie-drawer { margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+        .cookie-drawer-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 8px; }
+        .cookie-label { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+        .cookie-code-box { width: 100%; min-height: 68px; max-height: 110px; resize: none; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 10px 12px; color: var(--jr-emerald-bright); font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.5; word-break: break-all; outline: none; }
+        .cookie-meta-bar { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 8px; font-size: 0.74rem; color: var(--text-dim); font-family: var(--font-mono); }
+        .toast-wrap { position: fixed; top: 20px; right: 20px; z-index: 3000; pointer-events: none; }
+        .toast-card { pointer-events: auto; min-width: 260px; max-width: 380px; background: var(--bg-surface); border: 1px solid var(--border-strong); border-left: 4px solid var(--jr-emerald-bright); border-radius: var(--radius-sm); padding: 12px 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.65); display: flex; align-items: center; gap: 12px; opacity: 0; transform: translateY(-16px); transition: var(--transition); }
+        .toast-card.active { opacity: 1; transform: translateY(0); }
+        .toast-card.is-error { border-left-color: var(--jr-crimson); }
+        .toast-title { font-weight: 700; font-size: 0.86rem; color: var(--text-primary); }
+        .toast-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+        @media (max-width: 1024px) { .decks-grid { grid-template-columns: 1fr; } .inspector-stack { order: -1; } .artwork-frame { aspect-ratio: 21 / 9; } }
+        @media (max-width: 640px) { .header-inner { padding: 12px 16px; } .workspace { padding: 14px 16px; } .btn-primary-jr span { display: none; } .omnibox-hints { display: none; } .track-index { display: none; } .player-dock { left: 10px; right: 10px; bottom: 10px; } }
+    </style>
+</head>
+<body>
+    <div class="app-shell">
+        <div class="jr-stripe"></div>
+
+        <header class="app-header">
+            <div class="header-inner">
+                <div class="brand-block">
+                    <div class="jr-station-badge" title="NetEase CloudMusic Studio">
+                        <i class="fa-solid fa-compact-disc"></i>
+                    </div>
+                    <div class="brand-meta">
+                        <h1>
+                            网易云音乐工具箱
+                            <span class="brand-line-code">NM-01</span>
+                        </h1>
+                        <div class="brand-sub">
+                            <span>OMNIVERSE PARSER</span>
+                            <span>&bull;</span>
+                            <span>由JackZhang开发</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-controls">
+                    <button type="button" id="qr-login-trigger-btn" class="auth-status-btn" title="扫码登录网易云音乐并获取 Cookie">
+                        <span class="status-led" id="header-cookie-led"></span>
+                        <i class="fa-solid fa-qrcode"></i>
+                        <span id="header-cookie-text">检测 Cookie...</span>
+                    </button>
+
+                    <div class="quality-control">
+                        <span class="quality-control-label">QUALITY</span>
+                        <select id="global_quality" class="quality-select" aria-label="音质选择">
+                            <option value="standard">标准音质 (128K MP3)</option>
+                            <option value="exhigh">极高音质 (320K MP3)</option>
+                            <option value="lossless" selected>无损音质 (FLAC)</option>
+                            <option value="hires">Hi-Res 高清母带</option>
+                            <option value="sky">沉浸环绕声</option>
+                            <option value="jyeffect">高清环绕声</option>
+                            <option value="jymaster">超清母带</option>
+                            <option value="dolby">杜比全景声</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="workspace">
+            <section class="omnibox-card">
+                <div class="omnibox-row">
+                    <i class="fa-solid fa-magnifying-glass omnibox-icon"></i>
+                    <input type="text" id="omnibox_input" class="omnibox-input" placeholder="输入歌曲名、歌手、歌曲ID/链接、专辑链接、歌单链接..." autofocus autocomplete="off">
+                    <button type="button" id="omnibox_submit_btn" class="btn-primary-jr">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>智能识别解析</span>
+                    </button>
+                </div>
+                <div class="omnibox-hints">
+                    <span class="hint-tag accent"><i class="fa-solid fa-check"></i> 全能检索框</span>
+                    <span class="hint-tag"><i class="fa-solid fa-link"></i> 自动识别链接 / 纯数字 ID</span>
+                    <span class="hint-tag"><i class="fa-solid fa-filter"></i> 纯净歌词过滤（去翻译注释）</span>
+                    <span class="hint-tag"><i class="fa-solid fa-file-audio"></i> 规范 &lt;SongName&gt; 命名导出</span>
+                    <span class="hint-tag"><i class="fa-solid fa-qrcode"></i> 支持前端扫码登录获取 Cookie</span>
+                </div>
+            </section>
+
+            <div class="decks-grid">
+                <section class="jr-panel">
+                    <div class="panel-header">
+                        <div class="panel-title-wrap">
+                            <span class="panel-marker"></span>
+                            <h2 class="panel-title" id="result-deck-title">就绪列表</h2>
+                            <span class="count-badge" id="track-count-badge">0 项</span>
+                        </div>
+                        <button type="button" id="batch-download-btn" class="btn-emerald-jr" disabled>
+                            <i class="fa-solid fa-cloud-arrow-down"></i>
+                            <span>一键批量下载</span>
+                        </button>
+                    </div>
+
+                    <div id="batch-progress-wrapper" class="batch-progress-bar-wrap">
+                        <div class="batch-progress-meta">
+                            <span><i class="fa-solid fa-spinner fa-spin" style="color: var(--jr-emerald-bright); margin-right: 6px;"></i>正在批量写入元数据与导出...</span>
+                            <span id="batch-progress-status" style="font-family: var(--font-mono); color: var(--text-muted);">0 / 0</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="batch-progress-bar-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="tracks-scroll">
+                        <div id="empty-state-notice" class="empty-state">
+                            <i class="fa-solid fa-music"></i>
+                            <p id="empty-state-text">在上方检索框输入歌曲、专辑、歌单或纯 ID，回车即刻自动载入。</p>
+                        </div>
+                        <div class="track-list" id="track-cards-list"></div>
+                    </div>
+                </section>
+
+                <aside class="inspector-stack">
+                    <section class="jr-panel">
+                        <div class="panel-header">
+                            <div class="panel-title-wrap">
+                                <span class="panel-marker blue"></span>
+                                <h2 class="panel-title">曲目监视器</h2>
+                            </div>
+                            <span class="count-badge" id="stage-bitrate">待测</span>
+                        </div>
+                        <div class="stage-body">
+                            <div class="artwork-frame">
+                                <img id="inspector-cover-img" src="" alt="Album Artwork" class="artwork-img">
+                                <i class="fa-solid fa-record-vinyl artwork-placeholder" id="stage-artwork-empty"></i>
+                                <div class="artwork-caption">
+                                    <div class="stage-title" id="stage-song-name">等待载入曲目</div>
+                                    <div class="stage-artist" id="stage-artist-name">--</div>
+                                </div>
+                            </div>
+                            <div class="meta-grid">
+                                <span class="meta-pill"><i class="fa-solid fa-compact-disc"></i> <span id="stage-album-name">未归档</span></span>
+                                <span class="meta-pill"><i class="fa-solid fa-hard-drive"></i> <span id="stage-filesize">0 MB</span></span>
+                                <a id="stage-direct-url" href="javascript:void(0);" target="_blank" rel="noopener" class="meta-pill link-pill">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> 物理直链
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="jr-panel">
+                        <div class="panel-header">
+                            <div class="panel-title-wrap">
+                                <span class="panel-marker emerald"></span>
+                                <h2 class="panel-title">纯净歌词引擎</h2>
+                            </div>
+                            <span class="filter-badge">FILTER_ON</span>
+                        </div>
+                        <div class="stage-body">
+                            <div class="lyrics-box" id="cleaned-lyrics-box">
+                                <div style="text-align:center; padding: 60px 0; color: var(--text-dim);">[ 暂无载入的歌词信息 ]</div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+
+            <div class="app-footer-credit">
+                NetEase CloudMusic Toolbox &middot; JR Precision UI &middot; 由JackZhang开发
+            </div>
+        </main>
+
+        <footer class="player-dock">
+            <div id="aplayer"></div>
+        </footer>
+    </div>
+
+    <!-- Modal 1: Ambiguous Pure ID Resolver -->
+    <div class="jr-modal-overlay" id="idResolverModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="jr-modal">
+            <div class="jr-modal-header">
+                <div class="jr-modal-title">
+                    <i class="fa-solid fa-circle-question" style="color: var(--jr-crimson);"></i>
+                    <span>检测到纯数字 ID：<code id="target-id-label" style="color: var(--jr-blue-bright);"></code></span>
+                </div>
+                <button type="button" class="modal-close-btn" data-close-modal="idResolverModal" aria-label="关闭">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="jr-modal-body">
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">该 ID 未包含类型前缀，请选择需要执行的解析方式：</p>
+                <button type="button" class="id-option-btn" id="resolve-as-song">
+                    <span><i class="fa-solid fa-music" style="color: var(--jr-blue-bright); margin-right: 10px;"></i>按 <strong>单曲 ID</strong> 解析</span>
+                    <i class="fa-solid fa-chevron-right" style="color: var(--text-dim);"></i>
+                </button>
+                <button type="button" class="id-option-btn" id="resolve-as-playlist">
+                    <span><i class="fa-solid fa-list-ul" style="color: var(--jr-amber); margin-right: 10px;"></i>按 <strong>歌单 ID</strong> 解析</span>
+                    <i class="fa-solid fa-chevron-right" style="color: var(--text-dim);"></i>
+                </button>
+                <button type="button" class="id-option-btn" id="resolve-as-album">
+                    <span><i class="fa-solid fa-compact-disc" style="color: var(--jr-emerald-bright); margin-right: 10px;"></i>按 <strong>专辑 ID</strong> 解析</span>
+                    <i class="fa-solid fa-chevron-right" style="color: var(--text-dim);"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: NetEase QR Login & Cookie Manager -->
+    <div class="jr-modal-overlay" id="qrLoginModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="jr-modal qr-modal">
+            <div class="jr-modal-header">
+                <div class="jr-modal-title">
+                    <i class="fa-solid fa-qrcode" style="color: var(--jr-emerald-bright);"></i>
+                    <span>网易云音乐扫码登录 · Cookie 获取</span>
+                </div>
+                <button type="button" class="modal-close-btn" data-close-modal="qrLoginModal" aria-label="关闭">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="jr-modal-body">
+                <div class="qr-stage">
+                    <div class="qr-frame">
+                        <img id="qr-code-img" src="" alt="网易云音乐登录二维码" style="display: none;">
+                        <div id="qr-loading-spinner" style="color: #334155; font-size: 1.5rem;">
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                        </div>
+                        <div class="qr-overlay" id="qr-overlay">
+                            <i id="qr-overlay-icon" class="fa-solid fa-rotate-right" style="font-size: 1.8rem;"></i>
+                            <div id="qr-overlay-text" style="font-size: 0.84rem; font-weight: 600;">二维码已过期</div>
+                            <button type="button" id="qr-overlay-refresh-btn" class="btn-emerald-jr" style="padding: 6px 14px;">
+                                <i class="fa-solid fa-rotate"></i> 刷新二维码
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="qr-state-pill waiting" id="qr-state-pill">
+                        <i class="fa-solid fa-spinner fa-spin" id="qr-state-icon"></i>
+                        <span id="qr-state-text">正在生成二维码...</span>
+                    </div>
+
+                    <div class="qr-actions-row">
+                        <button type="button" class="btn-outline-jr" id="qr-refresh-btn">
+                            <i class="fa-solid fa-rotate"></i> 刷新二维码
+                        </button>
+                        <button type="button" class="btn-outline-jr danger" id="qr-logout-btn">
+                            <i class="fa-solid fa-right-from-bracket"></i> 清除服务端 Cookie
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cookie-drawer">
+                    <div class="cookie-drawer-head">
+                        <span class="cookie-label"><i class="fa-solid fa-key" style="margin-right: 5px; color: var(--jr-emerald-bright);"></i>当前 / 已获取 Cookie</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button type="button" class="btn-outline-jr" id="cookie-toggle-vis-btn" style="padding: 4px 10px; font-size: 0.74rem;">
+                                <i class="fa-solid fa-eye"></i> 显示明文
+                            </button>
+                            <button type="button" class="btn-emerald-jr" id="cookie-copy-btn" style="padding: 4px 10px; font-size: 0.74rem;" disabled>
+                                <i class="fa-solid fa-copy"></i> 复制 Cookie
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="cookie-display-box" class="cookie-code-box" readonly placeholder="扫码登录成功后，Cookie 将自动保存至服务端 cookie.txt 并在此显示..."></textarea>
+                    <div class="cookie-meta-bar">
+                        <span id="cookie-meta-status">服务端状态：检测中...</span>
+                        <span id="cookie-meta-updated">最后更新：--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-wrap">
+        <div id="omniverse-toast" class="toast-card">
+            <i id="toast-icon" class="fa-solid fa-circle-check" style="color: var(--jr-emerald-bright); font-size: 1.15rem;"></i>
+            <div>
+                <div class="toast-title" id="toast-title">指令就绪</div>
+                <div class="toast-desc" id="toast-desc">操作执行成功</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        (function () {
+            'use strict';
+
+            window.activePlaylistTracks = [];
+            window.songNameDatabase = {};
+            window.currentAudioInstance = null;
+
+            let pendingPureId = null;
+            let toastTimer = null;
+
+            let qrPollTimer = null;
+            let currentQrKey = null;
+            let currentCookieRaw = '';
+            let isCookieVisible = false;
+
+            const byId = (id) => document.getElementById(id);
+
+            function emitToast(title, desc, isErr = false) {
+                const toast = byId('omniverse-toast');
+                const icon = byId('toast-icon');
+                byId('toast-title').textContent = title;
+                byId('toast-desc').textContent = desc;
+                if (isErr) {
+                    toast.classList.add('is-error');
+                    icon.className = 'fa-solid fa-circle-exclamation';
+                    icon.style.color = 'var(--jr-crimson)';
+                } else {
+                    toast.classList.remove('is-error');
+                    icon.className = 'fa-solid fa-circle-check';
+                    icon.style.color = 'var(--jr-emerald-bright)';
+                }
+                toast.classList.add('active');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => toast.classList.remove('active'), 3400);
+            }
+
+            function openModal(id) {
+                const el = byId(id);
+                if (!el) return;
+                el.classList.add('open');
+                el.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeModal(id) {
+                const el = byId(id);
+                if (!el) return;
+                el.classList.remove('open');
+                el.setAttribute('aria-hidden', 'true');
+                if (id === 'qrLoginModal') stopQrPolling();
+            }
+
+            document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+                btn.addEventListener('click', () => closeModal(btn.getAttribute('data-close-modal')));
+            });
+
+            document.querySelectorAll('.jr-modal-overlay').forEach((overlay) => {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) closeModal(overlay.id);
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal('idResolverModal');
+                    closeModal('qrLoginModal');
+                }
+            });
+
+            function stripTranslations(rawLyrics) {
+                if (!rawLyrics || typeof rawLyrics !== 'string') return '';
+                return rawLyrics
+                    .replace(/（翻译：[\s\S]*?）/g, '')
+                    .replace(/\(翻译：[\s\S]*?\)/g, '')
+                    .trim();
+            }
+
+            function sanitizeStrictFilename(songName, id, ext) {
+                let name = songName || window.songNameDatabase[id] || `Song_${id}`;
+                name = name.replace(/[\\/:*?"<>|]/g, '_').trim();
+                return `${name}.${ext}`;
+            }
+
+            function escapeHtml(str) {
+                return String(str || '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function analyzeInputIntent(rawInput) {
+                const input = rawInput.trim();
+                if (!input) return { type: 'empty' };
+                const songUrlMatch = input.match(/song\?id=(\d+)/);
+                if (songUrlMatch) return { type: 'song', id: songUrlMatch[1] };
+                const playlistUrlMatch = input.match(/playlist\?id=(\d+)/);
+                if (playlistUrlMatch) return { type: 'playlist', id: playlistUrlMatch[1] };
+                const albumUrlMatch = input.match(/album\?id=(\d+)/);
+                if (albumUrlMatch) return { type: 'album', id: albumUrlMatch[1] };
+                if (/^\d+$/.test(input)) return { type: 'pure_id', id: input };
+                return { type: 'search', query: input };
+            }
+
+            async function postFormJson(url, paramsObj) {
+                const body = new URLSearchParams(paramsObj);
+                const resp = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+                    body: body.toString(),
+                });
+                return resp.json();
+            }
+
+            byId('omnibox_submit_btn').addEventListener('click', () => {
+                const text = byId('omnibox_input').value;
+                const intent = analyzeInputIntent(text);
+                if (intent.type === 'empty') {
+                    emitToast('输入为空', '请输入需要处理的关键词、链接或ID', true);
+                    return;
+                }
+                if (intent.type === 'song') executeSongParse(intent.id);
+                else if (intent.type === 'playlist') executePlaylistParse(intent.id);
+                else if (intent.type === 'album') executeAlbumParse(intent.id);
+                else if (intent.type === 'pure_id') {
+                    pendingPureId = intent.id;
+                    byId('target-id-label').textContent = pendingPureId;
+                    openModal('idResolverModal');
+                } else if (intent.type === 'search') executeSearch(intent.query);
+            });
+
+            byId('omnibox_input').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') byId('omnibox_submit_btn').click();
+            });
+
+            byId('resolve-as-song').addEventListener('click', () => {
+                closeModal('idResolverModal');
+                if (pendingPureId) executeSongParse(pendingPureId);
+            });
+            byId('resolve-as-playlist').addEventListener('click', () => {
+                closeModal('idResolverModal');
+                if (pendingPureId) executePlaylistParse(pendingPureId);
+            });
+            byId('resolve-as-album').addEventListener('click', () => {
+                closeModal('idResolverModal');
+                if (pendingPureId) executeAlbumParse(pendingPureId);
+            });
+
+            async function executeSearch(keyword) {
+                const btn = byId('omnibox_submit_btn');
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>检索中...</span>';
+                try {
+                    const res = await postFormJson('/Search', { keyword, limit: 30 });
+                    if (res.status === 200 && res.data && res.data.length > 0) {
+                        renderTrackCards(res.data, `搜索结果: "${keyword}"`);
+                        emitToast('检索就绪', `已获取 ${res.data.length} 首匹配曲目`);
+                    } else {
+                        renderEmptyState('未检索到符合条件的曲目');
+                    }
+                } catch (err) {
+                    emitToast('通信异常', '检索端点异常，请检查网络或后端接口', true);
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-bolt"></i><span>智能识别解析</span>';
+                }
+            }
+
+            async function executeSongParse(songId) {
+                const quality = byId('global_quality').value;
+                emitToast('正在解析', `正在抓取单曲 ID: ${songId}`);
+                try {
+                    const res = await postFormJson('/Song_V1', { url: songId, level: quality, type: 'json' });
+                    if (res.status === 200 && res.data) {
+                        const song = res.data;
+                        window.songNameDatabase[song.id] = song.name;
+                        renderTrackCards([{
+                            id: song.id,
+                            name: song.name,
+                            artists: song.ar_name,
+                            album: song.al_name,
+                            picUrl: song.pic,
+                        }], `单曲解析: ${song.name}`);
+                        updateStageInspector(song);
+                        emitToast('单曲解析成功', `${song.name} - ${song.ar_name}`);
+                    } else {
+                        emitToast('解析受阻', res.message || res.data?.msg || '无法解析该单曲', true);
+                    }
+                } catch (err) {
+                    emitToast('请求失败', '后端 /Song_V1 连接错误', true);
+                }
+            }
+
+            async function executePlaylistParse(playlistId) {
+                emitToast('解析歌单', `正在提取歌单 ID: ${playlistId}`);
+                try {
+                    const resp = await fetch(`/Playlist?id=${encodeURIComponent(playlistId)}`);
+                    const res = await resp.json();
+                    if (res.status === 200 && res.data?.playlist) {
+                        const pl = res.data.playlist;
+                        renderTrackCards(pl.tracks || [], `歌单: ${pl.name}`);
+                        emitToast('歌单提取完毕', `已载入 ${(pl.tracks || []).length} 首曲目`);
+                    } else {
+                        emitToast('提取失败', res.message || res.data?.msg || '歌单内容获取失败', true);
+                    }
+                } catch (err) {
+                    emitToast('解析错误', '后端 /Playlist 连接错误', true);
+                }
+            }
+
+            async function executeAlbumParse(albumId) {
+                emitToast('解析专辑', `正在提取专辑 ID: ${albumId}`);
+                try {
+                    const resp = await fetch(`/Album?id=${encodeURIComponent(albumId)}`);
+                    const res = await resp.json();
+                    if (res.status === 200 && res.data?.album) {
+                        const al = res.data.album;
+                        renderTrackCards(al.songs || [], `专辑: ${al.name}`);
+                        emitToast('专辑提取完毕', `已载入 ${(al.songs || []).length} 首曲目`);
+                    } else {
+                        emitToast('提取失败', res.message || res.data?.msg || '专辑内容获取失败', true);
+                    }
+                } catch (err) {
+                    emitToast('解析错误', '后端 /Album 连接错误', true);
+                }
+            }
+
+            function renderTrackCards(tracks, deckTitle) {
+                byId('empty-state-notice').style.display = 'none';
+                byId('result-deck-title').textContent = deckTitle;
+                byId('track-count-badge').textContent = `${tracks.length} 项`;
+                window.activePlaylistTracks = tracks;
+                byId('batch-download-btn').disabled = tracks.length === 0;
+                const container = byId('track-cards-list');
+                container.innerHTML = '';
+                tracks.forEach((track, idx) => {
+                    window.songNameDatabase[track.id] = track.name;
+                    const row = document.createElement('div');
+                    row.className = 'track-row';
+                    const thumbHtml = track.picUrl
+                        ? `<img src="${escapeHtml(track.picUrl)}" alt="cover" class="track-thumb" loading="lazy">`
+                        : `<div class="track-thumb-fallback"><i class="fa-solid fa-music"></i></div>`;
+                    row.innerHTML = `
+                        <div class="track-info">
+                            <span class="track-index">${String(idx + 1).padStart(2, '0')}</span>
+                            ${thumbHtml}
+                            <div class="track-text">
+                                <div class="track-name">${escapeHtml(track.name)}</div>
+                                <div class="track-sub">${escapeHtml(track.artists || '未知艺术家')} &bull; ${escapeHtml(track.album || '未知唱片')}</div>
+                            </div>
+                        </div>
+                        <div class="track-actions">
+                            <button type="button" class="btn-chip btn-chip-play play-single-trigger" data-id="${escapeHtml(track.id)}">
+                                <i class="fa-solid fa-play"></i> 播放
+                            </button>
+                            <button type="button" class="btn-chip btn-chip-dl download-single-trigger" data-id="${escapeHtml(track.id)}" data-name="${escapeHtml(track.name)}">
+                                <i class="fa-solid fa-cloud-arrow-down"></i> 下载
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+
+            function renderEmptyState(msg) {
+                byId('track-cards-list').innerHTML = '';
+                byId('empty-state-text').textContent = msg;
+                byId('empty-state-notice').style.display = 'block';
+                byId('track-count-badge').textContent = '0 项';
+                byId('batch-download-btn').disabled = true;
+                window.activePlaylistTracks = [];
+            }
+
+            function updateStageInspector(songData) {
+                byId('stage-artwork-empty').style.display = 'none';
+                const coverImg = byId('inspector-cover-img');
+                coverImg.src = songData.pic || '';
+                coverImg.classList.add('visible');
+                byId('stage-song-name').textContent = songData.name || '未知曲目';
+                byId('stage-artist-name').textContent = songData.ar_name || '未知歌手';
+                byId('stage-album-name').textContent = songData.al_name || '未归档专辑';
+                byId('stage-bitrate').textContent = songData.level || 'Standard';
+                byId('stage-filesize').textContent = songData.size || '--';
+                byId('stage-direct-url').href = songData.url || 'javascript:void(0);';
+                const cleanLyrics = stripTranslations(songData.lyric);
+                const lyricsBox = byId('cleaned-lyrics-box');
+                if (cleanLyrics) {
+                    lyricsBox.innerHTML = escapeHtml(cleanLyrics).replace(/\n/g, '<br>');
+                } else {
+                    lyricsBox.innerHTML = '<div style="text-align:center; padding: 60px 0; color: var(--text-dim);">[ 纯音乐或未包含歌词 ]</div>';
+                }
+                if (window.currentAudioInstance) window.currentAudioInstance.destroy();
+                window.currentAudioInstance = new APlayer({
+                    container: byId('aplayer'),
+                    lrcType: 1,
+                    audio: [{
+                        name: songData.name,
+                        artist: songData.ar_name,
+                        url: songData.url,
+                        cover: songData.pic,
+                        lrc: cleanLyrics,
+                    }],
+                });
+                window.currentAudioInstance.play();
+            }
+
+            byId('track-cards-list').addEventListener('click', (e) => {
+                const playBtn = e.target.closest('.play-single-trigger');
+                if (playBtn) {
+                    executeSongParse(playBtn.dataset.id);
+                    return;
+                }
+                const dlBtn = e.target.closest('.download-single-trigger');
+                if (dlBtn) {
+                    const songId = dlBtn.dataset.id;
+                    const songName = dlBtn.dataset.name;
+                    dlBtn.disabled = true;
+                    dlBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+                    emitToast('封装下载中', `正在写入元数据并打包: ${songName}`);
+                    downloadMusicFile(songId, songName, (success, fileName) => {
+                        dlBtn.disabled = false;
+                        dlBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-down"></i> 下载';
+                        if (success) emitToast('下载完成', fileName);
+                        else emitToast('下载受阻', `歌曲 ID: ${songId} 下载失败`, true);
+                    });
+                }
+            });
+
+            function downloadMusicFile(songId, songName, onComplete) {
+                const quality = byId('global_quality').value;
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Download', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.responseType = 'blob';
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const encodedFilename = xhr.getResponseHeader('X-Download-Filename');
+                        const serverFilename = encodedFilename ? decodeURIComponent(encodedFilename) : '';
+                        let ext = ['standard', 'exhigh'].includes(quality) ? 'mp3' : 'flac';
+                        if (serverFilename && serverFilename.lastIndexOf('.') !== -1) {
+                            ext = serverFilename.substring(serverFilename.lastIndexOf('.') + 1).toLowerCase();
+                        }
+                        const finalName = sanitizeStrictFilename(songName, songId, ext);
+                        const blobUrl = window.URL.createObjectURL(xhr.response);
+                        const a = document.createElement('a');
+                        a.href = blobUrl;
+                        a.download = finalName;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(blobUrl);
+                        if (onComplete) onComplete(true, finalName);
+                    } else {
+                        if (onComplete) onComplete(false, null);
+                    }
+                };
+                xhr.onerror = function () {
+                    if (onComplete) onComplete(false, null);
+                };
+                xhr.send(`id=${encodeURIComponent(songId)}&quality=${encodeURIComponent(quality)}`);
+            }
+
+            byId('batch-download-btn').addEventListener('click', () => {
+                const list = window.activePlaylistTracks;
+                if (!list || list.length === 0) return;
+                const total = list.length;
+                let currentIndex = 0;
+                let successCount = 0;
+                const btn = byId('batch-download-btn');
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>批量处理中...</span>';
+                byId('batch-progress-wrapper').classList.add('active');
+                byId('batch-progress-status').textContent = `0 / ${total}`;
+                byId('batch-progress-bar-fill').style.width = '0%';
+                function processNext() {
+                    if (currentIndex >= total) {
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-down"></i><span>一键批量下载</span>';
+                        emitToast('批量导出完成', `成功导出 ${successCount} / ${total} 首曲目`);
+                        setTimeout(() => byId('batch-progress-wrapper').classList.remove('active'), 3000);
+                        return;
+                    }
+                    const track = list[currentIndex];
+                    downloadMusicFile(track.id, track.name, (success) => {
+                        if (success) successCount++;
+                        currentIndex++;
+                        const pct = Math.round((currentIndex / total) * 100);
+                        byId('batch-progress-status').textContent = `${currentIndex} / ${total}`;
+                        byId('batch-progress-bar-fill').style.width = `${pct}%`;
+                        setTimeout(processNext, 600);
+                    });
+                }
+                processNext();
+            });
+
+            // =========================================================================
+            // Embedded QR Login & Cookie Management Module
+            // =========================================================================
+            function maskCookie(raw) {
+                if (!raw) return '';
+                return raw.replace(/(MUSIC_U=)([^;]+)/i, (_, prefix, val) => {
+                    if (val.length <= 14) return `${prefix}${'*'.repeat(val.length)}`;
+                    return `${prefix}${val.slice(0, 8)}${'*'.repeat(16)}${val.slice(-6)}`;
+                });
+            }
+
+            function renderCookieDisplay() {
+                const box = byId('cookie-display-box');
+                const copyBtn = byId('cookie-copy-btn');
+                const toggleBtn = byId('cookie-toggle-vis-btn');
+                if (!currentCookieRaw) {
+                    box.value = '';
+                    copyBtn.disabled = true;
+                    toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i> 显示明文';
+                    return;
+                }
+                box.value = isCookieVisible ? currentCookieRaw : maskCookie(currentCookieRaw);
+                copyBtn.disabled = false;
+                toggleBtn.innerHTML = isCookieVisible
+                    ? '<i class="fa-solid fa-eye-slash"></i> 隐藏敏感段'
+                    : '<i class="fa-solid fa-eye"></i> 显示明文';
+            }
+
+            function updateHeaderCookieBadge(info) {
+                const btn = byId('qr-login-trigger-btn');
+                const led = byId('header-cookie-led');
+                const text = byId('header-cookie-text');
+                btn.classList.remove('is-valid', 'is-invalid');
+                led.classList.remove('valid', 'invalid');
+                if (info && info.is_valid) {
+                    btn.classList.add('is-valid');
+                    led.classList.add('valid');
+                    text.textContent = '已登录 · Cookie 有效';
+                    byId('cookie-meta-status').textContent = `服务端状态：有效 (${(info.important_cookies_present || []).join(', ')})`;
+                } else {
+                    btn.classList.add('is-invalid');
+                    led.classList.add('invalid');
+                    text.textContent = '未登录 · 扫码获取 Cookie';
+                    byId('cookie-meta-status').textContent = '服务端状态：未检测到有效 Cookie';
+                }
+                byId('cookie-meta-updated').textContent = `最后更新：${info?.last_modified || '--'}`;
+            }
+
+            async function fetchServerCookieStatus() {
+                try {
+                    const resp = await fetch('/api/qr/status');
+                    const res = await resp.json();
+                    if (res.success && res.data) {
+                        currentCookieRaw = res.data.cookie || '';
+                        updateHeaderCookieBadge(res.data);
+                        renderCookieDisplay();
+                    }
+                } catch (err) {
+                    byId('header-cookie-text').textContent = '扫码登录';
+                }
+            }
+
+            function setQrVisualState(state, message) {
+                const pill = byId('qr-state-pill');
+                const icon = byId('qr-state-icon');
+                const text = byId('qr-state-text');
+                const overlay = byId('qr-overlay');
+                const overlayIcon = byId('qr-overlay-icon');
+                const overlayText = byId('qr-overlay-text');
+                pill.className = `qr-state-pill ${state}`;
+                text.textContent = message;
+                overlay.classList.remove('active');
+                if (state === 'loading' || state === 'waiting') {
+                    icon.className = state === 'loading' ? 'fa-solid fa-spinner fa-spin' : 'fa-solid fa-mobile-screen-button';
+                } else if (state === 'scanned') {
+                    icon.className = 'fa-solid fa-circle-check';
+                } else if (state === 'success') {
+                    icon.className = 'fa-solid fa-shield-check';
+                    overlayIcon.className = 'fa-solid fa-circle-check';
+                    overlayIcon.style.color = 'var(--jr-emerald-bright)';
+                    overlayText.textContent = '登录成功！Cookie 已保存';
+                    overlay.classList.add('active');
+                } else if (state === 'expired' || state === 'error') {
+                    icon.className = 'fa-solid fa-triangle-exclamation';
+                    overlayIcon.className = 'fa-solid fa-rotate-right';
+                    overlayIcon.style.color = '#f87171';
+                    overlayText.textContent = message;
+                    overlay.classList.add('active');
+                }
+            }
+
+            function stopQrPolling() {
+                if (qrPollTimer) {
+                    clearInterval(qrPollTimer);
+                    qrPollTimer = null;
+                }
+            }
+
+            async function startQrLoginFlow() {
+                stopQrPolling();
+                currentQrKey = null;
+                const qrImg = byId('qr-code-img');
+                const spinner = byId('qr-loading-spinner');
+                qrImg.style.display = 'none';
+                spinner.style.display = 'block';
+                setQrVisualState('loading', '正在向网易云申请登录二维码...');
+                try {
+                    const resp = await fetch('/api/qr/create', { method: 'POST' });
+                    const res = await resp.json();
+                    if (!res.success || !res.data?.key || !res.data?.qr_image) {
+                        spinner.style.display = 'none';
+                        setQrVisualState('error', res.message || '生成二维码失败，请确认服务端已安装 qrcode');
+                        return;
+                    }
+                    currentQrKey = res.data.key;
+                    qrImg.onload = () => {
+                        spinner.style.display = 'none';
+                        qrImg.style.display = 'block';
+                    };
+                    qrImg.src = res.data.qr_image;
+                    setQrVisualState('waiting', '请使用网易云音乐 APP 扫描二维码');
+                    pollQrStatus();
+                    qrPollTimer = setInterval(pollQrStatus, 2000);
+                } catch (err) {
+                    spinner.style.display = 'none';
+                    setQrVisualState('error', '无法连接后端二维码接口');
+                }
+            }
+
+            async function pollQrStatus() {
+                if (!currentQrKey) return;
+                try {
+                    const resp = await fetch(`/api/qr/check?key=${encodeURIComponent(currentQrKey)}`);
+                    const res = await resp.json();
+                    if (!res.success || !res.data) return;
+                    const { status, cookie, cookie_info } = res.data;
+                    if (status === 'waiting') {
+                        setQrVisualState('waiting', '等待使用网易云音乐 APP 扫码...');
+                    } else if (status === 'scanned') {
+                        setQrVisualState('scanned', '已扫码，请在手机上点击确认登录');
+                    } else if (status === 'expired') {
+                        stopQrPolling();
+                        setQrVisualState('expired', '二维码已过期，请点击刷新');
+                    } else if (status === 'success') {
+                        stopQrPolling();
+                        currentCookieRaw = cookie || '';
+                        isCookieVisible = false;
+                        renderCookieDisplay();
+                        if (cookie_info) updateHeaderCookieBadge(cookie_info);
+                        else fetchServerCookieStatus();
+                        setQrVisualState('success', '登录成功！Cookie 已写入 cookie.txt');
+                        emitToast('扫码登录成功', 'Cookie 已自动保存，可直接解析高音质曲目');
+                    } else {
+                        stopQrPolling();
+                        setQrVisualState('error', res.message || '登录状态异常');
+                    }
+                } catch (err) {}
+            }
+
+            byId('qr-login-trigger-btn').addEventListener('click', () => {
+                openModal('qrLoginModal');
+                fetchServerCookieStatus();
+                startQrLoginFlow();
+            });
+            byId('qr-refresh-btn').addEventListener('click', startQrLoginFlow);
+            byId('qr-overlay-refresh-btn').addEventListener('click', startQrLoginFlow);
+            byId('cookie-toggle-vis-btn').addEventListener('click', () => {
+                isCookieVisible = !isCookieVisible;
+                renderCookieDisplay();
+            });
+            byId('cookie-copy-btn').addEventListener('click', async () => {
+                if (!currentCookieRaw) return;
+                try {
+                    await navigator.clipboard.writeText(currentCookieRaw);
+                    emitToast('已复制 Cookie', '完整 Cookie 字符串已复制到剪贴板');
+                } catch (err) {
+                    emitToast('复制失败', '请点击“显示明文”后手动全选复制', true);
+                }
+            });
+            byId('qr-logout-btn').addEventListener('click', async () => {
+                try {
+                    const resp = await fetch('/api/qr/logout', { method: 'POST' });
+                    const res = await resp.json();
+                    if (res.success) {
+                        currentCookieRaw = '';
+                        renderCookieDisplay();
+                        fetchServerCookieStatus();
+                        emitToast('已退出登录', '服务端 Cookie 已备份并清除');
+                    } else {
+                        emitToast('清除失败', res.message || '无法清除 Cookie', true);
+                    }
+                } catch (err) {
+                    emitToast('请求失败', '退出登录接口通信异常', true);
+                }
+            });
+
+            fetchServerCookieStatus();
+        })();
+    </script>
+</body>
+</html>
