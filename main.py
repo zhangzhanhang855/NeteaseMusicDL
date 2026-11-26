@@ -26,7 +26,7 @@ try:
         NeteaseAPI, APIException, QualityLevel,
         url_v1, name_v1, lyric_v1, search_music,
         playlist_detail, album_detail,
-        load_cookies, QRLoginManager,
+        load_cookies, parse_cookie_string, QRLoginManager,
     )
     from music_downloader import MusicDownloader, DownloadException, AudioFormat
     from qr_login import QRLoginClient
@@ -119,8 +119,27 @@ class MusicAPIService:
         
         return logger
     
-    def _get_cookies(self) -> Dict[str, str]:
-        """直接从 cookie.txt 读取并解析为 dict"""
+    def _get_cookies(self, request_data: Optional[Dict[str, Any]] = None) -> Dict[str, str]:
+        """优先从请求头或请求体读取客户端传入的 MUSIC_U Cookie，缺失时回退到 cookie.txt"""
+        try:
+            req_cookie = request.headers.get('X-Netease-Cookie', '').strip()
+            if not req_cookie and request_data:
+                req_cookie = str(
+                    request_data.get('cookie')
+                    or request_data.get('cookies')
+                    or request_data.get('MUSIC_U')
+                    or request_data.get('music_u')
+                    or ''
+                ).strip()
+            if req_cookie:
+                if '=' not in req_cookie:
+                    req_cookie = f"MUSIC_U={req_cookie}"
+                parsed = parse_cookie_string(req_cookie)
+                if parsed.get('MUSIC_U'):
+                    return parsed
+        except Exception as e:
+            self.logger.warning(f"解析请求中的 Cookie 异常，回退到本地 cookie.txt: {e}")
+
         try:
             cookies = load_cookies()
             if not cookies:
@@ -207,7 +226,7 @@ app = Flask(__name__)
 CORS(
     app,
     resources={r"/*": {"origins": "*"}},
-    supports_credentials=True,
+    supports_credentials=False,
     expose_headers=["X-Download-Filename", "X-Download-Message", "Content-Disposition"]
 )
 
@@ -225,11 +244,13 @@ def before_request():
 
 @app.after_request
 def after_request(response: Response) -> Response:
-    """请求后处理 - 保障响应头正常暴露"""
+    """请求后处理 - 兼容独立 HTML (file:// Origin: null) 与跨源请求"""
     response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization,X-Requested-With'
+    response.headers.pop('Access-Control-Allow-Credentials', None)
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization,X-Requested-With,X-Netease-Cookie'
     response.headers['Access-Control-Allow-Methods'] = 'GET,POST,OPTIONS,PUT,DELETE'
     response.headers['Access-Control-Expose-Headers'] = 'X-Download-Filename,X-Download-Message,Content-Disposition'
+    response.headers['Access-Control-Max-Age'] = '86400'
     return response
 
 
@@ -289,7 +310,7 @@ def get_song_info():
         data = api_service._safe_get_request_data()
         song_ids = data.get('ids') or data.get('id')
         url = data.get('url')
-        level = data.get('level', 'lossless')
+        level = data.get('level') or data.get('quality') or 'lossless'
         info_type = data.get('type', 'url')
         
         if not song_ids and not url:
@@ -305,7 +326,7 @@ def get_song_info():
         if info_type not in valid_types:
             return APIResponse.error(f"无效的类型参数，支持: {', '.join(valid_types)}")
         
-        cookies = api_service._get_cookies()
+        cookies = api_service._get_cookies(data)
         
         if info_type == 'url':
             result = url_v1(music_id, level, cookies)
@@ -396,7 +417,7 @@ def search_music_api():
         if limit > 100:
             limit = 100
         
-        cookies = api_service._get_cookies()
+        cookies = api_service._get_cookies(data)
         result = search_music(keyword, cookies, limit)
         
         if result:
@@ -428,7 +449,7 @@ def get_playlist():
         if validation_error:
             return validation_error
         
-        cookies = api_service._get_cookies()
+        cookies = api_service._get_cookies(data)
         result = playlist_detail(playlist_id, cookies)
         
         response_data = {
@@ -458,7 +479,7 @@ def get_album():
         if validation_error:
             return validation_error
         
-        cookies = api_service._get_cookies()
+        cookies = api_service._get_cookies(data)
         result = album_detail(album_id, cookies)
         
         response_data = {
@@ -498,7 +519,7 @@ def download_music_api():
             return APIResponse.error("返回格式只支持 'file' 或 'json'")
         
         music_id = api_service._extract_music_id(music_id)
-        cookies = api_service._get_cookies()
+        cookies = api_service._get_cookies(data)
         
         song_info = name_v1(music_id)
         if not song_info or 'songs' not in song_info or not song_info['songs']:
@@ -534,7 +555,7 @@ def download_music_api():
         else:
             try:
                 download_result = api_service.downloader.download_music_file(
-                    music_id, quality
+                    music_id, quality, cookies=cookies
                 )
                 
                 if not download_result.success:
@@ -672,12 +693,14 @@ def qr_check():
                 return APIResponse.error("登录成功但未获取到 MUSIC_U Cookie", 500)
 
             cookie_str = f"MUSIC_U={music_u};os=pc;appver=2.10.2.200154;"
-            saved = api_service.qr_client.save_cookie(cookie_str)
-            cookie_info = api_service.qr_client._get_cookie_info()
+            save_to_server = str(data.get('save_to_server', 'true')).lower() not in ('0', 'false', 'no')
+            saved = api_service.qr_client.save_cookie(cookie_str) if save_to_server else False
+            cookie_info = api_service.qr_client._get_cookie_info() if save_to_server else None
             return APIResponse.success(
                 {
                     'code': 803,
                     'status': 'success',
+                    'music_u': music_u,
                     'cookie': cookie_str,
                     'saved': saved,
                     'cookie_info': cookie_info,

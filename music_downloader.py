@@ -205,10 +205,15 @@ class MusicDownloader:
 
     # ----------- 信息获取 -----------
 
-    def get_music_info(self, music_id: int, quality: str = "standard") -> MusicInfo:
+    def get_music_info(
+        self,
+        music_id: int,
+        quality: str = "standard",
+        cookies: Optional[Dict[str, str]] = None,
+    ) -> MusicInfo:
         """获取音乐详细信息（同步）"""
         try:
-            cookies = load_cookies()
+            cookies = cookies if cookies else load_cookies()
 
             url_result = self.api.get_song_url(music_id, quality, cookies)
             print(url_result)
@@ -271,10 +276,11 @@ class MusicDownloader:
         self,
         music_id: int,
         quality: str = "standard",
+        cookies: Optional[Dict[str, str]] = None,
     ) -> DownloadResult:
         """同步下载音乐到本地"""
         try:
-            music_info = self.get_music_info(music_id, quality)
+            music_info = self.get_music_info(music_id, quality, cookies=cookies)
             file_path = self._build_file_path(music_info)
 
             # 已存在则直接返回
@@ -317,10 +323,11 @@ class MusicDownloader:
         self,
         music_id: int,
         quality: str = "standard",
+        cookies: Optional[Dict[str, str]] = None,
     ) -> DownloadResult:
         """异步下载音乐到本地"""
         try:
-            music_info = self.get_music_info(music_id, quality)
+            music_info = self.get_music_info(music_id, quality, cookies=cookies)
             file_path = self._build_file_path(music_info)
 
             if file_path.exists():

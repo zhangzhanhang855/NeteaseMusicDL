@@ -1,0 +1,3875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont sfntVersion="\x00\x01\x00\x00" ttLibVersion="4.60">
+
+  <name>
+    <namerecord nameID="1" platformID="0" platEncID="3" langID="0x0">
+      .SF NS
+    </namerecord>
+    <namerecord nameID="2" platformID="0" platEncID="3" langID="0x0">
+      Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="0" platEncID="3" langID="0x0">
+      System Font
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x403">
+      Tipus de lletra del sistema
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x403">
+      Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x403">
+      Tipus de lletra del sistema
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x404">
+      系統字體
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x404">
+      標準體
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x404">
+      系統字體
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x405">
+      Systémové písmo
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x405">
+      Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x405">
+      Systémové písmo
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x406">
+      Systemskrift
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x406">
+      Almindelig
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x406">
+      Systemskrift
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x407">
+      Systemschrift
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x407">
+      Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x407">
+      Systemschrift
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x408">
+      Γραμματοσειρά συστήματος
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x408">
+      Κανονικά
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x408">
+      Γραμματοσειρά συστήματος
+    </namerecord>
+    <namerecord nameID="0" platformID="3" platEncID="1" langID="0x409">
+      © 2015-2026 Apple Inc. All rights reserved.
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x409">
+      System Font
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x409">
+      Regular
+    </namerecord>
+    <namerecord nameID="3" platformID="3" platEncID="1" langID="0x409">
+      .SF NS; 22.0d5e1; 2026-07-17
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x409">
+      System Font
+    </namerecord>
+    <namerecord nameID="5" platformID="3" platEncID="1" langID="0x409">
+      22.0d5e1
+    </namerecord>
+    <namerecord nameID="6" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Regular
+    </namerecord>
+    <namerecord nameID="7" platformID="3" platEncID="1" langID="0x409">
+      San Francisco is a trademark of Apple Inc.
+    </namerecord>
+    <namerecord nameID="8" platformID="3" platEncID="1" langID="0x409">
+      Apple Inc.
+    </namerecord>
+    <namerecord nameID="9" platformID="3" platEncID="1" langID="0x409">
+      Apple Inc.
+    </namerecord>
+    <namerecord nameID="10" platformID="3" platEncID="1" langID="0x409">
+      Apple Inc.
+    </namerecord>
+    <namerecord nameID="11" platformID="3" platEncID="1" langID="0x409">
+      http://www.apple.com/
+    </namerecord>
+    <namerecord nameID="12" platformID="3" platEncID="1" langID="0x409">
+      http://www.apple.com/
+    </namerecord>
+    <namerecord nameID="13" platformID="3" platEncID="1" langID="0x409">
+      Copyright © 2015-2026 Apple Inc. All rights reserved. Your use of the San Francisco font is subject to the terms of the applicable OS Software License Agreement.
+    </namerecord>
+    <namerecord nameID="17" platformID="3" platEncID="1" langID="0x409">
+      Regular
+    </namerecord>
+    <namerecord nameID="25" platformID="3" platEncID="1" langID="0x409">
+      .SystemSFNS
+    </namerecord>
+    <namerecord nameID="256" platformID="3" platEncID="1" langID="0x409">
+      Straight-sided six and nine
+    </namerecord>
+    <namerecord nameID="257" platformID="3" platEncID="1" langID="0x409">
+      Open four
+    </namerecord>
+    <namerecord nameID="258" platformID="3" platEncID="1" langID="0x409">
+      Vertically centered colon
+    </namerecord>
+    <namerecord nameID="259" platformID="3" platEncID="1" langID="0x409">
+      Open currencies
+    </namerecord>
+    <namerecord nameID="260" platformID="3" platEncID="1" langID="0x409">
+      High legibility
+    </namerecord>
+    <namerecord nameID="261" platformID="3" platEncID="1" langID="0x409">
+      One storey a
+    </namerecord>
+    <namerecord nameID="262" platformID="3" platEncID="1" langID="0x409">
+      Calculator
+    </namerecord>
+    <namerecord nameID="263" platformID="3" platEncID="1" langID="0x409">
+      Straight-sided six and nine
+    </namerecord>
+    <namerecord nameID="264" platformID="3" platEncID="1" langID="0x409">
+      16:9
+    </namerecord>
+    <namerecord nameID="265" platformID="3" platEncID="1" langID="0x409">
+      Open four
+    </namerecord>
+    <namerecord nameID="266" platformID="3" platEncID="1" langID="0x409">
+      4
+    </namerecord>
+    <namerecord nameID="267" platformID="3" platEncID="1" langID="0x409">
+      Seriffed Capital J
+    </namerecord>
+    <namerecord nameID="268" platformID="3" platEncID="1" langID="0x409">
+      J
+    </namerecord>
+    <namerecord nameID="269" platformID="3" platEncID="1" langID="0x409">
+      Vertically centered colon
+    </namerecord>
+    <namerecord nameID="270" platformID="3" platEncID="1" langID="0x409">
+      9:41
+    </namerecord>
+    <namerecord nameID="271" platformID="3" platEncID="1" langID="0x409">
+      Seriffed Capital I
+    </namerecord>
+    <namerecord nameID="272" platformID="3" platEncID="1" langID="0x409">
+      I
+    </namerecord>
+    <namerecord nameID="273" platformID="3" platEncID="1" langID="0x409">
+      Tailed lowercase l
+    </namerecord>
+    <namerecord nameID="274" platformID="3" platEncID="1" langID="0x409">
+      l
+    </namerecord>
+    <namerecord nameID="275" platformID="3" platEncID="1" langID="0x409">
+      One storey a
+    </namerecord>
+    <namerecord nameID="276" platformID="3" platEncID="1" langID="0x409">
+      a
+    </namerecord>
+    <namerecord nameID="277" platformID="3" platEncID="1" langID="0x409">
+      Slashed zero
+    </namerecord>
+    <namerecord nameID="278" platformID="3" platEncID="1" langID="0x409">
+      0
+    </namerecord>
+    <namerecord nameID="279" platformID="3" platEncID="1" langID="0x409">
+      Small dollar sign
+    </namerecord>
+    <namerecord nameID="280" platformID="3" platEncID="1" langID="0x409">
+      $123
+    </namerecord>
+    <namerecord nameID="281" platformID="3" platEncID="1" langID="0x409">
+      Serifed digit one
+    </namerecord>
+    <namerecord nameID="282" platformID="3" platEncID="1" langID="0x409">
+      1
+    </namerecord>
+    <namerecord nameID="283" platformID="3" platEncID="1" langID="0x409">
+      Wide square root
+    </namerecord>
+    <namerecord nameID="284" platformID="3" platEncID="1" langID="0x409">
+      √2
+    </namerecord>
+    <namerecord nameID="285" platformID="3" platEncID="1" langID="0x409">
+      Tight
+    </namerecord>
+    <namerecord nameID="286" platformID="3" platEncID="1" langID="0x409">
+      Normal
+    </namerecord>
+    <namerecord nameID="287" platformID="3" platEncID="1" langID="0x409">
+      Loose
+    </namerecord>
+    <namerecord nameID="288" platformID="3" platEncID="1" langID="0x409">
+      Width
+    </namerecord>
+    <namerecord nameID="289" platformID="3" platEncID="1" langID="0x409">
+      Optical Size
+    </namerecord>
+    <namerecord nameID="290" platformID="3" platEncID="1" langID="0x409">
+      GRAD
+    </namerecord>
+    <namerecord nameID="291" platformID="3" platEncID="1" langID="0x409">
+      Weight
+    </namerecord>
+    <namerecord nameID="292" platformID="3" platEncID="1" langID="0x409">
+      Ultralight
+    </namerecord>
+    <namerecord nameID="293" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Ultralight
+    </namerecord>
+    <namerecord nameID="294" platformID="3" platEncID="1" langID="0x409">
+      Thin
+    </namerecord>
+    <namerecord nameID="295" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Thin
+    </namerecord>
+    <namerecord nameID="296" platformID="3" platEncID="1" langID="0x409">
+      Light
+    </namerecord>
+    <namerecord nameID="297" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Light
+    </namerecord>
+    <namerecord nameID="298" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Regular
+    </namerecord>
+    <namerecord nameID="299" platformID="3" platEncID="1" langID="0x409">
+      Medium
+    </namerecord>
+    <namerecord nameID="300" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Medium
+    </namerecord>
+    <namerecord nameID="301" platformID="3" platEncID="1" langID="0x409">
+      Semibold
+    </namerecord>
+    <namerecord nameID="302" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Semibold
+    </namerecord>
+    <namerecord nameID="303" platformID="3" platEncID="1" langID="0x409">
+      Bold
+    </namerecord>
+    <namerecord nameID="304" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Bold
+    </namerecord>
+    <namerecord nameID="305" platformID="3" platEncID="1" langID="0x409">
+      Heavy
+    </namerecord>
+    <namerecord nameID="306" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Heavy
+    </namerecord>
+    <namerecord nameID="307" platformID="3" platEncID="1" langID="0x409">
+      Black
+    </namerecord>
+    <namerecord nameID="308" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-Black
+    </namerecord>
+    <namerecord nameID="309" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight
+    </namerecord>
+    <namerecord nameID="310" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedUltralight
+    </namerecord>
+    <namerecord nameID="311" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin
+    </namerecord>
+    <namerecord nameID="312" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedThin
+    </namerecord>
+    <namerecord nameID="313" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light
+    </namerecord>
+    <namerecord nameID="314" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedLight
+    </namerecord>
+    <namerecord nameID="315" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular
+    </namerecord>
+    <namerecord nameID="316" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedRegular
+    </namerecord>
+    <namerecord nameID="317" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium
+    </namerecord>
+    <namerecord nameID="318" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedMedium
+    </namerecord>
+    <namerecord nameID="319" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold
+    </namerecord>
+    <namerecord nameID="320" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedSemibold
+    </namerecord>
+    <namerecord nameID="321" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold
+    </namerecord>
+    <namerecord nameID="322" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedBold
+    </namerecord>
+    <namerecord nameID="323" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy
+    </namerecord>
+    <namerecord nameID="324" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedHeavy
+    </namerecord>
+    <namerecord nameID="325" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Black
+    </namerecord>
+    <namerecord nameID="326" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedBlack
+    </namerecord>
+    <namerecord nameID="327" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight
+    </namerecord>
+    <namerecord nameID="328" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedUltralight
+    </namerecord>
+    <namerecord nameID="329" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin
+    </namerecord>
+    <namerecord nameID="330" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedThin
+    </namerecord>
+    <namerecord nameID="331" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light
+    </namerecord>
+    <namerecord nameID="332" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedLight
+    </namerecord>
+    <namerecord nameID="333" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular
+    </namerecord>
+    <namerecord nameID="334" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedRegular
+    </namerecord>
+    <namerecord nameID="335" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium
+    </namerecord>
+    <namerecord nameID="336" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedMedium
+    </namerecord>
+    <namerecord nameID="337" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold
+    </namerecord>
+    <namerecord nameID="338" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedSemibold
+    </namerecord>
+    <namerecord nameID="339" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold
+    </namerecord>
+    <namerecord nameID="340" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedBold
+    </namerecord>
+    <namerecord nameID="341" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy
+    </namerecord>
+    <namerecord nameID="342" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedHeavy
+    </namerecord>
+    <namerecord nameID="343" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Black
+    </namerecord>
+    <namerecord nameID="344" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedBlack
+    </namerecord>
+    <namerecord nameID="345" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight
+    </namerecord>
+    <namerecord nameID="346" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedUltralight
+    </namerecord>
+    <namerecord nameID="347" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin
+    </namerecord>
+    <namerecord nameID="348" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedThin
+    </namerecord>
+    <namerecord nameID="349" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light
+    </namerecord>
+    <namerecord nameID="350" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedLight
+    </namerecord>
+    <namerecord nameID="351" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular
+    </namerecord>
+    <namerecord nameID="352" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedRegular
+    </namerecord>
+    <namerecord nameID="353" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium
+    </namerecord>
+    <namerecord nameID="354" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedMedium
+    </namerecord>
+    <namerecord nameID="355" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold
+    </namerecord>
+    <namerecord nameID="356" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedSemibold
+    </namerecord>
+    <namerecord nameID="357" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold
+    </namerecord>
+    <namerecord nameID="358" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedBold
+    </namerecord>
+    <namerecord nameID="359" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy
+    </namerecord>
+    <namerecord nameID="360" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedHeavy
+    </namerecord>
+    <namerecord nameID="361" platformID="3" platEncID="1" langID="0x409">
+      Compressed Black
+    </namerecord>
+    <namerecord nameID="362" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedBlack
+    </namerecord>
+    <namerecord nameID="363" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight
+    </namerecord>
+    <namerecord nameID="364" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedUltralight
+    </namerecord>
+    <namerecord nameID="365" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin
+    </namerecord>
+    <namerecord nameID="366" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedThin
+    </namerecord>
+    <namerecord nameID="367" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light
+    </namerecord>
+    <namerecord nameID="368" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedLight
+    </namerecord>
+    <namerecord nameID="369" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular
+    </namerecord>
+    <namerecord nameID="370" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedRegular
+    </namerecord>
+    <namerecord nameID="371" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium
+    </namerecord>
+    <namerecord nameID="372" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedMedium
+    </namerecord>
+    <namerecord nameID="373" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold
+    </namerecord>
+    <namerecord nameID="374" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedSemibold
+    </namerecord>
+    <namerecord nameID="375" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold
+    </namerecord>
+    <namerecord nameID="376" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedBold
+    </namerecord>
+    <namerecord nameID="377" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy
+    </namerecord>
+    <namerecord nameID="378" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedHeavy
+    </namerecord>
+    <namerecord nameID="379" platformID="3" platEncID="1" langID="0x409">
+      Condensed Black
+    </namerecord>
+    <namerecord nameID="380" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedBlack
+    </namerecord>
+    <namerecord nameID="381" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight
+    </namerecord>
+    <namerecord nameID="382" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedUltralight
+    </namerecord>
+    <namerecord nameID="383" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin
+    </namerecord>
+    <namerecord nameID="384" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedThin
+    </namerecord>
+    <namerecord nameID="385" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light
+    </namerecord>
+    <namerecord nameID="386" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedLight
+    </namerecord>
+    <namerecord nameID="387" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular
+    </namerecord>
+    <namerecord nameID="388" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedRegular
+    </namerecord>
+    <namerecord nameID="389" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium
+    </namerecord>
+    <namerecord nameID="390" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedMedium
+    </namerecord>
+    <namerecord nameID="391" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold
+    </namerecord>
+    <namerecord nameID="392" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedSemibold
+    </namerecord>
+    <namerecord nameID="393" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold
+    </namerecord>
+    <namerecord nameID="394" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedBold
+    </namerecord>
+    <namerecord nameID="395" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy
+    </namerecord>
+    <namerecord nameID="396" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedHeavy
+    </namerecord>
+    <namerecord nameID="397" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Black
+    </namerecord>
+    <namerecord nameID="398" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedBlack
+    </namerecord>
+    <namerecord nameID="399" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight
+    </namerecord>
+    <namerecord nameID="400" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedUltralight
+    </namerecord>
+    <namerecord nameID="401" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin
+    </namerecord>
+    <namerecord nameID="402" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedThin
+    </namerecord>
+    <namerecord nameID="403" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light
+    </namerecord>
+    <namerecord nameID="404" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedLight
+    </namerecord>
+    <namerecord nameID="405" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular
+    </namerecord>
+    <namerecord nameID="406" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedRegular
+    </namerecord>
+    <namerecord nameID="407" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium
+    </namerecord>
+    <namerecord nameID="408" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedMedium
+    </namerecord>
+    <namerecord nameID="409" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold
+    </namerecord>
+    <namerecord nameID="410" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedSemibold
+    </namerecord>
+    <namerecord nameID="411" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold
+    </namerecord>
+    <namerecord nameID="412" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedBold
+    </namerecord>
+    <namerecord nameID="413" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy
+    </namerecord>
+    <namerecord nameID="414" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedHeavy
+    </namerecord>
+    <namerecord nameID="415" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Black
+    </namerecord>
+    <namerecord nameID="416" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedBlack
+    </namerecord>
+    <namerecord nameID="417" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight
+    </namerecord>
+    <namerecord nameID="418" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedUltralight
+    </namerecord>
+    <namerecord nameID="419" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin
+    </namerecord>
+    <namerecord nameID="420" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedThin
+    </namerecord>
+    <namerecord nameID="421" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light
+    </namerecord>
+    <namerecord nameID="422" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedLight
+    </namerecord>
+    <namerecord nameID="423" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular
+    </namerecord>
+    <namerecord nameID="424" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedRegular
+    </namerecord>
+    <namerecord nameID="425" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium
+    </namerecord>
+    <namerecord nameID="426" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedMedium
+    </namerecord>
+    <namerecord nameID="427" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold
+    </namerecord>
+    <namerecord nameID="428" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedSemibold
+    </namerecord>
+    <namerecord nameID="429" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold
+    </namerecord>
+    <namerecord nameID="430" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedBold
+    </namerecord>
+    <namerecord nameID="431" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy
+    </namerecord>
+    <namerecord nameID="432" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedHeavy
+    </namerecord>
+    <namerecord nameID="433" platformID="3" platEncID="1" langID="0x409">
+      Expanded Black
+    </namerecord>
+    <namerecord nameID="434" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedBlack
+    </namerecord>
+    <namerecord nameID="435" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight
+    </namerecord>
+    <namerecord nameID="436" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedUltralight
+    </namerecord>
+    <namerecord nameID="437" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin
+    </namerecord>
+    <namerecord nameID="438" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedThin
+    </namerecord>
+    <namerecord nameID="439" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light
+    </namerecord>
+    <namerecord nameID="440" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedLight
+    </namerecord>
+    <namerecord nameID="441" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular
+    </namerecord>
+    <namerecord nameID="442" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedRegular
+    </namerecord>
+    <namerecord nameID="443" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium
+    </namerecord>
+    <namerecord nameID="444" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedMedium
+    </namerecord>
+    <namerecord nameID="445" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold
+    </namerecord>
+    <namerecord nameID="446" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedSemibold
+    </namerecord>
+    <namerecord nameID="447" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold
+    </namerecord>
+    <namerecord nameID="448" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedBold
+    </namerecord>
+    <namerecord nameID="449" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy
+    </namerecord>
+    <namerecord nameID="450" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedHeavy
+    </namerecord>
+    <namerecord nameID="451" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Black
+    </namerecord>
+    <namerecord nameID="452" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedBlack
+    </namerecord>
+    <namerecord nameID="453" platformID="3" platEncID="1" langID="0x409">
+      Ultralight G1
+    </namerecord>
+    <namerecord nameID="454" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltralightG1
+    </namerecord>
+    <namerecord nameID="455" platformID="3" platEncID="1" langID="0x409">
+      Ultralight G2
+    </namerecord>
+    <namerecord nameID="456" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltralightG2
+    </namerecord>
+    <namerecord nameID="457" platformID="3" platEncID="1" langID="0x409">
+      Ultralight G3
+    </namerecord>
+    <namerecord nameID="458" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltralightG3
+    </namerecord>
+    <namerecord nameID="459" platformID="3" platEncID="1" langID="0x409">
+      Ultralight G4
+    </namerecord>
+    <namerecord nameID="460" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltralightG4
+    </namerecord>
+    <namerecord nameID="461" platformID="3" platEncID="1" langID="0x409">
+      Thin G1
+    </namerecord>
+    <namerecord nameID="462" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ThinG1
+    </namerecord>
+    <namerecord nameID="463" platformID="3" platEncID="1" langID="0x409">
+      Thin G2
+    </namerecord>
+    <namerecord nameID="464" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ThinG2
+    </namerecord>
+    <namerecord nameID="465" platformID="3" platEncID="1" langID="0x409">
+      Thin G3
+    </namerecord>
+    <namerecord nameID="466" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ThinG3
+    </namerecord>
+    <namerecord nameID="467" platformID="3" platEncID="1" langID="0x409">
+      Thin G4
+    </namerecord>
+    <namerecord nameID="468" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ThinG4
+    </namerecord>
+    <namerecord nameID="469" platformID="3" platEncID="1" langID="0x409">
+      Light G1
+    </namerecord>
+    <namerecord nameID="470" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-LightG1
+    </namerecord>
+    <namerecord nameID="471" platformID="3" platEncID="1" langID="0x409">
+      Light G2
+    </namerecord>
+    <namerecord nameID="472" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-LightG2
+    </namerecord>
+    <namerecord nameID="473" platformID="3" platEncID="1" langID="0x409">
+      Light G3
+    </namerecord>
+    <namerecord nameID="474" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-LightG3
+    </namerecord>
+    <namerecord nameID="475" platformID="3" platEncID="1" langID="0x409">
+      Light G4
+    </namerecord>
+    <namerecord nameID="476" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-LightG4
+    </namerecord>
+    <namerecord nameID="477" platformID="3" platEncID="1" langID="0x409">
+      Regular G1
+    </namerecord>
+    <namerecord nameID="478" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-RegularG1
+    </namerecord>
+    <namerecord nameID="479" platformID="3" platEncID="1" langID="0x409">
+      Regular G2
+    </namerecord>
+    <namerecord nameID="480" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-RegularG2
+    </namerecord>
+    <namerecord nameID="481" platformID="3" platEncID="1" langID="0x409">
+      Regular G3
+    </namerecord>
+    <namerecord nameID="482" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-RegularG3
+    </namerecord>
+    <namerecord nameID="483" platformID="3" platEncID="1" langID="0x409">
+      Regular G4
+    </namerecord>
+    <namerecord nameID="484" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-RegularG4
+    </namerecord>
+    <namerecord nameID="485" platformID="3" platEncID="1" langID="0x409">
+      Medium G1
+    </namerecord>
+    <namerecord nameID="486" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-MediumG1
+    </namerecord>
+    <namerecord nameID="487" platformID="3" platEncID="1" langID="0x409">
+      Medium G2
+    </namerecord>
+    <namerecord nameID="488" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-MediumG2
+    </namerecord>
+    <namerecord nameID="489" platformID="3" platEncID="1" langID="0x409">
+      Medium G3
+    </namerecord>
+    <namerecord nameID="490" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-MediumG3
+    </namerecord>
+    <namerecord nameID="491" platformID="3" platEncID="1" langID="0x409">
+      Medium G4
+    </namerecord>
+    <namerecord nameID="492" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-MediumG4
+    </namerecord>
+    <namerecord nameID="493" platformID="3" platEncID="1" langID="0x409">
+      Semibold G1
+    </namerecord>
+    <namerecord nameID="494" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiboldG1
+    </namerecord>
+    <namerecord nameID="495" platformID="3" platEncID="1" langID="0x409">
+      Semibold G2
+    </namerecord>
+    <namerecord nameID="496" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiboldG2
+    </namerecord>
+    <namerecord nameID="497" platformID="3" platEncID="1" langID="0x409">
+      Semibold G3
+    </namerecord>
+    <namerecord nameID="498" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiboldG3
+    </namerecord>
+    <namerecord nameID="499" platformID="3" platEncID="1" langID="0x409">
+      Semibold G4
+    </namerecord>
+    <namerecord nameID="500" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiboldG4
+    </namerecord>
+    <namerecord nameID="501" platformID="3" platEncID="1" langID="0x409">
+      Bold G1
+    </namerecord>
+    <namerecord nameID="502" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-BoldG1
+    </namerecord>
+    <namerecord nameID="503" platformID="3" platEncID="1" langID="0x409">
+      Bold G2
+    </namerecord>
+    <namerecord nameID="504" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-BoldG2
+    </namerecord>
+    <namerecord nameID="505" platformID="3" platEncID="1" langID="0x409">
+      Bold G3
+    </namerecord>
+    <namerecord nameID="506" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-BoldG3
+    </namerecord>
+    <namerecord nameID="507" platformID="3" platEncID="1" langID="0x409">
+      Bold G4
+    </namerecord>
+    <namerecord nameID="508" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-BoldG4
+    </namerecord>
+    <namerecord nameID="509" platformID="3" platEncID="1" langID="0x409">
+      Heavy G1
+    </namerecord>
+    <namerecord nameID="510" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-HeavyG1
+    </namerecord>
+    <namerecord nameID="511" platformID="3" platEncID="1" langID="0x409">
+      Heavy G2
+    </namerecord>
+    <namerecord nameID="512" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-HeavyG2
+    </namerecord>
+    <namerecord nameID="513" platformID="3" platEncID="1" langID="0x409">
+      Heavy G3
+    </namerecord>
+    <namerecord nameID="514" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-HeavyG3
+    </namerecord>
+    <namerecord nameID="515" platformID="3" platEncID="1" langID="0x409">
+      Heavy G4
+    </namerecord>
+    <namerecord nameID="516" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-HeavyG4
+    </namerecord>
+    <namerecord nameID="517" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight G1
+    </namerecord>
+    <namerecord nameID="518" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedUltralightG1
+    </namerecord>
+    <namerecord nameID="519" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight G2
+    </namerecord>
+    <namerecord nameID="520" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedUltralightG2
+    </namerecord>
+    <namerecord nameID="521" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight G3
+    </namerecord>
+    <namerecord nameID="522" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedUltralightG3
+    </namerecord>
+    <namerecord nameID="523" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight G4
+    </namerecord>
+    <namerecord nameID="524" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedUltralightG4
+    </namerecord>
+    <namerecord nameID="525" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin G1
+    </namerecord>
+    <namerecord nameID="526" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedThinG1
+    </namerecord>
+    <namerecord nameID="527" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin G2
+    </namerecord>
+    <namerecord nameID="528" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedThinG2
+    </namerecord>
+    <namerecord nameID="529" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin G3
+    </namerecord>
+    <namerecord nameID="530" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedThinG3
+    </namerecord>
+    <namerecord nameID="531" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin G4
+    </namerecord>
+    <namerecord nameID="532" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedThinG4
+    </namerecord>
+    <namerecord nameID="533" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light G1
+    </namerecord>
+    <namerecord nameID="534" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedLightG1
+    </namerecord>
+    <namerecord nameID="535" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light G2
+    </namerecord>
+    <namerecord nameID="536" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedLightG2
+    </namerecord>
+    <namerecord nameID="537" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light G3
+    </namerecord>
+    <namerecord nameID="538" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedLightG3
+    </namerecord>
+    <namerecord nameID="539" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light G4
+    </namerecord>
+    <namerecord nameID="540" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedLightG4
+    </namerecord>
+    <namerecord nameID="541" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular G1
+    </namerecord>
+    <namerecord nameID="542" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedRegularG1
+    </namerecord>
+    <namerecord nameID="543" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular G2
+    </namerecord>
+    <namerecord nameID="544" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedRegularG2
+    </namerecord>
+    <namerecord nameID="545" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular G3
+    </namerecord>
+    <namerecord nameID="546" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedRegularG3
+    </namerecord>
+    <namerecord nameID="547" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular G4
+    </namerecord>
+    <namerecord nameID="548" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedRegularG4
+    </namerecord>
+    <namerecord nameID="549" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium G1
+    </namerecord>
+    <namerecord nameID="550" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedMediumG1
+    </namerecord>
+    <namerecord nameID="551" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium G2
+    </namerecord>
+    <namerecord nameID="552" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedMediumG2
+    </namerecord>
+    <namerecord nameID="553" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium G3
+    </namerecord>
+    <namerecord nameID="554" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedMediumG3
+    </namerecord>
+    <namerecord nameID="555" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium G4
+    </namerecord>
+    <namerecord nameID="556" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedMediumG4
+    </namerecord>
+    <namerecord nameID="557" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold G1
+    </namerecord>
+    <namerecord nameID="558" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedSemiboldG1
+    </namerecord>
+    <namerecord nameID="559" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold G2
+    </namerecord>
+    <namerecord nameID="560" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedSemiboldG2
+    </namerecord>
+    <namerecord nameID="561" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold G3
+    </namerecord>
+    <namerecord nameID="562" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedSemiboldG3
+    </namerecord>
+    <namerecord nameID="563" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold G4
+    </namerecord>
+    <namerecord nameID="564" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedSemiboldG4
+    </namerecord>
+    <namerecord nameID="565" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold G1
+    </namerecord>
+    <namerecord nameID="566" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedBoldG1
+    </namerecord>
+    <namerecord nameID="567" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold G2
+    </namerecord>
+    <namerecord nameID="568" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedBoldG2
+    </namerecord>
+    <namerecord nameID="569" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold G3
+    </namerecord>
+    <namerecord nameID="570" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedBoldG3
+    </namerecord>
+    <namerecord nameID="571" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold G4
+    </namerecord>
+    <namerecord nameID="572" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedBoldG4
+    </namerecord>
+    <namerecord nameID="573" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy G1
+    </namerecord>
+    <namerecord nameID="574" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedHeavyG1
+    </namerecord>
+    <namerecord nameID="575" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy G2
+    </namerecord>
+    <namerecord nameID="576" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedHeavyG2
+    </namerecord>
+    <namerecord nameID="577" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy G3
+    </namerecord>
+    <namerecord nameID="578" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedHeavyG3
+    </namerecord>
+    <namerecord nameID="579" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy G4
+    </namerecord>
+    <namerecord nameID="580" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-UltraCompressedHeavyG4
+    </namerecord>
+    <namerecord nameID="581" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight G1
+    </namerecord>
+    <namerecord nameID="582" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedUltralightG1
+    </namerecord>
+    <namerecord nameID="583" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight G2
+    </namerecord>
+    <namerecord nameID="584" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedUltralightG2
+    </namerecord>
+    <namerecord nameID="585" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight G3
+    </namerecord>
+    <namerecord nameID="586" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedUltralightG3
+    </namerecord>
+    <namerecord nameID="587" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight G4
+    </namerecord>
+    <namerecord nameID="588" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedUltralightG4
+    </namerecord>
+    <namerecord nameID="589" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin G1
+    </namerecord>
+    <namerecord nameID="590" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedThinG1
+    </namerecord>
+    <namerecord nameID="591" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin G2
+    </namerecord>
+    <namerecord nameID="592" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedThinG2
+    </namerecord>
+    <namerecord nameID="593" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin G3
+    </namerecord>
+    <namerecord nameID="594" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedThinG3
+    </namerecord>
+    <namerecord nameID="595" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin G4
+    </namerecord>
+    <namerecord nameID="596" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedThinG4
+    </namerecord>
+    <namerecord nameID="597" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light G1
+    </namerecord>
+    <namerecord nameID="598" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedLightG1
+    </namerecord>
+    <namerecord nameID="599" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light G2
+    </namerecord>
+    <namerecord nameID="600" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedLightG2
+    </namerecord>
+    <namerecord nameID="601" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light G3
+    </namerecord>
+    <namerecord nameID="602" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedLightG3
+    </namerecord>
+    <namerecord nameID="603" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light G4
+    </namerecord>
+    <namerecord nameID="604" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedLightG4
+    </namerecord>
+    <namerecord nameID="605" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular G1
+    </namerecord>
+    <namerecord nameID="606" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedRegularG1
+    </namerecord>
+    <namerecord nameID="607" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular G2
+    </namerecord>
+    <namerecord nameID="608" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedRegularG2
+    </namerecord>
+    <namerecord nameID="609" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular G3
+    </namerecord>
+    <namerecord nameID="610" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedRegularG3
+    </namerecord>
+    <namerecord nameID="611" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular G4
+    </namerecord>
+    <namerecord nameID="612" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedRegularG4
+    </namerecord>
+    <namerecord nameID="613" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium G1
+    </namerecord>
+    <namerecord nameID="614" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedMediumG1
+    </namerecord>
+    <namerecord nameID="615" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium G2
+    </namerecord>
+    <namerecord nameID="616" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedMediumG2
+    </namerecord>
+    <namerecord nameID="617" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium G3
+    </namerecord>
+    <namerecord nameID="618" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedMediumG3
+    </namerecord>
+    <namerecord nameID="619" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium G4
+    </namerecord>
+    <namerecord nameID="620" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedMediumG4
+    </namerecord>
+    <namerecord nameID="621" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold G1
+    </namerecord>
+    <namerecord nameID="622" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedSemiboldG1
+    </namerecord>
+    <namerecord nameID="623" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold G2
+    </namerecord>
+    <namerecord nameID="624" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedSemiboldG2
+    </namerecord>
+    <namerecord nameID="625" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold G3
+    </namerecord>
+    <namerecord nameID="626" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedSemiboldG3
+    </namerecord>
+    <namerecord nameID="627" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold G4
+    </namerecord>
+    <namerecord nameID="628" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedSemiboldG4
+    </namerecord>
+    <namerecord nameID="629" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold G1
+    </namerecord>
+    <namerecord nameID="630" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedBoldG1
+    </namerecord>
+    <namerecord nameID="631" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold G2
+    </namerecord>
+    <namerecord nameID="632" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedBoldG2
+    </namerecord>
+    <namerecord nameID="633" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold G3
+    </namerecord>
+    <namerecord nameID="634" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedBoldG3
+    </namerecord>
+    <namerecord nameID="635" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold G4
+    </namerecord>
+    <namerecord nameID="636" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedBoldG4
+    </namerecord>
+    <namerecord nameID="637" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy G1
+    </namerecord>
+    <namerecord nameID="638" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedHeavyG1
+    </namerecord>
+    <namerecord nameID="639" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy G2
+    </namerecord>
+    <namerecord nameID="640" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedHeavyG2
+    </namerecord>
+    <namerecord nameID="641" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy G3
+    </namerecord>
+    <namerecord nameID="642" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedHeavyG3
+    </namerecord>
+    <namerecord nameID="643" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy G4
+    </namerecord>
+    <namerecord nameID="644" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraCompressedHeavyG4
+    </namerecord>
+    <namerecord nameID="645" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight G1
+    </namerecord>
+    <namerecord nameID="646" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedUltralightG1
+    </namerecord>
+    <namerecord nameID="647" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight G2
+    </namerecord>
+    <namerecord nameID="648" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedUltralightG2
+    </namerecord>
+    <namerecord nameID="649" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight G3
+    </namerecord>
+    <namerecord nameID="650" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedUltralightG3
+    </namerecord>
+    <namerecord nameID="651" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight G4
+    </namerecord>
+    <namerecord nameID="652" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedUltralightG4
+    </namerecord>
+    <namerecord nameID="653" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin G1
+    </namerecord>
+    <namerecord nameID="654" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedThinG1
+    </namerecord>
+    <namerecord nameID="655" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin G2
+    </namerecord>
+    <namerecord nameID="656" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedThinG2
+    </namerecord>
+    <namerecord nameID="657" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin G3
+    </namerecord>
+    <namerecord nameID="658" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedThinG3
+    </namerecord>
+    <namerecord nameID="659" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin G4
+    </namerecord>
+    <namerecord nameID="660" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedThinG4
+    </namerecord>
+    <namerecord nameID="661" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light G1
+    </namerecord>
+    <namerecord nameID="662" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedLightG1
+    </namerecord>
+    <namerecord nameID="663" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light G2
+    </namerecord>
+    <namerecord nameID="664" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedLightG2
+    </namerecord>
+    <namerecord nameID="665" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light G3
+    </namerecord>
+    <namerecord nameID="666" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedLightG3
+    </namerecord>
+    <namerecord nameID="667" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light G4
+    </namerecord>
+    <namerecord nameID="668" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedLightG4
+    </namerecord>
+    <namerecord nameID="669" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular G1
+    </namerecord>
+    <namerecord nameID="670" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedRegularG1
+    </namerecord>
+    <namerecord nameID="671" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular G2
+    </namerecord>
+    <namerecord nameID="672" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedRegularG2
+    </namerecord>
+    <namerecord nameID="673" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular G3
+    </namerecord>
+    <namerecord nameID="674" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedRegularG3
+    </namerecord>
+    <namerecord nameID="675" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular G4
+    </namerecord>
+    <namerecord nameID="676" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedRegularG4
+    </namerecord>
+    <namerecord nameID="677" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium G1
+    </namerecord>
+    <namerecord nameID="678" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedMediumG1
+    </namerecord>
+    <namerecord nameID="679" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium G2
+    </namerecord>
+    <namerecord nameID="680" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedMediumG2
+    </namerecord>
+    <namerecord nameID="681" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium G3
+    </namerecord>
+    <namerecord nameID="682" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedMediumG3
+    </namerecord>
+    <namerecord nameID="683" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium G4
+    </namerecord>
+    <namerecord nameID="684" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedMediumG4
+    </namerecord>
+    <namerecord nameID="685" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold G1
+    </namerecord>
+    <namerecord nameID="686" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedSemiboldG1
+    </namerecord>
+    <namerecord nameID="687" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold G2
+    </namerecord>
+    <namerecord nameID="688" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedSemiboldG2
+    </namerecord>
+    <namerecord nameID="689" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold G3
+    </namerecord>
+    <namerecord nameID="690" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedSemiboldG3
+    </namerecord>
+    <namerecord nameID="691" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold G4
+    </namerecord>
+    <namerecord nameID="692" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedSemiboldG4
+    </namerecord>
+    <namerecord nameID="693" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold G1
+    </namerecord>
+    <namerecord nameID="694" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedBoldG1
+    </namerecord>
+    <namerecord nameID="695" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold G2
+    </namerecord>
+    <namerecord nameID="696" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedBoldG2
+    </namerecord>
+    <namerecord nameID="697" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold G3
+    </namerecord>
+    <namerecord nameID="698" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedBoldG3
+    </namerecord>
+    <namerecord nameID="699" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold G4
+    </namerecord>
+    <namerecord nameID="700" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedBoldG4
+    </namerecord>
+    <namerecord nameID="701" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy G1
+    </namerecord>
+    <namerecord nameID="702" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedHeavyG1
+    </namerecord>
+    <namerecord nameID="703" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy G2
+    </namerecord>
+    <namerecord nameID="704" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedHeavyG2
+    </namerecord>
+    <namerecord nameID="705" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy G3
+    </namerecord>
+    <namerecord nameID="706" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedHeavyG3
+    </namerecord>
+    <namerecord nameID="707" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy G4
+    </namerecord>
+    <namerecord nameID="708" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CompressedHeavyG4
+    </namerecord>
+    <namerecord nameID="709" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight G1
+    </namerecord>
+    <namerecord nameID="710" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedUltralightG1
+    </namerecord>
+    <namerecord nameID="711" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight G2
+    </namerecord>
+    <namerecord nameID="712" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedUltralightG2
+    </namerecord>
+    <namerecord nameID="713" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight G3
+    </namerecord>
+    <namerecord nameID="714" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedUltralightG3
+    </namerecord>
+    <namerecord nameID="715" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight G4
+    </namerecord>
+    <namerecord nameID="716" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedUltralightG4
+    </namerecord>
+    <namerecord nameID="717" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin G1
+    </namerecord>
+    <namerecord nameID="718" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedThinG1
+    </namerecord>
+    <namerecord nameID="719" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin G2
+    </namerecord>
+    <namerecord nameID="720" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedThinG2
+    </namerecord>
+    <namerecord nameID="721" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin G3
+    </namerecord>
+    <namerecord nameID="722" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedThinG3
+    </namerecord>
+    <namerecord nameID="723" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin G4
+    </namerecord>
+    <namerecord nameID="724" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedThinG4
+    </namerecord>
+    <namerecord nameID="725" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light G1
+    </namerecord>
+    <namerecord nameID="726" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedLightG1
+    </namerecord>
+    <namerecord nameID="727" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light G2
+    </namerecord>
+    <namerecord nameID="728" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedLightG2
+    </namerecord>
+    <namerecord nameID="729" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light G3
+    </namerecord>
+    <namerecord nameID="730" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedLightG3
+    </namerecord>
+    <namerecord nameID="731" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light G4
+    </namerecord>
+    <namerecord nameID="732" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedLightG4
+    </namerecord>
+    <namerecord nameID="733" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular G1
+    </namerecord>
+    <namerecord nameID="734" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedRegularG1
+    </namerecord>
+    <namerecord nameID="735" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular G2
+    </namerecord>
+    <namerecord nameID="736" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedRegularG2
+    </namerecord>
+    <namerecord nameID="737" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular G3
+    </namerecord>
+    <namerecord nameID="738" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedRegularG3
+    </namerecord>
+    <namerecord nameID="739" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular G4
+    </namerecord>
+    <namerecord nameID="740" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedRegularG4
+    </namerecord>
+    <namerecord nameID="741" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium G1
+    </namerecord>
+    <namerecord nameID="742" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedMediumG1
+    </namerecord>
+    <namerecord nameID="743" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium G2
+    </namerecord>
+    <namerecord nameID="744" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedMediumG2
+    </namerecord>
+    <namerecord nameID="745" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium G3
+    </namerecord>
+    <namerecord nameID="746" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedMediumG3
+    </namerecord>
+    <namerecord nameID="747" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium G4
+    </namerecord>
+    <namerecord nameID="748" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedMediumG4
+    </namerecord>
+    <namerecord nameID="749" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold G1
+    </namerecord>
+    <namerecord nameID="750" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedSemiboldG1
+    </namerecord>
+    <namerecord nameID="751" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold G2
+    </namerecord>
+    <namerecord nameID="752" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedSemiboldG2
+    </namerecord>
+    <namerecord nameID="753" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold G3
+    </namerecord>
+    <namerecord nameID="754" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedSemiboldG3
+    </namerecord>
+    <namerecord nameID="755" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold G4
+    </namerecord>
+    <namerecord nameID="756" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedSemiboldG4
+    </namerecord>
+    <namerecord nameID="757" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold G1
+    </namerecord>
+    <namerecord nameID="758" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedBoldG1
+    </namerecord>
+    <namerecord nameID="759" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold G2
+    </namerecord>
+    <namerecord nameID="760" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedBoldG2
+    </namerecord>
+    <namerecord nameID="761" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold G3
+    </namerecord>
+    <namerecord nameID="762" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedBoldG3
+    </namerecord>
+    <namerecord nameID="763" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold G4
+    </namerecord>
+    <namerecord nameID="764" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedBoldG4
+    </namerecord>
+    <namerecord nameID="765" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy G1
+    </namerecord>
+    <namerecord nameID="766" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedHeavyG1
+    </namerecord>
+    <namerecord nameID="767" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy G2
+    </namerecord>
+    <namerecord nameID="768" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedHeavyG2
+    </namerecord>
+    <namerecord nameID="769" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy G3
+    </namerecord>
+    <namerecord nameID="770" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedHeavyG3
+    </namerecord>
+    <namerecord nameID="771" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy G4
+    </namerecord>
+    <namerecord nameID="772" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-CondensedHeavyG4
+    </namerecord>
+    <namerecord nameID="773" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight G1
+    </namerecord>
+    <namerecord nameID="774" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedUltralightG1
+    </namerecord>
+    <namerecord nameID="775" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight G2
+    </namerecord>
+    <namerecord nameID="776" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedUltralightG2
+    </namerecord>
+    <namerecord nameID="777" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight G3
+    </namerecord>
+    <namerecord nameID="778" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedUltralightG3
+    </namerecord>
+    <namerecord nameID="779" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight G4
+    </namerecord>
+    <namerecord nameID="780" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedUltralightG4
+    </namerecord>
+    <namerecord nameID="781" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin G1
+    </namerecord>
+    <namerecord nameID="782" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedThinG1
+    </namerecord>
+    <namerecord nameID="783" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin G2
+    </namerecord>
+    <namerecord nameID="784" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedThinG2
+    </namerecord>
+    <namerecord nameID="785" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin G3
+    </namerecord>
+    <namerecord nameID="786" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedThinG3
+    </namerecord>
+    <namerecord nameID="787" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin G4
+    </namerecord>
+    <namerecord nameID="788" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedThinG4
+    </namerecord>
+    <namerecord nameID="789" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light G1
+    </namerecord>
+    <namerecord nameID="790" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedLightG1
+    </namerecord>
+    <namerecord nameID="791" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light G2
+    </namerecord>
+    <namerecord nameID="792" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedLightG2
+    </namerecord>
+    <namerecord nameID="793" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light G3
+    </namerecord>
+    <namerecord nameID="794" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedLightG3
+    </namerecord>
+    <namerecord nameID="795" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light G4
+    </namerecord>
+    <namerecord nameID="796" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedLightG4
+    </namerecord>
+    <namerecord nameID="797" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular G1
+    </namerecord>
+    <namerecord nameID="798" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedRegularG1
+    </namerecord>
+    <namerecord nameID="799" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular G2
+    </namerecord>
+    <namerecord nameID="800" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedRegularG2
+    </namerecord>
+    <namerecord nameID="801" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular G3
+    </namerecord>
+    <namerecord nameID="802" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedRegularG3
+    </namerecord>
+    <namerecord nameID="803" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular G4
+    </namerecord>
+    <namerecord nameID="804" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedRegularG4
+    </namerecord>
+    <namerecord nameID="805" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium G1
+    </namerecord>
+    <namerecord nameID="806" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedMediumG1
+    </namerecord>
+    <namerecord nameID="807" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium G2
+    </namerecord>
+    <namerecord nameID="808" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedMediumG2
+    </namerecord>
+    <namerecord nameID="809" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium G3
+    </namerecord>
+    <namerecord nameID="810" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedMediumG3
+    </namerecord>
+    <namerecord nameID="811" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium G4
+    </namerecord>
+    <namerecord nameID="812" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedMediumG4
+    </namerecord>
+    <namerecord nameID="813" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold G1
+    </namerecord>
+    <namerecord nameID="814" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedSemiboldG1
+    </namerecord>
+    <namerecord nameID="815" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold G2
+    </namerecord>
+    <namerecord nameID="816" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedSemiboldG2
+    </namerecord>
+    <namerecord nameID="817" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold G3
+    </namerecord>
+    <namerecord nameID="818" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedSemiboldG3
+    </namerecord>
+    <namerecord nameID="819" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold G4
+    </namerecord>
+    <namerecord nameID="820" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedSemiboldG4
+    </namerecord>
+    <namerecord nameID="821" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold G1
+    </namerecord>
+    <namerecord nameID="822" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedBoldG1
+    </namerecord>
+    <namerecord nameID="823" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold G2
+    </namerecord>
+    <namerecord nameID="824" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedBoldG2
+    </namerecord>
+    <namerecord nameID="825" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold G3
+    </namerecord>
+    <namerecord nameID="826" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedBoldG3
+    </namerecord>
+    <namerecord nameID="827" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold G4
+    </namerecord>
+    <namerecord nameID="828" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedBoldG4
+    </namerecord>
+    <namerecord nameID="829" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy G1
+    </namerecord>
+    <namerecord nameID="830" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedHeavyG1
+    </namerecord>
+    <namerecord nameID="831" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy G2
+    </namerecord>
+    <namerecord nameID="832" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedHeavyG2
+    </namerecord>
+    <namerecord nameID="833" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy G3
+    </namerecord>
+    <namerecord nameID="834" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedHeavyG3
+    </namerecord>
+    <namerecord nameID="835" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy G4
+    </namerecord>
+    <namerecord nameID="836" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiCondensedHeavyG4
+    </namerecord>
+    <namerecord nameID="837" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight G1
+    </namerecord>
+    <namerecord nameID="838" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedUltralightG1
+    </namerecord>
+    <namerecord nameID="839" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight G2
+    </namerecord>
+    <namerecord nameID="840" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedUltralightG2
+    </namerecord>
+    <namerecord nameID="841" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight G3
+    </namerecord>
+    <namerecord nameID="842" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedUltralightG3
+    </namerecord>
+    <namerecord nameID="843" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight G4
+    </namerecord>
+    <namerecord nameID="844" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedUltralightG4
+    </namerecord>
+    <namerecord nameID="845" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin G1
+    </namerecord>
+    <namerecord nameID="846" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedThinG1
+    </namerecord>
+    <namerecord nameID="847" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin G2
+    </namerecord>
+    <namerecord nameID="848" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedThinG2
+    </namerecord>
+    <namerecord nameID="849" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin G3
+    </namerecord>
+    <namerecord nameID="850" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedThinG3
+    </namerecord>
+    <namerecord nameID="851" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin G4
+    </namerecord>
+    <namerecord nameID="852" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedThinG4
+    </namerecord>
+    <namerecord nameID="853" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light G1
+    </namerecord>
+    <namerecord nameID="854" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedLightG1
+    </namerecord>
+    <namerecord nameID="855" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light G2
+    </namerecord>
+    <namerecord nameID="856" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedLightG2
+    </namerecord>
+    <namerecord nameID="857" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light G3
+    </namerecord>
+    <namerecord nameID="858" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedLightG3
+    </namerecord>
+    <namerecord nameID="859" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light G4
+    </namerecord>
+    <namerecord nameID="860" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedLightG4
+    </namerecord>
+    <namerecord nameID="861" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular G1
+    </namerecord>
+    <namerecord nameID="862" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedRegularG1
+    </namerecord>
+    <namerecord nameID="863" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular G2
+    </namerecord>
+    <namerecord nameID="864" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedRegularG2
+    </namerecord>
+    <namerecord nameID="865" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular G3
+    </namerecord>
+    <namerecord nameID="866" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedRegularG3
+    </namerecord>
+    <namerecord nameID="867" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular G4
+    </namerecord>
+    <namerecord nameID="868" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedRegularG4
+    </namerecord>
+    <namerecord nameID="869" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium G1
+    </namerecord>
+    <namerecord nameID="870" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedMediumG1
+    </namerecord>
+    <namerecord nameID="871" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium G2
+    </namerecord>
+    <namerecord nameID="872" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedMediumG2
+    </namerecord>
+    <namerecord nameID="873" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium G3
+    </namerecord>
+    <namerecord nameID="874" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedMediumG3
+    </namerecord>
+    <namerecord nameID="875" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium G4
+    </namerecord>
+    <namerecord nameID="876" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedMediumG4
+    </namerecord>
+    <namerecord nameID="877" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold G1
+    </namerecord>
+    <namerecord nameID="878" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedSemiboldG1
+    </namerecord>
+    <namerecord nameID="879" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold G2
+    </namerecord>
+    <namerecord nameID="880" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedSemiboldG2
+    </namerecord>
+    <namerecord nameID="881" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold G3
+    </namerecord>
+    <namerecord nameID="882" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedSemiboldG3
+    </namerecord>
+    <namerecord nameID="883" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold G4
+    </namerecord>
+    <namerecord nameID="884" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedSemiboldG4
+    </namerecord>
+    <namerecord nameID="885" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold G1
+    </namerecord>
+    <namerecord nameID="886" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedBoldG1
+    </namerecord>
+    <namerecord nameID="887" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold G2
+    </namerecord>
+    <namerecord nameID="888" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedBoldG2
+    </namerecord>
+    <namerecord nameID="889" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold G3
+    </namerecord>
+    <namerecord nameID="890" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedBoldG3
+    </namerecord>
+    <namerecord nameID="891" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold G4
+    </namerecord>
+    <namerecord nameID="892" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedBoldG4
+    </namerecord>
+    <namerecord nameID="893" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy G1
+    </namerecord>
+    <namerecord nameID="894" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedHeavyG1
+    </namerecord>
+    <namerecord nameID="895" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy G2
+    </namerecord>
+    <namerecord nameID="896" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedHeavyG2
+    </namerecord>
+    <namerecord nameID="897" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy G3
+    </namerecord>
+    <namerecord nameID="898" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedHeavyG3
+    </namerecord>
+    <namerecord nameID="899" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy G4
+    </namerecord>
+    <namerecord nameID="900" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-SemiExpandedHeavyG4
+    </namerecord>
+    <namerecord nameID="901" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight G1
+    </namerecord>
+    <namerecord nameID="902" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedUltralightG1
+    </namerecord>
+    <namerecord nameID="903" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight G2
+    </namerecord>
+    <namerecord nameID="904" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedUltralightG2
+    </namerecord>
+    <namerecord nameID="905" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight G3
+    </namerecord>
+    <namerecord nameID="906" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedUltralightG3
+    </namerecord>
+    <namerecord nameID="907" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight G4
+    </namerecord>
+    <namerecord nameID="908" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedUltralightG4
+    </namerecord>
+    <namerecord nameID="909" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin G1
+    </namerecord>
+    <namerecord nameID="910" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedThinG1
+    </namerecord>
+    <namerecord nameID="911" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin G2
+    </namerecord>
+    <namerecord nameID="912" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedThinG2
+    </namerecord>
+    <namerecord nameID="913" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin G3
+    </namerecord>
+    <namerecord nameID="914" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedThinG3
+    </namerecord>
+    <namerecord nameID="915" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin G4
+    </namerecord>
+    <namerecord nameID="916" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedThinG4
+    </namerecord>
+    <namerecord nameID="917" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light G1
+    </namerecord>
+    <namerecord nameID="918" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedLightG1
+    </namerecord>
+    <namerecord nameID="919" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light G2
+    </namerecord>
+    <namerecord nameID="920" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedLightG2
+    </namerecord>
+    <namerecord nameID="921" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light G3
+    </namerecord>
+    <namerecord nameID="922" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedLightG3
+    </namerecord>
+    <namerecord nameID="923" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light G4
+    </namerecord>
+    <namerecord nameID="924" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedLightG4
+    </namerecord>
+    <namerecord nameID="925" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular G1
+    </namerecord>
+    <namerecord nameID="926" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedRegularG1
+    </namerecord>
+    <namerecord nameID="927" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular G2
+    </namerecord>
+    <namerecord nameID="928" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedRegularG2
+    </namerecord>
+    <namerecord nameID="929" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular G3
+    </namerecord>
+    <namerecord nameID="930" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedRegularG3
+    </namerecord>
+    <namerecord nameID="931" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular G4
+    </namerecord>
+    <namerecord nameID="932" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedRegularG4
+    </namerecord>
+    <namerecord nameID="933" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium G1
+    </namerecord>
+    <namerecord nameID="934" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedMediumG1
+    </namerecord>
+    <namerecord nameID="935" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium G2
+    </namerecord>
+    <namerecord nameID="936" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedMediumG2
+    </namerecord>
+    <namerecord nameID="937" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium G3
+    </namerecord>
+    <namerecord nameID="938" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedMediumG3
+    </namerecord>
+    <namerecord nameID="939" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium G4
+    </namerecord>
+    <namerecord nameID="940" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedMediumG4
+    </namerecord>
+    <namerecord nameID="941" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold G1
+    </namerecord>
+    <namerecord nameID="942" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedSemiboldG1
+    </namerecord>
+    <namerecord nameID="943" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold G2
+    </namerecord>
+    <namerecord nameID="944" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedSemiboldG2
+    </namerecord>
+    <namerecord nameID="945" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold G3
+    </namerecord>
+    <namerecord nameID="946" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedSemiboldG3
+    </namerecord>
+    <namerecord nameID="947" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold G4
+    </namerecord>
+    <namerecord nameID="948" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedSemiboldG4
+    </namerecord>
+    <namerecord nameID="949" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold G1
+    </namerecord>
+    <namerecord nameID="950" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedBoldG1
+    </namerecord>
+    <namerecord nameID="951" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold G2
+    </namerecord>
+    <namerecord nameID="952" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedBoldG2
+    </namerecord>
+    <namerecord nameID="953" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold G3
+    </namerecord>
+    <namerecord nameID="954" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedBoldG3
+    </namerecord>
+    <namerecord nameID="955" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold G4
+    </namerecord>
+    <namerecord nameID="956" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedBoldG4
+    </namerecord>
+    <namerecord nameID="957" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy G1
+    </namerecord>
+    <namerecord nameID="958" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedHeavyG1
+    </namerecord>
+    <namerecord nameID="959" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy G2
+    </namerecord>
+    <namerecord nameID="960" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedHeavyG2
+    </namerecord>
+    <namerecord nameID="961" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy G3
+    </namerecord>
+    <namerecord nameID="962" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedHeavyG3
+    </namerecord>
+    <namerecord nameID="963" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy G4
+    </namerecord>
+    <namerecord nameID="964" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExpandedHeavyG4
+    </namerecord>
+    <namerecord nameID="965" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight G1
+    </namerecord>
+    <namerecord nameID="966" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedUltralightG1
+    </namerecord>
+    <namerecord nameID="967" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight G2
+    </namerecord>
+    <namerecord nameID="968" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedUltralightG2
+    </namerecord>
+    <namerecord nameID="969" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight G3
+    </namerecord>
+    <namerecord nameID="970" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedUltralightG3
+    </namerecord>
+    <namerecord nameID="971" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight G4
+    </namerecord>
+    <namerecord nameID="972" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedUltralightG4
+    </namerecord>
+    <namerecord nameID="973" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin G1
+    </namerecord>
+    <namerecord nameID="974" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedThinG1
+    </namerecord>
+    <namerecord nameID="975" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin G2
+    </namerecord>
+    <namerecord nameID="976" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedThinG2
+    </namerecord>
+    <namerecord nameID="977" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin G3
+    </namerecord>
+    <namerecord nameID="978" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedThinG3
+    </namerecord>
+    <namerecord nameID="979" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin G4
+    </namerecord>
+    <namerecord nameID="980" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedThinG4
+    </namerecord>
+    <namerecord nameID="981" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light G1
+    </namerecord>
+    <namerecord nameID="982" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedLightG1
+    </namerecord>
+    <namerecord nameID="983" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light G2
+    </namerecord>
+    <namerecord nameID="984" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedLightG2
+    </namerecord>
+    <namerecord nameID="985" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light G3
+    </namerecord>
+    <namerecord nameID="986" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedLightG3
+    </namerecord>
+    <namerecord nameID="987" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light G4
+    </namerecord>
+    <namerecord nameID="988" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedLightG4
+    </namerecord>
+    <namerecord nameID="989" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular G1
+    </namerecord>
+    <namerecord nameID="990" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedRegularG1
+    </namerecord>
+    <namerecord nameID="991" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular G2
+    </namerecord>
+    <namerecord nameID="992" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedRegularG2
+    </namerecord>
+    <namerecord nameID="993" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular G3
+    </namerecord>
+    <namerecord nameID="994" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedRegularG3
+    </namerecord>
+    <namerecord nameID="995" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular G4
+    </namerecord>
+    <namerecord nameID="996" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedRegularG4
+    </namerecord>
+    <namerecord nameID="997" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium G1
+    </namerecord>
+    <namerecord nameID="998" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedMediumG1
+    </namerecord>
+    <namerecord nameID="999" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium G2
+    </namerecord>
+    <namerecord nameID="1000" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedMediumG2
+    </namerecord>
+    <namerecord nameID="1001" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium G3
+    </namerecord>
+    <namerecord nameID="1002" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedMediumG3
+    </namerecord>
+    <namerecord nameID="1003" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium G4
+    </namerecord>
+    <namerecord nameID="1004" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedMediumG4
+    </namerecord>
+    <namerecord nameID="1005" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold G1
+    </namerecord>
+    <namerecord nameID="1006" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedSemiboldG1
+    </namerecord>
+    <namerecord nameID="1007" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold G2
+    </namerecord>
+    <namerecord nameID="1008" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedSemiboldG2
+    </namerecord>
+    <namerecord nameID="1009" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold G3
+    </namerecord>
+    <namerecord nameID="1010" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedSemiboldG3
+    </namerecord>
+    <namerecord nameID="1011" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold G4
+    </namerecord>
+    <namerecord nameID="1012" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedSemiboldG4
+    </namerecord>
+    <namerecord nameID="1013" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold G1
+    </namerecord>
+    <namerecord nameID="1014" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedBoldG1
+    </namerecord>
+    <namerecord nameID="1015" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold G2
+    </namerecord>
+    <namerecord nameID="1016" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedBoldG2
+    </namerecord>
+    <namerecord nameID="1017" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold G3
+    </namerecord>
+    <namerecord nameID="1018" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedBoldG3
+    </namerecord>
+    <namerecord nameID="1019" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold G4
+    </namerecord>
+    <namerecord nameID="1020" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedBoldG4
+    </namerecord>
+    <namerecord nameID="1021" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy G1
+    </namerecord>
+    <namerecord nameID="1022" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedHeavyG1
+    </namerecord>
+    <namerecord nameID="1023" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy G2
+    </namerecord>
+    <namerecord nameID="1024" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedHeavyG2
+    </namerecord>
+    <namerecord nameID="1025" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy G3
+    </namerecord>
+    <namerecord nameID="1026" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedHeavyG3
+    </namerecord>
+    <namerecord nameID="1027" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy G4
+    </namerecord>
+    <namerecord nameID="1028" platformID="3" platEncID="1" langID="0x409">
+      .SFNS-ExtraExpandedHeavyG4
+    </namerecord>
+    <namerecord nameID="1029" platformID="3" platEncID="1" langID="0x409">
+      Width
+    </namerecord>
+    <namerecord nameID="1030" platformID="3" platEncID="1" langID="0x409">
+      Optical Size
+    </namerecord>
+    <namerecord nameID="1031" platformID="3" platEncID="1" langID="0x409">
+      GRAD
+    </namerecord>
+    <namerecord nameID="1032" platformID="3" platEncID="1" langID="0x409">
+      Weight
+    </namerecord>
+    <namerecord nameID="1033" platformID="3" platEncID="1" langID="0x409">
+      Italic
+    </namerecord>
+    <namerecord nameID="1034" platformID="3" platEncID="1" langID="0x409">
+      Ultralight
+    </namerecord>
+    <namerecord nameID="1035" platformID="3" platEncID="1" langID="0x409">
+      Thin
+    </namerecord>
+    <namerecord nameID="1036" platformID="3" platEncID="1" langID="0x409">
+      Light
+    </namerecord>
+    <namerecord nameID="1037" platformID="3" platEncID="1" langID="0x409">
+      Regular
+    </namerecord>
+    <namerecord nameID="1038" platformID="3" platEncID="1" langID="0x409">
+      Medium
+    </namerecord>
+    <namerecord nameID="1039" platformID="3" platEncID="1" langID="0x409">
+      Semibold
+    </namerecord>
+    <namerecord nameID="1040" platformID="3" platEncID="1" langID="0x409">
+      Bold
+    </namerecord>
+    <namerecord nameID="1041" platformID="3" platEncID="1" langID="0x409">
+      Heavy
+    </namerecord>
+    <namerecord nameID="1042" platformID="3" platEncID="1" langID="0x409">
+      Black
+    </namerecord>
+    <namerecord nameID="1043" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight
+    </namerecord>
+    <namerecord nameID="1044" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin
+    </namerecord>
+    <namerecord nameID="1045" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light
+    </namerecord>
+    <namerecord nameID="1046" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular
+    </namerecord>
+    <namerecord nameID="1047" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium
+    </namerecord>
+    <namerecord nameID="1048" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold
+    </namerecord>
+    <namerecord nameID="1049" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold
+    </namerecord>
+    <namerecord nameID="1050" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy
+    </namerecord>
+    <namerecord nameID="1051" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Black
+    </namerecord>
+    <namerecord nameID="1052" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight
+    </namerecord>
+    <namerecord nameID="1053" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin
+    </namerecord>
+    <namerecord nameID="1054" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light
+    </namerecord>
+    <namerecord nameID="1055" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular
+    </namerecord>
+    <namerecord nameID="1056" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium
+    </namerecord>
+    <namerecord nameID="1057" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold
+    </namerecord>
+    <namerecord nameID="1058" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold
+    </namerecord>
+    <namerecord nameID="1059" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy
+    </namerecord>
+    <namerecord nameID="1060" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Black
+    </namerecord>
+    <namerecord nameID="1061" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight
+    </namerecord>
+    <namerecord nameID="1062" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin
+    </namerecord>
+    <namerecord nameID="1063" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light
+    </namerecord>
+    <namerecord nameID="1064" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular
+    </namerecord>
+    <namerecord nameID="1065" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium
+    </namerecord>
+    <namerecord nameID="1066" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold
+    </namerecord>
+    <namerecord nameID="1067" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold
+    </namerecord>
+    <namerecord nameID="1068" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy
+    </namerecord>
+    <namerecord nameID="1069" platformID="3" platEncID="1" langID="0x409">
+      Compressed Black
+    </namerecord>
+    <namerecord nameID="1070" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight
+    </namerecord>
+    <namerecord nameID="1071" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin
+    </namerecord>
+    <namerecord nameID="1072" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light
+    </namerecord>
+    <namerecord nameID="1073" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular
+    </namerecord>
+    <namerecord nameID="1074" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium
+    </namerecord>
+    <namerecord nameID="1075" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold
+    </namerecord>
+    <namerecord nameID="1076" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold
+    </namerecord>
+    <namerecord nameID="1077" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy
+    </namerecord>
+    <namerecord nameID="1078" platformID="3" platEncID="1" langID="0x409">
+      Condensed Black
+    </namerecord>
+    <namerecord nameID="1079" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight
+    </namerecord>
+    <namerecord nameID="1080" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin
+    </namerecord>
+    <namerecord nameID="1081" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light
+    </namerecord>
+    <namerecord nameID="1082" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular
+    </namerecord>
+    <namerecord nameID="1083" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium
+    </namerecord>
+    <namerecord nameID="1084" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold
+    </namerecord>
+    <namerecord nameID="1085" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold
+    </namerecord>
+    <namerecord nameID="1086" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy
+    </namerecord>
+    <namerecord nameID="1087" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Black
+    </namerecord>
+    <namerecord nameID="1088" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight
+    </namerecord>
+    <namerecord nameID="1089" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin
+    </namerecord>
+    <namerecord nameID="1090" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light
+    </namerecord>
+    <namerecord nameID="1091" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular
+    </namerecord>
+    <namerecord nameID="1092" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium
+    </namerecord>
+    <namerecord nameID="1093" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold
+    </namerecord>
+    <namerecord nameID="1094" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold
+    </namerecord>
+    <namerecord nameID="1095" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy
+    </namerecord>
+    <namerecord nameID="1096" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Black
+    </namerecord>
+    <namerecord nameID="1097" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight
+    </namerecord>
+    <namerecord nameID="1098" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin
+    </namerecord>
+    <namerecord nameID="1099" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light
+    </namerecord>
+    <namerecord nameID="1100" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular
+    </namerecord>
+    <namerecord nameID="1101" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium
+    </namerecord>
+    <namerecord nameID="1102" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold
+    </namerecord>
+    <namerecord nameID="1103" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold
+    </namerecord>
+    <namerecord nameID="1104" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy
+    </namerecord>
+    <namerecord nameID="1105" platformID="3" platEncID="1" langID="0x409">
+      Expanded Black
+    </namerecord>
+    <namerecord nameID="1106" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight
+    </namerecord>
+    <namerecord nameID="1107" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin
+    </namerecord>
+    <namerecord nameID="1108" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light
+    </namerecord>
+    <namerecord nameID="1109" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular
+    </namerecord>
+    <namerecord nameID="1110" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium
+    </namerecord>
+    <namerecord nameID="1111" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold
+    </namerecord>
+    <namerecord nameID="1112" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold
+    </namerecord>
+    <namerecord nameID="1113" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy
+    </namerecord>
+    <namerecord nameID="1114" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Black
+    </namerecord>
+    <namerecord nameID="1115" platformID="3" platEncID="1" langID="0x409">
+      Ultralight G1
+    </namerecord>
+    <namerecord nameID="1116" platformID="3" platEncID="1" langID="0x409">
+      Ultralight G2
+    </namerecord>
+    <namerecord nameID="1117" platformID="3" platEncID="1" langID="0x409">
+      Ultralight G3
+    </namerecord>
+    <namerecord nameID="1118" platformID="3" platEncID="1" langID="0x409">
+      Ultralight G4
+    </namerecord>
+    <namerecord nameID="1119" platformID="3" platEncID="1" langID="0x409">
+      Thin G1
+    </namerecord>
+    <namerecord nameID="1120" platformID="3" platEncID="1" langID="0x409">
+      Thin G2
+    </namerecord>
+    <namerecord nameID="1121" platformID="3" platEncID="1" langID="0x409">
+      Thin G3
+    </namerecord>
+    <namerecord nameID="1122" platformID="3" platEncID="1" langID="0x409">
+      Thin G4
+    </namerecord>
+    <namerecord nameID="1123" platformID="3" platEncID="1" langID="0x409">
+      Light G1
+    </namerecord>
+    <namerecord nameID="1124" platformID="3" platEncID="1" langID="0x409">
+      Light G2
+    </namerecord>
+    <namerecord nameID="1125" platformID="3" platEncID="1" langID="0x409">
+      Light G3
+    </namerecord>
+    <namerecord nameID="1126" platformID="3" platEncID="1" langID="0x409">
+      Light G4
+    </namerecord>
+    <namerecord nameID="1127" platformID="3" platEncID="1" langID="0x409">
+      Regular G1
+    </namerecord>
+    <namerecord nameID="1128" platformID="3" platEncID="1" langID="0x409">
+      Regular G2
+    </namerecord>
+    <namerecord nameID="1129" platformID="3" platEncID="1" langID="0x409">
+      Regular G3
+    </namerecord>
+    <namerecord nameID="1130" platformID="3" platEncID="1" langID="0x409">
+      Regular G4
+    </namerecord>
+    <namerecord nameID="1131" platformID="3" platEncID="1" langID="0x409">
+      Medium G1
+    </namerecord>
+    <namerecord nameID="1132" platformID="3" platEncID="1" langID="0x409">
+      Medium G2
+    </namerecord>
+    <namerecord nameID="1133" platformID="3" platEncID="1" langID="0x409">
+      Medium G3
+    </namerecord>
+    <namerecord nameID="1134" platformID="3" platEncID="1" langID="0x409">
+      Medium G4
+    </namerecord>
+    <namerecord nameID="1135" platformID="3" platEncID="1" langID="0x409">
+      Semibold G1
+    </namerecord>
+    <namerecord nameID="1136" platformID="3" platEncID="1" langID="0x409">
+      Semibold G2
+    </namerecord>
+    <namerecord nameID="1137" platformID="3" platEncID="1" langID="0x409">
+      Semibold G3
+    </namerecord>
+    <namerecord nameID="1138" platformID="3" platEncID="1" langID="0x409">
+      Semibold G4
+    </namerecord>
+    <namerecord nameID="1139" platformID="3" platEncID="1" langID="0x409">
+      Bold G1
+    </namerecord>
+    <namerecord nameID="1140" platformID="3" platEncID="1" langID="0x409">
+      Bold G2
+    </namerecord>
+    <namerecord nameID="1141" platformID="3" platEncID="1" langID="0x409">
+      Bold G3
+    </namerecord>
+    <namerecord nameID="1142" platformID="3" platEncID="1" langID="0x409">
+      Bold G4
+    </namerecord>
+    <namerecord nameID="1143" platformID="3" platEncID="1" langID="0x409">
+      Heavy G1
+    </namerecord>
+    <namerecord nameID="1144" platformID="3" platEncID="1" langID="0x409">
+      Heavy G2
+    </namerecord>
+    <namerecord nameID="1145" platformID="3" platEncID="1" langID="0x409">
+      Heavy G3
+    </namerecord>
+    <namerecord nameID="1146" platformID="3" platEncID="1" langID="0x409">
+      Heavy G4
+    </namerecord>
+    <namerecord nameID="1147" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight G1
+    </namerecord>
+    <namerecord nameID="1148" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight G2
+    </namerecord>
+    <namerecord nameID="1149" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight G3
+    </namerecord>
+    <namerecord nameID="1150" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Ultralight G4
+    </namerecord>
+    <namerecord nameID="1151" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin G1
+    </namerecord>
+    <namerecord nameID="1152" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin G2
+    </namerecord>
+    <namerecord nameID="1153" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin G3
+    </namerecord>
+    <namerecord nameID="1154" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Thin G4
+    </namerecord>
+    <namerecord nameID="1155" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light G1
+    </namerecord>
+    <namerecord nameID="1156" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light G2
+    </namerecord>
+    <namerecord nameID="1157" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light G3
+    </namerecord>
+    <namerecord nameID="1158" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Light G4
+    </namerecord>
+    <namerecord nameID="1159" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular G1
+    </namerecord>
+    <namerecord nameID="1160" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular G2
+    </namerecord>
+    <namerecord nameID="1161" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular G3
+    </namerecord>
+    <namerecord nameID="1162" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Regular G4
+    </namerecord>
+    <namerecord nameID="1163" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium G1
+    </namerecord>
+    <namerecord nameID="1164" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium G2
+    </namerecord>
+    <namerecord nameID="1165" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium G3
+    </namerecord>
+    <namerecord nameID="1166" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Medium G4
+    </namerecord>
+    <namerecord nameID="1167" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold G1
+    </namerecord>
+    <namerecord nameID="1168" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold G2
+    </namerecord>
+    <namerecord nameID="1169" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold G3
+    </namerecord>
+    <namerecord nameID="1170" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Semibold G4
+    </namerecord>
+    <namerecord nameID="1171" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold G1
+    </namerecord>
+    <namerecord nameID="1172" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold G2
+    </namerecord>
+    <namerecord nameID="1173" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold G3
+    </namerecord>
+    <namerecord nameID="1174" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Bold G4
+    </namerecord>
+    <namerecord nameID="1175" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy G1
+    </namerecord>
+    <namerecord nameID="1176" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy G2
+    </namerecord>
+    <namerecord nameID="1177" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy G3
+    </namerecord>
+    <namerecord nameID="1178" platformID="3" platEncID="1" langID="0x409">
+      Ultra Compressed Heavy G4
+    </namerecord>
+    <namerecord nameID="1179" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight G1
+    </namerecord>
+    <namerecord nameID="1180" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight G2
+    </namerecord>
+    <namerecord nameID="1181" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight G3
+    </namerecord>
+    <namerecord nameID="1182" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Ultralight G4
+    </namerecord>
+    <namerecord nameID="1183" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin G1
+    </namerecord>
+    <namerecord nameID="1184" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin G2
+    </namerecord>
+    <namerecord nameID="1185" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin G3
+    </namerecord>
+    <namerecord nameID="1186" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Thin G4
+    </namerecord>
+    <namerecord nameID="1187" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light G1
+    </namerecord>
+    <namerecord nameID="1188" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light G2
+    </namerecord>
+    <namerecord nameID="1189" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light G3
+    </namerecord>
+    <namerecord nameID="1190" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Light G4
+    </namerecord>
+    <namerecord nameID="1191" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular G1
+    </namerecord>
+    <namerecord nameID="1192" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular G2
+    </namerecord>
+    <namerecord nameID="1193" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular G3
+    </namerecord>
+    <namerecord nameID="1194" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Regular G4
+    </namerecord>
+    <namerecord nameID="1195" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium G1
+    </namerecord>
+    <namerecord nameID="1196" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium G2
+    </namerecord>
+    <namerecord nameID="1197" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium G3
+    </namerecord>
+    <namerecord nameID="1198" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Medium G4
+    </namerecord>
+    <namerecord nameID="1199" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold G1
+    </namerecord>
+    <namerecord nameID="1200" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold G2
+    </namerecord>
+    <namerecord nameID="1201" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold G3
+    </namerecord>
+    <namerecord nameID="1202" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Semibold G4
+    </namerecord>
+    <namerecord nameID="1203" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold G1
+    </namerecord>
+    <namerecord nameID="1204" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold G2
+    </namerecord>
+    <namerecord nameID="1205" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold G3
+    </namerecord>
+    <namerecord nameID="1206" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Bold G4
+    </namerecord>
+    <namerecord nameID="1207" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy G1
+    </namerecord>
+    <namerecord nameID="1208" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy G2
+    </namerecord>
+    <namerecord nameID="1209" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy G3
+    </namerecord>
+    <namerecord nameID="1210" platformID="3" platEncID="1" langID="0x409">
+      Extra Compressed Heavy G4
+    </namerecord>
+    <namerecord nameID="1211" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight G1
+    </namerecord>
+    <namerecord nameID="1212" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight G2
+    </namerecord>
+    <namerecord nameID="1213" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight G3
+    </namerecord>
+    <namerecord nameID="1214" platformID="3" platEncID="1" langID="0x409">
+      Compressed Ultralight G4
+    </namerecord>
+    <namerecord nameID="1215" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin G1
+    </namerecord>
+    <namerecord nameID="1216" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin G2
+    </namerecord>
+    <namerecord nameID="1217" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin G3
+    </namerecord>
+    <namerecord nameID="1218" platformID="3" platEncID="1" langID="0x409">
+      Compressed Thin G4
+    </namerecord>
+    <namerecord nameID="1219" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light G1
+    </namerecord>
+    <namerecord nameID="1220" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light G2
+    </namerecord>
+    <namerecord nameID="1221" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light G3
+    </namerecord>
+    <namerecord nameID="1222" platformID="3" platEncID="1" langID="0x409">
+      Compressed Light G4
+    </namerecord>
+    <namerecord nameID="1223" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular G1
+    </namerecord>
+    <namerecord nameID="1224" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular G2
+    </namerecord>
+    <namerecord nameID="1225" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular G3
+    </namerecord>
+    <namerecord nameID="1226" platformID="3" platEncID="1" langID="0x409">
+      Compressed Regular G4
+    </namerecord>
+    <namerecord nameID="1227" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium G1
+    </namerecord>
+    <namerecord nameID="1228" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium G2
+    </namerecord>
+    <namerecord nameID="1229" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium G3
+    </namerecord>
+    <namerecord nameID="1230" platformID="3" platEncID="1" langID="0x409">
+      Compressed Medium G4
+    </namerecord>
+    <namerecord nameID="1231" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold G1
+    </namerecord>
+    <namerecord nameID="1232" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold G2
+    </namerecord>
+    <namerecord nameID="1233" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold G3
+    </namerecord>
+    <namerecord nameID="1234" platformID="3" platEncID="1" langID="0x409">
+      Compressed Semibold G4
+    </namerecord>
+    <namerecord nameID="1235" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold G1
+    </namerecord>
+    <namerecord nameID="1236" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold G2
+    </namerecord>
+    <namerecord nameID="1237" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold G3
+    </namerecord>
+    <namerecord nameID="1238" platformID="3" platEncID="1" langID="0x409">
+      Compressed Bold G4
+    </namerecord>
+    <namerecord nameID="1239" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy G1
+    </namerecord>
+    <namerecord nameID="1240" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy G2
+    </namerecord>
+    <namerecord nameID="1241" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy G3
+    </namerecord>
+    <namerecord nameID="1242" platformID="3" platEncID="1" langID="0x409">
+      Compressed Heavy G4
+    </namerecord>
+    <namerecord nameID="1243" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight G1
+    </namerecord>
+    <namerecord nameID="1244" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight G2
+    </namerecord>
+    <namerecord nameID="1245" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight G3
+    </namerecord>
+    <namerecord nameID="1246" platformID="3" platEncID="1" langID="0x409">
+      Condensed Ultralight G4
+    </namerecord>
+    <namerecord nameID="1247" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin G1
+    </namerecord>
+    <namerecord nameID="1248" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin G2
+    </namerecord>
+    <namerecord nameID="1249" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin G3
+    </namerecord>
+    <namerecord nameID="1250" platformID="3" platEncID="1" langID="0x409">
+      Condensed Thin G4
+    </namerecord>
+    <namerecord nameID="1251" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light G1
+    </namerecord>
+    <namerecord nameID="1252" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light G2
+    </namerecord>
+    <namerecord nameID="1253" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light G3
+    </namerecord>
+    <namerecord nameID="1254" platformID="3" platEncID="1" langID="0x409">
+      Condensed Light G4
+    </namerecord>
+    <namerecord nameID="1255" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular G1
+    </namerecord>
+    <namerecord nameID="1256" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular G2
+    </namerecord>
+    <namerecord nameID="1257" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular G3
+    </namerecord>
+    <namerecord nameID="1258" platformID="3" platEncID="1" langID="0x409">
+      Condensed Regular G4
+    </namerecord>
+    <namerecord nameID="1259" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium G1
+    </namerecord>
+    <namerecord nameID="1260" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium G2
+    </namerecord>
+    <namerecord nameID="1261" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium G3
+    </namerecord>
+    <namerecord nameID="1262" platformID="3" platEncID="1" langID="0x409">
+      Condensed Medium G4
+    </namerecord>
+    <namerecord nameID="1263" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold G1
+    </namerecord>
+    <namerecord nameID="1264" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold G2
+    </namerecord>
+    <namerecord nameID="1265" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold G3
+    </namerecord>
+    <namerecord nameID="1266" platformID="3" platEncID="1" langID="0x409">
+      Condensed Semibold G4
+    </namerecord>
+    <namerecord nameID="1267" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold G1
+    </namerecord>
+    <namerecord nameID="1268" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold G2
+    </namerecord>
+    <namerecord nameID="1269" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold G3
+    </namerecord>
+    <namerecord nameID="1270" platformID="3" platEncID="1" langID="0x409">
+      Condensed Bold G4
+    </namerecord>
+    <namerecord nameID="1271" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy G1
+    </namerecord>
+    <namerecord nameID="1272" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy G2
+    </namerecord>
+    <namerecord nameID="1273" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy G3
+    </namerecord>
+    <namerecord nameID="1274" platformID="3" platEncID="1" langID="0x409">
+      Condensed Heavy G4
+    </namerecord>
+    <namerecord nameID="1275" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight G1
+    </namerecord>
+    <namerecord nameID="1276" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight G2
+    </namerecord>
+    <namerecord nameID="1277" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight G3
+    </namerecord>
+    <namerecord nameID="1278" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Ultralight G4
+    </namerecord>
+    <namerecord nameID="1279" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin G1
+    </namerecord>
+    <namerecord nameID="1280" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin G2
+    </namerecord>
+    <namerecord nameID="1281" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin G3
+    </namerecord>
+    <namerecord nameID="1282" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Thin G4
+    </namerecord>
+    <namerecord nameID="1283" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light G1
+    </namerecord>
+    <namerecord nameID="1284" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light G2
+    </namerecord>
+    <namerecord nameID="1285" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light G3
+    </namerecord>
+    <namerecord nameID="1286" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Light G4
+    </namerecord>
+    <namerecord nameID="1287" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular G1
+    </namerecord>
+    <namerecord nameID="1288" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular G2
+    </namerecord>
+    <namerecord nameID="1289" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular G3
+    </namerecord>
+    <namerecord nameID="1290" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Regular G4
+    </namerecord>
+    <namerecord nameID="1291" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium G1
+    </namerecord>
+    <namerecord nameID="1292" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium G2
+    </namerecord>
+    <namerecord nameID="1293" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium G3
+    </namerecord>
+    <namerecord nameID="1294" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Medium G4
+    </namerecord>
+    <namerecord nameID="1295" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold G1
+    </namerecord>
+    <namerecord nameID="1296" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold G2
+    </namerecord>
+    <namerecord nameID="1297" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold G3
+    </namerecord>
+    <namerecord nameID="1298" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Semibold G4
+    </namerecord>
+    <namerecord nameID="1299" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold G1
+    </namerecord>
+    <namerecord nameID="1300" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold G2
+    </namerecord>
+    <namerecord nameID="1301" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold G3
+    </namerecord>
+    <namerecord nameID="1302" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Bold G4
+    </namerecord>
+    <namerecord nameID="1303" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy G1
+    </namerecord>
+    <namerecord nameID="1304" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy G2
+    </namerecord>
+    <namerecord nameID="1305" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy G3
+    </namerecord>
+    <namerecord nameID="1306" platformID="3" platEncID="1" langID="0x409">
+      Semi Condensed Heavy G4
+    </namerecord>
+    <namerecord nameID="1307" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight G1
+    </namerecord>
+    <namerecord nameID="1308" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight G2
+    </namerecord>
+    <namerecord nameID="1309" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight G3
+    </namerecord>
+    <namerecord nameID="1310" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Ultralight G4
+    </namerecord>
+    <namerecord nameID="1311" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin G1
+    </namerecord>
+    <namerecord nameID="1312" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin G2
+    </namerecord>
+    <namerecord nameID="1313" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin G3
+    </namerecord>
+    <namerecord nameID="1314" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Thin G4
+    </namerecord>
+    <namerecord nameID="1315" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light G1
+    </namerecord>
+    <namerecord nameID="1316" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light G2
+    </namerecord>
+    <namerecord nameID="1317" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light G3
+    </namerecord>
+    <namerecord nameID="1318" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Light G4
+    </namerecord>
+    <namerecord nameID="1319" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular G1
+    </namerecord>
+    <namerecord nameID="1320" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular G2
+    </namerecord>
+    <namerecord nameID="1321" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular G3
+    </namerecord>
+    <namerecord nameID="1322" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Regular G4
+    </namerecord>
+    <namerecord nameID="1323" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium G1
+    </namerecord>
+    <namerecord nameID="1324" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium G2
+    </namerecord>
+    <namerecord nameID="1325" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium G3
+    </namerecord>
+    <namerecord nameID="1326" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Medium G4
+    </namerecord>
+    <namerecord nameID="1327" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold G1
+    </namerecord>
+    <namerecord nameID="1328" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold G2
+    </namerecord>
+    <namerecord nameID="1329" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold G3
+    </namerecord>
+    <namerecord nameID="1330" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Semibold G4
+    </namerecord>
+    <namerecord nameID="1331" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold G1
+    </namerecord>
+    <namerecord nameID="1332" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold G2
+    </namerecord>
+    <namerecord nameID="1333" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold G3
+    </namerecord>
+    <namerecord nameID="1334" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Bold G4
+    </namerecord>
+    <namerecord nameID="1335" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy G1
+    </namerecord>
+    <namerecord nameID="1336" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy G2
+    </namerecord>
+    <namerecord nameID="1337" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy G3
+    </namerecord>
+    <namerecord nameID="1338" platformID="3" platEncID="1" langID="0x409">
+      Semi Expanded Heavy G4
+    </namerecord>
+    <namerecord nameID="1339" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight G1
+    </namerecord>
+    <namerecord nameID="1340" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight G2
+    </namerecord>
+    <namerecord nameID="1341" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight G3
+    </namerecord>
+    <namerecord nameID="1342" platformID="3" platEncID="1" langID="0x409">
+      Expanded Ultralight G4
+    </namerecord>
+    <namerecord nameID="1343" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin G1
+    </namerecord>
+    <namerecord nameID="1344" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin G2
+    </namerecord>
+    <namerecord nameID="1345" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin G3
+    </namerecord>
+    <namerecord nameID="1346" platformID="3" platEncID="1" langID="0x409">
+      Expanded Thin G4
+    </namerecord>
+    <namerecord nameID="1347" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light G1
+    </namerecord>
+    <namerecord nameID="1348" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light G2
+    </namerecord>
+    <namerecord nameID="1349" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light G3
+    </namerecord>
+    <namerecord nameID="1350" platformID="3" platEncID="1" langID="0x409">
+      Expanded Light G4
+    </namerecord>
+    <namerecord nameID="1351" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular G1
+    </namerecord>
+    <namerecord nameID="1352" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular G2
+    </namerecord>
+    <namerecord nameID="1353" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular G3
+    </namerecord>
+    <namerecord nameID="1354" platformID="3" platEncID="1" langID="0x409">
+      Expanded Regular G4
+    </namerecord>
+    <namerecord nameID="1355" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium G1
+    </namerecord>
+    <namerecord nameID="1356" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium G2
+    </namerecord>
+    <namerecord nameID="1357" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium G3
+    </namerecord>
+    <namerecord nameID="1358" platformID="3" platEncID="1" langID="0x409">
+      Expanded Medium G4
+    </namerecord>
+    <namerecord nameID="1359" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold G1
+    </namerecord>
+    <namerecord nameID="1360" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold G2
+    </namerecord>
+    <namerecord nameID="1361" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold G3
+    </namerecord>
+    <namerecord nameID="1362" platformID="3" platEncID="1" langID="0x409">
+      Expanded Semibold G4
+    </namerecord>
+    <namerecord nameID="1363" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold G1
+    </namerecord>
+    <namerecord nameID="1364" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold G2
+    </namerecord>
+    <namerecord nameID="1365" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold G3
+    </namerecord>
+    <namerecord nameID="1366" platformID="3" platEncID="1" langID="0x409">
+      Expanded Bold G4
+    </namerecord>
+    <namerecord nameID="1367" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy G1
+    </namerecord>
+    <namerecord nameID="1368" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy G2
+    </namerecord>
+    <namerecord nameID="1369" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy G3
+    </namerecord>
+    <namerecord nameID="1370" platformID="3" platEncID="1" langID="0x409">
+      Expanded Heavy G4
+    </namerecord>
+    <namerecord nameID="1371" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight G1
+    </namerecord>
+    <namerecord nameID="1372" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight G2
+    </namerecord>
+    <namerecord nameID="1373" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight G3
+    </namerecord>
+    <namerecord nameID="1374" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Ultralight G4
+    </namerecord>
+    <namerecord nameID="1375" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin G1
+    </namerecord>
+    <namerecord nameID="1376" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin G2
+    </namerecord>
+    <namerecord nameID="1377" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin G3
+    </namerecord>
+    <namerecord nameID="1378" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Thin G4
+    </namerecord>
+    <namerecord nameID="1379" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light G1
+    </namerecord>
+    <namerecord nameID="1380" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light G2
+    </namerecord>
+    <namerecord nameID="1381" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light G3
+    </namerecord>
+    <namerecord nameID="1382" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Light G4
+    </namerecord>
+    <namerecord nameID="1383" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular G1
+    </namerecord>
+    <namerecord nameID="1384" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular G2
+    </namerecord>
+    <namerecord nameID="1385" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular G3
+    </namerecord>
+    <namerecord nameID="1386" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Regular G4
+    </namerecord>
+    <namerecord nameID="1387" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium G1
+    </namerecord>
+    <namerecord nameID="1388" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium G2
+    </namerecord>
+    <namerecord nameID="1389" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium G3
+    </namerecord>
+    <namerecord nameID="1390" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Medium G4
+    </namerecord>
+    <namerecord nameID="1391" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold G1
+    </namerecord>
+    <namerecord nameID="1392" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold G2
+    </namerecord>
+    <namerecord nameID="1393" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold G3
+    </namerecord>
+    <namerecord nameID="1394" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Semibold G4
+    </namerecord>
+    <namerecord nameID="1395" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold G1
+    </namerecord>
+    <namerecord nameID="1396" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold G2
+    </namerecord>
+    <namerecord nameID="1397" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold G3
+    </namerecord>
+    <namerecord nameID="1398" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Bold G4
+    </namerecord>
+    <namerecord nameID="1399" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy G1
+    </namerecord>
+    <namerecord nameID="1400" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy G2
+    </namerecord>
+    <namerecord nameID="1401" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy G3
+    </namerecord>
+    <namerecord nameID="1402" platformID="3" platEncID="1" langID="0x409">
+      Extra Expanded Heavy G4
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x40b">
+      Järjestelmäfontti
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x40b">
+      Normaali
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x40b">
+      Järjestelmäfontti
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x40c">
+      Police système
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x40c">
+      Courant
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x40c">
+      Police système
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x40d">
+      גופן מערכת
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x40d">
+      רגיל
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x40d">
+      גופן מערכת
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x40e">
+      Rendszerbetűtípus
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x40e">
+      Szabályos
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x40e">
+      Rendszerbetűtípus
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x410">
+      Font di sistema
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x410">
+      Regolare
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x410">
+      Font di sistema
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x411">
+      システムフォント
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x411">
+      レギュラー
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x411">
+      システムフォント
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x412">
+      시스템 서체
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x412">
+      일반체
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x412">
+      시스템 서체
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x413">
+      Systeemlettertype
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x413">
+      Regulier
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x413">
+      Systeemlettertype
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x414">
+      Systemfont
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x414">
+      Normal
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x414">
+      Systemfont
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x415">
+      Czcionka systemowa
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x415">
+      Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x415">
+      Czcionka systemowa
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x416">
+      Fonte do Sistema
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x416">
+      Normal
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x416">
+      Fonte do Sistema
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x418">
+      Font de sistem
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x418">
+      Normal
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x418">
+      Font de sistem
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x419">
+      Системный шрифт
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x419">
+      Обычный
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x419">
+      Системный шрифт
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x41a">
+      Font sustava
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x41a">
+      Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x41a">
+      Font sustava
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x41b">
+      Systémové písmo
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x41b">
+      Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x41b">
+      Systémové písmo
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x41d">
+      Systemtypsnitt
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x41d">
+      Normal
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x41d">
+      Systemtypsnitt
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x41e">
+      แบบอักษรระบบ
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x41e">
+      ปกติ
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x41e">
+      แบบอักษรระบบ
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x41f">
+      Sistem Fontu
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x41f">
+      Normal
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x41f">
+      Sistem Fontu
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x421">
+      Font Sistem
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x421">
+      Reguler
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x421">
+      Font Sistem
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x422">
+      Системний шрифт
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x422">
+      Звичайний
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x422">
+      Системний шрифт
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x42a">
+      Phông chữ Hệ thống
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x42a">
+      Thường
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x42a">
+      Phông chữ Hệ thống
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x43e">
+      Font Sistem
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x43e">
+      Biasa
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x43e">
+      Font Sistem
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x804">
+      系统字体
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x804">
+      常规体
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x804">
+      系统字体
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x809">
+      System Font
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x809">
+      Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x809">
+      System Font
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x816">
+      Tipo de letra do sistema
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x816">
+      Regular
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x816">
+      Tipo de letra do sistema
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0xc01">
+      خط النظام
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0xc01">
+      عادي
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0xc01">
+      خط النظام
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0xc0a">
+      Tipo de letra del sistema
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0xc0a">
+      Normal
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0xc0a">
+      Tipo de letra del sistema
+    </namerecord>
+  </name>
+
+  <hhea>
+    <tableVersion value="0x00010000"/>
+    <ascent value="1980"/>
+    <descent value="-432"/>
+    <lineGap value="0"/>
+    <advanceWidthMax value="5106"/>
+    <minLeftSideBearing value="-1322"/>
+    <minRightSideBearing value="-959"/>
+    <xMaxExtent value="5050"/>
+    <caretSlopeRise value="1"/>
+    <caretSlopeRun value="0"/>
+    <caretOffset value="0"/>
+    <reserved0 value="0"/>
+    <reserved1 value="0"/>
+    <reserved2 value="0"/>
+    <reserved3 value="0"/>
+    <metricDataFormat value="0"/>
+    <numberOfHMetrics value="2953"/>
+  </hhea>
+
+  <OS_2>
+    <!-- The fields 'usFirstCharIndex' and 'usLastCharIndex'
+         will be recalculated by the compiler -->
+    <version value="4"/>
+    <xAvgCharWidth value="1187"/>
+    <usWeightClass value="400"/>
+    <usWidthClass value="5"/>
+    <fsType value="00000000 00000000"/>
+    <ySubscriptXSize value="650"/>
+    <ySubscriptYSize value="600"/>
+    <ySubscriptXOffset value="0"/>
+    <ySubscriptYOffset value="75"/>
+    <ySuperscriptXSize value="650"/>
+    <ySuperscriptYSize value="600"/>
+    <ySuperscriptXOffset value="0"/>
+    <ySuperscriptYOffset value="350"/>
+    <yStrikeoutSize value="120"/>
+    <yStrikeoutPosition value="620"/>
+    <sFamilyClass value="0"/>
+    <panose>
+      <bFamilyType value="0"/>
+      <bSerifStyle value="0"/>
+      <bWeight value="0"/>
+      <bProportion value="0"/>
+      <bContrast value="0"/>
+      <bStrokeVariation value="0"/>
+      <bArmStyle value="0"/>
+      <bLetterForm value="0"/>
+      <bMidline value="0"/>
+      <bXHeight value="0"/>
+    </panose>
+    <ulUnicodeRange1 value="11100001 00000000 00000010 11111111"/>
+    <ulUnicodeRange2 value="01010010 00000001 11101100 11111111"/>
+    <ulUnicodeRange3 value="00000100 00000000 10000000 00100000"/>
+    <ulUnicodeRange4 value="00000000 00000000 00000000 00000000"/>
+    <achVendID value="APPL"/>
+    <fsSelection value="00000000 01000000"/>
+    <usFirstCharIndex value="32"/>
+    <usLastCharIndex value="65535"/>
+    <sTypoAscender value="1980"/>
+    <sTypoDescender value="-432"/>
+    <sTypoLineGap value="0"/>
+    <usWinAscent value="1980"/>
+    <usWinDescent value="432"/>
+    <ulCodePageRange1 value="01100000 00000000 00000001 10011111"/>
+    <ulCodePageRange2 value="00000000 00000000 00000000 00000000"/>
+    <sxHeight value="1040"/>
+    <sCapHeight value="1443"/>
+    <usDefaultChar value="0"/>
+    <usBreakChar value="32"/>
+    <usMaxContext value="3"/>
+  </OS_2>
+
+</ttFont>
